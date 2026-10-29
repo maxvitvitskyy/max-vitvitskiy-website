@@ -52,8 +52,9 @@ a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--amber);outline-offset:4px}
 h1,h2,h3,h4,figcaption b{text-wrap:balance}
 section[id]{scroll-margin-top:56px}
-.skip{font-family:var(--text);position:fixed;left:var(--gut);top:12px;z-index:100;padding:10px 18px;border-radius:99px;background:var(--amber);color:var(--ink);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;transform:translateY(-200%);transition:transform .3s var(--ease)}
-.skip:focus-visible{transform:none}
+.skip{font-family:var(--text);position:fixed;left:var(--gut);top:12px;z-index:100;padding:10px 18px;border-radius:99px;background:var(--amber);color:var(--ink);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;transform:translateY(-300px);opacity:0;pointer-events:none;transition:transform .3s var(--ease),opacity .3s}
+/* fully hidden until keyboard focus: Safari draws the page under its status bar, where a merely shifted button still showed */
+.skip:focus-visible{transform:translateY(max(0px,env(safe-area-inset-top)));opacity:1;pointer-events:auto}
 .display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
 .eyebrow{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber)}
 .wrap{padding-inline:var(--gut);max-width:1500px;margin-inline:auto}
