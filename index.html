@@ -123,7 +123,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .hero-art{--aw:min(31svh,54vw);--H:calc(var(--aw)/.66);position:relative;width:var(--aw);aspect-ratio:.66;margin-bottom:calc(var(--H)*.56)}
 .arch{position:absolute;inset:0;border-radius:999px 999px 0 0;
   background:linear-gradient(to bottom,#ece8e0 0%,#e3c985 20%,#d29a2a 45%,#c8641c 72%,#9b2e20 100%);
-  animation:archIn 1.5s var(--ease) both}
+  /* entrance: fills from the bottom like a rising flame (soft edge, a tongue leading in the middle), blurred and hot, then settles sharp */
+  -webkit-mask:radial-gradient(ellipse 58% 20% at 50% calc(100% - var(--f)),#000 30%,transparent 72%),linear-gradient(to top,#000 calc(var(--f) - 14%),transparent var(--f));
+  mask:radial-gradient(ellipse 58% 20% at 50% calc(100% - var(--f)),#000 30%,transparent 72%),linear-gradient(to top,#000 calc(var(--f) - 14%),transparent var(--f));
+  animation:archFire 2.6s cubic-bezier(.45,.1,.55,.95) both,archFocus 3s cubic-bezier(.4,.2,.3,1) both}
 /* arch glow: a gradient layer pulsing on opacity (a blurred box-shadow got clipped into a visible rectangle and repainted every frame) */
 .hero-art::before{content:"";position:absolute;inset:-55% -95% -40%;pointer-events:none;
   background:radial-gradient(closest-side,rgba(222,145,34,.34) 30%,rgba(196,80,26,.16) 62%,rgba(196,80,26,0) 100%);
@@ -148,7 +151,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* tablets: the larger name sits a touch higher so it clears the tagline */
 @media(min-width:600px) and (max-width:899px){.hero-name{top:62%;font-size:min(calc(var(--H)*.4),26vw)}}
 @keyframes rise{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
-@keyframes archIn{from{opacity:0;transform:translateY(80px) scale(.86)}to{opacity:1;transform:none}}
+@property --f{syntax:'<percentage>';inherits:false;initial-value:140%}
+@keyframes archFire{from{--f:0%}to{--f:140%}}
+@keyframes archFocus{from{filter:blur(14px) saturate(1.7) brightness(1.3)}55%{filter:blur(5px) saturate(1.3) brightness(1.12)}to{filter:blur(0) saturate(1) brightness(1)}}
 @keyframes chIn{from{stroke-opacity:0}to{stroke-opacity:.85}}
 @keyframes nameIn{from{opacity:0;transform:translateX(-50%) translateY(46px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:translateX(-50%);clip-path:inset(-40% -10% -70% -10%)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
