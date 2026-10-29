@@ -348,6 +348,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .cols2 h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(26px,2.8vw,38px);line-height:1;margin-bottom:14px}
 .cols2 p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
 
+/* Create + Inspire sublines: two even lines on phones */
+@media(max-width:899px){.sec-head .sub p.two{max-width:none;text-wrap:balance}}
 @media(max-width:899px){.btn{min-height:50px;font-size:14px;padding:0 26px;gap:12px}.sec-head .sub{gap:22px}}
 /* tablet refinements */
 @media(min-width:600px) and (max-width:899px){
@@ -383,9 +385,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .about .tags{font-family:var(--text);margin-bottom:clamp(28px,3vw,40px);display:flex;flex-wrap:wrap;gap:8px 4cqi;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
 .about h2{margin-top:18px}
 .about .tags span::before{content:"✦ ";color:var(--teal)}
-/* tags: one row where it fits, otherwise an even 3 + 2 */
-.about .tags{font-size:clamp(11px,2.8cqi,13px)}
-@container (max-width:460px){.about .tags{display:grid;grid-template-columns:repeat(3,max-content);column-gap:3.5cqi;font-size:13px}}
+/* tags: an even 3 + 3 grid at every width */
+.about .tags{display:grid;grid-template-columns:repeat(3,max-content);column-gap:min(3.5cqi,28px)}
 @media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:start}.about-txt{max-width:83.334%}}
 
 /* contact */
@@ -461,7 +462,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="wrap sec-head rv">
     <span class="num" data-uk="01 / Я створюю">01 / I make things</span>
     <h2 class="display">Create</h2>
-    <div class="sub"><p data-uk="Моє мистецтво — живопис, цифрове мистецтво та візуальні експерименти.">My art — paintings, digital art and visual experiments.</p><a class="btn fill" href="#" data-uk="Дивитись мистецтво →">Explore art →</a></div>
+    <div class="sub"><p class="two" data-uk="Моє мистецтво — живопис, цифрове мистецтво та візуальні експерименти.">My art — paintings, digital art and visual experiments.</p><a class="btn fill" href="#" data-uk="Дивитись мистецтво →">Explore art →</a></div>
   </div>
   <div class="gallery rv">
     <a class="work" href="#"><div class="ph"><img src="img/art1.jpg" alt="Artwork" loading="lazy"><span class="tag" data-uk="Доступна">Available</span></div><div class="cap"><b data-uk="Без назви I">Untitled I</b><span data-uk="За запитом">On request</span></div></a>
@@ -488,7 +489,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="wrap sec-head rv">
     <span class="num" data-uk="02 / Я ділюся тим, що знаю">02 / I share what I learn</span>
     <h2 class="display">Inspire</h2>
-    <div class="sub"><p data-uk="Креативний контент про творчість, мистецтво та шлях митця.">Creative content on creativity, art and the path of a maker.</p><a class="btn fill" href="https://www.youtube.com/@MaxVitvitskiy" data-uk="Дивитись →">Watch / Explore →</a></div>
+    <div class="sub"><p class="two" data-uk="Креативний контент про творчість, мистецтво та шлях митця.">Creative content on creativity, art and the path of a maker.</p><a class="btn fill" href="https://www.youtube.com/@MaxVitvitskiy" data-uk="Дивитись →">Watch / Explore →</a></div>
   </div>
   <div class="reels rv">
     <a class="reel" href="#" aria-label="Наша культура втратила гальма"><img src="img/reel1.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
@@ -599,7 +600,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <div class="about-txt rv">
       <span class="eyebrow" data-uk="Про мене">About</span>
       <h2 class="display" translate="no">Max Vitvitskiy</h2>
-      <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span></div>
+      <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span><span data-uk="Натхнення">Inspiration</span></div>
       <div class="bio">
         <p data-uk="Я — український візуальний митець, який працює з фотографією та цифровою композицією.">I’m a Ukrainian visual artist working with photography and digital composition.</p>
         <p data-uk="Я створюю символічні, сюрреалістичні образи, що досліджують моменти присутності — ті миті, коли людина відчуває себе водночас маленькою перед величчю світу й глибоко пов’язаною з чимось більшим за себе.">I create symbolic, surreal images that explore moments of presence — those instants when a person feels both small before the greatness of the world and deeply connected to something larger than themselves.</p>
