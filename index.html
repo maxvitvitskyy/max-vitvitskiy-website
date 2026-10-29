@@ -279,9 +279,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .reel img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .reel:hover img{transform:scale(1.06)}
 .reel::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 70%,rgba(1,17,10,.5))}
-.reel .play{position:absolute;z-index:2;right:30px;bottom:30px;width:40px;height:40px;border-radius:50%;background:rgba(255,166,48,.92);display:grid;place-items:center}
-/* phones: play button in the top-right corner, clear of the cover title */
-@media(max-width:899px){.reel .play{top:30px;bottom:auto}}
+.reel .play{position:absolute;z-index:2;right:30px;top:30px;width:40px;height:40px;border-radius:50%;background:rgba(255,166,48,.92);display:grid;place-items:center}
 /* a ring of "watch · watch · watch" turning slowly around the play button; letters are placed one by one, so every browser draws it the same */
 .reel .ring{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;pointer-events:none;animation:ringSpin 14s linear infinite}
 .reel .ring b{position:absolute;left:50%;top:0;width:10px;margin-left:-5px;height:35px;transform-origin:50% 100%;text-align:center;
