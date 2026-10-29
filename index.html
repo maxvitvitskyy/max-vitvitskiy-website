@@ -280,6 +280,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .reel:hover img{transform:scale(1.06)}
 .reel::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 70%,rgba(1,17,10,.5))}
 .reel .play{position:absolute;z-index:2;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,166,48,.92);display:grid;place-items:center}
+/* phones: play button in the top-right corner, clear of the cover title */
+@media(max-width:899px){.reel .play{top:12px;bottom:auto}}
 .reel .play::before{content:"";border-left:11px solid var(--ink);border-block:7px solid transparent;margin-left:3px}
 .topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(56px,7vw,96px)}
 .topics span{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:14px;color:var(--cream)}
