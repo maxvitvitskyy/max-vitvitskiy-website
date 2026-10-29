@@ -402,32 +402,34 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 }
 @media(max-width:560px){.sx-list li{grid-template-columns:1fr}.sx-vals .va p{padding-right:0}}
 .sx-vision{margin-top:22px;color:var(--muted);font-size:15.5px;line-height:1.75;max-width:56ch}
-/* silent: CTA strip */
-.sx-strip{display:flex;flex-direction:column;gap:22px;align-items:flex-start;margin-top:clamp(48px,6vw,88px);padding:clamp(22px,3vw,36px) clamp(22px,3.4vw,48px);border-radius:var(--r);background:linear-gradient(90deg,#050304 0%,#0e0509 35%,#1a0910 75%,#230b15 100%);box-shadow:0 18px 50px rgba(0,0,0,.35)}
-.sx-strip .mark{width:clamp(88px,10vw,120px);height:auto;flex:none}
-.sx-strip h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(28px,3.2vw,48px);line-height:1}
-.sx-strip small{display:block;margin-top:8px;color:var(--muted);font-size:15px;line-height:1.5}
-.sx-strip .go{white-space:normal;text-align:center;line-height:1.3;padding-block:14px;max-width:100%}
-@media(max-width:899px){.sx-strip .go{width:100%}
-  /* phones/tablets: logo and title side by side, then the note, then the button */
-  .sx-strip{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:16px;row-gap:18px}
-  .sx-strip .mark{width:clamp(56px,16vw,72px)}
-  .sx-strip .txt{display:contents}
-  .sx-strip h3{color:var(--amber)}
-  .sx-strip small{grid-column:1/-1;margin-top:0}
-  .sx-strip .go{grid-column:1/-1}
-}
-@media(max-width:374px){.sx-strip .go{white-space:nowrap;padding-inline:18px;letter-spacing:.1em}}
+/* silent: CTA strip
+   one rule set: logo, title and note share the logo's top and bottom lines; the button sits on the
+   same bottom line at the far edge. Phones stack below the logo row, tablets keep the button right. */
+.sx-strip{--sp:clamp(22px,3vw,40px);--logo:clamp(60px,7.2vw,100px);display:grid;grid-template-columns:var(--logo) minmax(0,1fr);column-gap:clamp(16px,2vw,28px);row-gap:20px;align-items:center;
+  margin-top:clamp(48px,6vw,88px);padding:var(--sp);border-radius:var(--r);background:linear-gradient(90deg,#050304 0%,#0e0509 35%,#1a0910 75%,#230b15 100%)}
+.sx-strip .mark{width:var(--logo);height:auto}
+.sx-strip .txt{display:contents}
+.sx-strip h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(26px,3vw,44px);line-height:1;color:var(--amber);text-wrap:balance}
+.sx-strip small{grid-column:1/-1;display:block;color:var(--muted);font-size:15px;line-height:1.5;max-width:52ch}
+.sx-strip .go{grid-column:1/-1;width:100%;white-space:nowrap;text-align:center;padding-block:14px}
+@media(max-width:374px){.sx-strip .go{padding-inline:18px;letter-spacing:.1em}}
 @media(max-width:599px){.sx-strip .go .dom{display:none}}
-@media(min-width:900px){.sx-strip .go{flex:none}}
-/* desktop: title on one line, the note wraps to the title's width, the block is as tall as the logo, and the button sits close, level with the note's last line */
+/* tablets: logo beside title and note; the button keeps its own width under them, flush right */
+@media(min-width:600px) and (max-width:899px){
+  .sx-strip{row-gap:10px}
+  .sx-strip .mark{grid-row:1/3;align-self:center}
+  .sx-strip h3{grid-column:2;align-self:end}
+  .sx-strip small{grid-column:2;align-self:start}
+  .sx-strip .go{grid-column:1/-1;justify-self:end;width:auto;margin-top:12px}
+  .sx-strip .go .dom{display:none}
+}
+/* desktop: [logo][title / note]…………[button], all on the logo's top and bottom lines */
 @media(min-width:900px){
-  .sx-strip{flex-direction:row;align-items:stretch;gap:clamp(20px,2.6vw,36px)}
-  .sx-strip .mark{align-self:center}
-  .sx-strip .txt{display:flex;flex-direction:column;justify-content:space-between;width:min-content;padding-block:4px}
-  .sx-strip h3{white-space:nowrap}
-  .sx-strip small{margin-top:10px}
-  .sx-strip .go{align-self:flex-end;margin-bottom:2px}
+  .sx-strip{grid-template-columns:var(--logo) max-content 1fr auto;grid-template-rows:1fr auto;column-gap:clamp(20px,2.4vw,36px);row-gap:12px;align-items:end}
+  .sx-strip .mark{grid-row:1/3;align-self:center}
+  .sx-strip h3{grid-column:2;grid-row:1;align-self:start;white-space:nowrap}
+  .sx-strip small{grid-column:2;grid-row:2;width:0;min-width:100%}
+  .sx-strip .go{grid-column:4;grid-row:1/3;align-self:end;width:auto}
 }
 @media(min-width:900px) and (max-width:1479px){.sx-strip .go .dom{display:none}}
 
