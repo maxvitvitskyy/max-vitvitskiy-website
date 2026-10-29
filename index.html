@@ -386,7 +386,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-strip h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(28px,3.4vw,48px);line-height:1}
 .sx-strip small{display:block;margin-top:8px;color:var(--muted);font-size:15px;line-height:1.5}
 .sx-strip .go{white-space:normal;text-align:center;line-height:1.3;padding-block:14px;max-width:100%}
-@media(max-width:899px){.sx-strip .go{width:100%}}
+@media(max-width:899px){.sx-strip .go{width:100%}
+  /* phones/tablets: logo and title side by side, then the note, then the button */
+  .sx-strip{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:16px;row-gap:18px}
+  .sx-strip .mark{width:clamp(56px,16vw,72px)}
+  .sx-strip .txt{display:contents}
+  .sx-strip h3{color:var(--amber)}
+  .sx-strip small{grid-column:1/-1;margin-top:0}
+  .sx-strip .go{grid-column:1/-1}
+}
+@media(max-width:374px){.sx-strip .go{white-space:nowrap;padding-inline:18px;letter-spacing:.1em}}
 @media(max-width:599px){.sx-strip .go .dom{display:none}}
 @media(min-width:900px){.sx-strip .go{flex:none}}
 @media(min-width:900px){.sx-strip{flex-direction:row;align-items:center;gap:clamp(20px,3vw,40px)}.sx-strip .txt{flex:1}}
