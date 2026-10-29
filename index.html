@@ -368,6 +368,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .duo .band-in::after{background:linear-gradient(180deg,rgba(1,17,10,0) 45%,rgba(1,17,10,.88) 100%)}
 .duo .cap{position:absolute;z-index:2;left:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,30px);bottom:clamp(16px,2.2vw,26px)}
 .duo .cap h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4.4vw,60px);line-height:.95}
+/* clickable studio cards: an English kicker above, a thin pulsing arrow after the title */
+.go-card{display:block;color:inherit}
+.duo .cap .kick{display:block;margin-bottom:10px;font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber)}
+.duo .cap h3 .pulse{display:inline-block;vertical-align:middle;width:.7em;height:.42em;margin-left:.28em;margin-top:-.08em;background:var(--amber);
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 14' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'><path d='M1 7h37M32 1.5 38 7l-6 5.5'/></svg>") center/contain no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 14' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'><path d='M1 7h37M32 1.5 38 7l-6 5.5'/></svg>") center/contain no-repeat;
+  animation:arrowPulse 1.8s ease-in-out infinite}
+@keyframes arrowPulse{0%,100%{transform:translateX(0);opacity:.55}50%{transform:translateX(8px);opacity:1}}
+.go-card:hover .pulse{animation-duration:.9s}
+.go-card:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
 .duo .note{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
 @media(max-width:899px){.duo{gap:40px}}
 @media(min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:24px}.duo .band-in{aspect-ratio:5/4}}
@@ -657,11 +667,11 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="wrap sec-foot rv"><span class="hint swipe"><span data-uk="Гортай">Swipe</span><i class="ar" aria-hidden="true"></i></span><span class="hint" data-uk="Обрані роботи">Selected works</span></div>
   <div class="wrap duo rv">
     <figure class="band">
-      <div class="band-in"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><h3 data-uk="Картини під замовлення">Commissioned paintings</h3></div></div>
+      <a class="band-in go-card" href="mailto:hello@maxvitvitskiy.com?subject=Commissioned%20painting"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><span class="kick" translate="no">Made for you</span><h3><span data-uk="Картини під замовлення">Commissioned paintings</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <p class="note" data-uk="Я можу створити унікальну авторську картину спеціально для вас: персональний арт-проєкт, оформлення простору або подарунок із глибоким змістом. Ваш задум, моя інтерпретація, і разом ми створимо витвір, що стане сенсовим акцентом у вашому просторі.">I can create a unique original painting just for you: a personal art project, a space design or a gift with deep meaning. Your idea, my interpretation, and together we create a piece that becomes a meaningful accent in your space.</p>
     </figure>
     <figure class="band">
-      <div class="band-in"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><h3 data-uk="Картини з колекції">Paintings from the collection</h3></div></div>
+      <a class="band-in go-card" href="#create"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><span class="kick" translate="no">The Collection</span><h3><span data-uk="Картини з колекції">Paintings from the collection</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <p class="note" data-uk="У мене також є готові роботи, які вже зараз ви можете придбати для своєї колекції, інтер’єру чи бізнес-простору. Кожна картина створюється на полотні музейної якості, має обмежений тираж і сертифікат автентичності.">I also have finished works you can buy right now for your collection, interior or business space. Each painting is made on museum-quality canvas, in a limited edition, with a certificate of authenticity.</p>
     </figure>
   </div>
