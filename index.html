@@ -247,8 +247,22 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .topics span{white-space:nowrap;scroll-snap-align:start}
 }
 .channels{display:grid;margin-top:clamp(32px,4vw,48px)}
-.channel{gap:12px;display:flex;justify-content:space-between;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);font-family:var(--head);text-transform:uppercase;font-size:clamp(40px,4.6vw,64px);letter-spacing:.02em;transition:color .3s,padding .4s var(--ease)}
-.channel:hover{color:var(--amber);padding-left:12px}
+.channel{gap:12px;display:flex;justify-content:space-between;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);font-family:var(--head);text-transform:uppercase;font-size:clamp(40px,4.6vw,64px);letter-spacing:.02em;position:relative;transition:color .35s}
+/* hover: the whole row lights up together, icon, name and label, while an amber rule draws across */
+.channel::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.channel .ci{transition:transform .5s var(--ease)}
+.channel>span:last-child{transition:color .35s,letter-spacing .5s var(--ease)}
+@media(hover:hover){
+  .channel:hover{color:var(--amber)}
+  .channel:hover::after{transform:scaleX(1)}
+  .channel:hover .ci{transform:translateX(12px)}
+  .channel:hover .ico{background:var(--amber);border-color:var(--amber);color:var(--ink);transform:rotate(-10deg) scale(1.08)}
+  .channel:hover>span:last-child{color:var(--amber);letter-spacing:.3em}
+}
+.channel:focus-visible{color:var(--amber)}
+.channel:focus-visible::after{transform:scaleX(1)}
+.channel:focus-visible .ico{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.channel:focus-visible>span:last-child{color:var(--amber)}
 .channel .ci{display:flex;align-items:center;gap:clamp(18px,2vw,28px)}
 .channel .ci .ico{width:clamp(56px,6vw,84px);height:clamp(56px,6vw,84px)}
 .channel .ci .ico svg{width:clamp(26px,2.8vw,38px);height:clamp(26px,2.8vw,38px)}
