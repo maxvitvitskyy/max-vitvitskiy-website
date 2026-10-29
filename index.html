@@ -497,6 +497,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
 @media(max-width:599px){footer{flex-direction:column;align-items:center;text-align:center}}
 
+/* TRIAL: headings in BazaART, the hero-name face (delete this block to return to Moniqa) */
+h2.display,.teach h3,.duo .cap h3,.sx-block h3,.sx-strip h3,.cols2 h3,.collage figcaption b,.band figcaption b{font-family:"BazaART",var(--display);text-transform:none;font-weight:400}
+.about h2{font-size:17.3cqi}
+@media(min-width:900px){.sec-head h2,.exp .sec-head h2{font-size:calc(var(--fs)*.76)}}
+.teach h3{font-size:calc(var(--fs)*.9)}
 /* reveal */
 .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rv.in{opacity:1;transform:none}
