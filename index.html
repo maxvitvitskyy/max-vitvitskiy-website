@@ -341,12 +341,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(min-width:900px){.sx-blocks{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,96px);align-items:start}}
 .sx-block{padding-top:22px;border-top:1px solid var(--line)}
 .sx-eyebrow{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--amber)}
+.sx-sub{display:block;margin-top:30px}
+.sx-sub+.sx-list{margin-top:14px}
 .sx-block h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(34px,4.2vw,60px);line-height:.95;margin:16px 0 20px}
 .sx-block .lead{text-wrap:pretty;font-family:var(--text);font-size:clamp(20px,1.9vw,25px);line-height:1.32;color:var(--sand);margin-bottom:14px}
 .sx-block p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:56ch}
 .sx-list{list-style:none;margin-top:24px;border-top:1px solid var(--line)}
 .sx-list li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:6px 18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
-.sx-list b{font-family:var(--head);font-weight:400;font-size:clamp(19px,1.8vw,24px);text-transform:uppercase;line-height:1.1}
+/* list titles: the paragraph cut of Moniqa (sturdier hairlines), one size up, for readability */
+.sx-list b{font-family:var(--text);font-weight:500;font-size:clamp(21px,1.9vw,25px);text-transform:uppercase;line-height:1.1;letter-spacing:.01em}
+.sx-uses b{font-size:clamp(19px,1.6vw,22px)}
 .sx-list span{color:var(--muted);font-size:14.5px;line-height:1.5}
 /* values: number, title and a plus that opens the description */
 .sx-vals li{display:block;padding:0}
@@ -362,11 +366,19 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-vals .va.open{grid-template-rows:1fr}
 .sx-vals .va.open>div{visibility:visible;transition-delay:0s}
 .sx-vals .va p{padding:0 46px 18px calc(3rem + 14px);color:rgba(241,224,197,.8);font-size:clamp(15px,1.15vw,16px);line-height:1.7}
-/* use cases: amber line icon beside each direction */
-.sx-list:not(.sx-vals) li{grid-template-columns:30px minmax(0,.9fr) minmax(0,1.3fr);align-items:center}
-.sx-list .ic{display:grid;place-items:center;width:30px;height:30px;color:var(--amber)}
-.sx-list .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:560px){.sx-list li{grid-template-columns:1fr}.sx-list:not(.sx-vals) li{grid-template-columns:30px minmax(0,1fr);row-gap:2px}.sx-list:not(.sx-vals) li>span{grid-column:2}.sx-vals .va p{padding-right:0}}
+/* use cases: small cards, 3 × 2 on wide screens, a two-row swipe strip on phones */
+.sx-uses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-top:0;margin-top:26px}
+.sx-uses li{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 16px 18px;border:0;border-radius:14px;background:rgba(241,224,197,.045)}
+.sx-uses .ic{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(255,166,48,.1);color:var(--amber);margin-bottom:4px}
+.sx-uses .ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sx-uses span{font-size:13.5px;line-height:1.45}
+@media(max-width:899px){
+  .sx-uses{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-columns:min(46vw,190px);overflow-x:auto;scroll-snap-type:x proximity;
+    margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scroll-padding-inline:var(--gut);scrollbar-width:none}
+  .sx-uses::-webkit-scrollbar{display:none}
+  .sx-uses li{scroll-snap-align:start}
+}
+@media(max-width:560px){.sx-list li{grid-template-columns:1fr}.sx-vals .va p{padding-right:0}}
 .sx-vision{margin-top:22px;color:var(--muted);font-size:15.5px;line-height:1.75;max-width:56ch}
 /* silent: CTA strip */
 .sx-strip{display:flex;flex-direction:column;gap:22px;align-items:flex-start;margin-top:clamp(48px,6vw,88px);padding:clamp(22px,3vw,36px) clamp(22px,3.4vw,48px);border-radius:var(--r);background:linear-gradient(90deg,#010604 0%,#020c08 35%,#041810 75%,#06201a 100%);box-shadow:0 18px 50px rgba(0,0,0,.35)}
@@ -479,7 +491,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="hero-stage">
     <div class="hero-art">
       <div class="arch" aria-hidden="true"></div>
-      <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><g class="arch-chars" data-uk="Художник · Experience-дизайнер · Креативний ментор">Artist · Experience Designer · Creative Mentor</g></svg>
+      <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><g class="arch-chars" data-uk="· Художник · Experience-дизайнер · Креативний ментор ·">· Artist · Experience Designer · Creative Mentor ·</g></svg>
       <h1 class="hero-name display" translate="no">Max <i>Vitvitskiy</i></h1>
       <div class="seat-shadow" aria-hidden="true"></div>
       <img class="hero-fig" src="img/hero.png" alt="Max Vitvitskiy" width="1200" height="2793" fetchpriority="high">
@@ -599,6 +611,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
         <h3 data-uk="Бути різними. Бути разом.">Be different. Be together.</h3>
         <p class="lead" data-uk="SILENT — це моя любов до візуалу, музики й відчуттів, втілена в досвід, який лишається з людьми.">SILENT is my love of visuals, music and feeling, turned into an experience that stays with people.</p>
         <p data-uk="Тут спільність починається не з однаковості, а з вільного вибору. Кожен гість обирає власний канал і власну музику, але лишається частиною спільного моменту: сміється, танцює й зустрічається поглядом із тими, хто поруч.">Here togetherness starts not with sameness but with free choice. Every guest picks their own channel and music, yet stays part of a shared moment: laughing, dancing and meeting the eyes of the people nearby.</p>
+        <span class="sx-eyebrow sx-sub" data-uk="Цінності проєкту">Project values</span>
         <ul class="sx-list sx-vals">
           <li><button class="vq" type="button" aria-expanded="false" aria-controls="val1"><span class="n">01</span><b data-uk="Враження на першому місці">Experience comes first</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val1"><div><p data-uk="Ми починаємо не з обладнання, а з того, що мають відчути люди. Тому шукаємо нові способи зробити знайомі формати подій цікавішими: з інтерактивністю, грою й несподіваними моментами.">We start not with equipment but with what people should feel. So we look for new ways to make familiar event formats more engaging: with interactivity, play and unexpected moments.</p></div></div></li>
           <li><button class="vq" type="button" aria-expanded="false" aria-controls="val2"><span class="n">02</span><b data-uk="Свобода бути собою">Freedom to be yourself</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val2"><div><p data-uk="Ми поважаємо різні вподобання. Кожен гість обирає власний канал і спосіб брати участь, а спільність не вимагає від усіх слухати чи розважатися однаково.">We respect different tastes. Every guest picks their own channel and way of taking part, and togetherness doesn’t ask everyone to listen or have fun the same way.</p></div></div></li>
@@ -608,11 +621,11 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
         <p class="sx-vision" data-uk="Наше бачення — культура подій, де технології відкривають більше можливостей для взаємодії, творчості та свободи вибору, а люди можуть бути різними, залишаючись разом.">Our vision is an event culture where technology opens more room for interaction, creativity and freedom of choice, and people can be different while staying together.</p>
       </article>
       <article class="sx-block">
-        <span class="sx-eyebrow" data-uk="Для чого">What it is for</span>
+        <span class="sx-eyebrow" data-uk="Для кого">Who it is for</span>
         <h3 data-uk="Одна технологія. Десятки форматів.">One technology. Dozens of formats.</h3>
         <p class="lead" data-uk="SILENT підходить там, де люди хочуть бути разом, але кожен по-своєму.">SILENT fits wherever people want to be together, each in their own way.</p>
         <p data-uk="Ми привозимо все потрібне й беремо на себе організацію: підбір формату, доставку, налаштування й підтримку на місці. Вам лишається бути з гістьми.">We bring everything and handle the organisation: choosing the format, delivery, setup and on-site support. You simply stay with your guests.</p>
-        <ul class="sx-list">
+        <ul class="sx-list sx-uses">
           <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18"/></svg></i><b data-uk="Бізнес">Business</b><span data-uk="Корпоративи, конференції, бренд-активації">Corporate events, conferences, brand activations</span></li>
           <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M3 7h18v3H3zM12 7v13M12 7C10.5 3.5 7 4 8 6.2 8.6 7 12 7 12 7zM12 7c1.5-3.5 5-3 4-.8C15.4 7 12 7 12 7z"/></svg></i><b data-uk="Свята">Celebrations</b><span data-uk="Дні народження, весілля, випускні, дівич-вечори">Birthdays, weddings, graduations, hen parties</span></li>
           <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 19.5l1-4.2L15.8 5a2 2 0 0 1 2.9 0l.3.3a2 2 0 0 1 0 2.9L8.7 18.5zM14 6.8l3.2 3.2M5.5 15.3l3.2 3.2"/></svg></i><b data-uk="Діти й школи">Kids &amp; schools</b><span data-uk="Шкільні свята, табори, молодіжні зустрічі">School parties, camps, youth meetups</span></li>
