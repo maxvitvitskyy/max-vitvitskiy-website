@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Max Vitvitskiy — Artist · Experience Designer · Creative Mentor</title>
+<meta name="description" content="I create art, build experiences and inspire people to unlock their creativity.">
+<meta name="theme-color" content="#01110A">
+<meta name="color-scheme" content="dark">
+<link rel="preload" href="fonts/BazaART.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Moniqa-MediumDisplay.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Raleway-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Raleway-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Moniqa";src:url("fonts/Moniqa-MediumDisplay.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Moniqa";src:url("fonts/Moniqa-MediumItalicDisplay.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Raleway";src:url("fonts/Raleway-cyrillic.woff2") format("woff2");font-weight:300 500;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Raleway";src:url("fonts/Raleway-latin.woff2") format("woff2");font-weight:300 500;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Moniqa Head";src:url("fonts/Moniqa-MediumHeading.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"BazaART";src:url("fonts/BazaART.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Moniqa Text";src:url("fonts/Moniqa-Paragraph.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Moniqa Text";src:url("fonts/Moniqa-MediumParagraph.woff2") format("woff2");font-weight:500;font-display:swap}
+
+:root{
+  --ink:#01110A;
+  --ink-2:#06190F;
+  --wine:#471323;
+  --wine-deep:#2b0c17;
+  --teal:#297373;
+  --amber:#FFA630;
+  --cream:#F1E0C5;
+  --sand:#FCDE9C;
+  --muted:rgba(241,224,197,.62);
+  --line:rgba(241,224,197,.16);
+  --gut:clamp(20px,5vw,72px);
+  --display:"Moniqa","Didot","Bodoni 72",serif;
+  --head:"Moniqa Head","Moniqa","Didot","Bodoni 72",serif;
+  --text:"Moniqa Text","Moniqa",Georgia,serif;
+  --body:"Raleway","Helvetica Neue",Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --r:16px;
+  --section:clamp(88px,11vw,160px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:dark}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);font-weight:400;font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
+h1,h2,h3{text-wrap:balance}
+section[id]{scroll-margin-top:56px}
+.skip{font-family:var(--text);position:fixed;left:var(--gut);top:12px;z-index:100;padding:10px 18px;border-radius:99px;background:var(--amber);color:var(--ink);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;transform:translateY(-200%);transition:transform .3s var(--ease)}
+.skip:focus-visible{transform:none}
+.display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
+.eyebrow{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber)}
+.wrap{padding-inline:var(--gut);max-width:1500px;margin-inline:auto}
+section{position:relative}
+::selection{background:var(--amber);color:var(--ink)}
+
+/* grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* header */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:max(18px,env(safe-area-inset-top)) var(--gut) 18px}
+.nav::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:linear-gradient(180deg,rgba(1,17,10,.8) 0%,rgba(1,17,10,.55) 55%,rgba(1,17,10,0) 100%);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 100%)}
+.nav.solid::before{opacity:1}
+.logo{display:block;height:30px;min-width:44px}
+.logo img{height:100%;width:auto}
+.nav-r{display:flex;align-items:center;gap:6px}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px}
+.lang button{background:none;border:0;color:var(--muted);font-family:var(--text);font-weight:500;font-size:12px;letter-spacing:.18em;padding:8px 12px;border-radius:99px;cursor:pointer;transition:background .3s,color .3s}
+.lang button.on{background:var(--amber);color:var(--ink)}
+.ico{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--cream);transition:background .35s,color .35s,border-color .35s,transform .35s var(--ease)}
+.ico svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ico:hover{background:var(--amber);border-color:var(--amber);color:var(--ink);transform:translateY(-3px)}
+.ico.sm{width:40px;height:40px}
+.nav ul{display:none;list-style:none;gap:36px}
+.nav ul a,.menu a.m{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.24em;text-transform:uppercase;position:relative}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav ul a:hover::after{transform:scaleX(1)}
+.burger{width:44px;height:44px;display:grid;place-content:center;gap:7px;background:none;border:0;cursor:pointer}
+.burger i{display:block;width:28px;height:1.5px;background:var(--cream);transition:transform .4s var(--ease),opacity .3s}
+.burger[aria-expanded=true] i:first-child{transform:translateY(4.25px) rotate(45deg)}
+.burger[aria-expanded=true] i:last-child{transform:translateY(-4.25px) rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:55;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:100px var(--gut) 40px;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s}
+.menu.open{opacity:1;visibility:visible}
+.menu a.big{font-family:var(--display);font-size:clamp(52px,16vw,96px);line-height:1.02;text-transform:uppercase;transform:translateY(24px);opacity:0;transition:transform .6s var(--ease),opacity .6s,color .3s}
+.menu.open a.big{transform:none;opacity:1}
+.menu.open a.big:nth-child(2){transition-delay:.06s}.menu.open a.big:nth-child(3){transition-delay:.12s}.menu.open a.big:nth-child(4){transition-delay:.18s}.menu.open a.big:nth-child(5){transition-delay:.24s}
+.menu a.big:active{color:var(--amber)}
+.menu .soc{margin-top:32px;display:flex;gap:14px}
+@media(min-width:900px){.nav ul{display:flex}.burger{display:none}.menu{display:none}}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-rows:1fr auto;overflow:hidden;background:
+  linear-gradient(180deg,transparent 70%,var(--ink) 100%),
+  radial-gradient(60% 45% at 50% 38%,rgba(255,166,48,.34),transparent 70%),
+  radial-gradient(90% 60% at 50% 100%,rgba(71,19,35,.75),transparent 70%),var(--ink)}
+.hero-stage{position:relative;display:flex;flex-direction:column;align-items:center;padding-top:clamp(96px,13svh,130px)}
+.hero-art{--aw:min(31svh,54vw);--H:calc(var(--aw)/.66);position:relative;width:var(--aw);aspect-ratio:.66;margin-bottom:calc(var(--H)*.35)}
+.arch{position:absolute;inset:0;border-radius:999px 999px 0 0;
+  background:linear-gradient(to bottom,#ece8e0 0%,#e3c985 20%,#d29a2a 45%,#c8641c 72%,#9b2e20 100%);
+  box-shadow:0 0 90px 4px rgba(214,140,30,.28),0 0 220px 40px rgba(196,80,26,.2);
+  animation:archIn 1.5s var(--ease) both,glow 6s ease-in-out 1.5s infinite alternate}
+@keyframes glow{from{box-shadow:0 0 70px 2px rgba(214,140,30,.22),0 0 190px 30px rgba(196,80,26,.16)}to{box-shadow:0 0 110px 8px rgba(230,150,40,.38),0 0 250px 50px rgba(196,80,26,.28)}}
+.arch-text{position:absolute;left:-22.22%;top:-14.67%;width:144.44%;height:106.33%;overflow:visible;pointer-events:none;}
+.arch-text .ch{animation:chIn .3s ease both}
+.arch-text text{font-family:var(--display);font-size:6.2px;text-transform:uppercase;fill:none;stroke:rgba(252,222,156,.85);stroke-width:.2}
+.hero-fig{position:absolute;z-index:2;left:0;right:0;margin-inline:auto;bottom:-35%;height:121%;width:auto;max-width:none;filter:drop-shadow(0 18px 40px rgba(0,0,0,.5));animation:rise 1.5s var(--ease) .55s both}
+.hero-name{font-family:"BazaART",var(--display);text-transform:none;position:absolute;z-index:3;left:50%;top:62%;transform:translateX(-50%);margin:0;font-weight:400;font-size:min(calc(var(--H)*.42),15vw);line-height:.9;text-align:center;white-space:nowrap;pointer-events:none;background:linear-gradient(180deg,#f8ecd6 0%,#f3dca1 45%,#eba94b 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 6px 26px rgba(1,17,10,.45));animation:nameIn 1.7s var(--ease) .95s both}
+.hero-name{padding:.04em .06em .24em}
+.hero-name i{font-style:normal}
+@media(max-width:899px){
+  .hero-name{top:67%;font-size:min(calc(var(--H)*.6),25vw);line-height:.82}
+  .hero-name i{display:block}
+}
+@keyframes rise{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
+@keyframes archIn{from{opacity:0;transform:translateY(80px) scale(.86)}to{opacity:1;transform:none}}
+@keyframes chIn{from{stroke-opacity:0}to{stroke-opacity:.85}}
+@keyframes nameIn{from{opacity:0;transform:translateX(-50%) translateY(46px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:translateX(-50%);clip-path:inset(-40% -10% -70% -10%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes navIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+/* hero parallax: scroll depth (JS sets --py) */
+.arch,.arch-text{translate:0 calc(var(--py,0)*.16px)}
+.hero-fig{translate:0 calc(var(--py,0)*.07px)}
+.hero-name{translate:0 calc(var(--py,0)*-.03px)}
+.hero-copy{translate:0 calc(var(--py,0)*.05px)}
+.hero-copy p{animation:fadeUp 1s var(--ease) 1.6s both}
+.cta{animation:fadeUp 1s var(--ease) both}
+.cta:nth-child(1){animation-delay:1.85s}.cta:nth-child(2){animation-delay:2s}.cta:nth-child(3){animation-delay:2.15s}
+.nav{animation:navIn 1s var(--ease) .2s both}
+.hero-copy{position:relative;top:-22px;z-index:4;margin-block:auto;padding:clamp(16px,3svh,36px) var(--gut);display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;text-shadow:0 2px 24px rgba(1,17,10,.9)}
+.hero-copy .role{font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--sand)}
+.hero-copy p{font-family:var(--text);font-weight:400;font-size:clamp(18px,2.4vw,24px);max-width:30ch;line-height:1.3;text-wrap:balance}
+@media(max-width:899px){.hero-copy p{max-width:100%;font-size:clamp(19px,5.6vw,26px)}}
+@media(min-width:900px){.hero-copy p{max-width:none;white-space:nowrap;font-size:clamp(24px,2.25vw,30px)}}
+.hero-copy p em{font-family:var(--display);font-style:italic;color:var(--amber)}
+.cta-row{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line);position:relative;z-index:4}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px var(--gut);border-bottom:1px solid var(--line);transition:background .4s}
+.cta:last-child{border-bottom:0}
+.cta b{font-family:var(--head);font-weight:400;font-size:34px;letter-spacing:.03em;text-transform:uppercase;display:block;line-height:1}
+.cta small{font-size:14px;color:var(--muted);letter-spacing:.04em}
+.cta .arr{font-size:26px;color:var(--amber);transition:transform .4s var(--ease)}
+.cta:hover{background:rgba(255,166,48,.05)}.cta:hover .arr{transform:translateX(8px)}
+@media(min-width:900px){
+  .cta-row{grid-template-columns:repeat(3,1fr)}
+  .cta{border-bottom:0;border-right:1px solid var(--line);padding:30px var(--gut)}
+  .cta:last-child{border-right:0}
+}
+
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:22px 0}
+.marquee div{display:flex;width:max-content;animation:slide 32s linear infinite}
+.marquee span{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,5vw,56px);padding-right:.9em;white-space:nowrap;color:var(--cream)}
+.marquee span i{font-style:italic;color:var(--amber)}
+.marquee span::after{content:"✦";font-size:.45em;color:var(--teal);margin-left:.9em;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* generic section head */
+.sec{padding-block:var(--section)}
+.num{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#6fb3b0}
+.sec-head{display:grid;gap:18px;margin-bottom:clamp(36px,6vw,80px)}
+.sec-head h2{font-size:clamp(88px,26vw,300px);line-height:.8;margin-left:-.02em}
+.sec-head .sub{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 40px}
+.sec-head .sub p{font-family:var(--text);font-weight:400;font-size:clamp(20px,2.6vw,30px);max-width:28ch;line-height:1.25}
+@media(min-width:900px){
+  .sec-head{--fs:min(14.5vw,185px);grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;align-items:start}
+  .sec-head .num{grid-column:1/3}
+  .sec-head h2{font-size:var(--fs);grid-column:1}
+  .sec-head .sub{grid-column:2;align-self:stretch;flex-direction:column;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:calc(var(--fs)*-.042);padding:0 0 calc(var(--fs)*.122)}
+  .sec-head .sub p{max-width:16em;text-wrap:balance;font-size:max(17px,calc(var(--fs)*.14));line-height:1.2}
+  .sec-head .sub .btn{min-height:max(40px,calc(var(--fs)*.26));font-size:14px;padding-inline:26px}
+}
+.btn{font-family:var(--body);font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 calc(30px - .16em) 0 30px;border:1px solid var(--amber);border-radius:999px;font-size:15px;line-height:1;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--amber);transition:background .4s,color .4s,gap .4s var(--ease)}
+.btn:hover{background:var(--amber);color:var(--ink);gap:22px}
+.btn.fill{background:var(--amber);color:var(--ink)}
+.btn.fill:hover{background:var(--sand);border-color:var(--sand)}
+
+/* create */
+.gallery{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:var(--gut);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gallery::-webkit-scrollbar{display:none}
+.work{flex:0 0 min(78vw,420px);scroll-snap-align:center;display:block}
+.work .ph{aspect-ratio:4/5;overflow:hidden;border-radius:var(--r);background:var(--wine);position:relative}
+.work img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.work:hover img{transform:scale(1.05)}
+.work .tag{font-family:var(--text);position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:99px;background:rgba(1,17,10,.7);backdrop-filter:blur(6px);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--sand)}
+.work .tag.sold{color:var(--muted)}
+.work .cap{display:flex;justify-content:space-between;gap:12px;padding-top:14px;align-items:baseline}
+.work .cap b{font-family:var(--head);font-weight:400;font-size:26px;text-transform:uppercase;letter-spacing:.02em}
+.work .cap span{font-size:14px;color:var(--muted);white-space:nowrap}
+.sec-foot{margin-top:clamp(18px,2.5vw,28px);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.hint{font-family:var(--text);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* inspire */
+.inspire{background:linear-gradient(180deg,var(--ink) 0%,var(--wine-deep) 38%,var(--wine-deep) 62%,var(--ink) 100%)}
+.reels{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:var(--gut);scrollbar-width:none}
+.reels::-webkit-scrollbar{display:none}
+.reel{flex:0 0 min(58vw,270px);aspect-ratio:9/16;scroll-snap-align:start;overflow:hidden;position:relative;border-radius:var(--r)}
+.reel img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.reel:hover img{transform:scale(1.06)}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 70%,rgba(1,17,10,.5))}
+.reel .play{position:absolute;z-index:2;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,166,48,.92);display:grid;place-items:center}
+.reel .play::before{content:"";border-left:11px solid var(--ink);border-block:7px solid transparent;margin-left:3px}
+.topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(56px,7vw,96px)}
+.topics span{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:13.5px;color:var(--cream)}
+.channels{display:grid;margin-top:clamp(32px,4vw,48px)}
+.channel{gap:12px;display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);font-family:var(--head);text-transform:uppercase;font-size:34px;letter-spacing:.02em;transition:color .3s,padding .4s var(--ease)}
+.channel:hover{color:var(--amber);padding-left:12px}
+.channel .ci{display:flex;align-items:center;gap:16px}
+.channel .ci .ico{width:42px;height:42px}
+.channel .ci .ico svg{width:19px;height:19px}
+.channel>span{font-family:var(--text);font-size:13px;letter-spacing:.22em;color:var(--muted)}
+.mirror{margin-top:clamp(40px,5vw,64px);padding:26px;border:1px dashed rgba(255,166,48,.5);border-radius:var(--r);display:flex;flex-direction:column;gap:6px}
+.mirror b{font-family:var(--head);font-weight:400;font-size:32px;text-transform:uppercase;color:var(--sand)}
+.mirror span{color:var(--muted);font-size:14.5px}
+
+/* photo band / talks */
+.band{position:relative;margin:clamp(50px,7vw,100px) var(--gut) 0;max-width:1500px;margin-inline:auto;padding-inline:var(--gut)}
+.band-in{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
+.band-in img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.band-in::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(1,17,10,.85))}
+.band figcaption{position:absolute;z-index:2;left:calc(var(--gut) + 20px);bottom:22px;right:calc(var(--gut) + 20px);display:flex;flex-direction:column;gap:4px}
+.band figcaption b{font-family:var(--head);font-weight:400;font-size:clamp(34px,6vw,64px);text-transform:uppercase;line-height:.95}
+.band figcaption span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);font-weight:500}
+@media(min-width:900px){.band-in{aspect-ratio:21/9}}
+.talks{margin-top:clamp(40px,5vw,60px)}
+.teach{--fs:clamp(46px,9vw,110px);display:grid;gap:22px;margin-top:clamp(64px,8vw,110px)}
+.teach h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:var(--fs);line-height:.9}
+.teach p{font-size:clamp(15px,1.35vw,17px);line-height:1.7;text-wrap:pretty}
+.teach .btn{margin-top:22px}
+@media(min-width:900px){
+  .teach{grid-template-columns:repeat(6,1fr);column-gap:12px;align-items:end}
+  .teach h3{grid-column:1/4}
+  .teach>div{grid-column:4/7;align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;margin-top:calc(var(--fs)*-.043);padding-bottom:calc(var(--fs)*.168)}
+  .teach .btn{margin-top:0}
+}
+.collage{display:grid;gap:10px;margin-top:clamp(28px,3vw,44px);grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(120px,44vw,210px)}
+.collage figure{position:relative;overflow:hidden;background:var(--wine);border-radius:var(--r)}
+.collage img{width:100%;height:100%;object-fit:cover;object-position:var(--p,50% 50%);transform:scale(var(--z,1));transform-origin:var(--o,50% 50%);transition:transform 1.2s var(--ease)}
+.collage figure:hover img{transform:scale(calc(var(--z,1)*1.05))}
+.collage .c5{grid-column:1/3;grid-row:span 2;--p:68% 30%}
+.collage .c1{--p:52% 25%;--z:1.9;--o:52% 27%}
+.collage .c2{--p:50% 80%}
+.collage .c3{--p:6% 50%;--z:1.5;--o:9% 56%}
+.collage .c4{--p:85% 35%;--z:1.8;--o:84% 36%}
+.collage .c5::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(1,17,10,.85))}
+.collage figcaption{position:absolute;z-index:2;left:18px;bottom:16px;display:flex;flex-direction:column;gap:4px}
+.collage figcaption b{font-family:var(--head);font-weight:400;font-size:clamp(34px,6vw,60px);text-transform:uppercase;line-height:.95}
+.collage figcaption span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);font-weight:500}
+@media(min-width:900px){
+  .collage{grid-template-columns:repeat(12,1fr);grid-auto-rows:230px;gap:12px}
+  .collage .c5{grid-column:1/7;grid-row:1/3}
+  .collage .c1{grid-column:7/10;grid-row:1}
+  .collage .c2{grid-column:10/13;grid-row:1}
+  .collage .c3{grid-column:7/10;grid-row:2}
+  .collage .c4{grid-column:10/13;grid-row:2}
+}
+.duo{display:grid;gap:16px;margin-top:clamp(56px,8vw,110px)}
+.duo .band{margin:0;padding:0;max-width:none}
+.duo .band-in{aspect-ratio:3/2}
+.duo .band-in::after{background:linear-gradient(180deg,rgba(1,17,10,0) 45%,rgba(1,17,10,.88) 100%)}
+.duo .cap{position:absolute;z-index:2;left:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,30px);bottom:clamp(16px,2.2vw,26px)}
+.duo .cap h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4.4vw,60px);line-height:.95}
+.duo .note{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
+@media(max-width:899px){.duo{gap:40px}}
+@media(min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:24px}.duo .band-in{aspect-ratio:5/4}}
+
+/* experience */
+.exp{overflow:hidden;background:linear-gradient(180deg,var(--ink) 0%,#0b2a23 22%,#08322a 55%,#041f19 100%)}
+.exp>.wrap{position:relative}
+.exp .sec-head h2{font-size:17.5vw}
+@media(min-width:900px){
+  .exp .sec-head{grid-template-columns:auto minmax(0,1fr);column-gap:clamp(24px,3.5vw,48px)}
+  .exp .sec-head h2{font-size:var(--fs)}
+  .exp .sec-head .sub{gap:8px}
+  .exp .sec-head .sub p{max-width:none;font-size:max(18px,calc(var(--fs)*.15));line-height:1.15}
+  .exp .sec-head .sub .btn{min-height:max(40px,calc(var(--fs)*.24))}
+}
+/* silent: two-lane gallery */
+.sx-gallery{--h:clamp(150px,17vw,235px);margin-top:clamp(40px,5vw,72px);display:grid;gap:12px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.lane{display:flex;width:max-content;will-change:transform}
+.lane.l1{animation:laneL 95s linear infinite}
+.lane.l2{animation:laneR 110s linear infinite}
+@keyframes laneL{to{transform:translateX(-50%)}}
+@keyframes laneR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.tile{position:relative;flex:none;overflow:hidden;border-radius:var(--r);background:#05060a;margin-right:12px;height:var(--h)}
+.l2 .tile{height:calc(var(--h)*.88)}
+.l1 .tile:nth-child(8n+1){width:calc(var(--h)*1.15)}.l1 .tile:nth-child(8n+2){width:calc(var(--h)*.85)}.l1 .tile:nth-child(8n+3){width:calc(var(--h)*1.4)}.l1 .tile:nth-child(8n+4){width:var(--h)}
+.l1 .tile:nth-child(8n+5){width:calc(var(--h)*1.25)}.l1 .tile:nth-child(8n+6){width:calc(var(--h)*.9)}.l1 .tile:nth-child(8n+7){width:calc(var(--h)*1.35)}.l1 .tile:nth-child(8n+8){width:calc(var(--h)*1.05)}
+.l2 .tile:nth-child(8n+1){width:calc(var(--h)*.95)}.l2 .tile:nth-child(8n+2){width:calc(var(--h)*1.3)}.l2 .tile:nth-child(8n+3){width:var(--h)}.l2 .tile:nth-child(8n+4){width:calc(var(--h)*.8)}
+.l2 .tile:nth-child(8n+5){width:calc(var(--h)*1.4)}.l2 .tile:nth-child(8n+6){width:calc(var(--h)*1.1)}.l2 .tile:nth-child(8n+7){width:calc(var(--h)*.9)}.l2 .tile:nth-child(8n+8){width:calc(var(--h)*1.25)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%;opacity:0;transform:scale(1.09);transition:opacity 1.7s ease,transform 8s cubic-bezier(.2,.6,.2,1)}
+.tile img.on{opacity:1;transform:scale(1)}
+.tile img[src$="p18.jpg"]{object-position:50% 0%}
+.tile img[src$="p08.jpg"]{object-position:50% 100%}
+.tile::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.lane{animation:none!important}.tile img{transition:none}.sx-gallery{overflow-x:auto}}
+/* silent: two text blocks */
+.sx-blocks{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(40px,5vw,64px);margin-top:clamp(48px,6vw,96px)}
+@media(min-width:900px){.sx-blocks{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,96px);align-items:start}}
+.sx-block{padding-top:22px;border-top:1px solid var(--line)}
+.sx-eyebrow{font-family:var(--text);font-weight:500;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--amber)}
+.sx-block h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(34px,4.2vw,60px);line-height:.95;margin:16px 0 20px}
+.sx-block .lead{font-family:var(--text);font-size:clamp(20px,1.9vw,25px);line-height:1.32;color:var(--sand);margin-bottom:14px}
+.sx-block p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:56ch}
+.sx-list{list-style:none;margin-top:24px;border-top:1px solid var(--line)}
+.sx-list li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:6px 18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
+.sx-list b{font-family:var(--head);font-weight:400;font-size:clamp(19px,1.8vw,24px);text-transform:uppercase;line-height:1.1}
+.sx-list span{color:var(--muted);font-size:14.5px;line-height:1.5}
+.sx-vals li{grid-template-columns:3ch 1fr}
+.sx-vals li i{font-style:normal;font-family:var(--text);font-weight:500;font-size:12px;letter-spacing:.2em;color:var(--amber)}
+@media(max-width:560px){.sx-list li{grid-template-columns:1fr}.sx-vals li{grid-template-columns:3ch 1fr}}
+.sx-vision{margin-top:22px;color:var(--muted);font-size:15.5px;line-height:1.75;max-width:56ch}
+/* silent: CTA strip */
+.sx-strip{display:flex;flex-direction:column;gap:22px;align-items:flex-start;margin-top:clamp(48px,6vw,88px);padding:clamp(22px,3vw,36px) clamp(22px,3.4vw,48px);border:1px solid rgba(255,166,48,.4);border-radius:var(--r);background:linear-gradient(120deg,rgba(255,166,48,.12),rgba(255,166,48,.02) 60%)}
+.sx-strip .mark{width:clamp(88px,10vw,120px);height:auto;flex:none}
+.sx-strip h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(28px,3.4vw,48px);line-height:1}
+.sx-strip small{display:block;margin-top:8px;color:var(--muted);font-size:15px;line-height:1.5}
+.sx-strip .go{white-space:normal;text-align:center;line-height:1.3;padding-block:14px;max-width:100%}
+@media(max-width:899px){.sx-strip .go{width:100%}}
+@media(min-width:900px){.sx-strip .go{flex:none}}
+@media(min-width:900px){.sx-strip{flex-direction:row;align-items:center;gap:clamp(20px,3vw,40px)}.sx-strip .txt{flex:1}}
+
+/* two-column notes under photo groups */
+.cols2{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,4vw,48px);margin-top:clamp(36px,4.5vw,64px)}
+@media(min-width:900px){.cols2{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,96px)}}
+.cols2 .col{padding-top:20px;border-top:1px solid var(--line)}
+.cols2 h4{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(26px,2.8vw,38px);line-height:1;margin-bottom:14px}
+.cols2 p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
+
+/* about */
+.about{background:linear-gradient(180deg,#041f19 0,var(--ink-2) 260px,var(--ink-2) 100%)}
+.about-grid{display:grid;gap:36px}
+.about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.about-img::after{content:"";position:absolute;inset:0;border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line)}
+.about h2{font-size:clamp(60px,16vw,150px);margin-bottom:26px}
+.about h2 i{color:var(--amber)}
+.about p{font-size:clamp(16px,1.4vw,18px);line-height:1.75;max-width:46ch}
+.about .tags{font-family:var(--text);margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.about h2{margin-top:18px}
+.about .tags span::before{content:"✦ ";color:var(--teal)}
+@media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:center}}
+
+/* contact */
+.contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
+  radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.16),transparent 70%),linear-gradient(180deg,var(--ink-2),var(--ink) 420px),var(--ink)}
+.contact h2{font-size:clamp(44px,8.5vw,140px);line-height:.88;margin-top:20px}
+.contact h2 i{color:var(--amber)}
+.mail{display:inline-block;margin-top:34px;font-family:var(--display);font-size:clamp(26px,5vw,52px);border-bottom:1px solid var(--amber);padding-bottom:6px;text-transform:uppercase;transition:color .3s}
+.mail:hover{color:var(--amber)}
+.socials{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
+.fl{display:block;width:min(105px,17.5vw);height:auto;margin:48px auto 0;opacity:.95}
+footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#top" data-uk="Перейти до змісту">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Max Vitvitskiy"><img src="img/logo-mark.png" alt="" width="600" height="255"></a>
+  <ul>
+    <li><a href="#create">Create</a></li>
+    <li><a href="#inspire">Inspire</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#about" data-uk="Про мене">About</a></li>
+    <li><a href="#contact" data-uk="Контакти">Contact</a></li>
+  </ul>
+  <div class="nav-r"><div class="lang" role="group" aria-label="Language"><button data-l="uk" aria-pressed="false">UA</button><button data-l="en" aria-pressed="false">EN</button></div><button class="burger" id="burger" aria-expanded="false" aria-label="Menu"><i></i><i></i></button></div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Menu">
+  <a class="big" href="#create">Create</a>
+  <a class="big" href="#inspire">Inspire</a>
+  <a class="big" href="#experience">Experience</a>
+  <a class="big" href="#about" data-uk="Про мене">About</a>
+  <a class="big" href="#contact" data-uk="Контакти">Contact</a>
+  <div class="soc">
+    <a class="ico" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a>
+  </div>
+</nav>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stage">
+    <div class="hero-art">
+      <div class="arch" aria-hidden="true"></div>
+      <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><text><textPath href="#arcp" startOffset="50%" text-anchor="middle" textLength="178" lengthAdjust="spacing" data-uk="Художник · Experience-дизайнер · Креативний ментор">Artist · Experience Designer · Creative Mentor</textPath></text></svg>
+      <h1 class="hero-name display" translate="no">Max <i>Vitvitskiy</i></h1>
+      <img class="hero-fig" src="img/hero.png" alt="Max Vitvitskiy" width="1200" height="2793" fetchpriority="high">
+    </div>
+    <div class="hero-copy">
+      <p data-uk="Я створюю мистецтво, будую досвіди та <em>надихаю людей</em> розкривати свою творчість.">I create art, build experiences and <em>inspire people</em> to unlock their creativity.</p>
+    </div>
+  </div>
+  <div class="cta-row">
+    <a class="cta" href="#create"><div><b>Create</b><small data-uk="Досліджуй моє мистецтво">Explore my art</small></div><span class="arr">→</span></a>
+    <a class="cta" href="#inspire"><div><b>Inspire</b><small data-uk="Ідеї для творчих людей">Ideas for creative people</small></div><span class="arr">→</span></a>
+    <a class="cta" href="#experience"><div><b>Experience</b><small data-uk="Відкрий SILENT">Discover SILENT</small></div><span class="arr">→</span></a>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div><span>One person</span><span><i>One creative universe</i></span><span>Three ways to experience it</span><span>One person</span><span><i>One creative universe</i></span><span>Three ways to experience it</span><span>One person</span><span><i>One creative universe</i></span><span>Three ways to experience it</span><span>One person</span><span><i>One creative universe</i></span><span>Three ways to experience it</span></div></div>
+
+<!-- CREATE -->
+<section class="sec" id="create">
+  <div class="wrap sec-head rv">
+    <span class="num" data-uk="01 / Я створюю">01 / I make things</span>
+    <h2 class="display">Create</h2>
+    <div class="sub"><p data-uk="Моє мистецтво — живопис, цифрове мистецтво та візуальні експерименти.">My art — paintings, digital art and visual experiments.</p><a class="btn fill" href="#" data-uk="Дивитись мистецтво →">Explore art →</a></div>
+  </div>
+  <div class="gallery rv">
+    <a class="work" href="#"><div class="ph"><img src="img/art1.jpg" alt="Artwork" loading="lazy"><span class="tag" data-uk="Доступна">Available</span></div><div class="cap"><b data-uk="Без назви I">Untitled I</b><span data-uk="За запитом">On request</span></div></a>
+    <a class="work" href="#"><div class="ph"><img src="img/art2.jpg" alt="Artwork" loading="lazy"><span class="tag" data-uk="Доступна">Available</span></div><div class="cap"><b data-uk="Без назви II">Untitled II</b><span data-uk="За запитом">On request</span></div></a>
+    <a class="work" href="#"><div class="ph"><img src="img/art3.jpg" alt="Artwork" loading="lazy"><span class="tag sold" data-uk="Продана">Sold</span></div><div class="cap"><b data-uk="Без назви III">Untitled III</b><span data-uk="Продана">Sold</span></div></a>
+    <a class="work" href="#"><div class="ph"><img src="img/art4.jpg" alt="Artwork" loading="lazy"><span class="tag" data-uk="Доступна">Available</span></div><div class="cap"><b data-uk="Без назви IV">Untitled IV</b><span data-uk="За запитом">On request</span></div></a>
+    <a class="work" href="#"><div class="ph"><img src="img/art5.jpg" alt="Artwork" loading="lazy"><span class="tag" data-uk="Доступна">Available</span></div><div class="cap"><b data-uk="Без назви V">Untitled V</b><span data-uk="За запитом">On request</span></div></a>
+  </div>
+  <div class="wrap sec-foot rv"><span class="hint" data-uk="Гортай →">Swipe →</span><span class="hint" data-uk="Обрані роботи · Доступні роботи">Selected works · Available works</span></div>
+  <div class="wrap duo rv">
+    <figure class="band">
+      <div class="band-in"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><h4 data-uk="Картини під замовлення">Commissioned paintings</h4></div></div>
+      <p class="note" data-uk="Я можу створити унікальну авторську картину спеціально для вас: персональний арт-проєкт, оформлення простору або подарунок із глибоким змістом. Ваш задум, моя інтерпретація, і разом ми створимо витвір, що стане сенсовим акцентом у вашому просторі.">I can create a unique original painting just for you: a personal art project, a space design or a gift with deep meaning. Your idea, my interpretation, and together we create a piece that becomes a meaningful accent in your space.</p>
+    </figure>
+    <figure class="band">
+      <div class="band-in"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><h4 data-uk="Картини з колекції">Paintings from the collection</h4></div></div>
+      <p class="note" data-uk="У мене також є готові роботи, які вже зараз ви можете придбати для своєї колекції, інтерʼєру чи бізнес-простору. Кожна картина створюється на полотні музейної якості, має обмежений тираж і сертифікат автентичності.">I also have finished works you can buy right now for your collection, interior or business space. Each painting is made on museum-quality canvas, in a limited edition, with a certificate of authenticity.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- INSPIRE -->
+<section class="sec inspire" id="inspire">
+  <div class="wrap sec-head rv">
+    <span class="num" data-uk="02 / Я ділюся тим, що знаю">02 / I share what I learn</span>
+    <h2 class="display">Inspire</h2>
+    <div class="sub"><p data-uk="Креативний контент про творчість, мистецтво та шлях митця.">Creative content on creativity, art and the path of a maker.</p><a class="btn fill" href="https://www.youtube.com/@MaxVitvitskiy" data-uk="Дивитись →">Watch / Explore →</a></div>
+  </div>
+  <div class="reels rv">
+    <a class="reel" href="#" aria-label="Reel 1"><img src="img/reel1.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" aria-label="Reel 2"><img src="img/reel2.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" aria-label="Reel 3"><img src="img/reel3.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" aria-label="Reel 4"><img src="img/reel4.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" aria-label="Reel 5"><img src="img/reel5.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" aria-label="Reel 6"><img src="img/reel6.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+  </div>
+  <div class="wrap">
+    <div class="teach rv">
+      <h3 data-uk="Досвід<br>викладання">Teaching<br>experience</h3>
+      <div>
+        <p data-uk="Я проводжу воркшопи та лекції про творчість, пошук власного стилю й роботу з творчими блоками. Ділюся тим, що пройшов сам: просто, практично і без зайвої теорії.">I run workshops and talks on creativity, finding your own style and working through creative blocks. I share what I’ve been through myself: simply, practically and without the extra theory.</p>
+        <a class="btn fill" href="mailto:hello@maxvitvitskiy.com?subject=Workshops%20%26%20talks" data-uk="Обговорити формат →">Discuss a format →</a>
+      </div>
+    </div>
+    <div class="collage rv">
+      <figure class="c5"><img src="img/teach5.jpg" alt="Max Vitvitskiy teaching a workshop" loading="lazy"><figcaption><span data-uk="Виступи · Воркшопи">Talks · Workshops</span><b data-uk="Живі зустрічі">Live sessions</b></figcaption></figure>
+      <figure class="c1"><img src="img/teach1.jpg" alt="Workshop room" loading="lazy"></figure>
+      <figure class="c2"><img src="img/teach2.jpg" alt="Workshop participants with laptops" loading="lazy"></figure>
+      <figure class="c3"><img src="img/teach3.jpg" alt="Max Vitvitskiy speaking to the room" loading="lazy"></figure>
+      <figure class="c4"><img src="img/teach4.jpg" alt="Workshop participants at tables" loading="lazy"></figure>
+    </div>
+    <div class="cols2 rv">
+      <div class="col">
+        <h4 data-uk="Спікінг, тренінги, майстер-класи">Speaking, trainings, masterclasses</h4>
+        <p data-uk="Творчість можна відчути, але її також можна навчитися розуміти й розвивати. Я ділюся досвідом із митцями, дизайнерами та всіма творчими людьми, хто шукає натхнення й хоче вийти за межі шаблонного мислення. Моє завдання не просто передати знання, а запалити вогонь і допомогти розкрити творчий потенціал.">Creativity can be felt, but it can also be learned, understood and developed. I share my experience with artists, designers and everyone creative who looks for inspiration and wants to step beyond template thinking. My goal is not only to pass on knowledge, but to light a fire and help unlock creative potential.</p>
+      </div>
+      <div class="col">
+        <h4 data-uk="Творчий коучинг та індивідуальні уроки">Creative coaching and private lessons</h4>
+        <p data-uk="Кожен творчий шлях унікальний, і я допоможу знайти баланс між інтуїцією та технікою, ідеями та їх реалізацією. Навчання адаптоване до твоїх потреб: від основ композиції, кольору та візуального стилю до глибокого розуміння концепції та розвитку унікального творчого почерку.">Every creative path is unique, and I will help you find the balance between intuition and technique, ideas and their realisation. The teaching adapts to your needs: from the basics of composition, colour and visual style to a deep understanding of concept and the growth of your own creative signature.</p>
+      </div>
+    </div>
+    <div class="topics rv">
+      <span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span>
+    </div>
+    <div class="channels rv">
+      <a class="channel" href="https://www.youtube.com/@MaxVitvitskiy"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>YouTube</span><span data-uk="Відео та Shorts →">Videos & Shorts →</span></a>
+      <a class="channel" href="#"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></span>Instagram</span><span data-uk="Reels →">Reels →</span></a>
+      <a class="channel" href="#"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></span>TikTok</span><span data-uk="Кліпи →">Clips →</span></a>
+    </div>
+    <div class="mirror rv"><b>Creative Mirror</b><span data-uk="Скоро.">Coming soon.</span></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec exp" id="experience">
+  <div class="wrap sec-head rv">
+    <span class="num" data-uk="03 / Я будую досвіди">03 / I build experiences</span>
+    <h2 class="display">Experience</h2>
+    <div class="sub"><p data-uk="SILENT — мій проєкт про візуал, музику й емоції, які залишаються з людьми.">SILENT is my project about visuals, music and the emotions that stay with people.</p><a class="btn fill" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a></div>
+  </div>
+  <div class="sx-gallery rv" data-pool='["img/silent/ph/p00.jpg", "img/silent/ph/p01.jpg", "img/silent/ph/p02.jpg", "img/silent/ph/p04.jpg", "img/silent/ph/p05.jpg", "img/silent/ph/p06.jpg", "img/silent/ph/p07.jpg", "img/silent/ph/p08.jpg", "img/silent/ph/p09.jpg", "img/silent/ph/p10.jpg", "img/silent/ph/p11.jpg", "img/silent/ph/p12.jpg", "img/silent/ph/p13.jpg", "img/silent/ph/p14.jpg", "img/silent/ph/p15.jpg", "img/silent/ph/p16.jpg", "img/silent/ph/p17.jpg", "img/silent/ph/p18.jpg", "img/silent/ph/p19.jpg", "img/silent/ph/p20.jpg", "img/silent/ph/p21.jpg", "img/silent/ph/p22.jpg", "img/silent/ph/p23.jpg", "img/silent/ph/p24.jpg", "img/silent/ph/p25.jpg", "img/silent/ph/p26.jpg", "img/silent/ph/p27.jpg", "img/silent/ph/p28.jpg", "img/silent/ph/p29.jpg", "img/silent/ph/p30.jpg", "img/silent/ph/p31.jpg"]' aria-hidden="true">
+    <div class="lane l1"><div class="tile"><img class="on" src="img/silent/ph/p11.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p28.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p24.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p31.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p06.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p29.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p15.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p21.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
+    <div class="lane l2"><div class="tile"><img class="on" src="img/silent/ph/p12.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p30.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p27.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p22.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p09.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p25.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p07.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p04.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
+  </div>
+  <div class="wrap">
+    <div class="sx-blocks rv">
+      <article class="sx-block">
+        <span class="sx-eyebrow" data-uk="Про проєкт">About the project</span>
+        <h3 data-uk="Бути різними. Бути разом.">Be different. Be together.</h3>
+        <p class="lead" data-uk="SILENT — це моя любов до візуалу, музики й відчуттів, втілена в досвід, який лишається з людьми.">SILENT is my love of visuals, music and feeling, turned into an experience that stays with people.</p>
+        <p data-uk="Тут спільність починається не з однаковості, а з вільного вибору. Кожен гість обирає власний канал і власну музику, але лишається частиною спільного моменту: сміється, танцює й зустрічається поглядом із тими, хто поруч.">Here togetherness starts not with sameness but with free choice. Every guest picks their own channel and music, yet stays part of a shared moment: laughing, dancing and meeting the eyes of the people nearby.</p>
+        <ul class="sx-list sx-vals">
+          <li><i>01</i><b data-uk="Враження на першому місці">Experience comes first</b></li>
+          <li><i>02</i><b data-uk="Свобода бути собою">Freedom to be yourself</b></li>
+          <li><i>03</i><b data-uk="Продуманість у деталях">Care in the details</b></li>
+          <li><i>04</i><b data-uk="Просто долучитися">Easy to join</b></li>
+        </ul>
+        <p class="sx-vision" data-uk="Наше бачення — культура подій, де технології відкривають більше можливостей для взаємодії, творчості та свободи вибору, а люди можуть бути різними, залишаючись разом.">Our vision is an event culture where technology opens more room for interaction, creativity and freedom of choice, and people can be different while staying together.</p>
+      </article>
+      <article class="sx-block">
+        <span class="sx-eyebrow" data-uk="Для чого">What it is for</span>
+        <h3 data-uk="Одна технологія. Десятки форматів.">One technology. Dozens of formats.</h3>
+        <p class="lead" data-uk="SILENT підходить там, де люди хочуть бути разом, але кожен по-своєму.">SILENT fits wherever people want to be together, each in their own way.</p>
+        <p data-uk="Ми привозимо все потрібне й беремо на себе організацію: підбір формату, доставку, налаштування й підтримку на місці. Вам лишається бути з гістьми.">We bring everything and handle the organisation: choosing the format, delivery, setup and on-site support. You simply stay with your guests.</p>
+        <ul class="sx-list">
+          <li><b data-uk="Бізнес">Business</b><span data-uk="Корпоративи, конференції, бренд-активації">Corporate events, conferences, brand activations</span></li>
+          <li><b data-uk="Свята">Celebrations</b><span data-uk="Дні народження, весілля, випускні, дівич-вечори">Birthdays, weddings, graduations, hen parties</span></li>
+          <li><b data-uk="Діти й школи">Kids &amp; schools</b><span data-uk="Шкільні свята, табори, молодіжні зустрічі">School parties, camps, youth meetups</span></li>
+          <li><b data-uk="Освіта й культура">Education &amp; culture</b><span data-uk="Музеї, воркшопи, концерти, покази">Museums, workshops, concerts, shows</span></li>
+          <li><b data-uk="Спорт і wellness">Sport &amp; wellness</b><span data-uk="Йога, забіги, медитації">Yoga, runs, meditation</span></li>
+          <li><b data-uk="Спільноти">Communities</b><span data-uk="Фестивалі, ярмарки, інклюзивні події">Festivals, markets, inclusive events</span></li>
+        </ul>
+      </article>
+    </div>
+    <div class="sx-strip rv">
+      <img class="mark" src="img/silent/silent-mark-amber.png" alt="" width="240" height="240" loading="lazy">
+      <div class="txt">
+        <h3 data-uk="Розкажіть про ідею вашої події">Tell us your event idea</h3>
+        <small data-uk="Разом підберемо формат. Від 40 гостей, налаштування займає близько 30 хвилин.">We will find the format together. From 40 guests, setup takes about 30 minutes.</small>
+      </div>
+      <a class="btn fill go" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Перевірити дату на silent.org.ua →">Check a date on silent.org.ua →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img rv"><img src="img/about.jpg" alt="Max Vitvitskiy with a print" loading="lazy"></div>
+    <div class="rv">
+      <span class="eyebrow" data-uk="Про мене">About</span>
+      <h2 class="display" translate="no">Max<br><i>Vitvitskiy</i></h2>
+      <p data-uk="Художник, experience-дизайнер і креативний ментор, що досліджує перетин мистецтва, творчості, технологій, музики, духовності та людського звʼязку.">An artist, experience designer and creative mentor exploring the intersection of art, creativity, technology, music, spirituality and human connection.</p>
+      <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="eyebrow rv" data-uk="Контакти">Contact</span>
+    <h2 class="display rv"><span data-uk="Поговоримо про <i>мистецтво</i>">Let’s <i>talk</i> art</span></h2>
+    <a class="mail rv" href="mailto:hello@maxvitvitskiy.com">hello@maxvitvitskiy.com</a>
+    <div class="socials rv"><a class="ico" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
+    <img class="fl rv" src="img/logo-full.png" alt="Max Vitvitskiy" width="1400" height="831" loading="lazy">
+    <footer><span>© 2026 Max Vitvitskiy</span><span data-uk="Створюй · Надихай · Проживай">Create · Inspire · Experience</span></footer>
+  </div>
+</section>
+</main>
+
+<script>
+const nav=document.getElementById('nav'),burger=document.getElementById('burger'),menu=document.getElementById('menu');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
+function toggle(o){burger.setAttribute('aria-expanded',o);menu.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
+burger.onclick=()=>toggle(burger.getAttribute('aria-expanded')!=='true');
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
+const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.innerHTML);
+function setLang(l){L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);if(window.typeArch)typeArch();
+  document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.l===l);b.setAttribute('aria-pressed',b.dataset.l===l)});try{localStorage.setItem('lang',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}
+setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* hero parallax: scroll depth only */
+(function(){
+  const hero=document.querySelector('.hero');if(!hero||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  addEventListener('scroll',()=>hero.style.setProperty('--py',Math.min(scrollY,innerHeight*1.2).toFixed(1)),{passive:true});
+})();
+/* text over the arch: typed letter by letter */
+function typeArch(){
+  const tp=document.querySelector('.arch-text textPath');if(!tp)return;
+  const txt=tp.textContent;tp.textContent='';
+  const step=Math.min(70,2300/Math.max(txt.length,1));
+  [...txt].forEach((c,i)=>{const t=document.createElementNS('http://www.w3.org/2000/svg','tspan');t.setAttribute('class','ch');t.style.animationDelay=(1000+i*step)+'ms';t.textContent=c===' '?'\u00A0':c;tp.appendChild(t)});
+}
+/* silent gallery: two lanes drift toward each other, photos swap at random */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root=document.querySelector('.sx-gallery');if(!root)return;
+  const pool=JSON.parse(root.dataset.pool);
+  const lanes=[...root.querySelectorAll('.lane')];
+  const tiles=[];
+  lanes.forEach(l=>{[...l.children].forEach(t=>{const tw=t.cloneNode(true);l.appendChild(tw);tiles.push([t,tw])})});
+  tiles.forEach(p=>p.forEach(t=>{const im=t.querySelectorAll('img');t._f=im[0];t._b=im[1]}));
+  const shown=new Set(tiles.map(p=>p[0]._f.getAttribute('src')));
+  let last=-1,timer=null,busy=false;
+  async function swap(){
+    if(busy||document.hidden)return;busy=true;
+    let i;do{i=Math.floor(Math.random()*tiles.length)}while(i===last&&tiles.length>1);last=i;
+    const pair=tiles[i],free=pool.filter(u=>!shown.has(u));if(!free.length){busy=false;return}
+    const url=free[Math.floor(Math.random()*free.length)],old=pair[0]._f.getAttribute('src');
+    const pre=new Image();pre.src=url;try{await pre.decode()}catch(e){}
+    pair.forEach(t=>{t._b.src=url;t._b.style.zIndex=2;t._f.style.zIndex=1;t._b.classList.add('on')});
+    shown.delete(old);shown.add(url);
+    setTimeout(()=>{pair.forEach(t=>{t._f.classList.remove('on');const f=t._f;t._f=t._b;t._b=f});busy=false},1800);
+  }
+  const start=()=>{if(!timer&&!reduce){setTimeout(swap,700);timer=setInterval(swap,2300)}};
+  const stop=()=>{clearInterval(timer);timer=null};
+  new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?start():stop()),{threshold:.1}).observe(root);
+})();
+
+</script>
+</body>
+</html>
