@@ -488,10 +488,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .about .tags span::before{content:"✦";color:var(--teal)}
 /* tags: a full-width 3 × 2 table with thin inner rules */
 .about .tags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
-.about .tags span{display:flex;align-items:center;justify-content:center;gap:.5em;padding:11px 6px;text-align:center;white-space:nowrap}
+.about .tags span{display:flex;align-items:center;justify-content:flex-start;gap:.5em;padding:11px 8px 11px clamp(10px,3cqi,18px);text-align:left;white-space:nowrap}
+.about .tags span:nth-child(3n+1){padding-left:0}
 .about .tags span:nth-child(-n+3){border-bottom:1px solid var(--line)}
 .about .tags span:not(:nth-child(3n)){border-right:1px solid var(--line)}
-@container (max-width:340px){.about .tags{letter-spacing:.12em;font-size:12px}.about .tags span{padding-inline:3px}}
+@container (max-width:340px){.about .tags{letter-spacing:.12em;font-size:12px}.about .tags span{padding-right:3px}}
 @media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:start}.about-txt{max-width:83.334%}}
 
 /* contact */
