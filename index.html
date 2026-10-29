@@ -479,7 +479,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .bio-more.open{grid-template-rows:1fr}
 .bio-more.open>div{visibility:visible;transition-delay:0s}
 .bio .sign{font-family:var(--display);font-style:italic;font-size:clamp(24px,2.2vw,30px);line-height:1.2;color:var(--amber)}
-.more{display:inline-flex;align-items:center;gap:12px;min-height:46px;margin-top:22px;padding:0 22px;background:none;border:1px solid rgba(255,166,48,.55);border-radius:99px;cursor:pointer;font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);transition:gap .4s var(--ease),color .3s,background .3s,border-color .3s}
+.more{display:inline-flex;align-items:center;gap:12px;min-height:46px;margin-top:22px;padding:0 20px 0 24px;background:none;border:1px solid rgba(255,166,48,.55);border-radius:99px;cursor:pointer;font-family:var(--body);font-weight:500;font-size:14px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);transition:gap .4s var(--ease),color .3s,background .3s,border-color .3s}
+/* letter-spacing trails the last letter; pull it back so the label sits optically centred */
+.more span{margin-right:-.14em}
 .more .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transform:rotate(90deg);transition:transform .4s var(--ease)}
 .more[aria-expanded=true] .ar{transform:rotate(-90deg)}
 .more:hover{color:var(--ink);background:var(--amber);border-color:var(--amber);gap:18px}
