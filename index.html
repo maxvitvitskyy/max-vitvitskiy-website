@@ -368,7 +368,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .about-img::after{content:"";position:absolute;inset:0;border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line)}
 .about-txt{container-type:inline-size}
 /* name fills the text column on one line: 22.5cqi ≈ column width / 4.41 (measured glyph run) */
-.about h2{font-size:22.5cqi;white-space:nowrap;margin-bottom:26px}
+.about h2{font-size:22.5cqi;white-space:nowrap;margin-bottom:18px}
 .about p{font-size:clamp(16px,1.4vw,18px);line-height:1.75;text-wrap:pretty}
 .bio p+p,.bio-more>div>p{margin-top:1em}
 .bio-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease)}
@@ -380,9 +380,12 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .more .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transform:rotate(90deg);transition:transform .4s var(--ease)}
 .more[aria-expanded=true] .ar{transform:rotate(-90deg)}
 .more:hover{color:var(--sand);gap:18px}
-.about .tags{font-family:var(--text);margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.about .tags{font-family:var(--text);margin-bottom:clamp(28px,3vw,40px);display:flex;flex-wrap:wrap;gap:8px 4cqi;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
 .about h2{margin-top:18px}
 .about .tags span::before{content:"✦ ";color:var(--teal)}
+/* tags: one row where it fits, otherwise an even 3 + 2 */
+.about .tags{font-size:clamp(11px,2.8cqi,13px)}
+@container (max-width:460px){.about .tags{display:grid;grid-template-columns:repeat(3,max-content);column-gap:3.5cqi;font-size:13px}}
 @media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:start}.about-txt{max-width:83.334%}}
 
 /* contact */
@@ -596,6 +599,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <div class="about-txt rv">
       <span class="eyebrow" data-uk="Про мене">About</span>
       <h2 class="display" translate="no">Max Vitvitskiy</h2>
+      <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span></div>
       <div class="bio">
         <p data-uk="Я — український візуальний митець, який працює з фотографією та цифровою композицією.">I’m a Ukrainian visual artist working with photography and digital composition.</p>
         <p data-uk="Я створюю символічні, сюрреалістичні образи, що досліджують моменти присутності — ті миті, коли людина відчуває себе водночас маленькою перед величчю світу й глибоко пов’язаною з чимось більшим за себе.">I create symbolic, surreal images that explore moments of presence — those instants when a person feels both small before the greatness of the world and deeply connected to something larger than themselves.</p>
@@ -610,7 +614,6 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
         </div></div>
         <button class="more" type="button" aria-expanded="false" aria-controls="bio-more"><span>Read more</span><i class="ar" aria-hidden="true"></i></button>
       </div>
-      <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span></div>
     </div>
   </div>
 </section>
