@@ -67,21 +67,21 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* header */
 .nav{--navx:clamp(12px,3vw,40px);position:fixed;z-index:60;top:max(12px,env(safe-area-inset-top));left:var(--navx);right:var(--navx);max-width:1440px;margin-inline:auto;
   display:flex;align-items:center;justify-content:space-between;gap:16px;padding:5px 5px 5px 18px;border-radius:999px;
-  background:rgba(1,17,10,.4);border:1px solid rgba(241,224,197,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  background:rgba(13,13,12,.42);border:1px solid rgba(241,224,197,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
   -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);transition:background .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
-.nav.solid{background:rgba(1,17,10,.62)}
+.nav.solid{background:rgba(13,13,12,.62)}
 /* desktop: no bar, just a soft blurred fade behind the header once the page scrolls */
 @media(min-width:900px){
   .nav{top:0;left:0;right:0;max-width:none;margin:0;border:0;border-radius:0;background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:max(18px,env(safe-area-inset-top)) var(--gut) 18px}
   .nav.solid{background:none}
-  .nav::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s;
-    background:linear-gradient(180deg,rgba(1,17,10,.8) 0%,rgba(1,17,10,.55) 55%,rgba(1,17,10,0) 100%);
-    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-    -webkit-mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 100%)}
+  .nav::before{content:"";position:absolute;inset:0 0 -56px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+    background:linear-gradient(180deg,rgba(13,13,12,.88) 0%,rgba(13,13,12,.68) 40%,rgba(13,13,12,.3) 72%,rgba(13,13,12,0) 100%);
+    -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+    -webkit-mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.55) 68%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.55) 68%,transparent 100%)}
   .nav.solid::before{opacity:1}
 }
 /* open menu: the bar dissolves into the menu background */
-.nav.menu-open{background:rgba(1,17,10,0);border-color:rgba(241,224,197,0);box-shadow:inset 0 1px 0 rgba(255,255,255,0);-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav.menu-open{background:rgba(13,13,12,0);border-color:rgba(241,224,197,0);box-shadow:inset 0 1px 0 rgba(255,255,255,0);-webkit-backdrop-filter:none;backdrop-filter:none}
 .logo{display:block;height:44px;padding-block:9px;min-width:44px}
 .logo img{height:100%;width:auto}
 .nav-r{display:flex;align-items:center;gap:6px}
@@ -102,7 +102,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .burger i{display:block;width:28px;height:1.5px;background:var(--cream);transition:transform .4s var(--ease),opacity .3s}
 .burger[aria-expanded=true] i:first-child{transform:translateY(4.25px) rotate(45deg)}
 .burger[aria-expanded=true] i:last-child{transform:translateY(-4.25px) rotate(-45deg)}
-.menu{position:fixed;inset:0;z-index:55;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:100px var(--gut) 40px;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s}
+.menu{position:fixed;inset:0;z-index:55;background:var(--coal);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:100px var(--gut) 40px;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s}
 .menu{overscroll-behavior:contain}
 .menu.open{opacity:1;visibility:visible}
 .menu a.big{font-family:var(--display);font-size:clamp(52px,16vw,96px);line-height:1.02;text-transform:uppercase;transform:translateY(24px);opacity:0;transition:transform .6s var(--ease),opacity .6s,color .3s}
