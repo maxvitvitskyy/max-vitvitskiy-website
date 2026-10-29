@@ -373,7 +373,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-uses .ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .sx-uses span{font-size:13.5px;line-height:1.45}
 @media(max-width:899px){
-  .sx-uses{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-columns:min(46vw,190px);overflow-x:auto;scroll-snap-type:x proximity;
+  .sx-uses{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-columns:min(calc((100vw - var(--gut) - 20px)/2.3),220px);overflow-x:auto;scroll-snap-type:x proximity;
     margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scroll-padding-inline:var(--gut);scrollbar-width:none}
   .sx-uses::-webkit-scrollbar{display:none}
   .sx-uses li{scroll-snap-align:start}
