@@ -227,7 +227,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .work .cap b{font-family:var(--head);font-weight:400;font-size:26px;text-transform:uppercase;letter-spacing:.02em}
 .work .cap span{font-size:14px;color:var(--muted);white-space:nowrap}
 .sec-foot{margin-top:clamp(18px,2.5vw,28px);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
-.hint{font-family:var(--text);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.hint{font-family:var(--text);font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.hint.swipe{display:inline-flex;align-items:center;gap:14px}
+.hint.swipe .ar{display:block;width:1.6em;height:.8em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(9px)}}
 
 /* inspire */
 .inspire{background:linear-gradient(180deg,var(--ink) 0%,var(--wine-deep) 38%,var(--wine-deep) 62%,#000 100%)}
@@ -241,6 +244,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .reel .play::before{content:"";border-left:11px solid var(--ink);border-block:7px solid transparent;margin-left:3px}
 .topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(56px,7vw,96px)}
 .topics span{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:14px;color:var(--cream)}
+@media(min-width:900px){.topics span{flex:1 1 auto;text-align:center}}
 /* phones: two rows that run past the screen edge and swipe sideways */
 @media(max-width:899px){
   .topics{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);justify-content:start;justify-items:start;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;
@@ -391,11 +395,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-more{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;min-height:36px;font-family:var(--body);font-weight:500;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);transition:gap .35s var(--ease),color .3s}
 .sx-more::after{content:"";width:1.2em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
 .sx-more:hover{gap:14px;color:var(--sand)}
-.sx-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.sx-links a{display:inline-flex;align-items:center;gap:10px;min-height:40px;padding:0 16px;border:1px solid var(--line);border-radius:99px;font-size:13.5px;color:var(--cream);transition:border-color .3s,color .3s,background .3s}
+.sx-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.sx-links a{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:0 10px;white-space:nowrap;border:1px solid var(--line);border-radius:99px;font-size:13.5px;color:var(--cream);transition:border-color .3s,color .3s,background .3s}
 .sx-links a::after{content:"";width:1.1em;height:.65em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
 .sx-links a:hover{border-color:var(--amber);color:var(--amber)}
 .sx-links a:hover::after{transform:translateX(4px)}
+@media(max-width:599px){.sx-links{gap:6px}.sx-links a{font-size:12.5px;padding:0 6px;gap:6px}.sx-links a::after{width:.9em}}
+@media(max-width:374px){.sx-links a::after{display:none}}
 @media(max-width:899px){
   .sx-uses{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-columns:min(calc((100vw - var(--gut) - 20px)/2.3),220px);overflow-x:auto;scroll-snap-type:x proximity;
     margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scroll-padding-inline:var(--gut);scrollbar-width:none}
@@ -473,15 +479,19 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .bio-more.open{grid-template-rows:1fr}
 .bio-more.open>div{visibility:visible;transition-delay:0s}
 .bio .sign{font-family:var(--display);font-style:italic;font-size:clamp(24px,2.2vw,30px);line-height:1.2;color:var(--amber)}
-.more{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-top:10px;padding:0;background:none;border:0;cursor:pointer;font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);transition:gap .4s var(--ease),color .3s}
+.more{display:inline-flex;align-items:center;gap:12px;min-height:46px;margin-top:22px;padding:0 22px;background:none;border:1px solid rgba(255,166,48,.55);border-radius:99px;cursor:pointer;font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);transition:gap .4s var(--ease),color .3s,background .3s,border-color .3s}
 .more .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transform:rotate(90deg);transition:transform .4s var(--ease)}
 .more[aria-expanded=true] .ar{transform:rotate(-90deg)}
-.more:hover{color:var(--sand);gap:18px}
+.more:hover{color:var(--ink);background:var(--amber);border-color:var(--amber);gap:18px}
 .about .tags{font-family:var(--text);margin-bottom:clamp(28px,3vw,40px);display:flex;flex-wrap:wrap;gap:8px 4cqi;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
 .about h2{margin-top:18px}
-.about .tags span::before{content:"✦ ";color:var(--teal)}
-/* tags: an even 3 + 3 grid at every width */
-.about .tags{display:grid;grid-template-columns:repeat(3,max-content);column-gap:min(3.5cqi,28px)}
+.about .tags span::before{content:"✦";color:var(--teal)}
+/* tags: a full-width 3 × 2 table with thin inner rules */
+.about .tags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.about .tags span{display:flex;align-items:center;justify-content:center;gap:.5em;padding:11px 6px;text-align:center;white-space:nowrap}
+.about .tags span:nth-child(-n+3){border-bottom:1px solid var(--line)}
+.about .tags span:not(:nth-child(3n)){border-right:1px solid var(--line)}
+@container (max-width:340px){.about .tags{letter-spacing:.12em;font-size:12px}.about .tags span{padding-inline:3px}}
 @media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:start}.about-txt{max-width:83.334%}}
 
 /* contact */
@@ -567,7 +577,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <a class="work" href="#"><div class="ph"><img src="img/art4.jpg" alt="Artwork" loading="lazy"><span class="tag" data-uk="Доступна">Available</span></div><div class="cap"><b data-uk="Без назви IV">Untitled IV</b><span data-uk="За запитом">On request</span></div></a>
     <a class="work" href="#"><div class="ph"><img src="img/art5.jpg" alt="Artwork" loading="lazy"><span class="tag" data-uk="Доступна">Available</span></div><div class="cap"><b data-uk="Без назви V">Untitled V</b><span data-uk="За запитом">On request</span></div></a>
   </div>
-  <div class="wrap sec-foot rv"><span class="hint" data-uk="Гортай →">Swipe →</span><span class="hint" data-uk="Обрані роботи · Доступні роботи">Selected works · Available works</span></div>
+  <div class="wrap sec-foot rv"><span class="hint swipe"><span data-uk="Гортай">Swipe</span><i class="ar" aria-hidden="true"></i></span><span class="hint" data-uk="Обрані роботи">Selected works</span></div>
   <div class="wrap duo rv">
     <figure class="band">
       <div class="band-in"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><h3 data-uk="Картини під замовлення">Commissioned paintings</h3></div></div>
@@ -627,7 +637,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
       </div>
     </div>
     <div class="topics rv">
-      <span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span>
+      <span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span><span data-uk="Натхнення">Inspiration</span><span data-uk="Візуальне мислення">Visual thinking</span><span data-uk="Колір і композиція">Colour &amp; composition</span><span data-uk="Творча дисципліна">Creative discipline</span><span data-uk="Особистий бренд митця">Artist’s personal brand</span>
     </div>
     <div class="channels rv">
       <a class="channel" href="https://www.youtube.com/@MaxVitvitskiy"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>YouTube</span><span data-uk="Відео та Shorts →">Videos & Shorts →</span></a>
@@ -642,7 +652,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="wrap sec-head rv">
     <span class="num" data-uk="03 / Я створюю враження">03 / I create experiences</span>
     <h2 class="display">Experience</h2>
-    <div class="sub"><p data-uk="SILENT — silent disco у бездротових навушниках із кількома музичними каналами.">SILENT is a silent disco in wireless headphones with several music channels.</p><a class="btn fill" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a></div>
+    <div class="sub"><p data-uk="SILENT — мій технологічний стартап та івент-компанія на основі silent disco: бездротові навушники, кілька музичних каналів і нові формати подій, де кожен обирає власний звук.">SILENT is my tech startup and event company built on silent disco: wireless headphones, several music channels and new event formats where everyone chooses their own sound.</p><a class="btn fill" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a></div>
   </div>
   <div class="sx-gallery rv" data-pool='["img/silent/ph/p00.jpg", "img/silent/ph/p01.jpg", "img/silent/ph/p02.jpg", "img/silent/ph/p04.jpg", "img/silent/ph/p05.jpg", "img/silent/ph/p06.jpg", "img/silent/ph/p07.jpg", "img/silent/ph/p08.jpg", "img/silent/ph/p09.jpg", "img/silent/ph/p10.jpg", "img/silent/ph/p11.jpg", "img/silent/ph/p12.jpg", "img/silent/ph/p13.jpg", "img/silent/ph/p14.jpg", "img/silent/ph/p15.jpg", "img/silent/ph/p16.jpg", "img/silent/ph/p17.jpg", "img/silent/ph/p18.jpg", "img/silent/ph/p19.jpg", "img/silent/ph/p20.jpg", "img/silent/ph/p21.jpg", "img/silent/ph/p22.jpg", "img/silent/ph/p23.jpg", "img/silent/ph/p24.jpg", "img/silent/ph/p25.jpg", "img/silent/ph/p26.jpg", "img/silent/ph/p27.jpg", "img/silent/ph/p28.jpg", "img/silent/ph/p29.jpg", "img/silent/ph/p30.jpg", "img/silent/ph/p31.jpg"]' aria-hidden="true">
     <div class="lane l1"><div class="tile"><img class="on" src="img/silent/ph/p11.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p28.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p24.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p31.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p06.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p29.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p15.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p21.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
@@ -678,9 +688,10 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
           <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19.5c0-3.2 2.5-5.3 5.5-5.3s5.5 2.1 5.5 5.3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.8 14.3c2.7-.4 4.7 1.4 4.7 4.4"/></svg></i><b data-uk="Спільноти">Communities</b><span data-uk="Фестивалі, ярмарки, інклюзивні події">Festivals, markets, inclusive events</span><a class="sx-more" href="https://silent.org.ua/experiences/festivals/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/festivals/" data-href-en="https://silent.org.ua/en/experiences/festivals/" data-uk="Детальніше">Learn more</a></li>
         </ul>
         <nav class="sx-links" aria-label="SILENT">
-          <a href="https://silent.org.ua/experiences/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/" data-href-en="https://silent.org.ua/en/experiences/" data-uk="Усі формати">All formats</a>
-          <a href="https://silent.org.ua/faq/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/faq/" data-href-en="https://silent.org.ua/en/faq/" data-uk="Часті питання">FAQ</a>
-          <a href="https://silent.org.ua/blog/" target="_blank" rel="noopener" data-uk="Блог та ідеї">Blog &amp; ideas</a>
+          <a href="https://silent.org.ua/experiences/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/" data-href-en="https://silent.org.ua/en/experiences/" data-uk="Формати">Formats</a>
+          <a href="https://silent.org.ua/about/" target="_blank" rel="noopener" data-uk="Про нас">About</a>
+          <a href="https://silent.org.ua/faq/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/faq/" data-href-en="https://silent.org.ua/en/faq/" data-uk="Питання">FAQ</a>
+          <a href="https://silent.org.ua/blog/" target="_blank" rel="noopener" data-uk="Блог">Blog</a>
         </nav>
       </article>
     </div>
