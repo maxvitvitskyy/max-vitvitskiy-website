@@ -279,9 +279,15 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .reel img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .reel:hover img{transform:scale(1.06)}
 .reel::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 70%,rgba(1,17,10,.5))}
-.reel .play{position:absolute;z-index:2;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,166,48,.92);display:grid;place-items:center}
+.reel .play{position:absolute;z-index:2;right:30px;bottom:30px;width:40px;height:40px;border-radius:50%;background:rgba(255,166,48,.92);display:grid;place-items:center}
 /* phones: play button in the top-right corner, clear of the cover title */
-@media(max-width:899px){.reel .play{top:12px;bottom:auto}}
+@media(max-width:899px){.reel .play{top:30px;bottom:auto}}
+/* a ring of "watch · watch · watch" turning slowly around the play button; letters are placed one by one, so every browser draws it the same */
+.reel .ring{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;pointer-events:none;animation:ringSpin 14s linear infinite}
+.reel .ring b{position:absolute;left:50%;top:0;width:10px;margin-left:-5px;height:35px;transform-origin:50% 100%;text-align:center;
+  font-family:var(--body);font-weight:600;font-size:7.5px;line-height:1;letter-spacing:0;color:var(--cream);text-shadow:0 1px 4px rgba(0,0,0,.85)}
+@keyframes ringSpin{to{transform:rotate(360deg)}}
+.reel:hover .ring{animation-duration:6s}
 .reel .play::before{content:"";border-left:11px solid var(--ink);border-block:7px solid transparent;margin-left:3px}
 .topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(56px,7vw,96px)}
 .topics span{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:14px;color:var(--cream)}
@@ -831,7 +837,11 @@ function updMore(){const o=moreBtn.getAttribute('aria-expanded')==='true',uk=doc
 moreBtn.onclick=()=>{const o=moreBtn.getAttribute('aria-expanded')!=='true';moreBtn.setAttribute('aria-expanded',o);moreBox.classList.toggle('open',o);updMore()};
 document.querySelectorAll('.sx-vals .vq').forEach(b=>b.onclick=()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);b.nextElementSibling.classList.toggle('open',o)});
 const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.innerHTML);
-function setLang(l){L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
+/* reel play buttons: build the turning "watch" ring for the current language */
+function buildRings(l){const w=l==='uk'?'ДИВИТИСЯ':'WATCH',n=l==='uk'?3:4,t=[...(w+' · ').repeat(n)];
+  document.querySelectorAll('.reel .play').forEach(pl=>{let r=pl.querySelector('.ring');if(!r){r=document.createElement('span');r.className='ring';r.setAttribute('aria-hidden','true');pl.appendChild(r)}
+    r.innerHTML=t.map((c,i)=>'<b style="transform:rotate('+(i*360/t.length).toFixed(2)+'deg)">'+(c===' '?'&nbsp;':c)+'</b>').join('')})}
+function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
   document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.l===l);b.setAttribute('aria-pressed',b.dataset.l===l)});try{localStorage.setItem('lang',l)}catch(e){}}
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}
