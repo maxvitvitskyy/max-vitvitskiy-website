@@ -285,7 +285,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* a ring of "watch · watch · watch" turning slowly around the play button; letters are placed one by one, so every browser draws it the same */
 .reel .ring{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;pointer-events:none;animation:ringSpin 14s linear infinite}
 .reel .ring b{position:absolute;left:50%;top:0;width:10px;margin-left:-5px;height:35px;transform-origin:50% 100%;text-align:center;
-  font-family:var(--body);font-weight:600;font-size:7.5px;line-height:1;letter-spacing:0;color:var(--cream);text-shadow:0 1px 4px rgba(0,0,0,.85)}
+  font-family:var(--body);font-weight:300;font-size:8px;line-height:1;letter-spacing:0;color:rgb(255,166,48);text-shadow:0 0 3px rgba(0,0,0,.7)}
 @keyframes ringSpin{to{transform:rotate(360deg)}}
 .reel:hover .ring{animation-duration:6s}
 .reel .play::before{content:"";border-left:11px solid var(--ink);border-block:7px solid transparent;margin-left:3px}
