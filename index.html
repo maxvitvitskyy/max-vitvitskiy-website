@@ -400,15 +400,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
 @media(max-width:599px){footer{flex-direction:column;align-items:center;text-align:center}}
 
-/* phones + tablets: the glass bar sits at the bottom, in thumb reach, like an app tab bar */
-@keyframes navUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@media(max-width:899px){
-  .nav{top:auto;bottom:max(12px,env(safe-area-inset-bottom));animation-name:navUp}
-  .hero-stage{padding-top:calc(max(16px,env(safe-area-inset-top)) + clamp(28px,5svh,48px) + min(31svh,54vw)*.17)}
-  .menu{justify-content:flex-end;padding:max(40px,env(safe-area-inset-top)) var(--gut) calc(max(12px,env(safe-area-inset-bottom)) + 96px)}
-  section[id]{scroll-margin-top:16px}
-  body{padding-bottom:calc(max(12px,env(safe-area-inset-bottom)) + 68px)}
-}
 /* reveal */
 .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rv.in{opacity:1;transform:none}
