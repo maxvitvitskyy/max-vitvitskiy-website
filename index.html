@@ -104,7 +104,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .hero{min-height:100svh;display:grid;grid-template-rows:1fr auto;overflow:hidden;background:
   linear-gradient(180deg,transparent 70%,var(--ink) 100%),
   radial-gradient(60% 45% at 50% 38%,rgba(255,166,48,.34),transparent 70%),
-  radial-gradient(90% 60% at 50% 100%,rgba(71,19,35,.75),transparent 70%),var(--ink)}
+  var(--ink)}
 .hero-stage{position:relative;display:flex;flex-direction:column;align-items:center;padding-top:clamp(96px,13svh,130px)}
 .hero-art{--aw:min(31svh,54vw);--H:calc(var(--aw)/.66);position:relative;width:var(--aw);aspect-ratio:.66;margin-bottom:calc(var(--H)*.56)}
 .arch{position:absolute;inset:0;border-radius:999px 999px 0 0;
@@ -115,6 +115,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   background:radial-gradient(closest-side,rgba(222,145,34,.34) 30%,rgba(196,80,26,.16) 62%,rgba(196,80,26,0) 100%);
   animation:fadeIn 1.5s ease .3s both,glow 6s ease-in-out 1.8s infinite alternate}
 @keyframes glow{from{opacity:.7}to{opacity:1}}
+/* floor under the feet: the wine haze that used to sit on the hero's bottom edge */
+.hero-art::after{content:"";position:absolute;z-index:0;left:50%;top:156%;width:260%;height:70%;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(71,19,35,.75),rgba(71,19,35,.35) 55%,rgba(71,19,35,0) 100%);animation:fadeIn 1.5s ease .8s both}
 .arch-text{position:absolute;left:-22.22%;top:-14.67%;width:144.44%;height:106.33%;overflow:visible;pointer-events:none;}
 .arch-text .ch{animation:chIn .3s ease both}
 .arch-text text{font-family:var(--display);font-size:6.2px;text-transform:uppercase;fill:none;stroke:rgba(252,222,156,.85);stroke-width:.2}
@@ -137,7 +140,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @keyframes navIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
 /* hero parallax: scroll depth (JS sets --py) */
 .arch,.arch-text,.seat-shadow,.hero-art::before{translate:0 calc(var(--py,0)*.16px)}
-.hero-fig{translate:0 calc(var(--py,0)*.07px)}
+.hero-fig,.hero-art::after{translate:0 calc(var(--py,0)*.07px)}
 .hero-name{translate:0 calc(var(--py,0)*-.03px)}
 .hero-copy{translate:0 calc(var(--py,0)*.05px)}
 .hero-copy p{animation:fadeUp 1s var(--ease) 1.6s both}
@@ -361,13 +364,24 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .about-img::after{content:"";position:absolute;inset:0;border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line)}
-.about h2{font-size:clamp(60px,16vw,150px);margin-bottom:26px}
-.about h2 i{color:var(--amber)}
-.about p{font-size:clamp(16px,1.4vw,18px);line-height:1.75;max-width:46ch}
+.about-txt{container-type:inline-size}
+/* name fills the text column on one line: 22.5cqi ≈ column width / 4.41 (measured glyph run) */
+.about h2{font-size:22.5cqi;white-space:nowrap;margin-bottom:26px}
+.about p{font-size:clamp(16px,1.4vw,18px);line-height:1.75;text-wrap:pretty}
+.bio p+p,.bio-more>div>p{margin-top:1em}
+.bio-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease)}
+.bio-more>div{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s .7s}
+.bio-more.open{grid-template-rows:1fr}
+.bio-more.open>div{visibility:visible;transition-delay:0s}
+.bio .sign{font-family:var(--display);font-style:italic;font-size:clamp(24px,2.2vw,30px);line-height:1.2;color:var(--amber)}
+.more{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-top:10px;padding:0;background:none;border:0;cursor:pointer;font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);transition:gap .4s var(--ease),color .3s}
+.more .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transform:rotate(90deg);transition:transform .4s var(--ease)}
+.more[aria-expanded=true] .ar{transform:rotate(-90deg)}
+.more:hover{color:var(--sand);gap:18px}
 .about .tags{font-family:var(--text);margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase}
 .about h2{margin-top:18px}
 .about .tags span::before{content:"✦ ";color:var(--teal)}
-@media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:center}}
+@media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:start}.about-txt{max-width:83.334%}}
 
 /* contact */
 .contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
@@ -419,7 +433,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="hero-stage">
     <div class="hero-art">
       <div class="arch" aria-hidden="true"></div>
-      <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><text><textPath href="#arcp" startOffset="0" data-uk="Художник · Experience-дизайнер · Креативний ментор">Artist · Experience Designer · Creative Mentor</textPath></text></svg>
+      <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><g class="arch-chars" data-uk="Художник · Experience-дизайнер · Креативний ментор">Artist · Experience Designer · Creative Mentor</g></svg>
       <h1 class="hero-name display" translate="no">Max <i>Vitvitskiy</i></h1>
       <div class="seat-shadow" aria-hidden="true"></div>
       <img class="hero-fig" src="img/hero.png" alt="Max Vitvitskiy" width="1200" height="2793" fetchpriority="high">
@@ -571,10 +585,23 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
 <section class="sec about" id="about">
   <div class="wrap about-grid">
     <div class="about-img rv"><img src="img/about.jpg" alt="Max Vitvitskiy on a carved staircase under a glass dome" width="960" height="1280" loading="lazy"></div>
-    <div class="rv">
+    <div class="about-txt rv">
       <span class="eyebrow" data-uk="Про мене">About</span>
-      <h2 class="display" translate="no">Max<br><i>Vitvitskiy</i></h2>
-      <p data-uk="Художник, experience-дизайнер і креативний ментор, що досліджує перетин мистецтва, творчості, технологій, музики, духовності та людського зв’язку.">An artist, experience designer and creative mentor exploring the intersection of art, creativity, technology, music, spirituality and human connection.</p>
+      <h2 class="display" translate="no">Max Vitvitskiy</h2>
+      <div class="bio">
+        <p data-uk="Я — український візуальний митець, який працює з фотографією та цифровою композицією.">I’m a Ukrainian visual artist working with photography and digital composition.</p>
+        <p data-uk="Я створюю символічні, сюрреалістичні образи, що досліджують моменти присутності — ті миті, коли людина відчуває себе водночас маленькою перед величчю світу й глибоко пов’язаною з чимось більшим за себе.">I create symbolic, surreal images that explore moments of presence — those instants when a person feels both small before the greatness of the world and deeply connected to something larger than themselves.</p>
+        <p data-uk="У моїх роботах часто повторюються квіти, тварини та людська постать. Для мене це образи крихкості й сили, життя та пошуку сенсу. Через них я досліджую взаємозв’язок між тимчасовим і вічним, видимим і невидимим.">Flowers, animals and the human figure recur throughout my work. For me they are images of fragility and strength, of life and the search for meaning. Through them I explore the bond between the temporary and the eternal, the visible and the invisible.</p>
+        <div class="bio-more" id="bio-more"><div>
+          <p data-uk="Мене цікавить мистецтво, яке уповільнює погляд і повертає увагу до того, що справді має значення. Моя творчість — не про декорацію, а про присутність. Це запрошення зупинитися, вдихнути й відчути.">I’m drawn to art that slows the gaze and brings attention back to what truly matters. My work is not about decoration but about presence. It is an invitation to pause, breathe and feel.</p>
+          <p data-uk="Віра є важливою частиною мого життя і природно впливає на моє бачення світу та творчість. Я не прагну ілюструвати її буквально — радше вона залишається тихою основою, що проходить крізь мої роботи.">Faith is an important part of my life and naturally shapes how I see the world and how I create. I don’t try to illustrate it literally — rather, it remains a quiet foundation running through my work.</p>
+          <p data-uk="Усі мої роботи створюються вручну в цифровому середовищі, без використання штучного інтелекту. Кожен твір ретельно вибудовується як цілісна композиція та виходить як фізична робота обмеженого тиражу.">All my works are made by hand in a digital environment, without the use of artificial intelligence. Each piece is carefully built as a complete composition and released as a physical limited-edition work.</p>
+          <p data-uk="Окрім власної художньої практики, я досліджую творчість як спосіб пізнання себе, створюю досвіди для людей і ділюся тим, що допомагає іншим розкривати власний творчий потенціал.">Beyond my own art practice, I explore creativity as a way of knowing oneself, create experiences for people and share what helps others unlock their creative potential.</p>
+          <p data-uk="Я живу й працюю в Україні, продовжуючи свою творчу практику під час повномасштабної війни.">I live and work in Ukraine, continuing my creative practice during the full-scale war.</p>
+          <p class="sign" translate="no">Max V.</p>
+        </div></div>
+        <button class="more" type="button" aria-expanded="false" aria-controls="bio-more"><span>Read more</span><i class="ar" aria-hidden="true"></i></button>
+      </div>
       <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span></div>
     </div>
   </div>
@@ -601,8 +628,11 @@ burger.onclick=()=>toggle(burger.getAttribute('aria-expanded')!=='true');
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){toggle(false);burger.focus()}});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){toggle(false);burger.focus()}});
+const moreBtn=document.querySelector('.about .more'),moreBox=document.getElementById('bio-more');
+function updMore(){const o=moreBtn.getAttribute('aria-expanded')==='true',uk=document.documentElement.lang==='uk';moreBtn.firstChild.textContent=o?(uk?'Згорнути':'Show less'):(uk?'Читати повністю':'Read more')}
+moreBtn.onclick=()=>{const o=moreBtn.getAttribute('aria-expanded')!=='true';moreBtn.setAttribute('aria-expanded',o);moreBox.classList.toggle('open',o);updMore()};
 const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.innerHTML);
-function setLang(l){L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();
+function setLang(l){L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
   document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.l===l);b.setAttribute('aria-pressed',b.dataset.l===l)});try{localStorage.setItem('lang',l)}catch(e){}}
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}
@@ -629,24 +659,28 @@ addEventListener('resize',alignTag);addEventListener('load',alignTag);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(alignTag);
 document.querySelector('.hero-fig')&&document.querySelector('.hero-fig').addEventListener('load',alignTag);
 alignTag();
-/* text over the arch: typed letter by letter */
+/* text over the arch: each letter placed on the arc by hand, so every browser renders it the same
+   (Safari measured textPath + letter-spacing differently and the line slid right) */
 function fitArch(){
-  const tp=document.querySelector('.arch-text textPath'),path=document.getElementById('arcp'),txt=document.querySelector('.arch-text text');
-  if(!tp||!path||!txt)return;
-  const n=tp.querySelectorAll('.ch').length;if(n<2)return;
-  const total=path.getTotalLength(),target=total*.86;
-  txt.style.letterSpacing='0px';tp.setAttribute('startOffset','0');
-  const nat=tp.getComputedTextLength();
-  const ls=Math.max(0,(target-nat)/(n-1));
-  txt.style.letterSpacing=ls.toFixed(3)+'px';
-  const len=tp.getComputedTextLength()-ls;
-  tp.setAttribute('startOffset',((total-len)/2).toFixed(2));
+  const g=document.querySelector('.arch-chars'),path=document.getElementById('arcp');
+  if(!g||!path||!g._els||!g._els.length)return;
+  const els=g._els,n=els.length,w=els.map(e=>e.getComputedTextLength());
+  const total=path.getTotalLength(),target=total*.86,sum=w.reduce((a,b)=>a+b,0);
+  const gap=n>1?(target-sum)/(n-1):0;
+  let d=(total-target)/2;
+  els.forEach((e,i)=>{
+    const c=d+w[i]/2,p=path.getPointAtLength(c),q=path.getPointAtLength(Math.min(total,c+.5)),r=path.getPointAtLength(Math.max(0,c-.5));
+    const ang=Math.atan2(q.y-r.y,q.x-r.x)*180/Math.PI;
+    e.setAttribute('x',p.x.toFixed(3));e.setAttribute('y',p.y.toFixed(3));
+    e.setAttribute('transform','rotate('+ang.toFixed(2)+' '+p.x.toFixed(3)+' '+p.y.toFixed(3)+')');
+    d+=w[i]+gap;
+  });
 }
 function typeArch(){
-  const tp=document.querySelector('.arch-text textPath');if(!tp)return;
-  const txt=tp.textContent;tp.textContent='';
+  const g=document.querySelector('.arch-chars');if(!g)return;
+  const txt=g.textContent.trim();g.textContent='';
   const step=Math.min(70,2300/Math.max(txt.length,1));
-  [...txt].forEach((c,i)=>{const t=document.createElementNS('http://www.w3.org/2000/svg','tspan');t.setAttribute('class','ch');t.style.animationDelay=(1000+i*step)+'ms';t.textContent=c===' '?'\u00A0':c;tp.appendChild(t)});
+  g._els=[...txt].map((c,i)=>{const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('class','ch');t.setAttribute('text-anchor','middle');t.style.animationDelay=(1000+i*step)+'ms';t.textContent=c===' '?'\u00A0':c;g.appendChild(t);return t});
   fitArch();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitArch);
   addEventListener('load',fitArch,{once:true});
