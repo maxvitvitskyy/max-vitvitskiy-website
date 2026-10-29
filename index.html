@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Max Vitvitskiy — Artist · Experience Designer · Creative Mentor</title>
 <meta name="description" content="I create art, build experiences and inspire people to unlock their creativity.">
-<meta name="theme-color" content="#01110A">
+<meta name="theme-color" content="#0d0d0c">
 <meta name="color-scheme" content="dark">
 <link rel="preload" href="fonts/BazaART.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Moniqa-MediumDisplay.woff2" as="font" type="font/woff2" crossorigin>
@@ -23,6 +23,7 @@
 
 :root{
   --ink:#01110A;
+  --coal:#0d0d0c;
   --ink-2:#06190F;
   --wine:#471323;
   --wine-deep:#2b0c17;
@@ -113,9 +114,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 
 /* hero */
 .hero{min-height:100svh;display:grid;grid-template-rows:1fr auto;overflow:hidden;background:
-  linear-gradient(180deg,transparent 70%,var(--ink) 100%),
+  linear-gradient(180deg,transparent 70%,var(--coal) 100%),
   radial-gradient(60% 45% at 50% 38%,rgba(255,166,48,.34),transparent 70%),
-  var(--ink)}
+  var(--coal)}
 /* top padding = glass header + breathing room + the arch text that rises .17×arch-width above the arch */
 .hero-stage{position:relative;display:flex;flex-direction:column;align-items:center;padding-top:calc(max(12px,env(safe-area-inset-top)) + 56px + clamp(24px,4svh,40px) + min(31svh,54vw)*.17)}
 .hero-art{--aw:min(31svh,54vw);--H:calc(var(--aw)/.66);position:relative;width:var(--aw);aspect-ratio:.66;margin-bottom:calc(var(--H)*.56)}
@@ -129,7 +130,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @keyframes glow{from{opacity:.7}to{opacity:1}}
 /* shade under the feet: page ink, so the arch glow does not light the floor */
 .hero-art::after{content:"";position:absolute;z-index:0;left:50%;top:150%;width:230%;height:62%;transform:translate(-50%,-50%);pointer-events:none;
-  background:radial-gradient(closest-side,rgba(1,17,10,.92),rgba(1,17,10,.6) 50%,rgba(1,17,10,0) 100%)}
+  background:radial-gradient(closest-side,rgba(13,13,12,.92),rgba(13,13,12,.6) 50%,rgba(13,13,12,0) 100%)}
 .arch-text{position:absolute;left:-22.22%;top:-14.67%;width:144.44%;height:106.33%;overflow:visible;pointer-events:none;}
 .arch-text .ch{animation:chIn .3s ease both}
 .arch-text text{font-family:var(--display);font-size:6.2px;text-transform:uppercase;fill:none;stroke:rgba(252,222,156,.85);stroke-width:.2}
@@ -180,7 +181,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 }
 
 /* marquee */
-.marquee{overflow:hidden;border-block:1px solid var(--line);padding:22px 0}
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;background:var(--coal)}
+/* colour journey: coal hero → emerald Create → wine Inspire → black Experience → emerald About/Contact */
+#create{background:linear-gradient(180deg,var(--coal) 0%,var(--ink) 32%)}
 .marquee div{display:flex;width:max-content;animation:slide 32s linear infinite}
 .marquee span{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,5vw,56px);padding-right:.9em;white-space:nowrap;color:var(--cream)}
 .marquee span i{font-style:italic;color:var(--amber)}
@@ -373,7 +376,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(max-width:699px){.contact h2{font-size:clamp(38px,13.2vw,90px)}}
 
 /* about */
-.about{background:#000}
+.about{background:linear-gradient(180deg,#000 0%,var(--ink) 40%)}
 .about-grid{display:grid;gap:36px}
 .about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
@@ -400,7 +403,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:start}.about-txt{max-width:83.334%}}
 
 /* contact */
-.contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:#000}
+.contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
+  radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.16),transparent 70%),var(--ink)}
 .contact h2{font-size:clamp(44px,8.5vw,140px);line-height:.88;margin-top:20px}
 .contact h2 i{color:var(--amber)}
 .mail{display:inline-block;margin-top:34px;font-family:var(--display);font-size:clamp(26px,5vw,52px);border-bottom:1px solid var(--amber);padding-bottom:6px;text-transform:uppercase;transition:color .3s}
