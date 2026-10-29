@@ -348,9 +348,25 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-list li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:6px 18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
 .sx-list b{font-family:var(--head);font-weight:400;font-size:clamp(19px,1.8vw,24px);text-transform:uppercase;line-height:1.1}
 .sx-list span{color:var(--muted);font-size:14.5px;line-height:1.5}
-.sx-vals li{grid-template-columns:3ch 1fr}
-.sx-vals li i{font-style:normal;font-family:var(--text);font-weight:500;font-size:12px;letter-spacing:.2em;color:var(--amber)}
-@media(max-width:560px){.sx-list li{grid-template-columns:1fr}.sx-vals li{grid-template-columns:3ch 1fr}}
+/* values: number, title and a plus that opens the description */
+.sx-vals li{display:block;padding:0}
+.sx-vals .vq{display:grid;grid-template-columns:3rem minmax(0,1fr) auto;align-items:center;gap:14px;width:100%;min-height:60px;padding:14px 0;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.sx-vals .n{font-family:var(--display);font-size:clamp(30px,3vw,38px);line-height:1;color:var(--amber)}
+.sx-vals .pm{position:relative;width:32px;height:32px;border:1px solid var(--line);border-radius:50%;transition:transform .45s var(--ease),border-color .3s,background .3s}
+.sx-vals .pm::before,.sx-vals .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--amber);transform:translate(-50%,-50%)}
+.sx-vals .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+.sx-vals .vq:hover .pm{border-color:var(--amber)}
+.sx-vals .vq[aria-expanded=true] .pm{transform:rotate(45deg);border-color:var(--amber)}
+.sx-vals .va{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.sx-vals .va>div{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s .5s}
+.sx-vals .va.open{grid-template-rows:1fr}
+.sx-vals .va.open>div{visibility:visible;transition-delay:0s}
+.sx-vals .va p{padding:0 46px 18px calc(3rem + 14px);color:rgba(241,224,197,.8);font-size:clamp(15px,1.15vw,16px);line-height:1.7}
+/* use cases: amber line icon beside each direction */
+.sx-list:not(.sx-vals) li{grid-template-columns:30px minmax(0,.9fr) minmax(0,1.3fr);align-items:center}
+.sx-list .ic{display:grid;place-items:center;width:30px;height:30px;color:var(--amber)}
+.sx-list .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:560px){.sx-list li{grid-template-columns:1fr}.sx-list:not(.sx-vals) li{grid-template-columns:30px minmax(0,1fr);row-gap:2px}.sx-list:not(.sx-vals) li>span{grid-column:2}.sx-vals .va p{padding-right:0}}
 .sx-vision{margin-top:22px;color:var(--muted);font-size:15.5px;line-height:1.75;max-width:56ch}
 /* silent: CTA strip */
 .sx-strip{display:flex;flex-direction:column;gap:22px;align-items:flex-start;margin-top:clamp(48px,6vw,88px);padding:clamp(22px,3vw,36px) clamp(22px,3.4vw,48px);border-radius:var(--r);background:linear-gradient(90deg,#010604 0%,#020c08 35%,#041810 75%,#06201a 100%);box-shadow:0 18px 50px rgba(0,0,0,.35)}
@@ -584,10 +600,10 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
         <p class="lead" data-uk="SILENT — це моя любов до візуалу, музики й відчуттів, втілена в досвід, який лишається з людьми.">SILENT is my love of visuals, music and feeling, turned into an experience that stays with people.</p>
         <p data-uk="Тут спільність починається не з однаковості, а з вільного вибору. Кожен гість обирає власний канал і власну музику, але лишається частиною спільного моменту: сміється, танцює й зустрічається поглядом із тими, хто поруч.">Here togetherness starts not with sameness but with free choice. Every guest picks their own channel and music, yet stays part of a shared moment: laughing, dancing and meeting the eyes of the people nearby.</p>
         <ul class="sx-list sx-vals">
-          <li><i>01</i><b data-uk="Враження на першому місці">Experience comes first</b></li>
-          <li><i>02</i><b data-uk="Свобода бути собою">Freedom to be yourself</b></li>
-          <li><i>03</i><b data-uk="Продуманість у деталях">Care in the details</b></li>
-          <li><i>04</i><b data-uk="Просто долучитися">Easy to join</b></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val1"><span class="n">01</span><b data-uk="Враження на першому місці">Experience comes first</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val1"><div><p data-uk="Ми починаємо не з обладнання, а з того, що мають відчути люди. Тому шукаємо нові способи зробити знайомі формати подій цікавішими: з інтерактивністю, грою й несподіваними моментами.">We start not with equipment but with what people should feel. So we look for new ways to make familiar event formats more engaging: with interactivity, play and unexpected moments.</p></div></div></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val2"><span class="n">02</span><b data-uk="Свобода бути собою">Freedom to be yourself</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val2"><div><p data-uk="Ми поважаємо різні вподобання. Кожен гість обирає власний канал і спосіб брати участь, а спільність не вимагає від усіх слухати чи розважатися однаково.">We respect different tastes. Every guest picks their own channel and way of taking part, and togetherness doesn’t ask everyone to listen or have fun the same way.</p></div></div></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val3"><span class="n">03</span><b data-uk="Продуманість у деталях">Care in the details</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val3"><div><p data-uk="Продумана організація, зрозумілі домовленості й увага до потреб замовника важать для нас не менше, ніж сама технологія. Гості можуть не помітити цих деталей, але саме вони тримають подію.">Careful organisation, clear agreements and attention to the client’s needs matter to us as much as the technology itself. Guests may not notice these details, but they are what hold the event together.</p></div></div></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val4"><span class="n">04</span><b data-uk="Просто долучитися">Easy to join</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val4"><div><p data-uk="Незвичний формат не має означати складну організацію. Ми налаштовуємо обладнання й пояснюємо гостям, як усе працює, щоб вони швидко відчули себе частиною події.">An unusual format shouldn’t mean complicated organisation. We set up the equipment and show guests how everything works, so they quickly feel part of the event.</p></div></div></li>
         </ul>
         <p class="sx-vision" data-uk="Наше бачення — культура подій, де технології відкривають більше можливостей для взаємодії, творчості та свободи вибору, а люди можуть бути різними, залишаючись разом.">Our vision is an event culture where technology opens more room for interaction, creativity and freedom of choice, and people can be different while staying together.</p>
       </article>
@@ -597,12 +613,12 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
         <p class="lead" data-uk="SILENT підходить там, де люди хочуть бути разом, але кожен по-своєму.">SILENT fits wherever people want to be together, each in their own way.</p>
         <p data-uk="Ми привозимо все потрібне й беремо на себе організацію: підбір формату, доставку, налаштування й підтримку на місці. Вам лишається бути з гістьми.">We bring everything and handle the organisation: choosing the format, delivery, setup and on-site support. You simply stay with your guests.</p>
         <ul class="sx-list">
-          <li><b data-uk="Бізнес">Business</b><span data-uk="Корпоративи, конференції, бренд-активації">Corporate events, conferences, brand activations</span></li>
-          <li><b data-uk="Свята">Celebrations</b><span data-uk="Дні народження, весілля, випускні, дівич-вечори">Birthdays, weddings, graduations, hen parties</span></li>
-          <li><b data-uk="Діти й школи">Kids &amp; schools</b><span data-uk="Шкільні свята, табори, молодіжні зустрічі">School parties, camps, youth meetups</span></li>
-          <li><b data-uk="Освіта й культура">Education &amp; culture</b><span data-uk="Музеї, воркшопи, концерти, покази">Museums, workshops, concerts, shows</span></li>
-          <li><b data-uk="Спорт і wellness">Sport &amp; wellness</b><span data-uk="Йога, забіги, медитації">Yoga, runs, meditation</span></li>
-          <li><b data-uk="Спільноти">Communities</b><span data-uk="Фестивалі, ярмарки, інклюзивні події">Festivals, markets, inclusive events</span></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18"/></svg></i><b data-uk="Бізнес">Business</b><span data-uk="Корпоративи, конференції, бренд-активації">Corporate events, conferences, brand activations</span></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M3 7h18v3H3zM12 7v13M12 7C10.5 3.5 7 4 8 6.2 8.6 7 12 7 12 7zM12 7c1.5-3.5 5-3 4-.8C15.4 7 12 7 12 7z"/></svg></i><b data-uk="Свята">Celebrations</b><span data-uk="Дні народження, весілля, випускні, дівич-вечори">Birthdays, weddings, graduations, hen parties</span></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 19.5l1-4.2L15.8 5a2 2 0 0 1 2.9 0l.3.3a2 2 0 0 1 0 2.9L8.7 18.5zM14 6.8l3.2 3.2M5.5 15.3l3.2 3.2"/></svg></i><b data-uk="Діти й школи">Kids &amp; schools</b><span data-uk="Шкільні свята, табори, молодіжні зустрічі">School parties, camps, youth meetups</span></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M4.5 9.5h15M12 3.5l8 4H4zM6.5 10v8M10.2 10v8M13.8 10v8M17.5 10v8"/></svg></i><b data-uk="Освіта й культура">Education &amp; culture</b><span data-uk="Музеї, воркшопи, концерти, покази">Museums, workshops, concerts, shows</span></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l2.2-5 4 10 2.3-5H21"/></svg></i><b data-uk="Спорт і wellness">Sport &amp; wellness</b><span data-uk="Йога, забіги, медитації">Yoga, runs, meditation</span></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19.5c0-3.2 2.5-5.3 5.5-5.3s5.5 2.1 5.5 5.3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.8 14.3c2.7-.4 4.7 1.4 4.7 4.4"/></svg></i><b data-uk="Спільноти">Communities</b><span data-uk="Фестивалі, ярмарки, інклюзивні події">Festivals, markets, inclusive events</span></li>
         </ul>
       </article>
     </div>
@@ -667,6 +683,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('ope
 const moreBtn=document.querySelector('.about .more'),moreBox=document.getElementById('bio-more');
 function updMore(){const o=moreBtn.getAttribute('aria-expanded')==='true',uk=document.documentElement.lang==='uk';moreBtn.firstChild.textContent=o?(uk?'Згорнути':'Show less'):(uk?'Читати повністю':'Read more')}
 moreBtn.onclick=()=>{const o=moreBtn.getAttribute('aria-expanded')!=='true';moreBtn.setAttribute('aria-expanded',o);moreBox.classList.toggle('open',o);updMore()};
+document.querySelectorAll('.sx-vals .vq').forEach(b=>b.onclick=()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);b.nextElementSibling.classList.toggle('open',o)});
 const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.innerHTML);
 function setLang(l){L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
   document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.l===l);b.setAttribute('aria-pressed',b.dataset.l===l)});try{localStorage.setItem('lang',l)}catch(e){}}
