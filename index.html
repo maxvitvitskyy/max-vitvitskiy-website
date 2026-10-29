@@ -243,7 +243,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .reel .play::before{content:"";border-left:11px solid var(--ink);border-block:7px solid transparent;margin-left:3px}
 .topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(56px,7vw,96px)}
 .topics span{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:14px;color:var(--cream)}
-@media(min-width:900px){.topics span{flex:1 1 auto;text-align:center}}
+@media(min-width:900px){.topics span{flex:1 1 calc(20% - 10px);text-align:center}}
 /* phones: two rows that run past the screen edge and swipe sideways */
 @media(max-width:899px){
   .topics{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);justify-content:start;justify-items:start;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;
@@ -666,7 +666,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
       </div>
     </div>
     <div class="topics rv">
-      <span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span><span data-uk="Натхнення">Inspiration</span><span data-uk="Візуальне мислення">Visual thinking</span><span data-uk="Колір і композиція">Colour &amp; composition</span><span data-uk="Творча дисципліна">Creative discipline</span><span data-uk="Особистий бренд митця">Artist’s personal brand</span>
+      <span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span><span data-uk="Натхнення">Inspiration</span><span data-uk="Розвиток смаку">Developing taste</span>
     </div>
     <div class="channels rv">
       <a class="channel" href="https://www.youtube.com/@MaxVitvitskiy"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>YouTube</span><span data-uk="Відео та Shorts →">Videos & Shorts →</span></a>
