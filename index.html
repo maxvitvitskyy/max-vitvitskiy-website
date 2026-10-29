@@ -67,8 +67,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .nav{--navx:clamp(12px,3vw,40px);position:fixed;z-index:60;top:max(12px,env(safe-area-inset-top));left:var(--navx);right:var(--navx);max-width:1440px;margin-inline:auto;
   display:flex;align-items:center;justify-content:space-between;gap:16px;padding:5px 5px 5px 18px;border-radius:999px;
   background:rgba(1,17,10,.4);border:1px solid rgba(241,224,197,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);transition:background .4s}
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);transition:background .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
 .nav.solid{background:rgba(1,17,10,.62)}
+/* open menu: the bar dissolves into the menu background */
+.nav.menu-open{background:rgba(1,17,10,0);border-color:rgba(241,224,197,0);box-shadow:inset 0 1px 0 rgba(255,255,255,0);-webkit-backdrop-filter:none;backdrop-filter:none}
 .logo{display:block;height:44px;padding-block:9px;min-width:44px}
 .logo img{height:100%;width:auto}
 .nav-r{display:flex;align-items:center;gap:6px}
@@ -629,7 +631,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
 <script>
 const nav=document.getElementById('nav'),burger=document.getElementById('burger'),menu=document.getElementById('menu');
 addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
-function toggle(o){burger.setAttribute('aria-expanded',o);menu.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
+function toggle(o){burger.setAttribute('aria-expanded',o);nav.classList.toggle('menu-open',o);menu.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
 burger.onclick=()=>toggle(burger.getAttribute('aria-expanded')!=='true');
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){toggle(false);burger.focus()}});
