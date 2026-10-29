@@ -329,6 +329,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .exp{overflow:hidden;background:#000}
 .exp>.wrap{position:relative}
 .exp .sec-head h2{font-size:17.5vw}
+/* phones: Create / Inspire / Experience share one size, set so the longest word, Experience, fills the column (its width ≈ 3.62 × font-size) */
+@media(max-width:899px){.sec-head h2,.exp .sec-head h2{font-size:calc((100vw - 2*var(--gut))/3.7)}}
 @media(min-width:900px){
   .exp .sec-head{grid-template-columns:auto minmax(0,1fr);column-gap:clamp(24px,3.5vw,48px)}
   .exp .sec-head h2{font-size:var(--fs)}
@@ -453,7 +455,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(max-width:899px){.btn{min-height:50px;font-size:14px;padding:0 26px;gap:12px}.sec-head .sub{gap:22px}}
 /* tablet refinements */
 @media(min-width:600px) and (max-width:899px){
-  .sec-head h2{font-size:min(17.5vw,134px)}
+  .sec-head h2,.exp .sec-head h2{font-size:calc((100vw - 2*var(--gut))/3.7)}
   .sec-head .sub{justify-content:flex-start;gap:14px 32px}
   .about .about-img{aspect-ratio:4/3}
   .about .about-img img{object-position:50% 34%}
