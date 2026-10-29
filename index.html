@@ -125,6 +125,20 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   background:linear-gradient(to bottom,#ece8e0 0%,#e3c985 20%,#d29a2a 45%,#c8641c 72%,#9b2e20 100%);
   /* entrance: appears whole but molten, blurred and over-lit, then focuses sharp while the chaotic glow dies down */
   animation:archFocus 2.8s cubic-bezier(.3,.1,.25,1) both}
+/* aurora behind the arch once it has formed: soft ribbons that drift, lift and fade, very low key */
+.aurora{position:absolute;left:-75%;right:-75%;top:-22%;bottom:8%;pointer-events:none;mix-blend-mode:screen;filter:blur(26px);opacity:0;animation:fadeIn 2.5s ease 2.6s forwards}
+.aurora::before,.aurora::after{content:"";position:absolute;inset:0;border-radius:50%}
+.aurora::before{background:
+  linear-gradient(100deg,transparent 18%,rgba(255,166,48,.26) 32%,transparent 46%),
+  linear-gradient(78deg,transparent 46%,rgba(41,155,150,.18) 58%,transparent 70%);
+  background-size:180% 100%;animation:auroraA 17s ease-in-out infinite alternate}
+.aurora::after{background:
+  linear-gradient(84deg,transparent 30%,rgba(150,40,70,.28) 44%,transparent 58%),
+  linear-gradient(104deg,transparent 58%,rgba(255,200,120,.16) 68%,transparent 80%);
+  background-size:200% 100%;animation:auroraB 22s ease-in-out infinite alternate}
+@keyframes auroraA{0%{background-position:0% 50%;transform:translateY(4%) scaleY(.85) skewX(-6deg);opacity:.55}50%{background-position:60% 50%;transform:translateY(-6%) scaleY(1.1) skewX(4deg);opacity:1}100%{background-position:100% 50%;transform:translateY(2%) scaleY(.9) skewX(-3deg);opacity:.6}}
+@keyframes auroraB{0%{background-position:100% 50%;transform:translateY(-3%) scaleY(1.05) skewX(5deg);opacity:.8}45%{background-position:35% 50%;transform:translateY(5%) scaleY(.8) skewX(-5deg);opacity:.4}100%{background-position:0% 50%;transform:translateY(-5%) scaleY(1.15) skewX(2deg);opacity:.9}}
+@media(prefers-reduced-motion:reduce){.aurora{opacity:.7}}
 /* chaotic hot glow: three embers that jitter and bleed into each other, fading out as the arch sharpens */
 .arch::after{content:"";position:absolute;inset:-18% -30%;pointer-events:none;border-radius:50%;mix-blend-mode:screen;filter:blur(22px);
   background:radial-gradient(30% 26% at 30% 62%,rgba(255,120,30,.9),transparent 70%),radial-gradient(26% 24% at 70% 38%,rgba(255,214,140,.85),transparent 70%),radial-gradient(34% 30% at 50% 82%,rgba(220,50,20,.85),transparent 70%);
@@ -181,7 +195,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes navIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
 /* hero parallax: scroll depth (JS sets --py) */
-.arch,.arch-text,.seat-shadow,.hero-art::before{translate:0 calc(var(--py,0)*.16px)}
+.arch,.arch-text,.seat-shadow,.hero-art::before,.aurora{translate:0 calc(var(--py,0)*.16px)}
 .hero-fig,.hero-art::after{translate:0 calc(var(--py,0)*.07px)}
 .hero-name{translate:0 calc(var(--py,0)*-.03px)}
 .hero-copy{translate:0 calc(var(--py,0)*.05px)}
@@ -589,6 +603,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
 <section class="hero">
   <div class="hero-stage">
     <div class="hero-art">
+      <div class="aurora" aria-hidden="true"></div>
       <div class="arch" aria-hidden="true"></div>
       <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><g class="arch-chars" data-uk="· Художник · Experience-дизайнер · Креативний ментор ·">· Artist · Experience Designer · Creative Mentor ·</g></svg>
       <h1 class="hero-name display" translate="no">Max <i>Vitvitskiy</i></h1>
