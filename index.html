@@ -506,7 +506,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .about-grid{gap:44px}
 }
 @media(min-width:700px){.cols2{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,96px)}}
-@media(max-width:699px){.contact h2{font-size:clamp(38px,13.2vw,90px)}}
 
 /* about */
 /* long eased fade black → emerald, so no band shows */
@@ -550,6 +549,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   linear-gradient(180deg,var(--ink) 0%,#010c07 30%,#000604 55%,#000 78%)}
 .contact h2{font-size:clamp(44px,8.5vw,140px);line-height:.88;margin-top:20px}
 .contact h2 i{color:var(--amber)}
+/* phones/tablets: the Ukrainian two-line heading fills the column (its longer line ≈ 5.8 × font-size) */
+@media(max-width:899px){.contact h2{font-size:calc((100vw - 2*var(--gut))/6)}}
 .mail{display:inline-block;margin-top:34px;font-family:var(--display);font-size:clamp(26px,5vw,52px);border-bottom:1px solid var(--amber);padding-bottom:6px;text-transform:uppercase;transition:color .3s}
 .mail:hover{color:var(--amber)}
 .socials{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
