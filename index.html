@@ -49,7 +49,7 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--amber);outline-offset:4px}
-h1,h2,h3{text-wrap:balance}
+h1,h2,h3,h4,figcaption b{text-wrap:balance}
 section[id]{scroll-margin-top:56px}
 .skip{font-family:var(--text);position:fixed;left:var(--gut);top:12px;z-index:100;padding:10px 18px;border-radius:99px;background:var(--amber);color:var(--ink);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;transform:translateY(-200%);transition:transform .3s var(--ease)}
 .skip:focus-visible{transform:none}
@@ -70,11 +70,12 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   -webkit-mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 100%)}
 .nav.solid::before{opacity:1}
-.logo{display:block;height:30px;min-width:44px}
+.logo{display:block;height:44px;padding-block:7px;min-width:44px}
 .logo img{height:100%;width:auto}
 .nav-r{display:flex;align-items:center;gap:6px}
 .lang{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px}
-.lang button{background:none;border:0;color:var(--muted);font-family:var(--text);font-weight:500;font-size:12px;letter-spacing:.18em;padding:11px 14px;min-height:36px;border-radius:99px;cursor:pointer;transition:background .3s,color .3s}
+.lang button{position:relative;min-width:44px;background:none;border:0;color:var(--muted);font-family:var(--text);font-weight:500;font-size:12px;letter-spacing:.18em;padding:11px 14px;min-height:36px;border-radius:99px;cursor:pointer;transition:background .3s,color .3s}
+.lang button::after{content:"";position:absolute;inset:-4px 0}
 .lang button.on{background:var(--amber);color:var(--ink)}
 .ico{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--cream);transition:background .35s,color .35s,border-color .35s,transform .35s var(--ease)}
 .ico svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -90,6 +91,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .burger[aria-expanded=true] i:first-child{transform:translateY(4.25px) rotate(45deg)}
 .burger[aria-expanded=true] i:last-child{transform:translateY(-4.25px) rotate(-45deg)}
 .menu{position:fixed;inset:0;z-index:55;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:100px var(--gut) 40px;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s}
+.menu{overscroll-behavior:contain}
 .menu.open{opacity:1;visibility:visible}
 .menu a.big{font-family:var(--display);font-size:clamp(52px,16vw,96px);line-height:1.02;text-transform:uppercase;transform:translateY(24px);opacity:0;transition:transform .6s var(--ease),opacity .6s,color .3s}
 .menu.open a.big{transform:none;opacity:1}
@@ -107,9 +109,12 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .hero-art{--aw:min(31svh,54vw);--H:calc(var(--aw)/.66);position:relative;width:var(--aw);aspect-ratio:.66;margin-bottom:calc(var(--H)*.56)}
 .arch{position:absolute;inset:0;border-radius:999px 999px 0 0;
   background:linear-gradient(to bottom,#ece8e0 0%,#e3c985 20%,#d29a2a 45%,#c8641c 72%,#9b2e20 100%);
-  box-shadow:0 0 90px 4px rgba(214,140,30,.28),0 0 220px 40px rgba(196,80,26,.2);
-  animation:archIn 1.5s var(--ease) both,glow 6s ease-in-out 1.5s infinite alternate}
-@keyframes glow{from{box-shadow:0 0 70px 2px rgba(214,140,30,.22),0 0 190px 30px rgba(196,80,26,.16)}to{box-shadow:0 0 110px 8px rgba(230,150,40,.38),0 0 250px 50px rgba(196,80,26,.28)}}
+  animation:archIn 1.5s var(--ease) both}
+/* arch glow: a gradient layer pulsing on opacity (a blurred box-shadow got clipped into a visible rectangle and repainted every frame) */
+.hero-art::before{content:"";position:absolute;inset:-55% -95% -40%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(222,145,34,.34) 30%,rgba(196,80,26,.16) 62%,rgba(196,80,26,0) 100%);
+  animation:fadeIn 1.5s ease .3s both,glow 6s ease-in-out 1.8s infinite alternate}
+@keyframes glow{from{opacity:.7}to{opacity:1}}
 .arch-text{position:absolute;left:-22.22%;top:-14.67%;width:144.44%;height:106.33%;overflow:visible;pointer-events:none;}
 .arch-text .ch{animation:chIn .3s ease both}
 .arch-text text{font-family:var(--display);font-size:6.2px;text-transform:uppercase;fill:none;stroke:rgba(252,222,156,.85);stroke-width:.2}
@@ -131,7 +136,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes navIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
 /* hero parallax: scroll depth (JS sets --py) */
-.arch,.arch-text,.seat-shadow{translate:0 calc(var(--py,0)*.16px)}
+.arch,.arch-text,.seat-shadow,.hero-art::before{translate:0 calc(var(--py,0)*.16px)}
 .hero-fig{translate:0 calc(var(--py,0)*.07px)}
 .hero-name{translate:0 calc(var(--py,0)*-.03px)}
 .hero-copy{translate:0 calc(var(--py,0)*.05px)}
@@ -235,7 +240,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .talks{margin-top:clamp(40px,5vw,60px)}
 .teach{--fs:clamp(46px,9vw,110px);display:grid;gap:22px;margin-top:clamp(64px,8vw,110px)}
 .teach h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:var(--fs);line-height:.9}
-.teach p{font-size:clamp(15px,1.35vw,17px);line-height:1.7;text-wrap:pretty}
+.teach p{font-size:clamp(15px,1.35vw,17px);line-height:1.7;text-wrap:pretty;max-width:60ch}
 .teach .btn{margin-top:22px}
 @media(min-width:900px){
   .teach{grid-template-columns:repeat(6,1fr);column-gap:12px;align-items:end}
@@ -269,7 +274,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .duo .band-in{aspect-ratio:3/2}
 .duo .band-in::after{background:linear-gradient(180deg,rgba(1,17,10,0) 45%,rgba(1,17,10,.88) 100%)}
 .duo .cap{position:absolute;z-index:2;left:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,30px);bottom:clamp(16px,2.2vw,26px)}
-.duo .cap h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4.4vw,60px);line-height:.95}
+.duo .cap h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4.4vw,60px);line-height:.95}
 .duo .note{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
 @media(max-width:899px){.duo{gap:40px}}
 @media(min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:24px}.duo .band-in{aspect-ratio:5/4}}
@@ -310,7 +315,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-block{padding-top:22px;border-top:1px solid var(--line)}
 .sx-eyebrow{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--amber)}
 .sx-block h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(34px,4.2vw,60px);line-height:.95;margin:16px 0 20px}
-.sx-block .lead{font-family:var(--text);font-size:clamp(20px,1.9vw,25px);line-height:1.32;color:var(--sand);margin-bottom:14px}
+.sx-block .lead{text-wrap:pretty;font-family:var(--text);font-size:clamp(20px,1.9vw,25px);line-height:1.32;color:var(--sand);margin-bottom:14px}
 .sx-block p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:56ch}
 .sx-list{list-style:none;margin-top:24px;border-top:1px solid var(--line)}
 .sx-list li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:6px 18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
@@ -327,6 +332,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-strip small{display:block;margin-top:8px;color:var(--muted);font-size:15px;line-height:1.5}
 .sx-strip .go{white-space:normal;text-align:center;line-height:1.3;padding-block:14px;max-width:100%}
 @media(max-width:899px){.sx-strip .go{width:100%}}
+@media(max-width:599px){.sx-strip .go .dom{display:none}}
 @media(min-width:900px){.sx-strip .go{flex:none}}
 @media(min-width:900px){.sx-strip{flex-direction:row;align-items:center;gap:clamp(20px,3vw,40px)}.sx-strip .txt{flex:1}}
 
@@ -334,7 +340,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .cols2{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,4vw,48px);margin-top:clamp(36px,4.5vw,64px)}
 @media(min-width:900px){.cols2{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,96px)}}
 .cols2 .col{padding-top:20px;border-top:1px solid var(--line)}
-.cols2 h4{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(26px,2.8vw,38px);line-height:1;margin-bottom:14px}
+.cols2 h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(26px,2.8vw,38px);line-height:1;margin-bottom:14px}
 .cols2 p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
 
 @media(max-width:899px){.btn{min-height:50px;font-size:14px;padding:0 26px;gap:12px}.sec-head .sub{gap:22px}}
@@ -343,7 +349,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .sec-head h2{font-size:min(17.5vw,134px)}
   .sec-head .sub{justify-content:flex-start;gap:14px 32px}
   .about .about-img{aspect-ratio:4/3}
-  .about .about-img img{object-position:50% 22%}
+  .about .about-img img{object-position:50% 8%}
   .about-grid{gap:44px}
 }
 @media(min-width:700px){.cols2{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,96px)}}
@@ -373,6 +379,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .socials{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
 .fl{display:block;width:min(105px,17.5vw);height:auto;margin:48px auto 0;opacity:.95}
 footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+@media(max-width:599px){footer{flex-direction:column;align-items:center;text-align:center}}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
@@ -447,12 +454,12 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="wrap sec-foot rv"><span class="hint" data-uk="Гортай →">Swipe →</span><span class="hint" data-uk="Обрані роботи · Доступні роботи">Selected works · Available works</span></div>
   <div class="wrap duo rv">
     <figure class="band">
-      <div class="band-in"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><h4 data-uk="Картини під замовлення">Commissioned paintings</h4></div></div>
+      <div class="band-in"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><h3 data-uk="Картини під замовлення">Commissioned paintings</h3></div></div>
       <p class="note" data-uk="Я можу створити унікальну авторську картину спеціально для вас: персональний арт-проєкт, оформлення простору або подарунок із глибоким змістом. Ваш задум, моя інтерпретація, і разом ми створимо витвір, що стане сенсовим акцентом у вашому просторі.">I can create a unique original painting just for you: a personal art project, a space design or a gift with deep meaning. Your idea, my interpretation, and together we create a piece that becomes a meaningful accent in your space.</p>
     </figure>
     <figure class="band">
-      <div class="band-in"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><h4 data-uk="Картини з колекції">Paintings from the collection</h4></div></div>
-      <p class="note" data-uk="У мене також є готові роботи, які вже зараз ви можете придбати для своєї колекції, інтерʼєру чи бізнес-простору. Кожна картина створюється на полотні музейної якості, має обмежений тираж і сертифікат автентичності.">I also have finished works you can buy right now for your collection, interior or business space. Each painting is made on museum-quality canvas, in a limited edition, with a certificate of authenticity.</p>
+      <div class="band-in"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><h3 data-uk="Картини з колекції">Paintings from the collection</h3></div></div>
+      <p class="note" data-uk="У мене також є готові роботи, які вже зараз ви можете придбати для своєї колекції, інтер’єру чи бізнес-простору. Кожна картина створюється на полотні музейної якості, має обмежений тираж і сертифікат автентичності.">I also have finished works you can buy right now for your collection, interior or business space. Each painting is made on museum-quality canvas, in a limited edition, with a certificate of authenticity.</p>
     </figure>
   </div>
 </section>
@@ -489,11 +496,11 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     </div>
     <div class="cols2 rv">
       <div class="col">
-        <h4 data-uk="Спікінг, тренінги, майстер-класи">Speaking, trainings, masterclasses</h4>
+        <h3 data-uk="Спікінг, тренінги, майстер-класи">Speaking, trainings, masterclasses</h3>
         <p data-uk="Творчість можна відчути, але її також можна навчитися розуміти й розвивати. Я ділюся досвідом із митцями, дизайнерами та всіма творчими людьми, хто шукає натхнення й хоче вийти за межі шаблонного мислення. Моє завдання не просто передати знання, а запалити вогонь і допомогти розкрити творчий потенціал.">Creativity can be felt, but it can also be learned, understood and developed. I share my experience with artists, designers and everyone creative who looks for inspiration and wants to step beyond template thinking. My goal is not only to pass on knowledge, but to light a fire and help unlock creative potential.</p>
       </div>
       <div class="col">
-        <h4 data-uk="Творчий коучинг та індивідуальні уроки">Creative coaching and private lessons</h4>
+        <h3 data-uk="Творчий коучинг та індивідуальні уроки">Creative coaching and private lessons</h3>
         <p data-uk="Кожен творчий шлях унікальний, і я допоможу знайти баланс між інтуїцією та технікою, ідеями та їх реалізацією. Навчання адаптоване до твоїх потреб: від основ композиції, кольору та візуального стилю до глибокого розуміння концепції та розвитку унікального творчого почерку.">Every creative path is unique, and I will help you find the balance between intuition and technique, ideas and their realisation. The teaching adapts to your needs: from the basics of composition, colour and visual style to a deep understanding of concept and the growth of your own creative signature.</p>
       </div>
     </div>
@@ -555,7 +562,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
         <h3 data-uk="Розкажіть про ідею вашої події">Tell us your event idea</h3>
         <small data-uk="Разом підберемо формат. Від 40 гостей, налаштування займає близько 30 хвилин.">We will find the format together. From 40 guests, setup takes about 30 minutes.</small>
       </div>
-      <a class="btn fill go" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Перевірити дату на silent.org.ua →">Check a date on silent.org.ua →</a>
+      <a class="btn fill go" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="<span>Перевірити дату<span class='dom'> на silent.org.ua</span></span> →"><span>Check a date<span class="dom"> on silent.org.ua</span></span> →</a>
     </div>
   </div>
 </section>
@@ -567,7 +574,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <div class="rv">
       <span class="eyebrow" data-uk="Про мене">About</span>
       <h2 class="display" translate="no">Max<br><i>Vitvitskiy</i></h2>
-      <p data-uk="Художник, experience-дизайнер і креативний ментор, що досліджує перетин мистецтва, творчості, технологій, музики, духовності та людського звʼязку.">An artist, experience designer and creative mentor exploring the intersection of art, creativity, technology, music, spirituality and human connection.</p>
+      <p data-uk="Художник, experience-дизайнер і креативний ментор, що досліджує перетин мистецтва, творчості, технологій, музики, духовності та людського зв’язку.">An artist, experience designer and creative mentor exploring the intersection of art, creativity, technology, music, spirituality and human connection.</p>
       <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span></div>
     </div>
   </div>
@@ -592,6 +599,7 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
 function toggle(o){burger.setAttribute('aria-expanded',o);menu.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
 burger.onclick=()=>toggle(burger.getAttribute('aria-expanded')!=='true');
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){toggle(false);burger.focus()}});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){toggle(false);burger.focus()}});
 const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.innerHTML);
 function setLang(l){L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();
