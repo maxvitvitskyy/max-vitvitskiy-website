@@ -115,6 +115,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   background:radial-gradient(closest-side,rgba(222,145,34,.34) 30%,rgba(196,80,26,.16) 62%,rgba(196,80,26,0) 100%);
   animation:fadeIn 1.5s ease .3s both,glow 6s ease-in-out 1.8s infinite alternate}
 @keyframes glow{from{opacity:.7}to{opacity:1}}
+/* shade under the feet: page ink, so the arch glow does not light the floor */
+.hero-art::after{content:"";position:absolute;z-index:0;left:50%;top:150%;width:230%;height:62%;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(1,17,10,.92),rgba(1,17,10,.6) 50%,rgba(1,17,10,0) 100%)}
 .arch-text{position:absolute;left:-22.22%;top:-14.67%;width:144.44%;height:106.33%;overflow:visible;pointer-events:none;}
 .arch-text .ch{animation:chIn .3s ease both}
 .arch-text text{font-family:var(--display);font-size:6.2px;text-transform:uppercase;fill:none;stroke:rgba(252,222,156,.85);stroke-width:.2}
@@ -137,7 +140,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @keyframes navIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
 /* hero parallax: scroll depth (JS sets --py) */
 .arch,.arch-text,.seat-shadow,.hero-art::before{translate:0 calc(var(--py,0)*.16px)}
-.hero-fig{translate:0 calc(var(--py,0)*.07px)}
+.hero-fig,.hero-art::after{translate:0 calc(var(--py,0)*.07px)}
 .hero-name{translate:0 calc(var(--py,0)*-.03px)}
 .hero-copy{translate:0 calc(var(--py,0)*.05px)}
 .hero-copy p{animation:fadeUp 1s var(--ease) 1.6s both}
