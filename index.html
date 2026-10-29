@@ -123,15 +123,18 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .hero-art{--aw:min(31svh,54vw);--H:calc(var(--aw)/.66);position:relative;width:var(--aw);aspect-ratio:.66;margin-bottom:calc(var(--H)*.56)}
 .arch{position:absolute;inset:0;border-radius:999px 999px 0 0;
   background:linear-gradient(to bottom,#ece8e0 0%,#e3c985 20%,#d29a2a 45%,#c8641c 72%,#9b2e20 100%);
-  /* entrance: fills from the bottom like a rising flame (soft edge, a tongue leading in the middle), blurred and hot, then settles sharp */
-  -webkit-mask:radial-gradient(ellipse 58% 20% at 50% calc(100% - var(--f)),#000 30%,transparent 72%),linear-gradient(to top,#000 calc(var(--f) - 14%),transparent var(--f));
-  mask:radial-gradient(ellipse 58% 20% at 50% calc(100% - var(--f)),#000 30%,transparent 72%),linear-gradient(to top,#000 calc(var(--f) - 14%),transparent var(--f));
-  animation:archFire 2.6s cubic-bezier(.45,.1,.55,.95) both,archFocus 3s cubic-bezier(.4,.2,.3,1) both}
+  /* entrance: appears whole but molten, blurred and over-lit, then focuses sharp while the chaotic glow dies down */
+  animation:archFocus 2.8s cubic-bezier(.3,.1,.25,1) both}
+/* chaotic hot glow: three embers that jitter and bleed into each other, fading out as the arch sharpens */
+.arch::after{content:"";position:absolute;inset:-18% -30%;pointer-events:none;border-radius:50%;mix-blend-mode:screen;filter:blur(22px);
+  background:radial-gradient(30% 26% at 30% 62%,rgba(255,120,30,.9),transparent 70%),radial-gradient(26% 24% at 70% 38%,rgba(255,214,140,.85),transparent 70%),radial-gradient(34% 30% at 50% 82%,rgba(220,50,20,.85),transparent 70%);
+  background-size:120% 120%;animation:embers 2.8s linear both}
 /* arch glow: a gradient layer pulsing on opacity (a blurred box-shadow got clipped into a visible rectangle and repainted every frame) */
 .hero-art::before{content:"";position:absolute;inset:-55% -95% -40%;pointer-events:none;
   background:radial-gradient(closest-side,rgba(222,145,34,.34) 30%,rgba(196,80,26,.16) 62%,rgba(196,80,26,0) 100%);
-  animation:fadeIn 1.5s ease .3s both,glow 6s ease-in-out 1.8s infinite alternate}
+  animation:flare 2.8s linear both,glow 6s ease-in-out 2.8s infinite alternate}
 @keyframes glow{from{opacity:.7}to{opacity:1}}
+@keyframes flare{0%{opacity:0;transform:scale(.8)}9%{opacity:1;transform:scale(1.18)}16%{opacity:.55;transform:scale(1.05)}24%{opacity:1;transform:scale(1.22)}31%{opacity:.6;transform:scale(1.08)}40%{opacity:.95;transform:scale(1.15)}50%{opacity:.65;transform:scale(1.04)}62%{opacity:.9;transform:scale(1.09)}76%{opacity:.75;transform:scale(1.02)}100%{opacity:.7;transform:scale(1)}}
 /* shade under the feet: page ink, so the arch glow does not light the floor */
 .hero-art::after{content:"";position:absolute;z-index:0;left:50%;top:150%;width:230%;height:62%;transform:translate(-50%,-50%);pointer-events:none;
   background:radial-gradient(closest-side,rgba(13,13,12,.92),rgba(13,13,12,.6) 50%,rgba(13,13,12,0) 100%)}
@@ -151,9 +154,27 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* tablets: the larger name sits a touch higher so it clears the tagline */
 @media(min-width:600px) and (max-width:899px){.hero-name{top:62%;font-size:min(calc(var(--H)*.4),26vw)}}
 @keyframes rise{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
-@property --f{syntax:'<percentage>';inherits:false;initial-value:140%}
-@keyframes archFire{from{--f:0%}to{--f:140%}}
-@keyframes archFocus{from{filter:blur(14px) saturate(1.7) brightness(1.3)}55%{filter:blur(5px) saturate(1.3) brightness(1.12)}to{filter:blur(0) saturate(1) brightness(1)}}
+@keyframes archFocus{
+  0%{opacity:0;filter:blur(30px) brightness(1.6) saturate(1.8)}
+  12%{opacity:1;filter:blur(26px) brightness(1.75) saturate(1.8)}
+  24%{filter:blur(22px) brightness(1.35) saturate(1.7)}
+  33%{filter:blur(19px) brightness(1.6) saturate(1.6)}
+  45%{filter:blur(14px) brightness(1.25) saturate(1.5)}
+  56%{filter:blur(10px) brightness(1.45) saturate(1.4)}
+  70%{filter:blur(5px) brightness(1.15) saturate(1.2)}
+  84%{filter:blur(1.5px) brightness(1.05) saturate(1.05)}
+  100%{opacity:1;filter:blur(0) brightness(1) saturate(1)}}
+@keyframes embers{
+  0%{opacity:0;background-position:50% 50%;transform:scale(.9)}
+  8%{opacity:1;background-position:38% 60%;transform:scale(1.08) rotate(-4deg)}
+  17%{opacity:.75;background-position:64% 42%;transform:scale(.96) rotate(5deg)}
+  26%{opacity:1;background-position:44% 30%;transform:scale(1.12) rotate(-2deg)}
+  35%{opacity:.7;background-position:58% 66%;transform:scale(1) rotate(6deg)}
+  45%{opacity:.9;background-position:36% 48%;transform:scale(1.06) rotate(-5deg)}
+  56%{opacity:.55;background-position:62% 36%;transform:scale(.98) rotate(3deg)}
+  68%{opacity:.6;background-position:46% 58%;transform:scale(1.04)}
+  82%{opacity:.25;background-position:54% 50%;transform:scale(1)}
+  100%{opacity:0;background-position:50% 50%;transform:scale(1)}}
 @keyframes chIn{from{stroke-opacity:0}to{stroke-opacity:.85}}
 @keyframes nameIn{from{opacity:0;transform:translateX(-50%) translateY(46px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:translateX(-50%);clip-path:inset(-40% -10% -70% -10%)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
