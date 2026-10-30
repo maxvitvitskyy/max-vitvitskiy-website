@@ -432,7 +432,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .exp .sec-head::after{content:"";display:table;clear:both}
   .exp .sec-head .num{display:block;margin-bottom:18px}
   .exp .sec-head h2{position:relative;z-index:1;margin-bottom:calc(var(--lift)*-1)}
-  .exp .sec-head .sub{display:block;position:relative;margin-top:calc(clamp(16px,4vw,26px) + var(--lift));padding-bottom:44px}
+  .exp .sec-head .sub{display:block;position:relative;margin-top:calc(clamp(16px,4vw,26px) + var(--lift));padding-bottom:55px}
   .exp .sec-head .sub p{max-width:none;font-size:clamp(16px,4.7vw,22px);line-height:1.22;margin-bottom:18px;text-wrap:pretty;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:6 3 3;overflow-wrap:break-word}
   .exp .sec-head .btn{position:absolute;left:0;bottom:0;z-index:4;white-space:nowrap;width:auto;min-height:44px;padding:0 18px 0 22px;gap:10px;font-size:12.5px;letter-spacing:.1em}
   .exp-girl{position:relative;z-index:3;float:right;width:var(--gw);margin:0 calc(var(--bleed)*-1) -28px 0;
@@ -516,6 +516,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-links a::after{content:"";flex:none;width:1.1em;height:.65em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
 .sx-links a:hover{border-color:var(--amber);color:var(--amber)}
 .sx-links a:hover::after{transform:translateX(4px)}
+@media(min-width:900px) and (max-width:1199px){.sx-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* phones: one roomy row with arrows; it may run past the screen edge and swipe, like the card strip above */
 @media(max-width:599px){
   .sx-links{display:flex;gap:8px;overflow-x:auto;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scrollbar-width:none;scroll-snap-type:x proximity;scroll-padding-inline:var(--gut)}
@@ -823,7 +824,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
           <a href="https://silent.org.ua/experiences/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/" data-href-en="https://silent.org.ua/en/experiences/" data-uk="Формати">Formats</a>
           <a href="https://silent.org.ua/about/" target="_blank" rel="noopener" data-uk="Про SILENT">About SILENT</a>
           <a href="https://silent.org.ua/faq/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/faq/" data-href-en="https://silent.org.ua/en/faq/" data-uk="Питання">FAQ</a>
-          <a href="https://silent.org.ua/blog/" target="_blank" rel="noopener" data-uk="Блог">Blog</a>
+          <a href="https://silent.org.ua/blog/" target="_blank" rel="noopener" data-uk="Блог SILENT">Blog SILENT</a>
         </nav>
       </article>
       <article class="sx-block">
