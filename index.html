@@ -429,7 +429,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:24px}.duo .band-in{aspect-ratio:5/4}}
 
 /* experience */
-.exp{overflow:visible;overflow-x:clip;background:#000}
+.exp{--fl:calc(var(--section) + 230px);overflow:visible;overflow-x:clip;background:linear-gradient(to top,#1d1006 0,#1c1006 calc(var(--fl)*0.1),#1a0e05 calc(var(--fl)*0.2),#170d05 calc(var(--fl)*0.3),#130a04 calc(var(--fl)*0.4),#0e0803 calc(var(--fl)*0.5),#0a0602 calc(var(--fl)*0.6),#060301 calc(var(--fl)*0.7),#030201 calc(var(--fl)*0.8),#010000 calc(var(--fl)*0.9),#000000 calc(var(--fl)*1)) bottom/100% var(--fl) no-repeat,#000}
 .exp>.wrap{position:relative}
 .exp .sec-head h2{font-size:17.5vw}
 /* phones: Create / Inspire / Experience share one size, set so the longest word, Experience, fills the column (its width ≈ 3.62 × font-size) */
@@ -605,8 +605,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(min-width:700px){.cols2{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,96px)}}
 
 /* about */
-/* long eased fade black → emerald, so no band shows */
-.about{background:linear-gradient(180deg,#000000 0%,#010000 6%,#030201 14%,#070401 22%,#0b0602 30%,#100903 38%,#150c04 46%,#190e05 54%,#1c0f06 62%,#1d1006 70%,#1d1006 100%)}
+/* warm glow-brown: fades in from black at the event-idea card, holds behind the photo and text, back to black before Contact */
+.about{background:linear-gradient(180deg,#1d1006 0%,#1d1006 55%,#1b0f06 62%,#160c05 69%,#100903 76%,#090502 83%,#040201 90%,#000000 100%)}
 .about-grid{display:grid;gap:36px}
 .about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
@@ -643,7 +643,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* contact */
 .contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
   radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.14),transparent 70%),
-  linear-gradient(180deg,#1d1006 0%,#130b04 30%,#0a0603 55%,#000 78%)}
+  #000}
 .contact h2{font-size:clamp(44px,8.5vw,140px);line-height:.88;margin-top:20px}
 .contact h2 i{color:var(--amber)}
 /* phones/tablets: the Ukrainian two-line heading fills the column (its longer line ≈ 5.8 × font-size) */
