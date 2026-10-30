@@ -56,7 +56,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:dark;background:var(--coal)}
-html.at-end{background:var(--ink)}
+html.at-end{background:#000}
 body{background:var(--coal);color:var(--cream);font-family:var(--body);font-weight:400;font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -606,7 +606,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 
 /* about */
 /* long eased fade black → emerald, so no band shows */
-.about{background:linear-gradient(180deg,#000000 0%,#000000 6%,#000101 14%,#000201 22%,#000402 30%,#000503 38%,#000704 46%,#010a06 54%,#010c07 62%,#010d08 70%,#010f09 78%,#011009 86%,#01110a 94%,#01110a 100%)}
+.about{background:linear-gradient(180deg,#000000 0%,#010000 6%,#030201 14%,#070401 22%,#0b0602 30%,#100903 38%,#150c04 46%,#190e05 54%,#1c0f06 62%,#1d1006 70%,#1d1006 100%)}
 .about-grid{display:grid;gap:36px}
 .about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
@@ -643,7 +643,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* contact */
 .contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
   radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.14),transparent 70%),
-  linear-gradient(180deg,var(--ink) 0%,#010c07 30%,#000604 55%,#000 78%)}
+  linear-gradient(180deg,#1d1006 0%,#130b04 30%,#0a0603 55%,#000 78%)}
 .contact h2{font-size:clamp(44px,8.5vw,140px);line-height:.88;margin-top:20px}
 .contact h2 i{color:var(--amber)}
 /* phones/tablets: the Ukrainian two-line heading fills the column (its longer line ≈ 5.8 × font-size) */
@@ -939,7 +939,7 @@ function buildRings(l){const w=l==='uk'?'ДИВИТИСЯ':'WATCH',n=l==='uk'?3:
 function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn,.work .cap span,.channel>span:last-child').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
   document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.l===l);b.setAttribute('aria-pressed',b.dataset.l===l)});try{localStorage.setItem('lang',l)}catch(e){}}
 document.addEventListener('click',e=>{const a=e.target.closest('a[href="#"]');if(a)e.preventDefault()});
-/* the area Safari reveals when you pull past the page edge: hero colour on top, footer colour at the bottom */
+/* the area Safari reveals when you pull past the page edge: hero colour on top, the black page end at the bottom */
 {const de=document.documentElement,chk=()=>de.classList.toggle('at-end',scrollY>0&&innerHeight+scrollY>=de.scrollHeight-2);addEventListener('scroll',chk,{passive:true});chk()}
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}
