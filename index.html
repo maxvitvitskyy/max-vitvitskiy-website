@@ -225,7 +225,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .cta:last-child{border-bottom:0}
 .cta b{font-family:var(--head);font-weight:400;font-size:34px;letter-spacing:.03em;text-transform:uppercase;display:block;line-height:1}
 .cta small{font-size:14px;color:var(--muted);letter-spacing:.04em}
-.cta .arr{font-size:26px;color:var(--amber);transition:transform .4s var(--ease)}
+.cta .arr{width:36px;height:20px;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .4s var(--ease)}
 .cta:hover{background:rgba(255,166,48,.05)}.cta:hover .arr{transform:translateX(8px)}
 @media(min-width:900px){
   .cta-row{grid-template-columns:repeat(3,1fr)}
@@ -284,6 +284,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .work .cap{display:flex;justify-content:space-between;gap:12px;padding-top:14px;align-items:baseline}
 .work .cap b{font-family:var(--head);font-weight:400;font-size:26px;text-transform:uppercase;letter-spacing:.02em}
 .work .cap span{font-size:14px;color:var(--muted);white-space:nowrap}
+.work .cap .ar,.channel>span .ar{display:inline-block;flex:none;vertical-align:middle;width:1.25em;height:.7em;margin:-.1em 0 0 .5em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .45s var(--ease)}
+.work:hover .cap .ar,.work:focus-visible .cap .ar,.channel:hover>span .ar,.channel:focus-visible>span .ar{transform:translateX(6px)}
+.btn:hover .ar,.btn:focus-visible .ar,.cta:focus-visible .arr{transform:translateX(3px)}
+.btn .ar{transition:transform .4s var(--ease)}
 .sec-foot{margin-top:clamp(18px,2.5vw,28px);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
 .hint{font-family:var(--text);font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .hint.swipe{display:inline-flex;align-items:center;gap:14px}
@@ -406,7 +410,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .duo .band{display:flex;flex-direction:column}
 .duo .note{flex:1}
 .btn-lite{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:22px;padding:0 22px;border:1px solid rgba(241,224,197,.28);border-radius:99px;font-size:13px;letter-spacing:.06em;color:var(--cream);transition:border-color .3s,color .3s,gap .3s var(--ease)}
-.btn-lite::after{content:"";flex:none;width:1.1em;height:.65em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
+.btn-lite::after{content:"";flex:none;width:1.25em;height:.7em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
 .btn-lite:hover{border-color:var(--amber);color:var(--amber)}
 .btn-lite:hover::after{transform:translateX(4px)}
 .btn-lite:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
@@ -517,11 +521,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-uses .ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .sx-uses span{font-size:13.5px;line-height:1.45}
 .sx-more{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;min-height:36px;font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);transition:gap .35s var(--ease),color .3s}
-.sx-more::after{content:"";width:1.2em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
-.sx-more:hover{gap:14px;color:var(--sand)}
+.sx-more::after{content:"";flex:none;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
+.sx-more:hover{color:var(--sand)}.sx-more:hover::after,.sx-more:focus-visible::after{transform:translateX(5px)}
 .sx-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:28px}
 .sx-links a{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:0 10px;white-space:nowrap;border:1px solid var(--line);border-radius:99px;font-size:13.5px;color:var(--cream);transition:border-color .3s,color .3s,background .3s}
-.sx-links a::after{content:"";flex:none;width:1.1em;height:.65em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
+.sx-links a::after{content:"";flex:none;width:1.25em;height:.7em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
 .sx-links a:hover{border-color:var(--amber);color:var(--amber)}
 .sx-links a:hover::after{transform:translateX(4px)}
 @media(min-width:900px) and (max-width:1199px){.sx-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -698,9 +702,9 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     </div>
   </div>
   <div class="cta-row">
-    <a class="cta" href="#create"><div><b>Create</b><small data-uk="Досліджуй моє мистецтво">Explore my art</small></div><span class="arr">→</span></a>
-    <a class="cta" href="#inspire"><div><b>Inspire</b><small data-uk="Ідеї для творчих людей">Ideas for creative people</small></div><span class="arr">→</span></a>
-    <a class="cta" href="#experience"><div><b>Experience</b><small data-uk="Відкрий SILENT">Discover SILENT</small></div><span class="arr">→</span></a>
+    <a class="cta" href="#create"><div><b>Create</b><small data-uk="Досліджуй моє мистецтво">Explore my art</small></div><span class="arr" aria-hidden="true"></span></a>
+    <a class="cta" href="#inspire"><div><b>Inspire</b><small data-uk="Ідеї для творчих людей">Ideas for creative people</small></div><span class="arr" aria-hidden="true"></span></a>
+    <a class="cta" href="#experience"><div><b>Experience</b><small data-uk="Відкрий SILENT">Discover SILENT</small></div><span class="arr" aria-hidden="true"></span></a>
   </div>
 </section>
 
@@ -923,7 +927,7 @@ const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.inner
 function buildRings(l){const w=l==='uk'?'ДИВИТИСЯ':'WATCH',n=l==='uk'?3:4,t=[...(w+' · ').repeat(n)];
   document.querySelectorAll('.reel .play').forEach(pl=>{let r=pl.querySelector('.ring');if(!r){r=document.createElement('span');r.className='ring';r.setAttribute('aria-hidden','true');pl.appendChild(r)}
     r.innerHTML=t.map((c,i)=>'<b style="transform:rotate('+(i*360/t.length).toFixed(2)+'deg)">'+(c===' '?'&nbsp;':c)+'</b>').join('')})}
-function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
+function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn,.work .cap span,.channel>span:last-child').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
   document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.l===l);b.setAttribute('aria-pressed',b.dataset.l===l)});try{localStorage.setItem('lang',l)}catch(e){}}
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}
