@@ -427,26 +427,26 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   background:radial-gradient(closest-side at 50% 44%,rgba(255,170,64,.30) 0%,rgba(255,140,44,.14) 46%,rgba(255,120,30,0) 100%)}
 .exp .sec-head .sub .dsk{display:none}
 @media(max-width:899px){
-  .exp .sec-head{--gw:min(60vw,338px);display:block}
+  .exp .sec-head{--gw:min(68vw,380px);--bleed:min(calc(var(--gut) + 8vw),56px);display:block}
   .exp .sec-head::after{content:"";display:table;clear:both}
   .exp .sec-head .num{display:block;margin-bottom:18px}
   .exp .sec-head h2{position:relative;z-index:1}
   .exp .sec-head .sub{display:block;position:relative;margin-top:clamp(16px,4vw,26px);padding-bottom:44px}
-  .exp .sec-head .sub p{max-width:none;font-size:clamp(15px,4.3vw,21px);line-height:1.22;margin-bottom:18px;text-wrap:pretty}
+  .exp .sec-head .sub p{max-width:none;font-size:clamp(16px,4.7vw,22px);line-height:1.22;margin-bottom:18px;text-wrap:pretty;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:6 3 3;overflow-wrap:break-word}
   .exp .sec-head .btn{position:absolute;left:0;bottom:0;z-index:4;white-space:nowrap;width:auto;min-height:44px;padding:0 18px 0 22px;gap:10px;font-size:12.5px;letter-spacing:.1em}
-  .exp-girl{position:relative;z-index:3;float:right;width:var(--gw);margin:calc((100vw - 2*var(--gut))/3.7*-.2) 0 -28px 12px;translate:calc(var(--gut) + 5vw) 0;
+  .exp-girl{position:relative;z-index:3;float:right;width:var(--gw);margin:calc((100vw - 2*var(--gut))/3.7*-.58) calc(var(--bleed)*-1) -28px 12px;
     shape-outside:url("img/silent/girl-560.webp");shape-image-threshold:.3;shape-margin:10px}
-  .exp-glow{right:-5vw;width:var(--gw);margin-top:calc((100vw - 2*var(--gut))/3.7*-.2)}
+  .exp-glow{right:calc(var(--gut) - var(--bleed));width:var(--gw);margin-top:calc((100vw - 2*var(--gut))/3.7*-.58)}
 }
-@media(max-width:389px){.exp .sec-head{--gw:55vw}}
-@media(min-width:600px) and (max-width:899px){.exp .sec-head .sub p{font-size:clamp(19px,3.2vw,26px)}}
+@media(max-width:389px){.exp .sec-head{--gw:62vw}}
+@media(min-width:600px) and (max-width:899px){.exp .sec-head .sub p{font-size:clamp(20px,3.4vw,27px)}}
 @media(min-width:900px){
   .exp .sec-head{grid-template-columns:calc(var(--fs)*3.62) minmax(0,1fr);grid-template-rows:auto auto auto 1fr;column-gap:0;align-items:start}
   .exp .sec-head .num{grid-column:1;grid-row:1}
   .exp .sec-head h2{grid-column:1;grid-row:2;position:relative;z-index:1}
   .exp .sec-head .sub{grid-column:1;grid-row:3;align-self:start;margin-top:0;padding:0;gap:clamp(18px,1.8vw,28px);justify-content:flex-start}
   .exp .sec-head .sub .dsk{display:inline}
-  .exp .sec-head .sub p{max-width:calc(var(--fs)*3.35);font-size:clamp(19px,calc(var(--fs)*.14),28px);line-height:1.2;text-wrap:pretty}
+  .exp .sec-head .sub p{hyphens:none;-webkit-hyphens:none;max-width:calc(var(--fs)*3.35);font-size:clamp(19px,calc(var(--fs)*.14),28px);line-height:1.2;text-wrap:pretty}
   .exp-girl,.exp-glow{grid-column:2;grid-row:1/5;align-self:end;justify-self:start;width:min(100%,calc(var(--fs)*2.4));margin:0 0 calc(clamp(36px,6vw,80px)*-.7) 0;translate:calc(var(--fs)*.12) 0}
   .exp-girl{position:relative;z-index:2}
 }
@@ -796,7 +796,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <span class="num" data-uk="03 / Я створюю враження">03 / I create experiences</span>
     <h2 class="display">Experience</h2>
     <span class="exp-glow" aria-hidden="true"></span><img class="exp-girl" src="img/silent/girl-1024.webp" srcset="img/silent/girl-560.webp 560w, img/silent/girl-1024.webp 1024w" sizes="(max-width:899px) 48vw, 34vw" alt="Guest dancing in glowing SILENT wireless headphones" width="1024" height="1300" loading="lazy" decoding="async">
-    <div class="sub"><p class="two" data-uk="SILENT — мій технологічний стартап та івент-компанія на основі silent disco: бездротові навушники, кілька музичних каналів і нові формати подій, де кожен обирає власний звук.<span class='dsk'> Ми підбираємо формат, привозимо й налаштовуємо обладнання та підтримуємо подію на місці — від корпоративів і весіль до шкільних свят, фестивалів і wellness-заходів, скрізь, де важливі спільність і свобода вибору.</span>">SILENT is my tech startup and event company built on silent disco: wireless headphones, several music channels and new event formats where everyone chooses their own sound.<span class="dsk"> We choose the format, bring and set up the equipment and support the event on site — from corporate events and weddings to school parties, festivals and wellness events, wherever togetherness and freedom of choice matter.</span></p><a class="btn fill" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a></div>
+    <div class="sub"><p class="two" data-uk="SILENT — мій тех­но­ло­гіч­ний стар­тап та ів­ент-ком­панія на ос­но­ві silent disco: без­дро­то­ві на­вуш­ни­ки, кіль­ка му­зич­них ка­на­лів і нові фор­ма­ти подій, де кожен оби­рає влас­ний звук.<span class='dsk'> Ми підбираємо формат, привозимо й налаштовуємо обладнання та підтримуємо подію на місці — від корпоративів і весіль до шкільних свят, фестивалів і wellness-заходів, скрізь, де важливі спільність і свобода вибору.</span>">SILENT is my tech startup and event company built on silent disco: wireless headphones, several music channels and new event formats where everyone chooses their own sound.<span class="dsk"> We choose the format, bring and set up the equipment and support the event on site — from corporate events and weddings to school parties, festivals and wellness events, wherever togetherness and freedom of choice matter.</span></p><a class="btn fill" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a></div>
   </div>
   <div class="sx-gallery rv" data-pool='["img/silent/ph/p00.jpg", "img/silent/ph/p01.jpg", "img/silent/ph/p02.jpg", "img/silent/ph/p04.jpg", "img/silent/ph/p05.jpg", "img/silent/ph/p06.jpg", "img/silent/ph/p07.jpg", "img/silent/ph/p08.jpg", "img/silent/ph/p09.jpg", "img/silent/ph/p10.jpg", "img/silent/ph/p11.jpg", "img/silent/ph/p12.jpg", "img/silent/ph/p13.jpg", "img/silent/ph/p14.jpg", "img/silent/ph/p15.jpg", "img/silent/ph/p16.jpg", "img/silent/ph/p17.jpg", "img/silent/ph/p18.jpg", "img/silent/ph/p19.jpg", "img/silent/ph/p20.jpg", "img/silent/ph/p21.jpg", "img/silent/ph/p22.jpg", "img/silent/ph/p23.jpg", "img/silent/ph/p24.jpg", "img/silent/ph/p25.jpg", "img/silent/ph/p26.jpg", "img/silent/ph/p27.jpg", "img/silent/ph/p28.jpg", "img/silent/ph/p29.jpg", "img/silent/ph/p30.jpg", "img/silent/ph/p31.jpg"]' aria-hidden="true">
     <div class="lane l1"><div class="tile"><img class="on" src="img/silent/ph/p11.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p28.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p24.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p31.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p06.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p29.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p15.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p21.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
