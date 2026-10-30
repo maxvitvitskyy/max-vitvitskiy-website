@@ -987,20 +987,40 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
   addEventListener('scroll',()=>hero.style.setProperty('--py',Math.min(scrollY,innerHeight*1.2).toFixed(1)),{passive:true});
 })();
 
-/* rails drift sideways with the page scroll (CSS scroll-driven animation, see .rail-drift); a touch hands the offset to real scrolling so nothing jumps */
+/* rails drift sideways with the page scroll (CSS scroll-driven animation, see .rail-drift). The first horizontal swipe hands the offset to real scrolling with snapping off; once that swipe has come to rest the rail glides to the nearest card and only then snapping returns, so every later swipe snaps without a jump */
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||!CSS.supports('animation-timeline:view()'))return;
   document.querySelectorAll('.gallery,.reels').forEach(el=>{
     el.classList.add('rail-drift');
-    let x0=0,y0=0,own=false;
+    let touching=false,timer=0,x0=0,y0=0;
+    const nearest=()=>{
+      const pad=parseFloat(getComputedStyle(el).scrollPaddingLeft)||0,max=el.scrollWidth-el.clientWidth,box=el.getBoundingClientRect();
+      let best=el.scrollLeft,bd=1e9;
+      [...el.children].forEach(c=>{
+        const r=c.getBoundingClientRect(),x=r.left-box.left+el.scrollLeft;
+        const t=Math.min(max,Math.max(0,getComputedStyle(c).scrollSnapAlign.includes('center')?x+r.width/2-el.clientWidth/2:x-pad)),d=Math.abs(t-el.scrollLeft);
+        if(d<bd){bd=d;best=t}
+      });
+      return best;
+    };
+    const settle=()=>{
+      if(touching)return;
+      const t=nearest(),done=()=>{if(touching)return;el.style.removeProperty('scroll-snap-type');el.removeEventListener('scroll',later)};
+      if(Math.abs(t-el.scrollLeft)<2)return done();
+      el.scrollTo({left:t,behavior:'smooth'});
+      el.addEventListener('scrollend',done,{once:true});setTimeout(done,700);
+    };
+    const later=()=>{clearTimeout(timer);timer=setTimeout(settle,160)};
     const stop=()=>{if(!el.classList.contains('rail-drift'))return;
       const dx=-(parseFloat(getComputedStyle(el.firstElementChild).translate)||0);
-      el.style.scrollSnapType='none';el.classList.remove('rail-drift');el.scrollLeft=dx};
-    const snap=()=>{stop();el.style.removeProperty('scroll-snap-type')};
-    el.addEventListener('touchstart',e=>{stop();x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
-    el.addEventListener('pointerdown',stop,{passive:true});
-    el.addEventListener('touchmove',e=>{if(own)return;const t=e.touches[0];if(Math.abs(t.clientX-x0)>Math.abs(t.clientY-y0)+4){own=true;snap()}},{passive:true});
-    el.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY))snap()},{passive:true});
+      el.style.scrollSnapType='none';el.classList.remove('rail-drift');el.scrollLeft+=dx;
+      el.addEventListener('scroll',later,{passive:true});later();
+    };
+    el.addEventListener('touchstart',e=>{touching=true;clearTimeout(timer);x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+    el.addEventListener('touchmove',e=>{const t=e.touches[0];if(Math.abs(t.clientX-x0)>Math.abs(t.clientY-y0)+4)stop()},{passive:true});
+    ['touchend','touchcancel'].forEach(n=>el.addEventListener(n,()=>{touching=false;if(!el.classList.contains('rail-drift'))later()},{passive:true}));
+    el.addEventListener('mousedown',stop,{passive:true});
+    el.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY))stop()},{passive:true});
     el.addEventListener('keydown',stop);
   });
 })();
