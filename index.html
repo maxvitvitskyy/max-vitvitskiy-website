@@ -421,6 +421,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* Experience head: text on the left, the SILENT guest on the right with a warm glow behind her.
    Phones/tablets: she floats right, bleeds past the screen edge, her hair touches the heading, text wraps her silhouette. */
 .exp{isolation:isolate}
+.exp{position:relative}
+.exp::before{content:"";position:absolute;left:0;right:0;top:0;height:min(42vw,420px);background:linear-gradient(#000 0,rgba(0,0,0,.82) 28%,rgba(0,0,0,.4) 62%,rgba(0,0,0,0) 100%);pointer-events:none;z-index:0}
 .exp-girl{display:block;height:auto;pointer-events:none;
   -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 56%,rgba(0,0,0,.5) 78%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 56%,rgba(0,0,0,.5) 78%,transparent 100%)}
 .exp-glow{display:block;position:absolute;z-index:-1;pointer-events:none;aspect-ratio:1024/1300;scale:1.9;transform-origin:50% 44%;
