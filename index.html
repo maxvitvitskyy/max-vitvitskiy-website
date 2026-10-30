@@ -429,7 +429,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:24px}.duo .band-in{aspect-ratio:5/4}}
 
 /* experience */
-.exp{--fl:calc(var(--section) + 230px);overflow:visible;overflow-x:clip;background:linear-gradient(to top,#1d1006 0,#1c1006 calc(var(--fl)*0.1),#1a0e05 calc(var(--fl)*0.2),#170d05 calc(var(--fl)*0.3),#130a04 calc(var(--fl)*0.4),#0e0803 calc(var(--fl)*0.5),#0a0602 calc(var(--fl)*0.6),#060301 calc(var(--fl)*0.7),#030201 calc(var(--fl)*0.8),#010000 calc(var(--fl)*0.9),#000000 calc(var(--fl)*1)) bottom/100% var(--fl) no-repeat,#000}
+.exp{--fl:clamp(900px,80vw,1000px);overflow:visible;overflow-x:clip;background:linear-gradient(to top,#1d1006 0,#1c1006 calc(var(--fl)*0.1),#1a0e05 calc(var(--fl)*0.2),#170d05 calc(var(--fl)*0.3),#130a04 calc(var(--fl)*0.4),#0e0803 calc(var(--fl)*0.5),#0a0602 calc(var(--fl)*0.6),#060301 calc(var(--fl)*0.7),#030201 calc(var(--fl)*0.8),#010000 calc(var(--fl)*0.9),#000000 calc(var(--fl)*1)) bottom/100% var(--fl) no-repeat,#000}
 .exp>.wrap{position:relative}
 .exp .sec-head h2{font-size:17.5vw}
 /* phones: Create / Inspire / Experience share one size, set so the longest word, Experience, fills the column (its width ≈ 3.62 × font-size) */
@@ -606,7 +606,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 
 /* about */
 /* warm glow-brown: fades in from black at the event-idea card, holds behind the photo and text, back to black before Contact */
-.about{background:linear-gradient(180deg,#1d1006 0%,#1d1006 55%,#1b0f06 62%,#160c05 69%,#100903 76%,#090502 83%,#040201 90%,#000000 100%)}
+.about{background:linear-gradient(180deg,#1d1006 0%,#1d1006 35%,#1c1006 41%,#1a0f05 47%,#180d05 53%,#140b04 59%,#100903 65%,#0c0703 71%,#080502 77%,#050301 83%,#020100 89%,#000000 95%,#000000 100%)}
 .about-grid{display:grid;gap:36px}
 .about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
