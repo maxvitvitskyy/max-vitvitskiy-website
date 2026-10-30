@@ -403,6 +403,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .go-card:hover .pulse{animation-duration:.9s}
 .go-card:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
 .duo .note{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
+.duo .band{display:flex;flex-direction:column}
+.duo .note{flex:1}
+.btn-lite{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:22px;padding:0 22px;border:1px solid rgba(241,224,197,.28);border-radius:99px;font-size:13px;letter-spacing:.06em;color:var(--cream);transition:border-color .3s,color .3s,gap .3s var(--ease)}
+.btn-lite::after{content:"";flex:none;width:1.1em;height:.65em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
+.btn-lite:hover{border-color:var(--amber);color:var(--amber)}
+.btn-lite:hover::after{transform:translateX(4px)}
+.btn-lite:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 @media(max-width:899px){.duo{gap:40px}}
 @media(min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:24px}.duo .band-in{aspect-ratio:5/4}}
 
@@ -728,10 +735,12 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <figure class="band">
       <a class="band-in go-card" href="works.html"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><span class="kick" translate="no">Made for you</span><h3><span data-uk="Картини під замовлення">Commissioned paintings</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <p class="note" data-uk="Створюю авторські картини на замовлення — для особистих колекцій, інтер’єрів або особливих подарунків. Від вашої ідеї до мого художнього втілення — кожна робота народжується як окрема історія з власним змістом.">I create original paintings to commission — for private collections, interiors or special gifts. From your idea to my artistic interpretation — each work is born as its own story with its own meaning.</p>
+      <a class="btn-lite" href="mailto:hello@maxvitvitskiy.com?subject=Commissioned%20painting" data-uk="Обговорити індивідуальний формат">Discuss a custom format</a>
     </figure>
     <figure class="band">
       <a class="band-in go-card" href="works.html"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><span class="kick" translate="no">The Collection</span><h3><span data-uk="Картини з колекції">Paintings from the collection</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <p class="note" data-uk="Обрані роботи з моєї колекції доступні для придбання — для особистих колекцій, інтер’єрів і бізнес-просторів. Кожна робота має визначений тираж і сертифікат автентичності.">Selected works from my collection are available to buy — for private collections, interiors and business spaces. Each work has a set edition size and a certificate of authenticity.</p>
+      <a class="btn-lite" href="works.html" data-uk="Обрати роботу з колекції">Choose a work from the collection</a>
     </figure>
   </div>
 </section>
@@ -925,7 +934,7 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
   const LIST='.gallery,.reels,.collage,.sx-uses,.topics,.sx-vals,.channels,.sx-links,.about .tags,.socials';
   const IMG='.work .ph,.reel,.band-in,.collage figure,.about-img';
   const HEAD='h2.display:not(.hero-name),.teach h3,.sx-block h3,.cols2 h3,.duo .cap h3';
-  const UP='.exp-girl,.num,.eyebrow,.sx-eyebrow,.sec-head .sub,.hint,.duo .note,.teach p,.teach .btn,.cols2 p,.sx-block .lead,.sx-block>p,.sx-vision,.sx-strip,.bio,.mail,.fl,footer,.sx-gallery';
+  const UP='.exp-girl,.num,.eyebrow,.sx-eyebrow,.sec-head .sub,.hint,.duo .note,.btn-lite,.teach p,.teach .btn,.cols2 p,.sx-block .lead,.sx-block>p,.sx-vision,.sx-strip,.bio,.mail,.fl,footer,.sx-gallery';
   const done=new Set(),groups=new Map();
   const mark=(el,c,d)=>{el.classList.add(c);if(d)el.style.setProperty('--d',d+'ms');done.add(el)};
   document.querySelectorAll(LIST).forEach(box=>{
