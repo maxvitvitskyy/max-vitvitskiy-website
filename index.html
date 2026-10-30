@@ -131,7 +131,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(min-width:900px){.nav ul{display:flex}.burger{display:none}.menu{display:none}}
 
 /* hero */
-.hero{min-height:100svh;display:grid;grid-template-rows:1fr auto;overflow:hidden;background:
+.hero{min-height:100svh;display:grid;grid-template-rows:1fr auto;overflow:hidden;isolation:isolate;-webkit-clip-path:inset(0);clip-path:inset(0);contain:paint;background:
   linear-gradient(180deg,transparent 70%,var(--coal) 100%),
   radial-gradient(60% 45% at 50% 38%,rgba(255,166,48,.34),transparent 70%),
   var(--coal)}
