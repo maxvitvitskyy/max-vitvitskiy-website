@@ -267,6 +267,15 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .gallery{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:max(var(--gut),calc((100% - 1500px)/2 + var(--gut)));scroll-padding-inline:max(var(--gut),calc((100% - 1500px)/2 + var(--gut)));scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .gallery::-webkit-scrollbar{display:none}
 .work{flex:0 0 min(78vw,420px);scroll-snap-align:center;display:block}
+/* last card: a door to the full gallery page */
+.work.all .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,12,.55) 0%,rgba(13,13,12,.82) 100%);transition:background .5s}
+.work.all:hover .ph::after{background:linear-gradient(180deg,rgba(13,13,12,.4) 0%,rgba(13,13,12,.75) 100%)}
+.work.all img{filter:blur(2px) saturate(.9)}
+.all-in{position:absolute;z-index:2;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;padding:clamp(22px,3vw,36px)}
+.all-k{font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber)}
+.all-t{font-family:var(--head);text-transform:uppercase;font-size:clamp(38px,5vw,64px);line-height:.92;max-width:8ch}
+.all-ar{display:block;width:56px;height:20px;background:var(--amber);-webkit-mask:var(--arrow) left center/contain no-repeat;mask:var(--arrow) left center/contain no-repeat;transition:transform .5s var(--ease)}
+.work.all:hover .all-ar{transform:translateX(10px)}
 .work .ph{aspect-ratio:4/5;overflow:hidden;border-radius:var(--r);background:var(--wine);position:relative}
 .work img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .work:hover img{transform:scale(1.05)}
@@ -659,7 +668,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <div class="wrap sec-head rv">
     <span class="num" data-uk="01 / Я створюю">01 / I create</span>
     <h2 class="display">Create</h2>
-    <div class="sub"><p class="two" data-uk="Моє мистецтво — живопис, фотографія, цифрова композиція та візуальні експерименти.">My art — painting, photography, digital composition and visual experiments.</p><a class="btn fill" href="#" data-uk="Дивитись мистецтво →">View art →</a></div>
+    <div class="sub"><p class="two" data-uk="Моє мистецтво — живопис, фотографія, цифрова композиція та візуальні експерименти.">My art — painting, photography, digital composition and visual experiments.</p><a class="btn fill" href="works.html" data-uk="Дивитись мистецтво →">View art →</a></div>
   </div>
   <div class="gallery rv">
     <a class="work" href="#"><div class="ph"><img src="img/art1.jpg" alt="Artwork I by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви I">Untitled I</b><span data-uk="За запитом">On request</span></div></a>
@@ -677,15 +686,16 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <a class="work" href="#"><div class="ph"><img src="img/art13.jpg" alt="Artwork XIII by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви XIII">Untitled XIII</b><span data-uk="За запитом">On request</span></div></a>
     <a class="work" href="#"><div class="ph"><img src="img/art14.jpg" alt="Artwork XIV by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви XIV">Untitled XIV</b><span data-uk="За запитом">On request</span></div></a>
     <a class="work" href="#"><div class="ph"><img src="img/art15.jpg" alt="Artwork XV by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви XV">Untitled XV</b><span data-uk="За запитом">On request</span></div></a>
+    <a class="work all" href="works.html"><div class="ph"><img src="img/art14.jpg" alt="" width="840" height="1050" loading="lazy"><span class="all-in"><span class="all-k" translate="no">The Collection</span><span class="all-t" data-uk="Дивитись усі роботи">See all works</span><i class="all-ar" aria-hidden="true"></i></span></div><div class="cap"><b data-uk="Уся колекція">The whole collection</b><span data-uk="Галерея →">Gallery →</span></div></a>
   </div>
   <div class="wrap sec-foot rv"><span class="hint swipe"><span data-uk="Гортай">Swipe</span><i class="ar" aria-hidden="true"></i></span><span class="hint" data-uk="Обрані роботи">Selected works</span></div>
   <div class="wrap duo rv">
     <figure class="band">
-      <a class="band-in go-card" href="mailto:hello@maxvitvitskiy.com?subject=Commissioned%20painting"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><span class="kick" translate="no">Made for you</span><h3><span data-uk="Картини під замовлення">Commissioned paintings</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
+      <a class="band-in go-card" href="works.html"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" loading="lazy"><div class="cap"><span class="kick" translate="no">Made for you</span><h3><span data-uk="Картини під замовлення">Commissioned paintings</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <p class="note" data-uk="Створюю авторські картини на замовлення — для особистих колекцій, інтер’єрів або особливих подарунків. Від вашої ідеї до мого художнього втілення — кожна робота народжується як окрема історія з власним змістом.">I create original paintings to commission — for private collections, interiors or special gifts. From your idea to my artistic interpretation — each work is born as its own story with its own meaning.</p>
     </figure>
     <figure class="band">
-      <a class="band-in go-card" href="#create"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><span class="kick" translate="no">The Collection</span><h3><span data-uk="Картини з колекції">Paintings from the collection</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
+      <a class="band-in go-card" href="works.html"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" loading="lazy"><div class="cap"><span class="kick" translate="no">The Collection</span><h3><span data-uk="Картини з колекції">Paintings from the collection</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <p class="note" data-uk="Обрані роботи з моєї колекції доступні для придбання — для особистих колекцій, інтер’єрів і бізнес-просторів. Кожна робота має визначений тираж і сертифікат автентичності.">Selected works from my collection are available to buy — for private collections, interiors and business spaces. Each work has a set edition size and a certificate of authenticity.</p>
     </figure>
   </div>
