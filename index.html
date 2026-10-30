@@ -667,6 +667,10 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
 .a-mask.in{clip-path:inset(-30% -8% -45% -8%);transform:none}
 .a-img{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.2s var(--rise);transition-delay:var(--d,0ms)}
 .a-img.in{clip-path:inset(0 0 0 0 round var(--r))}
+.a-girl{opacity:0;transform:translateY(64px) scale(.965);filter:blur(10px);transition:opacity 2.2s var(--rise),transform 2.2s var(--rise),filter 2.2s ease;transition-delay:var(--d,0ms)}
+.a-girl.in{opacity:1;transform:none;filter:blur(0)}
+.exp-glow.a-glow{transition:opacity 3.4s ease,scale 3.4s var(--rise);transition-delay:var(--d,0ms)}
+.exp-glow.a-glow:not(.in){opacity:0;scale:1.2}
 .a-img img{transition:transform 1.6s var(--rise)!important;transition-delay:var(--d,0ms)!important}
 .a-img:not(.in) img{transform:scale(calc(var(--z,1)*1.12))!important}
 /* rails drift left while the page scrolls down: compositor-driven, so it stays in step with the scroll on touch devices too */
@@ -951,7 +955,13 @@ function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk
 document.addEventListener('click',e=>{const a=e.target.closest('a[href="#"]');if(a)e.preventDefault()});
 /* the area Safari reveals when you pull past the page edge: hero colour on top, the black page end at the bottom */
 {const de=document.documentElement,chk=()=>de.classList.toggle('at-end',scrollY>0&&innerHeight+scrollY>=de.scrollHeight-2);addEventListener('scroll',chk,{passive:true});chk()}
-document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{
+  const l=b.dataset.l,m=document.querySelector('main');
+  if(l===document.documentElement.lang)return;
+  if(!m||matchMedia('(prefers-reduced-motion: reduce)').matches)return setLang(l);
+  /* soft cross-fade instead of an instant text swap */
+  m.style.transition='opacity .2s ease';m.style.opacity='0';
+  setTimeout(()=>{setLang(l);m.style.opacity='';setTimeout(()=>m.style.removeProperty('transition'),400)},210)});
 let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}
 setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'));
 /* motion: mark targets, reveal them as they enter the viewport, then drop the classes so hover and layout are untouched */
@@ -975,7 +985,12 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
   });
   /* a fully masked element has no visible area, so the observer watches its parent instead */
   [[HEAD,'a-mask'],[IMG,'a-img'],[UP,'a-up']].forEach(([sel,c])=>document.querySelectorAll(sel).forEach(el=>{if(done.has(el)||el.closest('.hero'))return;mark(el,c,0);const host=el.parentElement;if(!groups.has(host))groups.set(host,[]);groups.get(host).push(el)}));
-  const tidy=el=>el.addEventListener('transitionend',function f(e){if(e.target!==el||!/^(opacity|clip-path)$/.test(e.propertyName))return;el.classList.remove('a-up','a-mask','a-img','in');el.style.removeProperty('--d');el.removeEventListener('transitionend',f)});
+  /* Experience choreography: number, title, glow blooms behind, guest rises out of it, then the copy */
+  const girl=document.querySelector('.exp-girl'),glow=document.querySelector('.exp-glow');
+  if(girl)girl.classList.replace('a-up','a-girl');
+  if(glow&&groups.get(glow.parentElement)){mark(glow,'a-glow',0);groups.get(glow.parentElement).push(glow)}
+  [['.exp .sec-head .num',0],['.exp .sec-head h2',150],['.exp-glow',350],['.exp-girl',650],['.exp .sec-head .sub',1000]].forEach(([q,d])=>{const el=document.querySelector(q);if(el)el.style.setProperty('--d',d+'ms')});
+  const tidy=el=>el.addEventListener('transitionend',function f(e){if(e.target!==el||!/^(opacity|clip-path)$/.test(e.propertyName))return;el.classList.remove('a-up','a-mask','a-img','a-girl','a-glow','in');el.style.removeProperty('--d');el.removeEventListener('transitionend',f)});
   const show=el=>{tidy(el);el.classList.add('in')};
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);(groups.get(e.target)||[e.target]).forEach(show)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   groups.forEach((_,box)=>io.observe(box));
