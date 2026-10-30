@@ -217,8 +217,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* the figure rises only once its image is fully decoded, never half-drawn */
 .js .hero-fig:not(.loaded){animation-play-state:paused}
 .hero-fig,.hero-art::after{translate:0 calc(var(--py,0)*.07px)}
-.hero-name{translate:0 calc(var(--py,0)*-.03px)}
-.hero-copy{translate:0 calc(var(--py,0)*.05px)}
+/* name and tagline travel up together at one speed */
+.hero-name,.hero-copy{translate:0 calc(var(--py,0)*-.03px)}
 .hero-copy p{animation:fadeUp 1s var(--ease) 1.6s both}
 .cta{animation:fadeUp 1s var(--ease) both}
 .cta:nth-child(1){animation-delay:1.85s}.cta:nth-child(2){animation-delay:2s}.cta:nth-child(3){animation-delay:2.15s}
