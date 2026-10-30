@@ -410,6 +410,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .btn-lite:hover{border-color:var(--amber);color:var(--amber)}
 .btn-lite:hover::after{transform:translateX(4px)}
 .btn-lite:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+@media(max-width:899px){.btn-lite{align-self:stretch;justify-content:center;width:100%}}
 @media(max-width:899px){.duo{gap:40px}}
 @media(min-width:900px){.duo{grid-template-columns:1fr 1fr;gap:24px}.duo .band-in{aspect-ratio:5/4}}
 
