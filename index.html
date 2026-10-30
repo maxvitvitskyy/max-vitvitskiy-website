@@ -979,18 +979,21 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
   addEventListener('scroll',()=>hero.style.setProperty('--py',Math.min(scrollY,innerHeight*1.2).toFixed(1)),{passive:true});
 })();
 
-/* rails drift sideways with the page scroll, hinting there is more to swipe; own touch or wheel takes over */
+/* rails drift sideways with the page scroll, hinting there is more to swipe; a touch stops the drift in place, a swipe or sideways wheel then restores snapping */
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const rails=[...document.querySelectorAll('.gallery,.reels')].map(el=>({el,cur:0,free:false}));
   if(!rails.length)return;
   rails.forEach(r=>{
     r.el.style.scrollSnapType='none';
+    const stop=()=>{r.free=true};
     const own=()=>{r.free=true;r.el.style.removeProperty('scroll-snap-type')};
-    r.el.addEventListener('touchstart',own,{passive:true,once:true});
-    r.el.addEventListener('pointerdown',own,{passive:true,once:true});
+    let x0=0,y0=0;
+    r.el.addEventListener('touchstart',e=>{stop();x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+    r.el.addEventListener('pointerdown',stop,{passive:true,once:true});
+    r.el.addEventListener('touchmove',e=>{if(r.own)return;const t=e.touches[0];if(Math.abs(t.clientX-x0)>Math.abs(t.clientY-y0)+4){r.own=true;own()}},{passive:true});
     r.el.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY))own()},{passive:true});
-    r.el.addEventListener('keydown',own,{once:true});
+    r.el.addEventListener('keydown',stop,{once:true});
   });
   let raf=0;
   function tick(){
