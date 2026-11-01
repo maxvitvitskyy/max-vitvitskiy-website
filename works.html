@@ -264,7 +264,7 @@ function upd(){const w=W[cur];if(!w.sizes)return;frL.hidden=ff.value!=='framed';
 [fs,ff,fr].forEach(e=>e.addEventListener('change',upd));
 function askLink(w){const a=dv.querySelector('.ask');let body='Робота: '+w.title;
   if(w.sizes){body+='\nРозмір: '+fs.selectedOptions[0].text+'\nВиконання: '+ff.selectedOptions[0].text+(ff.value==='framed'?'\nКолір рами: '+fr.selectedOptions[0].text:'')+'\nЦіна: $'+priceOf(w)}
-  a.href='mailto:hello@maxvitvitskiy.com?subject='+encodeURIComponent('Artwork: '+w.title)+'&body='+encodeURIComponent(body+'\n\n')}
+  a.href='mailto:maxim.vitvitskiy@gmail.com?subject='+encodeURIComponent('Artwork: '+w.title)+'&body='+encodeURIComponent(body+'\n\n')}
 function fillInfo(w){const box=dv.querySelector('.inf');
   box.innerHTML=(w.info||[]).map(b=>'<details><summary>'+esc(b.t)+'</summary>'+(b.tags?'<ul class="tags">'+b.tags.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>':'')+(b.l?'<ul>'+b.l.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>':'')+'</details>').join('')}
 function open(i,push){last=document.activeElement;show(i);if(push&&W[i].slug)history.pushState({w:i},'',urlOf(W[i]));dv.hidden=false;dv.scrollTop=0;dv.querySelector('.tx').scrollTop=0;requestAnimationFrame(()=>dv.classList.add('open'));document.body.classList.add('lock');dv.querySelector('.x').focus({preventScroll:true})}

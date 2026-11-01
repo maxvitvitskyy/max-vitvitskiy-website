@@ -102,7 +102,7 @@ def dialog(w, n, total):
       <label>Виконання<select id="cf-fin">{opts(w['fins'])}</select></label>
       <label class="fr">Колір рами<select id="cf-frame">{opts(w['frames'])}</select></label>
     </form>
-    <div class="buy"><div class="pr"><span class="pv">${p0:,}</span><small class="pn">{e(fin['note'])} Ціна в USD, без доставки.</small></div><a class="ask" href="mailto:hello@maxvitvitskiy.com?subject={e('Artwork: ' + w['title'])}">Запитати про роботу<i class="ar" aria-hidden="true"></i></a></div>
+    <div class="buy"><div class="pr"><span class="pv">${p0:,}</span><small class="pn">{e(fin['note'])} Ціна в USD, без доставки.</small></div><a class="ask" href="mailto:maxim.vitvitskiy@gmail.com?subject={e('Artwork: ' + w['title'])}">Запитати про роботу<i class="ar" aria-hidden="true"></i></a></div>
     <dl><dt>Техніка</dt><dd>Фотографія, цифрова композиція</dd><dt>Документи</dt><dd>Сертифікат автентичності</dd></dl>
     <div class="inf">{info}</div>
   </div>
