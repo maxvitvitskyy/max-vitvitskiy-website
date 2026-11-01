@@ -12,6 +12,9 @@ import html, json, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://maxvitvitskiy.com/'
 CAT = 'works.html'
+# Google Analytics 4 (enhanced measurement counts the catalog's pushState work views as page views)
+GA = ('<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TL5BZW0QP"></script>\n'
+      '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag(\'js\',new Date());gtag(\'config\',\'G-0TL5BZW0QP\');</script>\n')
 
 
 def read(p):
@@ -123,7 +126,7 @@ def page(src, w, i, n, total):
 <meta name="description" content="{e(desc)}">
 <meta name="keywords" content="{e(', '.join(tags(w)))}">
 <link rel="canonical" href="{url}">
-<meta name="theme-color" content="#0d0d0c">
+{GA}<meta name="theme-color" content="#0d0d0c">
 <meta name="color-scheme" content="dark">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="Max Vitvitskiy">
