@@ -222,6 +222,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* name and tagline travel up together at one speed */
 .hero-name,.hero-copy{translate:0 calc(var(--py,0)*-.03px)}
 .hero-copy p{animation:fadeUp 1s var(--ease) 1.6s both}
+/* hero parallax driven by the scroll timeline itself: stays in step with trackpad momentum, unlike a JS-set variable that lags behind the compositor */
+@supports (animation-timeline:scroll()){@media(prefers-reduced-motion:no-preference){
+  .hero-art,.hero-copy{animation:heroPx linear both;animation-timeline:scroll(root);animation-range:0 120svh}
+  .hero-art{--k:.07}.hero-copy{--k:-.03}
+  .hero-name{--k:-.10;animation:nameIn 1.7s var(--ease) .95s both,heroPx linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 120svh}
+  .arch,.arch-text,.hero-art::before,.aurora,.hero-fig,.hero-art::after{translate:none}
+  @keyframes heroPx{to{translate:0 calc(var(--k)*120svh)}}
+}}
+/* nothing to repaint while the hero is off screen */
+.hero.off .aurora::before,.hero.off .aurora::after{animation-play-state:paused}
 .cta{animation:fadeUp 1s var(--ease) both}
 .cta:nth-child(1){animation-delay:1.85s}.cta:nth-child(2){animation-delay:2s}.cta:nth-child(3){animation-delay:2.15s}
 .nav{animation:navIn 1s var(--ease) .2s both}
@@ -742,7 +752,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <div class="sub"><p class="two" data-uk="Моє мистецтво — живопис, фотографія, цифрова композиція та візуальні експерименти.">My art — painting, photography, digital composition and visual experiments.</p><a class="btn fill" href="works.html" data-uk="Дивитись мистецтво →">View art →</a></div>
   </div>
   <div class="gallery rv">
-    <a class="work" href="#"><div class="ph"><img src="img/art1.jpg" alt="Artwork I by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви I">Untitled I</b><span data-uk="За запитом">On request</span></div></a>
+    <a class="work" href="works.html"><div class="ph"><img src="img/works/a-thousand-moments-later/card.jpg" alt="A Thousand Moments Later by Max Vitvitskiy: a girl in a red dress walking through arches" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="A Thousand Moments Later">A Thousand Moments Later</b><span data-uk="За запитом">On request</span></div></a>
     <a class="work" href="#"><div class="ph"><img src="img/art2.jpg" alt="Artwork II by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви II">Untitled II</b><span data-uk="За запитом">On request</span></div></a>
     <a class="work" href="#"><div class="ph"><img src="img/art3.jpg" alt="Artwork III by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви III">Untitled III</b><span data-uk="За запитом">On request</span></div></a>
     <a class="work" href="#"><div class="ph"><img src="img/art4.jpg" alt="Artwork IV by Max Vitvitskiy in an interior" width="840" height="1050" loading="lazy"></div><div class="cap"><b data-uk="Без назви IV">Untitled IV</b><span data-uk="За запитом">On request</span></div></a>
@@ -999,6 +1009,8 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
 /* hero parallax: scroll depth only */
 (function(){
   const hero=document.querySelector('.hero');if(!hero||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  new IntersectionObserver(e=>hero.classList.toggle('off',!e[0].isIntersecting)).observe(hero);
+  if(CSS.supports('animation-timeline:scroll()'))return;
   addEventListener('scroll',()=>hero.style.setProperty('--py',Math.min(scrollY,innerHeight*1.2).toFixed(1)),{passive:true});
 })();
 
