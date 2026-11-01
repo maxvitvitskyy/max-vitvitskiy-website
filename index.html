@@ -628,18 +628,20 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .about h2{font-size:22.5cqi;white-space:nowrap;margin-bottom:18px}
 .about p{font-size:clamp(16px,1.4vw,18px);line-height:1.75;text-wrap:pretty}
 .bio p+p,.bio-more>div>p{margin-top:1em}
-.bio-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease)}
-.bio-more>div{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s .7s}
-.bio-more.open{grid-template-rows:1fr}
-.bio-more.open>div{visibility:visible;transition-delay:0s}
+/* collapsed bio shows the next lines fading out, so it reads as text that continues */
+.bio-more{position:relative;overflow:hidden;height:6.4em;transition:height .7s var(--ease)}
+.bio-more:not(.open){-webkit-mask-image:linear-gradient(#000 0,rgba(0,0,0,.55) 45%,transparent 100%);mask-image:linear-gradient(#000 0,rgba(0,0,0,.55) 45%,transparent 100%)}
+.bio-more.open{height:auto}
 .bio .sign{font-family:var(--display);font-style:italic;font-size:clamp(24px,2.2vw,30px);line-height:1.2;color:var(--amber)}
-.more{display:inline-flex;align-items:center;gap:10px;min-height:38px;margin-top:20px;padding:0 16px 0 19px;background:none;border:1px solid rgba(255,166,48,.32);border-radius:99px;cursor:pointer;font-family:var(--body);font-weight:400;font-size:13px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);transition:gap .4s var(--ease),color .3s,background .3s,border-color .3s;position:relative}
+/* "Read more" wears the same pill as the commission/collection buttons (.btn-lite), arrow turned down */
+.more{position:relative;display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:22px;padding:0 22px;background:none;border:1px solid rgba(241,224,197,.28);border-radius:99px;cursor:pointer;font-family:var(--body);font-weight:400;font-size:13px;line-height:1;letter-spacing:.06em;color:var(--cream);transition:border-color .3s,color .3s}
 .more::before{content:"";position:absolute;inset:-4px 0}
-/* letter-spacing trails the last letter; pull it back so the label sits optically centred */
-.more span{margin-right:-.14em}
-.more .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transform:rotate(90deg);transition:transform .4s var(--ease)}
+.more .ar{display:block;flex:none;width:1.25em;height:.7em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transform:rotate(90deg);transition:transform .4s var(--ease)}
 .more[aria-expanded=true] .ar{transform:rotate(-90deg)}
-.more:hover{color:var(--sand);border-color:rgba(255,166,48,.75);gap:14px}
+.more:hover{border-color:var(--amber);color:var(--amber)}
+.more:hover .ar{transform:rotate(90deg) translateX(3px)}.more[aria-expanded=true]:hover .ar{transform:rotate(-90deg) translateX(3px)}
+.more:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+@media(max-width:899px){.about .more{display:flex;width:100%;justify-content:center}}
 .about .tags{font-family:var(--text);margin-bottom:clamp(28px,3vw,40px);display:flex;flex-wrap:wrap;gap:8px 4cqi;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
 .about h2{margin-top:18px}
 .about .tags span::before{content:"✦";color:#a02c4c}
@@ -650,7 +652,15 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .about .tags span:nth-child(-n+3){border-bottom:1px solid var(--line)}
 .about .tags span:not(:nth-child(3n)){border-right:1px solid var(--line)}
 @container (max-width:340px){.about .tags{letter-spacing:.12em;font-size:12px}.about .tags span{padding-right:3px}}
-@media(min-width:900px){.about-grid{grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,120px);align-items:start}.about-txt{max-width:83.334%}}
+@media(min-width:900px){
+  /* text column matches the portrait: same width, same height, "Read more" sits on the photo's bottom edge */
+  .about-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,104px);align-items:stretch}
+  .about-img{aspect-ratio:auto}.about-img::before{content:"";display:block;padding-top:125%}.about-img img{position:absolute;inset:0}
+  .about-txt{display:flex;flex-direction:column}
+  .about .bio{flex:1;display:flex;flex-direction:column}
+  .about .bio-more{flex:1 1 0;height:auto;min-height:6.4em}.about .bio-more.open{flex:none}.about .bio .more{align-self:flex-start}
+  .about .bio-more:not(.open){-webkit-mask-image:linear-gradient(#000 0,#000 calc(100% - 7em),transparent 100%);mask-image:linear-gradient(#000 0,#000 calc(100% - 7em),transparent 100%)}
+}
 
 /* contact */
 .contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
@@ -658,6 +668,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   #000}
 .contact h2{font-size:clamp(44px,8.5vw,140px);line-height:.88;margin-top:20px}
 .contact h2 i{color:var(--amber)}
+/* line breaks per width: desktop "Відкритий до нових / ідей та співпраці", mobile "Відкритий / до нових ідей / та співпраці" */
+.contact h2 br.m{display:none}
+@media(max-width:899px){.contact h2 br.m{display:inline}.contact h2 br.d{display:none}}
 /* phones/tablets: the Ukrainian two-line heading fills the column (its longer line ≈ 5.8 × font-size) */
 @media(max-width:899px){.contact h2{font-size:calc((100vw - 2*var(--gut))/6)}}
 .mail{display:inline-block;margin-top:34px;font-family:var(--display);font-size:clamp(26px,5vw,52px);border-bottom:1px solid var(--amber);padding-bottom:6px;text-transform:uppercase;transition:color .3s}
@@ -931,7 +944,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
 <section class="contact" id="contact">
   <div class="wrap">
     <span class="eyebrow rv" data-uk="Контакти">Contact</span>
-    <h2 class="display rv"><span data-uk="Відкритий<br>до нових ідей<br>та <i>співпраці</i>.">Open to new ideas and <i>collaboration</i>.</span></h2>
+    <h2 class="display rv"><span data-uk="Відкритий<br class='m'> до нових<br class='d'> ідей<br class='m'> та <i>співпраці</i>.">Open to new ideas<br>and <i>collaboration</i>.</span></h2>
     <a class="mail rv" href="mailto:hello@maxvitvitskiy.com">hello@maxvitvitskiy.com</a>
     <div class="socials rv"><a class="ico" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
     <img class="fl rv" src="img/logo-full.png" alt="Max Vitvitskiy" width="1400" height="831" loading="lazy">
@@ -953,7 +966,11 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(fals
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){toggle(false);burger.focus()}});
 const moreBtn=document.querySelector('.about .more'),moreBox=document.getElementById('bio-more');
 function updMore(){const o=moreBtn.getAttribute('aria-expanded')==='true',uk=document.documentElement.lang==='uk';moreBtn.firstChild.textContent=o?(uk?'Згорнути':'Show less'):(uk?'Читати повністю':'Read more')}
-moreBtn.onclick=()=>{const o=moreBtn.getAttribute('aria-expanded')!=='true';moreBtn.setAttribute('aria-expanded',o);moreBox.classList.toggle('open',o);updMore()};
+moreBtn.onclick=()=>{const o=moreBtn.getAttribute('aria-expanded')!=='true';moreBtn.setAttribute('aria-expanded',o);
+  /* animate between the measured heights, then hand the height back to CSS */
+  const h0=moreBox.offsetHeight;moreBox.classList.toggle('open',o);const h1=o?moreBox.scrollHeight:moreBox.offsetHeight;
+  moreBox.style.flex='none';moreBox.style.height=h0+'px';moreBox.offsetHeight;moreBox.style.height=h1+'px';
+  const done=()=>{moreBox.style.height='';moreBox.style.flex=''};moreBox.addEventListener('transitionend',done,{once:true});setTimeout(done,800);updMore()};
 document.querySelectorAll('.sx-vals .vq').forEach(b=>b.onclick=()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);b.nextElementSibling.classList.toggle('open',o)});
 const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.innerHTML);
 /* reel play buttons: build the turning "watch" ring for the current language */
