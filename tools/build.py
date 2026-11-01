@@ -10,7 +10,7 @@ Run from the repo root:  python3 tools/build.py
 import html, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = 'https://maxvitvitskyy.github.io/max-vitvitskiy-website/'
+SITE = 'https://maxvitvitskiy.com/'
 CAT = 'works.html'
 
 
