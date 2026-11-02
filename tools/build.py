@@ -33,6 +33,15 @@ def e(t):
     return html.escape(str(t), quote=True)
 
 
+def thumb(s):
+    return re.sub(r'/(\d)\.jpg$', r'/t\1.jpg', s)
+
+
+def clip(t, n=158):
+    t = strip(t)
+    return t if len(t) <= n else t[:n].rsplit(' ', 1)[0].rstrip(',;:—–-') + '…'
+
+
 def strip(t):
     return re.sub(r'<[^>]+>', '', t)
 
@@ -55,7 +64,8 @@ def ld(w):
         '@type': 'VisualArtwork', 'name': w['title'], 'url': SITE + 'works/' + w['slug'] + '/',
         'creator': {'@type': 'Person', 'name': 'Max Vitvitskiy', 'url': SITE},
         'artform': 'Digital painting', 'artMedium': 'Canvas print', 'artEdition': '10',
-        'image': [SITE + x for x in w['imgs']], 'inLanguage': 'uk',
+        'image': [SITE + x for x in w['imgs']], 'thumbnailUrl': SITE + w['img'], 'inLanguage': 'uk',
+        **({'dateCreated': str(w['year'])} if w.get('year') else {}),
         'description': w['lead'] + ' ' + ' '.join(strip(p) for p in w['story']),
         'keywords': ', '.join(tags(w)),
         'offers': {'@type': 'AggregateOffer', 'priceCurrency': 'USD', 'lowPrice': min(pr), 'highPrice': max(pr),
@@ -64,7 +74,7 @@ def ld(w):
 
 
 def card(i, w):
-    alt = (w.get('alts') or [''])[0]
+    alt = w.get('cardAlt') or (w.get('alts') or [''])[0]
     sold = '1' if w['status'] == 'Продана' else '0'
     st = '<span class="st sold">' if sold == '1' else '<span class="st">'
     inner = (f'\n      <span class="ph"><img src="{e(w["img"])}" alt="{e(alt)}" width="840" height="1050" loading="{"eager" if i < 3 else "lazy"}"></span>'
@@ -78,7 +88,7 @@ def card(i, w):
 
 def dialog(w, n, total):
     """Pre-rendered work view, identical to what the catalog's JS draws, so the page reads without JS."""
-    thumbs = ''.join(f'<button type="button" data-src="{e(s)}" aria-label="Варіація {k + 1}"{" aria-current=\"true\"" if k == 0 else ""}><img src="{e(s)}" alt=""></button>'
+    thumbs = ''.join(f'<button type="button" data-src="{e(s)}" aria-label="Кадр {k + 1}"{" aria-current=\"true\"" if k == 0 else ""}><img src="{e(thumb(s))}" alt="" loading="lazy"></button>'
                      for k, s in enumerate(w['imgs']))
     desc = ('<p>' + e(w['lead']) + '</p>' if w.get('lead') else '') + ''.join('<p>' + p + '</p>' for p in w['story'])
     opts = lambda xs: ''.join(f'<option value="{e(x["id"])}">{e(x["label"])}</option>' for x in xs)
@@ -91,7 +101,7 @@ def dialog(w, n, total):
     sold = ' sold' if w['status'] == 'Продана' else ''
     return f'''<div class="dv open solo" id="dv" aria-labelledby="dv-t">
   <button class="x" type="button" aria-label="До каталогу"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <div class="art"><div class="stage"><button class="nav prev" type="button" aria-label="Попередній кадр"><i class="ar" aria-hidden="true"></i></button><img class="main" src="{e(w['imgs'][0])}" alt="{e(w['alts'][0])}" width="1280" height="1600"><button class="nav next" type="button" aria-label="Наступний кадр"><i class="ar" aria-hidden="true"></i></button></div><div class="thumbs" role="group" aria-label="Кадри роботи">{thumbs}</div></div>
+  <div class="art"><div class="stage"><button class="nav prev" type="button" aria-label="Попередній кадр"><i class="ar" aria-hidden="true"></i></button><img class="main" src="{e(w['imgs'][0])}" alt="{e(w['alts'][0])}" width="1280" height="1600"><button class="nav next" type="button" aria-label="Наступний кадр"><i class="ar" aria-hidden="true"></i></button></div><div class="thumbs" role="group" aria-label="Кадри роботи"{" hidden" if len(w['imgs']) < 2 else ""}>{thumbs}</div></div>
   <div class="tx">
     <div class="wn"><button class="wb wp" type="button" aria-label="Попередня робота"><i class="ar" aria-hidden="true"></i></button><span class="count">{n} / {total}</span><button class="wb wx" type="button" aria-label="Наступна робота"><i class="ar" aria-hidden="true"></i></button></div>
     <h1 id="dv-t">{e(w['title'])}</h1>
@@ -113,9 +123,9 @@ def page(src, w, i, n, total):
     style = re.search(r'<style>.*?</style>', src, re.S).group(0)
     script = re.search(r'\n<script>\n.*?</script>', src, re.S).group(0)
     url = SITE + 'works/' + w['slug'] + '/'
-    title = f'{w["title"]} — Max Vitvitskiy'
-    desc = w['lead']
-    og = SITE + w['imgs'][0]
+    title = f'{w["title"]} — {w["seo"]} | Max Vitvitskiy' if w.get('seo') else f'{w["title"]} — Max Vitvitskiy'
+    desc = clip(w['lead'])
+    og = SITE + (w.get('og') or w['imgs'][0])
     head = f'''<!doctype html>
 <html lang="uk">
 <head>
@@ -133,8 +143,9 @@ def page(src, w, i, n, total):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:image" content="{og}">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="1600">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e(w['title'])} — картина Max Vitvitskiy, тираж 10, у продажу">
 <meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
@@ -145,6 +156,18 @@ def page(src, w, i, n, total):
 <body>
 '''
     return head + dialog(w, n, total) + f'\n<script>window.SOLO={i};</script>' + script.replace('\n<script>\n', '\n<script>\n', 1) + '\n</body>\n</html>\n'
+
+
+def home(W):
+    """Homepage Create rail: the first 15 works, each linking to its own page."""
+    src = read('index.html')
+    rows = []
+    for w in W[:15]:
+        rows.append(f'    <a class="work" href="works/{w["slug"]}/"><div class="ph"><img src="{e(w["img"])}" alt="{e(w.get("cardAlt") or w["title"])}" width="840" height="1050" loading="lazy"></div>'
+                    f'<div class="cap"><b data-uk="{e(w["title"])}">{e(w["title"])}</b><span data-uk="Тираж 10">Edition of 10</span></div></a>')
+    src, n = re.subn(r'(<div class="gallery rv">\n)(?:    <a class="work" href="[^"]*">.*?</a>\n)+(    <a class="work all")', lambda m: m.group(1) + '\n'.join(rows) + '\n' + m.group(2), src, count=1, flags=re.S)
+    assert n == 1, 'homepage gallery not found'
+    write('index.html', src)
 
 
 def main():
@@ -166,8 +189,8 @@ def main():
     for k, i in enumerate(real):
         write(f'works/{W[i]["slug"]}/index.html', page(src, W[i], i, k + 1, len(real)))
 
-    # the catalog stays noindex while it still holds placeholder cards, so it is not listed
-    urls = [(SITE, [])] + [(SITE + 'works/' + W[i]['slug'] + '/', [SITE + x for x in W[i]['imgs']]) for i in real]
+    home(W)
+    urls = [(SITE, []), (SITE + CAT, [])] + [(SITE + 'works/' + W[i]['slug'] + '/', [SITE + x for x in W[i]['imgs']]) for i in real]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
     for u, ims in urls:
