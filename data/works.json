@@ -169,7 +169,13 @@
    }
   ],
   "og": "img/works/creation/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "flowers"
+  ],
   "year": 2021,
+  "meaning": "Жінка й вовк — не протилежності, а частини одного задуму: інтуїція та інстинкт, сила та витонченість. Робота про гармонію творіння й тиху внутрішню силу, що живе в кожному з нас.",
   "hover": "img/works/creation/1.jpg"
  },
  {
@@ -345,7 +351,14 @@
    }
   ],
   "og": "img/works/open-my-eyes/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "flowers",
+   "self"
+  ],
   "year": 2021,
+  "meaning": "Справжнє бачення починається там, де закінчується зір. Робота про інтуїцію, невидимі шари реальності й сміливість подивитися на те, що ми досі відмовлялися бачити.",
   "hover": "img/works/open-my-eyes/1.jpg"
  },
  {
@@ -519,7 +532,13 @@
    }
   ],
   "og": "img/works/natural-light/og.jpg",
+  "themes": [
+   "portraits",
+   "self",
+   "transformation"
+  ],
   "year": 2022,
+  "meaning": "«У всьому є тріщина — саме так входить світло». Робота про те, що вразливість — не слабкість, а відкриття, крізь яке в життя приходять зцілення й зміна.",
   "hover": "img/works/natural-light/1.jpg"
  },
  {
@@ -693,7 +712,12 @@
    }
   ],
   "og": "img/works/in-his-image/og.jpg",
+  "themes": [
+   "portraits",
+   "faith"
+  ],
   "year": 2021,
+  "meaning": "Ми створені на Його образ і шукаємо себе в красі, історіях і символах довкола. Робота про людську гідність, творчість і пам’ять про те, Хто нас створив.",
   "hover": "img/works/in-his-image/1.jpg"
  },
  {
@@ -869,7 +893,12 @@
    }
   ],
   "og": "img/works/miracle/og.jpg",
+  "themes": [
+   "portraits",
+   "animals"
+  ],
   "year": 2021,
+  "meaning": "Диво, на яке ми чекаємо, часто вже дивиться нашими очима. Робота про невинність, опіку й тихе чудо, що живе в кожному людському житті.",
   "hover": "img/works/miracle/1.jpg"
  },
  {
@@ -1044,7 +1073,14 @@
    }
   ],
   "og": "img/works/soul-awakening/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "love",
+   "transformation"
+  ],
   "year": 2021,
+  "meaning": "Серце розквітає лише тоді, коли його торкається любов. Робота про мить, коли внутрішня сила прокидається й людина наважується відкритися.",
   "hover": "img/works/soul-awakening/1.jpg"
  },
  {
@@ -1219,7 +1255,13 @@
    }
   ],
   "og": "img/works/friendship/og.jpg",
+  "themes": [
+   "animals",
+   "flowers",
+   "love"
+  ],
   "year": 2021,
+  "meaning": "Те, що нас об’єднує, сильніше за те, що роз’єднує. Робота про довіру між найрізнішими створіннями: справжня сила — бути ніжним, справжня сміливість — довіритися.",
   "hover": "img/works/friendship/1.jpg"
  },
  {
@@ -1394,7 +1436,12 @@
    }
   ],
   "og": "img/works/who-you-are/og.jpg",
+  "themes": [
+   "animals",
+   "self"
+  ],
   "year": 2021,
+  "meaning": "Мир приходить не від зміни обставин, а від усвідомлення, хто ти є. Робота про різницю між соціальними масками й справжньою суттю, яка лишається незмінною.",
   "hover": "img/works/who-you-are/1.jpg"
  },
  {
@@ -1569,7 +1616,15 @@
    }
   ],
   "og": "img/works/rise-from-the-ashes/og.jpg",
+  "themes": [
+   "portraits",
+   "flowers",
+   "faith",
+   "ukraine",
+   "transformation"
+  ],
   "year": 2022,
+  "meaning": "Навіть коли все руйнується, усередині є сила, що знову творить життя. Робота, народжена під час війни, — про незламність України, надію й відродження.",
   "hover": "img/works/rise-from-the-ashes/1.jpg"
  },
  {
@@ -1744,7 +1799,12 @@
    }
   ],
   "og": "img/works/lion-and-lamb/og.jpg",
+  "themes": [
+   "animals",
+   "faith"
+  ],
   "year": 2022,
+  "meaning": "Христос — водночас Лев Юди й Агнець Божий: сила й жертва, влада й смирення. Робота про любов, яка обрала хрест, щоб принести світові спасіння.",
   "hover": "img/works/lion-and-lamb/1.jpg"
  },
  {
@@ -1919,7 +1979,12 @@
    }
   ],
   "og": "img/works/god-is-fighting-for-us/og.jpg",
+  "themes": [
+   "faith",
+   "ukraine"
+  ],
   "year": 2022,
+  "meaning": "«Господь воюватиме за вас, а ви будьте спокійні». Робота, створена у 2022 році, — про Божий захист і віру в те, що навіть у найтемніший час ми не самі.",
   "hover": "img/works/god-is-fighting-for-us/1.jpg"
  },
  {
@@ -2094,7 +2159,14 @@
    }
   ],
   "og": "img/works/becoming-the-swan/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "self",
+   "transformation"
+  ],
   "year": 2022,
+  "meaning": "Гидке каченя перестало бути гидким, коли зрозуміло, що воно лебідь. Робота про мить упізнавання себе: зовні нічого не змінюється, а всередині — все.",
   "hover": "img/works/becoming-the-swan/1.jpg"
  },
  {
@@ -2269,7 +2341,12 @@
    }
   ],
   "og": "img/works/beautiful-things/og.jpg",
+  "themes": [
+   "animals",
+   "flowers"
+  ],
   "year": 2022,
+  "meaning": "Як місяць, прекрасні речі ніколи не випрошують уваги. Робота про тиху впевненість і красу, якій не потрібно нічого доводити, — вона просто є.",
   "hover": "img/works/beautiful-things/1.jpg"
  },
  {
@@ -2445,7 +2522,14 @@
    }
   ],
   "og": "img/works/ataro/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "flowers",
+   "self"
+  ],
   "year": 2022,
+  "meaning": "Якби це можна було сказати словами, не було б причини малювати. Робота про те, що живе поза мовою: емоцію, перетворення й невидимі шари ідентичності.",
   "hover": "img/works/ataro/1.jpg"
  },
  {
@@ -2620,7 +2704,13 @@
    }
   ],
   "og": "img/works/face-the-sun/og.jpg",
+  "themes": [
+   "portraits",
+   "flowers",
+   "faith"
+  ],
   "year": 2022,
+  "meaning": "Серце, будь соняшником — не лише відкритим для світла, а й постійно оберненим до Бога. Робота про віру, відданість і щоденний вибір іти до світла.",
   "hover": "img/works/face-the-sun/1.jpg"
  },
  {
@@ -2795,7 +2885,14 @@
    }
   ],
   "og": "img/works/depths/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "ocean",
+   "transformation"
+  ],
   "year": 2022,
+  "meaning": "Найпрекрасніші люди — ті, хто пройшов крізь глибини й не втратив здатності любити. Робота про зцілення й красу, що народжується з боротьби.",
   "hover": "img/works/depths/1.jpg"
  },
  {
@@ -2970,7 +3067,13 @@
    }
   ],
   "og": "img/works/in-your-light/og.jpg",
+  "themes": [
+   "portraits",
+   "flowers",
+   "love"
+  ],
   "year": 2022,
+  "meaning": "«У твоєму світлі я вчуся любити». Робота про любов, що стає світлом: тиху присутність іншої людини, яка змінює не лише те, що ми відчуваємо, а й те, як бачимо.",
   "hover": "img/works/in-your-light/1.jpg"
  },
  {
@@ -3146,7 +3249,14 @@
    }
   ],
   "og": "img/works/bloom-with-grace/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "ocean",
+   "transformation"
+  ],
   "year": 2023,
+  "meaning": "Де б тебе не посадило життя — розквітай із гідністю. Робота про силу ставати собою навіть у глибині, під тиском і в невідомому, не втрачаючи м’якості.",
   "hover": "img/works/bloom-with-grace/1.jpg"
  },
  {
@@ -3322,7 +3432,13 @@
    }
   ],
   "og": "img/works/manifest-yourself/og.jpg",
+  "themes": [
+   "portraits",
+   "animals",
+   "transformation"
+  ],
   "year": 2023,
+  "meaning": "У сміливості є геній, сила й магія — почни зараз. Робота про мить, коли ти вирішуєш не чекати ідеального моменту й перетворюєш задум на дію.",
   "hover": "img/works/manifest-yourself/1.jpg"
  },
  {
@@ -3498,7 +3614,13 @@
    }
   ],
   "og": "img/works/while-im-waiting/og.jpg",
+  "themes": [
+   "animals",
+   "flowers",
+   "transformation"
+  ],
   "year": 2023,
+  "meaning": "Важливо не те, на що ми чекаємо, а те, що відбувається з нами в очікуванні. Робота про терпіння, довіру до процесу й силу, якій не потрібно поспішати.",
   "hover": "img/works/while-im-waiting/1.jpg"
  },
  {
@@ -3673,7 +3795,13 @@
    }
   ],
   "og": "img/works/look-inside/og.jpg",
+  "themes": [
+   "portraits",
+   "flowers",
+   "self"
+  ],
   "year": 2023,
+  "meaning": "Хто дивиться назовні — мріє, хто дивиться всередину — прокидається. Робота про внутрішній зір: усе, що ми шукаємо, ніколи не було поза нами.",
   "hover": "img/works/look-inside/1.jpg"
  },
  {
@@ -3847,7 +3975,13 @@
    }
   ],
   "og": "img/works/peace-of-mind/og.jpg",
+  "themes": [
+   "portraits",
+   "flowers",
+   "self"
+  ],
   "year": 2023,
+  "meaning": "Спокій — не втеча від світу, а тиха опора всередині. Робота про усвідомленість і внутрішній мир, що тримає навіть тоді, коли довкола неспокійно.",
   "hover": "img/works/peace-of-mind/1.jpg"
  },
  {
@@ -4022,7 +4156,12 @@
    }
   ],
   "og": "img/works/prepare-the-way-for-the-king/og.jpg",
+  "themes": [
+   "animals",
+   "faith"
+  ],
   "year": 2023,
+  "meaning": "«Приготуйте дорогу Господеві». Різдвяна робота про Бога, що приходить у світ тихо й просто, і про місце, яке ми готуємо для Нього в серці.",
   "hover": "img/works/prepare-the-way-for-the-king/1.jpg"
  },
  {
@@ -4196,7 +4335,13 @@
    }
   ],
   "og": "img/works/depths-of-becoming/og.jpg",
+  "themes": [
+   "portraits",
+   "ocean",
+   "transformation"
+  ],
   "year": 2022,
+  "meaning": "Ми стаємо собою, коли наважуємося піти глибше й відпустити поверхню. Робота про перетворення, що відбувається в тиші й невідомому.",
   "hover": "img/works/depths-of-becoming/1.jpg"
  },
  {
@@ -4370,7 +4515,13 @@
    }
   ],
   "og": "img/works/introvert/og.jpg",
+  "themes": [
+   "animals",
+   "flowers",
+   "self"
+  ],
   "year": 2024,
+  "meaning": "Силу не потрібно доводити, а ясність приходить від того, щоб бачити глибше. Робота про тиху мудрість і цінність власного ритму.",
   "hover": "img/works/introvert/1.jpg"
  },
  {
@@ -4543,6 +4694,11 @@
    }
   ],
   "og": "img/works/honor-him/og.jpg",
+  "themes": [
+   "portraits",
+   "faith"
+  ],
+  "meaning": "Хрест — це міст між людиною й Богом, збудований Його любов’ю. Робота про жертву Христа, зцілення й надію для кожного, хто почувається зламаним.",
   "hover": "img/works/honor-him/1.jpg"
  },
  {
@@ -4715,6 +4871,11 @@
    }
   ],
   "og": "img/works/introspectum/og.jpg",
+  "themes": [
+   "self",
+   "transformation"
+  ],
+  "meaning": "Деякі уроки повертаються, доки ми не зрозуміємо їх глибше. Робота про внутрішню подорож по спіралі, усвідомленість і зміну, що відбувається в процесі.",
   "hover": "img/works/introspectum/1.jpg"
  },
  {
@@ -4891,6 +5052,12 @@
   ],
   "seo": "сюрреалістична картина: дівчина в червоній сукні проходить крізь арки",
   "cardAlt": "A Thousand Moments Later — картина Max Vitvitskiy: дівчина в червоній сукні крізь арки",
-  "og": "img/works/a-thousand-moments-later/og.jpg"
+  "og": "img/works/a-thousand-moments-later/og.jpg",
+  "meaning": "Тисячу миттєвостей потому ти вже не той, ким був. Робота про дрібні моменти, які ми ледь помічаємо, але саме вони тихо й незворотно змінюють нас.",
+  "themes": [
+   "portraits",
+   "flowers",
+   "transformation"
+  ]
  }
 ]

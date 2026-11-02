@@ -12,6 +12,9 @@ import html, json, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://maxvitvitskiy.com/'
 CAT = 'works.html'
+# catalog filters: (id, label), in display order; a work lists its ids in "themes" (data/works.json)
+THEMES = [('portraits', 'Портрети'), ('animals', 'Тварини'), ('flowers', 'Квіти'), ('faith', 'Віра'), ('ocean', 'Океан'),
+          ('self', 'Самопізнання'), ('love', 'Любов'), ('ukraine', 'Україна'), ('transformation', 'Перетворення')]
 # Google Analytics 4 (enhanced measurement counts the catalog's pushState work views as page views)
 GA = ('<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TL5BZW0QP"></script>\n'
       '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag(\'js\',new Date());gtag(\'config\',\'G-0TL5BZW0QP\');</script>\n')
@@ -80,7 +83,7 @@ def card(i, w):
     inner = (f'\n      <span class="ph"><img src="{e(w["img"])}" alt="{e(alt)}" width="840" height="1050" loading="{"eager" if i < 3 else "lazy"}"></span>'
              f'\n      <span class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:02d}</span></span>'
              f'<span class="row">{st}{e(w["status"])}</span><span class="ed">{e(w["edition"])}</span></span></span>\n    ')
-    attrs = f'data-i="{i}" data-cat="{e(w["cat"])}" data-sold="{sold}" aria-label="{e(w["title"])}"'
+    attrs = f'data-i="{i}" data-cat="{e(' '.join(w['themes']))}" data-sold="{sold}" aria-label="{e(w["title"])}"'
     if w.get('slug'):
         return f'    <a class="w" href="works/{w["slug"]}/" {attrs}>{inner}</a>'
     return f'    <button class="w" type="button" {attrs}>{inner}</button>'
@@ -164,7 +167,8 @@ def home(W):
     rows = []
     for w in W[:15]:
         rows.append(f'    <a class="work" href="works/{w["slug"]}/"><div class="ph"><img src="{e(w["img"])}" alt="{e(w.get("cardAlt") or w["title"])}" width="840" height="1050" loading="lazy"></div>'
-                    f'<div class="cap"><b data-uk="{e(w["title"])}">{e(w["title"])}</b><span data-uk="Тираж 10">Edition of 10</span></div></a>')
+                    f'<div class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:02d}</span></span>'
+                    f'<span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>')
     src, n = re.subn(r'(<div class="gallery rv">\n)(?:    <a class="work" href="[^"]*">.*?</a>\n)+(    <a class="work all")', lambda m: m.group(1) + '\n'.join(rows) + '\n' + m.group(2), src, count=1, flags=re.S)
     assert n == 1, 'homepage gallery not found'
     write('index.html', src)
@@ -175,6 +179,11 @@ def main():
     src = read(CAT)
     # data the catalog's JS reads (pages keep their own copy via the same script)
     src = re.sub(r'^const W=\[.*?\];\n', lambda m: 'const W=' + json.dumps(W, ensure_ascii=False) + ';\n', src, count=1, flags=re.M | re.S)
+    # filter chips: only themes that have works
+    used = {t for w in W for t in w['themes']}
+    chips = ''.join(f'<button type="button" data-f="{k}" aria-pressed="false">{l}</button>' for k, l in THEMES if k in used)
+    src = re.sub(r'(<div class="filters"[^>]*>\n    <button[^\n]*data-f="available"[^>]*>Доступні</button>).*?(\n  </div>)',
+                 lambda m: m.group(1) + chips + m.group(2), src, count=1, flags=re.S)
     # catalog cards
     cards = '\n'.join(card(i, w) for i, w in enumerate(W))
     src = re.sub(r'(<div class="wall">\n).*?(\n  </div>\n</main>)', lambda m: m.group(1) + cards + m.group(2), src, count=1, flags=re.S)
