@@ -78,7 +78,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .dv .thumbs::-webkit-scrollbar{display:none}
 .dv .thumbs button{flex:none;width:calc(var(--th)*.8);height:var(--th);border-radius:4px;overflow:hidden;opacity:.5;outline:1px solid transparent;outline-offset:2px;transition:opacity .3s,outline-color .3s}
 .dv .thumbs button:hover{opacity:.85}.dv .thumbs button[aria-current=true]{opacity:1;outline-color:var(--amber)}
-.dv .art .main{width:auto;height:auto;max-width:100%;max-height:calc(100vh - 2*var(--pad) - var(--th) - 18px);max-height:calc(100svh - 2*var(--pad) - var(--th) - 18px);object-fit:contain;border-radius:6px;box-shadow:0 50px 90px rgba(0,0,0,.6);transform:scale(.97);opacity:0;transition:transform .7s var(--ease),opacity .5s}
+.dv .art .main{width:min(100%,calc((100vh - 2*var(--pad) - var(--th) - 18px)*.8));width:min(100%,calc((100svh - 2*var(--pad) - var(--th) - 18px)*.8));height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px;box-shadow:0 50px 90px rgba(0,0,0,.6);transform:scale(.97);opacity:0;transition:transform .7s var(--ease),opacity .5s}
 .dv.open .art .main{transform:none;opacity:1}
 .dv .tx{display:flex;flex-direction:column;justify-content:flex-start;gap:18px;padding:clamp(28px,4vw,64px) clamp(24px,4vw,64px);border-left:1px solid var(--line);overflow-y:auto}
 .dv h2,.dv h1{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(34px,3.6vw,60px);line-height:.92}
@@ -138,7 +138,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv:not(.open){display:block}
   .dv .art{display:block;padding:max(72px,calc(env(safe-area-inset-top) + 64px)) var(--gut) 18px}
   .dv .stage{display:flex;justify-content:center}
-  .dv .art .main{max-height:58svh}
+  .dv .art .main{width:min(100%,calc(58svh*.8))}
   .dv .thumbs{justify-content:flex-start;margin-top:14px;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut)}
   .dv .tx{border-left:0;border-top:1px solid var(--line);justify-content:flex-start;overflow:visible;padding:24px var(--gut) 40px}
   .dv .x{position:fixed}

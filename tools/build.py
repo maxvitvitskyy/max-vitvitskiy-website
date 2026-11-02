@@ -91,7 +91,7 @@ def dialog(w, n, total):
     sold = ' sold' if w['status'] == 'Продана' else ''
     return f'''<div class="dv open solo" id="dv" aria-labelledby="dv-t">
   <button class="x" type="button" aria-label="До каталогу"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <div class="art"><div class="stage"><button class="nav prev" type="button" aria-label="Попередній кадр"><i class="ar" aria-hidden="true"></i></button><img class="main" src="{e(w['imgs'][0])}" alt="{e(w['alts'][0])}" width="1600" height="1600"><button class="nav next" type="button" aria-label="Наступний кадр"><i class="ar" aria-hidden="true"></i></button></div><div class="thumbs" role="group" aria-label="Кадри роботи">{thumbs}</div></div>
+  <div class="art"><div class="stage"><button class="nav prev" type="button" aria-label="Попередній кадр"><i class="ar" aria-hidden="true"></i></button><img class="main" src="{e(w['imgs'][0])}" alt="{e(w['alts'][0])}" width="1280" height="1600"><button class="nav next" type="button" aria-label="Наступний кадр"><i class="ar" aria-hidden="true"></i></button></div><div class="thumbs" role="group" aria-label="Кадри роботи">{thumbs}</div></div>
   <div class="tx">
     <div class="wn"><button class="wb wp" type="button" aria-label="Попередня робота"><i class="ar" aria-hidden="true"></i></button><span class="count">{n} / {total}</span><button class="wb wx" type="button" aria-label="Наступна робота"><i class="ar" aria-hidden="true"></i></button></div>
     <h1 id="dv-t">{e(w['title'])}</h1>
