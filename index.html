@@ -309,8 +309,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* caption: same as the catalog (works.html) */
 .work .cap{display:grid;gap:8px;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
 .work .cap .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;white-space:nowrap}
-.work .cap .ttl{min-width:0;font-family:var(--head);text-transform:uppercase;font-size:clamp(17px,2vw,27px);line-height:1;overflow:hidden;text-overflow:ellipsis}
-.work .cap .n{font-family:var(--display);font-size:clamp(17px,2vw,27px);color:var(--amber);line-height:1}
+.work .cap .ttl{min-width:0;font-family:var(--head);text-transform:uppercase;font-size:clamp(19px,2.3vw,31px);line-height:1;overflow:hidden;text-overflow:ellipsis}
+.work .cap .n{font-family:var(--display);font-size:clamp(19px,2.3vw,31px);color:var(--amber);line-height:1}
 .work .cap .st{display:inline-flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:500}
 .work .cap .st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .work .cap .ed{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -342,13 +342,15 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @keyframes ringSpin{to{transform:rotate(360deg)}}
 .reel .play::before{content:"";border-left:11px solid var(--ink);border-block:7px solid transparent;margin-left:3px}
 .topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(56px,7vw,96px)}
+.trow{display:contents}
 .topics span{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:14px;color:var(--cream)}
 @media(min-width:900px){.topics span{flex:1 1 calc(20% - 10px);text-align:center}}
-/* phones: two rows that run past the screen edge and swipe sideways */
+/* phones: two rows that run past the screen edge and swipe sideways together, each row on its own offsets */
 @media(max-width:899px){
-  .topics{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);justify-content:start;justify-items:start;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;
+  .topics{flex-direction:column;flex-wrap:nowrap;align-items:flex-start;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;
     margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scroll-padding-inline:var(--gut);scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .topics::-webkit-scrollbar{display:none}
+  .trow{display:flex;gap:10px;width:max-content}
   .topics span{white-space:nowrap;scroll-snap-align:start}
 }
 .channels{display:grid;margin-top:clamp(32px,4vw,48px)}
@@ -731,6 +733,13 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   }
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+/* page transitions between documents (Chrome / Safari); others get a soft exit from the script at the end */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vtOut .36s cubic-bezier(.4,0,.2,1) both}
+::view-transition-new(root){animation:vtIn .7s cubic-bezier(.16,1,.3,1) .06s both}
+@keyframes vtOut{to{opacity:0;transform:translateY(-10px)}}
+@keyframes vtIn{from{opacity:0;transform:translateY(16px)}}
+html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s cubic-bezier(.4,0,.2,1),transform .34s cubic-bezier(.4,0,.2,1)}
 </style>
 </head>
 <body>
@@ -755,7 +764,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   <a class="big" href="#about" data-uk="Про мене">About</a>
   <a class="big" href="#contact" data-uk="Контакти">Contact</a>
   <div class="soc">
-    <a class="ico" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a>
+    <a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a>
   </div>
 </nav>
 
@@ -792,21 +801,21 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
   </div>
   <div class="wrap sec-foot sec-foot-top rv"><span class="hint swipe"><span data-uk="Гортай">Swipe</span><i class="ar" aria-hidden="true"></i></span><span class="hint" data-uk="Обрані роботи">Selected works</span></div>
   <div class="gallery rv">
-    <a class="work" href="works/creation/"><div class="ph"><img src="img/works/creation/card.jpg" alt="Creation в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Creation</span><span class="n">01</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/open-my-eyes/"><div class="ph"><img src="img/works/open-my-eyes/card.jpg" alt="Open My Eyes в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Open My Eyes</span><span class="n">02</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/natural-light/"><div class="ph"><img src="img/works/natural-light/card.jpg" alt="Natural Light в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Natural Light</span><span class="n">03</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/in-his-image/"><div class="ph"><img src="img/works/in-his-image/card.jpg" alt="In His Image в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">In His Image</span><span class="n">04</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/miracle/"><div class="ph"><img src="img/works/miracle/card.jpg" alt="Miracle в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Miracle</span><span class="n">05</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/soul-awakening/"><div class="ph"><img src="img/works/soul-awakening/card.jpg" alt="Soul Awakening в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Soul Awakening</span><span class="n">06</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/friendship/"><div class="ph"><img src="img/works/friendship/card.jpg" alt="Friendship в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Friendship</span><span class="n">07</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/who-you-are/"><div class="ph"><img src="img/works/who-you-are/card.jpg" alt="Who You Are в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Who You Are</span><span class="n">08</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/rise-from-the-ashes/"><div class="ph"><img src="img/works/rise-from-the-ashes/card.jpg" alt="Rise from the Ashes в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Rise from the Ashes</span><span class="n">09</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/lion-and-lamb/"><div class="ph"><img src="img/works/lion-and-lamb/card.jpg" alt="Lion and Lamb в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Lion and Lamb</span><span class="n">10</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/god-is-fighting-for-us/"><div class="ph"><img src="img/works/god-is-fighting-for-us/card.jpg" alt="God Is Fighting For Us в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">God Is Fighting For Us</span><span class="n">11</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/becoming-the-swan/"><div class="ph"><img src="img/works/becoming-the-swan/card.jpg" alt="Becoming the Swan в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Becoming the Swan</span><span class="n">12</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/beautiful-things/"><div class="ph"><img src="img/works/beautiful-things/card.jpg" alt="Beautiful Things в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Beautiful Things</span><span class="n">13</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/ataro/"><div class="ph"><img src="img/works/ataro/card.jpg" alt="Ataro в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Ataro</span><span class="n">14</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
-    <a class="work" href="works/face-the-sun/"><div class="ph"><img src="img/works/face-the-sun/card.jpg" alt="Face the Sun в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Face the Sun</span><span class="n">15</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/creation/"><div class="ph"><img src="img/works/creation/card.jpg" alt="Creation в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Creation</span><span class="n">001</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/open-my-eyes/"><div class="ph"><img src="img/works/open-my-eyes/card.jpg" alt="Open My Eyes в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Open My Eyes</span><span class="n">002</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/natural-light/"><div class="ph"><img src="img/works/natural-light/card.jpg" alt="Natural Light в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Natural Light</span><span class="n">003</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/in-his-image/"><div class="ph"><img src="img/works/in-his-image/card.jpg" alt="In His Image в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">In His Image</span><span class="n">004</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/miracle/"><div class="ph"><img src="img/works/miracle/card.jpg" alt="Miracle в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Miracle</span><span class="n">005</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/soul-awakening/"><div class="ph"><img src="img/works/soul-awakening/card.jpg" alt="Soul Awakening в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Soul Awakening</span><span class="n">006</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/friendship/"><div class="ph"><img src="img/works/friendship/card.jpg" alt="Friendship в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Friendship</span><span class="n">007</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/who-you-are/"><div class="ph"><img src="img/works/who-you-are/card.jpg" alt="Who You Are в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Who You Are</span><span class="n">008</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/rise-from-the-ashes/"><div class="ph"><img src="img/works/rise-from-the-ashes/card.jpg" alt="Rise from the Ashes в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Rise from the Ashes</span><span class="n">009</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/lion-and-lamb/"><div class="ph"><img src="img/works/lion-and-lamb/card.jpg" alt="Lion and Lamb в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Lion and Lamb</span><span class="n">010</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/god-is-fighting-for-us/"><div class="ph"><img src="img/works/god-is-fighting-for-us/card.jpg" alt="God Is Fighting For Us в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">God Is Fighting For Us</span><span class="n">011</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/becoming-the-swan/"><div class="ph"><img src="img/works/becoming-the-swan/card.jpg" alt="Becoming the Swan в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Becoming the Swan</span><span class="n">012</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/beautiful-things/"><div class="ph"><img src="img/works/beautiful-things/card.jpg" alt="Beautiful Things в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Beautiful Things</span><span class="n">013</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/ataro/"><div class="ph"><img src="img/works/ataro/card.jpg" alt="Ataro в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Ataro</span><span class="n">014</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
+    <a class="work" href="works/face-the-sun/"><div class="ph"><img src="img/works/face-the-sun/card.jpg" alt="Face the Sun в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></div><div class="cap"><span class="row"><span class="ttl">Face the Sun</span><span class="n">015</span></span><span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>
     <a class="work all" href="works.html"><div class="ph"><img src="img/works/depths/card.jpg" alt="" width="840" height="1050" loading="lazy"><span class="all-in"><span class="all-k" translate="no">The Collection</span><span class="all-t" data-uk="Дивитись усі роботи">See all works</span><i class="all-ar" aria-hidden="true"></i></span></div><div class="cap"><b data-uk="Уся колекція">The whole collection</b><span data-uk="Галерея →">Gallery →</span></div></a>
   </div>
   <div class="wrap duo rv">
@@ -871,12 +880,12 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
       </div>
     </div>
     <div class="topics rv">
-      <span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span><span data-uk="Натхнення">Inspiration</span><span data-uk="Розвиток смаку">Developing taste</span><span data-uk="Візуальне мислення">Visual thinking</span>
+      <div class="trow"><span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span></div><div class="trow"><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span><span data-uk="Натхнення">Inspiration</span><span data-uk="Розвиток смаку">Developing taste</span><span data-uk="Візуальне мислення">Visual thinking</span></div>
     </div>
     <div class="channels rv">
-      <a class="channel" href="https://www.youtube.com/@MaxVitvitskiy"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>YouTube</span><span data-uk="Відео та Shorts →">Videos & Shorts →</span></a>
-      <a class="channel" href="#"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></span>Instagram</span><span data-uk="Reels →">Reels →</span></a>
-      <a class="channel" href="#"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></span>TikTok</span><span data-uk="Кліпи →">Clips →</span></a>
+      <a class="channel" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>YouTube</span><span data-uk="Відео та Shorts →">Videos & Shorts →</span></a>
+      <a class="channel" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></span>Instagram</span><span data-uk="Reels →">Reels →</span></a>
+      <a class="channel" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></span>TikTok</span><span data-uk="Кліпи →">Clips →</span></a>
     </div>
   </div>
 </section>
@@ -978,7 +987,7 @@ footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26p
     <span class="eyebrow rv" data-uk="Контакти">Contact</span>
     <h2 class="display rv"><span data-uk="Відкритий<br class='m'> до нових<br class='d'> ідей<br class='m'> та <i>співпраці</i>.">Open to new ideas<br>and <i>collaboration</i>.</span></h2>
     <a class="mail rv" href="mailto:maxim.vitvitskiy@gmail.com">maxim.vitvitskiy@gmail.com</a>
-    <div class="socials rv"><a class="ico" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
+    <div class="socials rv"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
     <img class="fl rv" src="img/logo-full.png" alt="Max Vitvitskiy" width="1400" height="831" loading="lazy">
     <footer><span>© 2026 Max Vitvitskiy</span><span data-uk="Створюй · Надихай · Проживай">Create · Inspire · Experience</span></footer>
   </div>
@@ -1027,7 +1036,7 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
 (function(){
   document.querySelectorAll('.rv').forEach(e=>e.classList.remove('rv'));
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const LIST='.gallery,.reels,.collage,.sx-uses,.topics,.sx-vals,.channels,.sx-links,.about .tags,.socials';
+  const LIST='.gallery,.reels,.collage,.sx-uses,.topics .trow,.sx-vals,.channels,.sx-links,.about .tags,.socials';
   const IMG='.work .ph,.reel,.band-in,.collage figure,.about-img';
   const HEAD='h2.display:not(.hero-name),.teach h3,.sx-block h3,.cols2 h3,.duo .cap h3';
   const UP='.exp-girl,.num,.eyebrow,.sx-eyebrow,.sec-head .sub,.hint,.duo .note,.btn-lite,.teach p,.teach .btn,.cols2 p,.sx-block .lead,.sx-block>p,.sx-vision,.sx-strip,.bio,.mail,.fl,footer,.sx-gallery';
@@ -1167,6 +1176,19 @@ function typeArch(){
   new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?start():stop()),{threshold:.1}).observe(root);
 })();
 
+</script>
+<script>
+/* soft exit for browsers without cross-document view transitions */
+if(!window.CSSViewTransitionRule&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target||a.hasAttribute('download'))return;
+    var u=new URL(a.href,location.href);
+    if(u.origin!==location.origin||(u.pathname===location.pathname&&u.search===location.search))return;
+    e.preventDefault();document.documentElement.classList.add('leaving');setTimeout(function(){location.href=a.href},320);
+  });
+  addEventListener('pageshow',function(e){if(e.persisted)document.documentElement.classList.remove('leaving')});
+}
 </script>
 </body>
 </html>

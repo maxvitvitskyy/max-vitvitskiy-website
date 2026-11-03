@@ -52,6 +52,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);font-weight:500}
 .hd h1{font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.9;white-space:nowrap;font-size:clamp(44px,11.4vw,170px)}
 .hd h1 i{font-family:var(--display);font-style:italic;color:var(--amber)}
+@media(max-width:699px){.hd h1{font-size:calc((100vw - 2*var(--gut))/4.78)}}
 .hd p{max-width:46ch;color:var(--muted);line-height:1.65;font-size:clamp(15px,1.3vw,17px)}
 @media(min-width:1100px){.hd{grid-template-columns:auto 1fr;column-gap:clamp(32px,4vw,64px);align-items:end}.hd .k{grid-column:1/-1}.hd p{padding-bottom:.55em}}
 /* filters */
@@ -60,6 +61,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .filters button{flex:none;min-height:40px;padding:0 18px;border:1px solid var(--line);border-radius:99px;font-size:13.5px;transition:background .3s,color .3s,border-color .3s}
 .filters button:hover{border-color:var(--amber)}
 .filters button[aria-pressed=true]{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.filters{flex-direction:column;gap:6px;align-items:flex-start}.frow{display:flex;gap:6px;width:max-content}.filters button{min-height:36px;padding:0 13px}
+@media(min-width:700px){.filters{flex-direction:row;gap:8px}.frow{display:contents}.filters button{min-height:40px;padding:0 18px}}
 @media(min-width:900px){.filters{flex-wrap:wrap;overflow:visible}}
 /* grid: equal cards, no offset */
 .wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap);row-gap:calc(var(--gap)*1.5);padding:0 var(--gut) clamp(60px,8vw,120px);max-width:1500px;margin-inline:auto}
@@ -72,8 +75,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(hover:hover) and (pointer:fine){.w:hover .ph .alt,.w:focus-visible .ph .alt{opacity:1}}
 .cap{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px}
 .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;white-space:nowrap}
-.ttl{min-width:0;font-family:var(--head);text-transform:uppercase;font-size:clamp(17px,2vw,27px);line-height:1;overflow:hidden;text-overflow:ellipsis}
-.n{font-family:var(--display);font-size:clamp(17px,2vw,27px);color:var(--amber);line-height:1}
+.ttl{min-width:0;font-family:var(--head);text-transform:uppercase;font-size:clamp(19px,2.3vw,31px);line-height:1;overflow:hidden;text-overflow:ellipsis}
+.n{font-family:var(--display);font-size:clamp(19px,2.3vw,31px);color:var(--amber);line-height:1}
 .st{display:inline-flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:500}.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .st.sold{color:var(--muted)}
 .ed{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -158,6 +161,19 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .buy{align-items:stretch}.dv .buy .ask{justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
+/* entrance: hidden until the motion script takes over (the script is the only thing that adds .js) */
+html.js:not(.hero-in) :is(.top .logo,.top .back,.hd .k,.hd h1,.hd p,.filters button){opacity:0}
+html.js .w:not(.rv-done){opacity:0}
+.hd h1 .wd{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em .14em .12em;margin:-.1em -.14em -.12em}
+.hd h1 .wd>span{display:inline-block;will-change:transform}
+/* page transitions between documents (Chrome / Safari); others get a soft exit from the script below */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vtOut .36s cubic-bezier(.4,0,.2,1) both}
+::view-transition-new(root){animation:vtIn .7s var(--ease) .06s both}
+@keyframes vtOut{to{opacity:0;transform:translateY(-10px)}}
+@keyframes vtIn{from{opacity:0;transform:translateY(16px)}}
+html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s cubic-bezier(.4,0,.2,1),transform .34s cubic-bezier(.4,0,.2,1)}
 </style>
 </head>
 <body>
@@ -187,8 +203,60 @@ const fb=[...document.querySelectorAll('.filters button')],cards=[...document.qu
 /* desktop hover frame: second gallery image layered over the card */
 if(matchMedia('(hover:hover) and (pointer:fine)').matches)cards.forEach(c=>{const w=W[+c.dataset.i],src=w&&(w.hover||w.imgs&&w.imgs[1]);if(!src)return;
   const im=document.createElement('img');im.className='alt';im.alt='';im.loading='lazy';im.decoding='async';im.src=src;c.querySelector('.ph').appendChild(im)});
-fb.forEach(b=>b.onclick=()=>{fb.forEach(x=>x.setAttribute('aria-pressed',x===b));const f=b.dataset.f;
-  cards.forEach(c=>{c.hidden=!(f==='all'||(f==='available'?c.dataset.sold==='0':(' '+c.dataset.cat+' ').includes(' '+f+' ')))})});
+/* animated filter: GSAP Flip (kept cards glide, leaving ones shrink out, new ones grow in) */
+const wall=document.querySelector('.wall'),bar=document.querySelector('.filters');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+let lastFlip=null,flipToken=0;
+function flipFilter(mutate,containers){
+  if(!window.gsap||!window.Flip||reduce.matches)return false;
+  gsap.registerPlugin(Flip);
+  if(window.catalogMotion)catalogMotion.finish();
+  if(lastFlip)lastFlip.progress(1);
+  const token=++flipToken;
+  const h0=containers.map(c=>c.offsetHeight);
+  const state=Flip.getState(cards,{simple:true});
+  cards.forEach(c=>c.classList.add('gs-busy'));
+  mutate();
+  cards.forEach(c=>{c.style.display=c.hidden?'none':''});
+  const h1=containers.map(c=>c.offsetHeight);
+  lastFlip=Flip.from(state,{duration:.5,scale:true,ease:'power2.inOut',stagger:{amount:.22},absolute:true,simple:true,
+    onEnter:els=>gsap.fromTo(els,{opacity:0,scale:.5},{opacity:1,scale:1,duration:.4,ease:'power2.out'}),
+    onLeave:els=>gsap.to(els,{opacity:0,scale:.5,duration:.3,ease:'power1.in'}),
+    onComplete:()=>{
+      gsap.set(cards,{clearProps:'opacity,transform,scale'});
+      containers.forEach(c=>{c.style.height='';c.style.alignContent='';c.style.alignItems=''});
+      lastFlip=null;
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{if(token===flipToken)cards.forEach(c=>c.classList.remove('gs-busy'))}));
+    }});
+  containers.forEach((c,i)=>{
+    c.style.alignContent='start';c.style.alignItems='flex-start';c.style.height=h0[i]+'px';
+    lastFlip.to(c,{height:h1[i],duration:.5,ease:'power2.inOut'},0);
+  });
+  return true;
+}
+function applyFilter(f){
+  if(window.catalogMotion)catalogMotion.finish();
+  const set=()=>{
+    cards.forEach(c=>{c.hidden=!(f==='all'||(f==='available'?c.dataset.sold==='0':(' '+c.dataset.cat+' ').includes(' '+f+' ')))});
+    fb.forEach(x=>x.setAttribute('aria-pressed',x.dataset.f===f));
+  };
+  if(!flipFilter(set,[wall])){set();cards.forEach(c=>{c.style.display=''})}
+}
+function centerChip(b){
+  if(bar.scrollWidth<=bar.clientWidth)return;
+  const r=b.getBoundingClientRect(),br=bar.getBoundingClientRect();
+  bar.scrollTo({left:bar.scrollLeft+(r.left-br.left)-(br.width-r.width)/2,behavior:reduce.matches?'auto':'smooth'});
+}
+fb.forEach(b=>b.onclick=()=>{applyFilter(b.dataset.f);centerChip(b)});
+{const m=location.hash.match(/^#cat-([\w-]+)$/);if(m&&fb.some(b=>b.dataset.f===m[1]))applyFilter(m[1])}
+/* soft exit for browsers without cross-document view transitions */
+if(!window.CSSViewTransitionRule&&!matchMedia('(prefers-reduced-motion: reduce)').matches)addEventListener('click',e=>{
+  const a=e.target.closest&&e.target.closest('a[href]');
+  if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target||a.hasAttribute('download'))return;
+  const u=new URL(a.href,location.href);
+  if(u.origin!==location.origin||(u.pathname===location.pathname&&u.search===location.search))return;
+  e.preventDefault();document.documentElement.classList.add('leaving');setTimeout(()=>{location.href=a.href},320);
+});
 /* detail view */
 const dv=document.getElementById('dv'),im=dv.querySelector('.art .main'),tb=dv.querySelector('.thumbs');
 tb.addEventListener('click',e=>{const b=e.target.closest('button');if(b)setMain(b.dataset.src)});let cur=0,last=null;

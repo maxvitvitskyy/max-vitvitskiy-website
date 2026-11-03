@@ -81,7 +81,7 @@ def card(i, w):
     sold = '1' if w['status'] == 'Продана' else '0'
     st = '<span class="st sold">' if sold == '1' else '<span class="st">'
     inner = (f'\n      <span class="ph"><img src="{e(w["img"])}" alt="{e(alt)}" width="840" height="1050" loading="{"eager" if i < 3 else "lazy"}"></span>'
-             f'\n      <span class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:02d}</span></span>'
+             f'\n      <span class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:03d}</span></span>'
              f'<span class="row">{st}{e(w["status"])}</span><span class="ed">{e(w["edition"])}</span></span></span>\n    ')
     attrs = f'data-i="{i}" data-cat="{e(' '.join(w['themes']))}" data-sold="{sold}" aria-label="{e(w["title"])}"'
     if w.get('slug'):
@@ -167,7 +167,7 @@ def home(W):
     rows = []
     for w in W[:15]:
         rows.append(f'    <a class="work" href="works/{w["slug"]}/"><div class="ph"><img src="{e(w["img"])}" alt="{e(w.get("cardAlt") or w["title"])}" width="840" height="1050" loading="lazy"></div>'
-                    f'<div class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:02d}</span></span>'
+                    f'<div class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:03d}</span></span>'
                     f'<span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>')
     src, n = re.subn(r'(<div class="gallery rv">\n)(?:    <a class="work" href="[^"]*">.*?</a>\n)+(    <a class="work all")', lambda m: m.group(1) + '\n'.join(rows) + '\n' + m.group(2), src, count=1, flags=re.S)
     assert n == 1, 'homepage gallery not found'
@@ -181,9 +181,12 @@ def main():
     src = re.sub(r'^const W=\[.*?\];\n', lambda m: 'const W=' + json.dumps(W, ensure_ascii=False) + ';\n', src, count=1, flags=re.M | re.S)
     # filter chips: only themes that have works
     used = {t for w in W for t in w['themes']}
-    chips = ''.join(f'<button type="button" data-f="{k}" aria-pressed="false">{l}</button>' for k, l in THEMES if k in used)
-    src = re.sub(r'(<div class="filters"[^>]*>\n    <button[^\n]*data-f="available"[^>]*>Доступні</button>).*?(\n  </div>)',
-                 lambda m: m.group(1) + chips + m.group(2), src, count=1, flags=re.S)
+    btn = lambda k, l, p='false': f'<button type="button" data-f="{k}" aria-pressed="{p}">{l}</button>'
+    th = [btn(k, l) for k, l in THEMES if k in used]
+    # two rows on phones (each row slides on its own); they flow as one wrapping row on desktop
+    rows = ('<div class="frow">' + btn('all', 'Усі', 'true') + btn('available', 'Доступні') + ''.join(th[:4]) + '</div>'
+            '<div class="frow">' + ''.join(th[4:]) + '</div>')
+    src = re.sub(r'(<div class="filters"[^>]*>\n    ).*?(\n  </div>)', lambda m: m.group(1) + rows + m.group(2), src, count=1, flags=re.S)
     # catalog cards
     cards = '\n'.join(card(i, w) for i, w in enumerate(W))
     src = re.sub(r'(<div class="wall">\n).*?(\n  </div>\n</main>)', lambda m: m.group(1) + cards + m.group(2), src, count=1, flags=re.S)
