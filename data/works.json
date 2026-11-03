@@ -534,6 +534,7 @@
   "og": "img/works/natural-light/og.jpg",
   "themes": [
    "portraits",
+   "butterflies",
    "self",
    "transformation"
   ],
@@ -714,6 +715,8 @@
   "og": "img/works/in-his-image/og.jpg",
   "themes": [
    "portraits",
+   "birds",
+   "butterflies",
    "faith"
   ],
   "year": 2021,
@@ -895,7 +898,9 @@
   "og": "img/works/miracle/og.jpg",
   "themes": [
    "portraits",
-   "animals"
+   "animals",
+   "birds",
+   "butterflies"
   ],
   "year": 2021,
   "meaning": "Диво, на яке ми чекаємо, часто вже дивиться нашими очима. Робота про невинність, опіку й тихе чудо, що живе в кожному людському житті.",
@@ -1076,6 +1081,7 @@
   "themes": [
    "portraits",
    "animals",
+   "birds",
    "love",
    "transformation"
   ],
@@ -1257,6 +1263,7 @@
   "og": "img/works/friendship/og.jpg",
   "themes": [
    "animals",
+   "butterflies",
    "flowers",
    "love"
   ],
@@ -1438,6 +1445,7 @@
   "og": "img/works/who-you-are/og.jpg",
   "themes": [
    "animals",
+   "birds",
    "self"
   ],
   "year": 2021,
@@ -1618,6 +1626,8 @@
   "og": "img/works/rise-from-the-ashes/og.jpg",
   "themes": [
    "portraits",
+   "birds",
+   "butterflies",
    "flowers",
    "faith",
    "ukraine",
@@ -1801,6 +1811,8 @@
   "og": "img/works/lion-and-lamb/og.jpg",
   "themes": [
    "animals",
+   "birds",
+   "butterflies",
    "faith"
   ],
   "year": 2022,
@@ -2162,6 +2174,7 @@
   "themes": [
    "portraits",
    "animals",
+   "birds",
    "self",
    "transformation"
   ],
@@ -2343,6 +2356,7 @@
   "og": "img/works/beautiful-things/og.jpg",
   "themes": [
    "animals",
+   "birds",
    "flowers"
   ],
   "year": 2022,
@@ -2525,6 +2539,8 @@
   "themes": [
    "portraits",
    "animals",
+   "birds",
+   "butterflies",
    "flowers",
    "self"
   ],
@@ -2706,6 +2722,8 @@
   "og": "img/works/face-the-sun/og.jpg",
   "themes": [
    "portraits",
+   "birds",
+   "butterflies",
    "flowers",
    "faith"
   ],
@@ -3797,6 +3815,7 @@
   "og": "img/works/look-inside/og.jpg",
   "themes": [
    "portraits",
+   "butterflies",
    "flowers",
    "self"
   ],
@@ -4517,6 +4536,7 @@
   "og": "img/works/introvert/og.jpg",
   "themes": [
    "animals",
+   "birds",
    "flowers",
    "self"
   ],
@@ -4872,6 +4892,7 @@
   ],
   "og": "img/works/introspectum/og.jpg",
   "themes": [
+   "butterflies",
    "self",
    "transformation"
   ],

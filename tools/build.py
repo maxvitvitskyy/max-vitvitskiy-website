@@ -13,8 +13,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://maxvitvitskiy.com/'
 CAT = 'works.html'
 # catalog filters: (id, label), in display order; a work lists its ids in "themes" (data/works.json)
-THEMES = [('portraits', 'Портрети'), ('animals', 'Тварини'), ('flowers', 'Квіти'), ('faith', 'Віра'), ('ocean', 'Океан'),
-          ('self', 'Самопізнання'), ('love', 'Любов'), ('ukraine', 'Україна'), ('transformation', 'Перетворення')]
+THEMES = [('portraits', 'Портрети'), ('animals', 'Тварини'), ('birds', 'Птахи'), ('butterflies', 'Метелики'), ('flowers', 'Квіти'), ('ocean', 'Океан'),
+          ('faith', 'Віра'), ('ukraine', 'Україна'), ('love', 'Любов'), ('self', 'Самопізнання'), ('transformation', 'Перетворення')]
 # Google Analytics 4 (enhanced measurement counts the catalog's pushState work views as page views)
 GA = ('<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TL5BZW0QP"></script>\n'
       '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag(\'js\',new Date());gtag(\'config\',\'G-0TL5BZW0QP\');</script>\n')
@@ -184,8 +184,8 @@ def main():
     btn = lambda k, l, p='false': f'<button type="button" data-f="{k}" aria-pressed="{p}">{l}</button>'
     th = [btn(k, l) for k, l in THEMES if k in used]
     # two rows on phones (each row slides on its own); they flow as one wrapping row on desktop
-    rows = ('<div class="frow">' + btn('all', 'Усі', 'true') + btn('available', 'Доступні') + ''.join(th[:4]) + '</div>'
-            '<div class="frow">' + ''.join(th[4:]) + '</div>')
+    chips = [btn('all', 'Усі', 'true')] + th + [btn('available', 'Доступні')]
+    rows = '<div class="frow">' + ''.join(chips[:7]) + '</div><div class="frow">' + ''.join(chips[7:]) + '</div>'
     src = re.sub(r'(<div class="filters"[^>]*>\n    ).*?(\n  </div>)', lambda m: m.group(1) + rows + m.group(2), src, count=1, flags=re.S)
     # catalog cards
     cards = '\n'.join(card(i, w) for i, w in enumerate(W))
