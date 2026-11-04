@@ -526,6 +526,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .exp-perks .dsk{display:none}
 .exp-perks span{font-size:13px;line-height:1.45;color:var(--muted);text-wrap:pretty;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:6 3 3;overflow-wrap:break-word}
 @media(max-width:899px){.exp-perks{margin-top:40px}}
+@media(min-width:1200px){.exp-perks .dsk{display:inline}}
 @media(max-width:899px){
   .exp .sec-head{--gw:min(68vw,380px);--bleed:min(calc(var(--gut) + 8vw),56px);--lift:calc((100vw - 2*var(--gut))/3.7*.3);display:block}
   .exp .sec-head::after{content:"";display:table;clear:both}
@@ -554,7 +555,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .exp-perks b{grid-column:2;grid-row:1}
   .exp-perks span{grid-column:1/-1;grid-row:2}
   .exp-perks b{font-size:clamp(22px,1.9vw,29px)}
-  .exp-perks span{font-size:15px}.exp-perks .dsk{display:inline}
+  .exp-perks{container-type:inline-size}
+  .exp-perks li{align-content:start}
+  .exp-perks span{font-size:clamp(13px,2.3cqi,17px);hyphens:manual;-webkit-hyphens:manual}
   .exp .sec-head .sub p{hyphens:none;-webkit-hyphens:none;max-width:calc(var(--fs)*3.35);font-size:clamp(20px,calc(var(--fs)*.148),29px);line-height:1.2;text-wrap:pretty}
   .exp-girl,.exp-glow{grid-column:2;grid-row:1/5;align-self:end;justify-self:start;width:min(calc(100% + var(--gut)*.9),calc(var(--fs)*3.5));margin:calc(var(--fs)*-.45) 0 calc(clamp(36px,6vw,80px)*-.7) 0;translate:calc(var(--fs)*.12) 0}
   .exp-girl{position:relative;z-index:2}
@@ -736,6 +739,18 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .about .bio-more:not(.open){-webkit-mask-image:linear-gradient(#000 0,#000 calc(100% - 7em),transparent 100%);mask-image:linear-gradient(#000 0,#000 calc(100% - 7em),transparent 100%)}
 }
 
+
+/* SILENT perks: hairline draws across, columns rise in turn, icon strokes are drawn */
+.a-perks{border-top-color:transparent}
+.a-perks::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.2s var(--rise)}
+.a-perks.in::before{transform:none}
+.a-perks li{opacity:0;transform:translateY(18px);transition:opacity .9s var(--rise),transform .9s var(--rise),border-color .9s var(--rise);transition-delay:calc(.3s + var(--i,0)*.15s)}
+.a-perks li+li{border-left-color:transparent}
+.a-perks.in li{opacity:1;transform:none}.a-perks.in li+li{border-left-color:var(--line)}
+.a-perks .pi :is(path,circle,rect,ellipse){stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.3s var(--rise);transition-delay:calc(.55s + var(--i,0)*.15s)}
+.a-perks .pi .dot{opacity:0;transition:opacity .6s ease;transition-delay:calc(1.3s + var(--i,0)*.15s)}
+.a-perks.in .pi :is(path,circle,rect,ellipse){stroke-dashoffset:0}
+.a-perks.in .pi .dot{opacity:1}
 /* contact */
 .contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
   radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.14),transparent 70%),
@@ -1112,6 +1127,16 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
   const tidy=el=>el.addEventListener('transitionend',function f(e){if(e.target!==el||!/^(opacity|clip-path)$/.test(e.propertyName))return;el.classList.remove('a-up','a-mask','a-img','a-girl','a-glow','in');el.style.removeProperty('--d');el.removeEventListener('transitionend',f)});
   const show=el=>{tidy(el);el.classList.add('in')};
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);(groups.get(e.target)||[e.target]).forEach(show)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  const pk=document.querySelector('.exp-perks');
+  if(pk){
+    const parts=pk.querySelectorAll('.pi :is(path,circle,rect,ellipse)');
+    parts.forEach(e=>e.setAttribute('pathLength','1'));
+    [...pk.children].forEach((li,i)=>li.style.setProperty('--i',i));
+    pk.classList.add('a-perks');
+    const po=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;po.disconnect();pk.classList.add('in');
+      setTimeout(()=>{pk.classList.remove('a-perks','in');parts.forEach(e=>e.removeAttribute('pathLength'));[...pk.children].forEach(li=>li.style.removeProperty('--i'))},3000)},{threshold:.5});
+    po.observe(pk);
+  }
   groups.forEach((_,box)=>io.observe(box));
 })();
 
