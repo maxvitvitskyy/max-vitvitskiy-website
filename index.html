@@ -616,8 +616,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 /* use cases: small cards, 3 × 2 on wide screens, a two-row swipe strip on phones */
 .sx-uses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-top:0;margin-top:26px}
 .sx-uses li{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 16px 18px;border:0;border-radius:14px;background:rgba(241,224,197,.045)}
-.sx-uses .ic{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(255,166,48,.1);color:var(--amber);margin-bottom:4px}
-.sx-uses .ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sx-uses .ic{display:grid;place-items:center;width:28px;height:28px;color:var(--amber);margin-bottom:4px}
+.sx-uses .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
 .sx-uses span{font-size:13.5px;line-height:1.45}
 .sx-more{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;min-height:36px;font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);transition:gap .35s var(--ease),color .3s}
 .sx-more::after{content:"";flex:none;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
@@ -751,6 +751,46 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .a-perks .pi .dot{opacity:0;transition:opacity .6s ease;transition-delay:calc(1.3s + var(--i,0)*.15s)}
 .a-perks.in .pi :is(path,circle,rect,ellipse){stroke-dashoffset:0}
 .a-perks.in .pi .dot{opacity:1}
+
+/* SILENT intro: subtitle, lead paragraph, extra paragraphs on desktop only */
+.exp .sec-head .sub .lede{font-family:var(--head);text-transform:uppercase;font-weight:400;color:var(--amber);font-size:clamp(24px,7vw,32px);line-height:1;max-width:none;margin-bottom:14px;text-wrap:balance}
+.exp .sec-head .sub p.dskp{display:none}
+.exp .sec-head .sub p.two,.exp .sec-head .sub p.dskp{font-family:var(--body);font-weight:400}
+@media(max-width:899px){.exp .sec-head .sub p.two{font-size:clamp(15px,4.3vw,19px);line-height:1.55}}
+.sx-block .sx-cta{margin-top:clamp(24px,3vw,36px);align-self:stretch;width:100%;min-height:48px;height:48px;padding-block:0;font-size:14px;letter-spacing:.14em}
+@media(min-width:900px){
+  .exp .sec-head .sub{gap:18px}
+  .exp .sec-head .sub .lede{font-size:clamp(28px,calc(var(--fs)*.19),42px);margin-bottom:0}
+  .exp .sec-head .sub p.two{font-size:clamp(17px,calc(var(--fs)*.095),20px);line-height:1.6;color:var(--cream)}
+  .exp .sec-head .sub p.dskp{display:block;font-size:clamp(16px,calc(var(--fs)*.09),19px);line-height:1.6;color:var(--muted)}
+  .exp .sec-head .sub .btn{margin-top:10px}
+}
+
+/* strip: logo spans exactly the heading's top to the sub-line's bottom */
+@media(min-width:600px){
+  .sx-strip{--h3:clamp(26px,3vw,44px);--logo:calc(var(--h3) + 6px + 22.5px);--logo-w:calc(var(--logo)*1.163);grid-template-columns:var(--logo-w) minmax(0,1fr);row-gap:6px}
+  .sx-strip h3{font-size:var(--h3)}
+  .sx-strip .mark{width:var(--logo-w);height:var(--logo);object-fit:contain}
+}
+@media(min-width:900px){
+  .sx-strip{grid-template-columns:var(--logo-w) max-content 1fr auto;grid-template-rows:auto auto;align-content:center}
+  .sx-strip h3{align-self:end}
+  .sx-strip small{align-self:start}
+}
+
+/* desktop category cards: two-line titles, larger icon in the top-right corner */
+.dbr{display:none}
+@media(min-width:900px){
+  .dbr{display:inline}
+  .sx-uses li{position:relative}
+  .sx-uses b{display:block;white-space:nowrap;line-height:1.1;min-height:2.2em;margin-top:42px}
+  .sx-uses .ic{position:absolute;top:16px;right:16px;width:32px;height:32px;margin:0}
+}
+@media(min-width:900px) and (max-width:1279px){
+  .sx-uses b{margin-top:36px}
+  .sx-uses .ic{width:28px;height:28px;top:14px;right:14px}
+  .sx-uses .sx-more{letter-spacing:.06em}
+}
 /* contact */
 .contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
   radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.14),transparent 70%),
@@ -836,7 +876,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
     <div class="hero-art">
       <div class="aurora" aria-hidden="true"></div>
       <div class="arch" aria-hidden="true"><svg class="niche" viewBox="0 5 66 95" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sillg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffe3a8" stop-opacity=".5"/><stop offset="1" stop-color="#c8641c" stop-opacity=".15"/></linearGradient><linearGradient id="fadeup" x1="0" y1="100" x2="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset=".22" stop-color="#fff"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="nfade" maskUnits="userSpaceOnUse" x="0" y="0" width="66" height="100"><rect width="66" height="100" fill="url(#fadeup)"/></mask><clipPath id="sillclip"><polygon points="0,100 66,100 60,91 6,91"/></clipPath><filter id="shHard" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation=".8"/></filter><filter id="shSoft" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="3.3"/></filter><filter id="nsoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2"/></filter></defs><g mask="url(#nfade)"><polygon points="0,33 0,100 6,91 6,36" fill="rgba(150,58,14,.25)"/><polygon points="66,33 66,100 60,91 60,36" fill="rgba(255,226,160,.16)"/><path d="M6,36 L6,91 L60,91 L60,36" fill="none" stroke="rgba(120,40,8,.35)" stroke-width="3" filter="url(#nsoft)"/></g><polygon points="0,100 66,100 60,91 6,91" fill="url(#sillg)"/><g clip-path="url(#sillclip)"><polygon points="6.3,91 6.4,94 6.4,97 5.9,100 51.2,100 51.3,98 51.4,97 54.1,96 54.8,95 55.1,93 55.4,91" fill="rgba(30,8,2,.45)" filter="url(#shSoft)" transform="translate(4.84 -1.76)"/><polygon points="6.3,91 6.4,94 6.4,97 5.9,100 51.2,100 51.3,98 51.4,97 54.1,96 54.8,95 55.1,93 55.4,91" fill="rgba(25,6,1,.63)" filter="url(#shHard)" transform="translate(1.76 -.55)"/></g></svg></div>
-      <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><g class="arch-chars" data-uk="· Художник · Experience-дизайнер · Креативний ментор ·">· Artist · Experience Designer · Creative Mentor ·</g></svg>
+      <svg class="arch-text" viewBox="-16 -16 104 116" aria-hidden="true"><path id="arcp" d="M-7,72 L-7,36 A43,43 0 0 1 79,36 L79,72" fill="none"/><g class="arch-chars" data-uk="· Візуальний митець · Experience-дизайнер · Креативний ментор ·">· Visual Artist · Experience Designer · Creative Mentor ·</g></svg>
       <h1 class="hero-name display" translate="no">Max <i>Vitvitskiy</i></h1>
       <picture><source type="image/webp" srcset="img/hero-480.webp 480w, img/hero-720.webp 720w, img/hero-960.webp 960w" sizes="(max-width:899px) 52vw, 260px"><img class="hero-fig" src="img/hero.png" alt="Max Vitvitskiy" width="1200" height="2793" fetchpriority="high" decoding="async"></picture>
     </div>
@@ -959,7 +999,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
     <span class="num" data-uk="03 / Я створюю враження">03 / I create experiences</span>
     <h2 class="display">Experience</h2>
     <span class="exp-glow" aria-hidden="true"></span><img class="exp-girl" src="img/silent/girl-1024.webp" srcset="img/silent/girl-560.webp 560w, img/silent/girl-1024.webp 1024w" sizes="(max-width:899px) 48vw, 34vw" alt="Guest dancing in glowing SILENT wireless headphones" width="1024" height="1300" loading="lazy" decoding="async">
-    <div class="sub"><p class="two" data-uk="SILENT — мій тех­но­ло­гіч­ний стар­тап та ів­ент-ком­панія на ос­но­ві silent disco: без­дро­то­ві на­вуш­ни­ки, кіль­ка му­зич­них ка­на­лів і нові фор­ма­ти подій, де кожен оби­рає влас­ний звук.<span class='dsk'> Ми підбираємо формат, привозимо й налаштовуємо обладнання та підтримуємо подію на місці — від корпоративів і весіль до шкільних свят, фестивалів і wellness-заходів, скрізь, де важливі спільність і свобода вибору.</span>">SILENT is my tech startup and event company built on silent disco: wireless headphones, several music channels and new event formats where everyone chooses their own sound.<span class="dsk"> We choose the format, bring and set up the equipment and support the event on site — from corporate events and weddings to school parties, festivals and wellness events, wherever togetherness and freedom of choice matter.</span></p><a class="btn fill" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a></div>
+    <div class="sub"><p class="lede" data-uk="SILENT — новий погляд на досвід подій.">SILENT — a new take on the event experience.</p><p class="two" data-uk="SILENT — технологічний івент-проєкт, який я заснував, щоб відкривати нові можливості для спільних вражень за допомогою технології Silent Disco.">SILENT is a technology event project I founded to open up new possibilities for shared experiences through Silent Disco technology.</p><p class="dskp" data-uk="Ми створюємо формати подій, у яких кожен обирає власну музику, вільно рухається та проживає спільний момент по-своєму — від корпоративів і приватних свят до культурних, освітніх та wellness-подій. Для мене SILENT — це можливість переосмислити взаємодію людей із музикою, простором і одне з одним.">We create event formats where everyone chooses their own music, moves freely and lives the shared moment in their own way — from corporate and private events to cultural, educational and wellness ones. For me, SILENT is a chance to rethink how people interact with music, space and one another.</p><a class="btn fill" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a></div>
     <ul class="exp-perks">
       <li><i class="pic" aria-hidden="true"><svg class="pi pi-led" viewBox="0 0 24 24"><path d="M2.5 15V12a9.5 9.5 0 0 1 19 0v3"/><g class="cups"><rect x="1.5" y="14" width="5.2" height="8" rx="2.3"/><rect x="17.3" y="14" width="5.2" height="8" rx="2.3"/></g></svg></i><b data-uk="3 канали + LED">3 channels + LED</b><span data-uk="Три канали музики й LED-підсвітка<span class='dsk'> навушників для ефектної атмосфери</span>">Three music channels and LED glow<span class="dsk"> headphones for a striking atmosphere</span></span></li>
       <li><i class="pic" aria-hidden="true"><svg class="pi pi-wifi" viewBox="0 0 24 24"><path class="w w3" d="M1.6 9.2a15 15 0 0 1 20.8 0"/><path class="w w2" d="M5 12.8a10 10 0 0 1 14 0"/><path class="w w1" d="M8.4 16.3a5 5 0 0 1 7.2 0"/><circle class="dot" cx="12" cy="20" r="1.4"/></svg></i><b data-uk="Wireless">Wireless</b><span data-uk="Бездротові навушники, вільний рух<span class='dsk'> простором — у залі й просто неба</span>">Wireless headphones, free to move<span class="dsk"> — indoors and outdoors</span></span></li>
@@ -973,18 +1013,18 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   <div class="wrap">
     <div class="sx-blocks rv">
       <article class="sx-block">
-        <span class="sx-eyebrow" data-uk="Про проєкт">About the project</span>
-        <h3 data-uk="Бути різними. Бути разом.">Be different. Be together.</h3>
-        <p class="lead" data-uk="SILENT — це проєкт, у якому я поєднав інтерес до візуальної культури, музики та людських вражень.">SILENT is a project in which I brought together my interest in visual culture, music and human experiences.</p>
-        <p data-uk="Тут кожен обирає власну музику, але залишається частиною спільного моменту. Ми можемо бути різними, не втрачаючи відчуття єдності.">Here everyone chooses their own music yet remains part of a shared moment. We can be different without losing the sense of unity.</p>
-        <span class="sx-eyebrow sx-sub" data-uk="Цінності проєкту">Project values</span>
+        <span class="sx-eyebrow" data-uk="Філософія SILENT">SILENT philosophy</span>
+        <h3 data-uk="Бути різними. Залишатися разом.">Be different. Stay together.</h3>
+        <p class="lead" data-uk="SILENT об’єднує людей, не вимагаючи від них однаково переживати кожен момент.">SILENT brings people together without asking them to experience every moment in the same way.</p>
+        <p data-uk="Завдяки індивідуальному вибору музики та спільному простору ми створюємо досвід, у якому свобода й відчуття єдності існують одночасно.">Through individual music choice and a shared space, we create an experience in which freedom and a sense of unity exist at the same time.</p>
+        <span class="sx-eyebrow sx-sub" data-uk="Наші цінності">Our values</span>
         <ul class="sx-list sx-vals">
-          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val1"><span class="n">01</span><b data-uk="Враження на першому місці">Experience comes first</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val1"><div><p data-uk="Ми починаємо з того, що мають відчути люди. Тому створюємо формати, які додають знайомим подіям інтерактивності, гри та несподіваних моментів.">We start with what people should feel. That is why we create formats that bring interactivity, play and unexpected moments to familiar events.</p></div></div></li>
-          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val2"><span class="n">02</span><b data-uk="Свобода бути собою">Freedom to be yourself</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val2"><div><p data-uk="Кожен обирає власний канал і спосіб долучитися. Нам важливо, щоб люди могли залишатися собою, водночас розділяючи спільні враження.">Everyone chooses their own channel and way of joining in. It matters to us that people can stay themselves while sharing a common experience.</p></div></div></li>
-          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val3"><span class="n">03</span><b data-uk="Продуманість у деталях">Care in the details</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val3"><div><p data-uk="Від домовленостей до технічної підготовки — ми дбаємо про деталі, щоб організація події була зрозумілою для замовника, а участь комфортною для гостей.">From agreements to technical preparation — we take care of the details, so organising the event is clear for the client and taking part is comfortable for guests.</p></div></div></li>
-          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val4"><span class="n">04</span><b data-uk="Просто долучитися">Easy to join</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val4"><div><p data-uk="Ми налаштовуємо обладнання та пояснюємо, як усе працює, щоб гості могли швидко зорієнтуватися й долучитися до події без зайвих складнощів.">We set up the equipment and explain how everything works, so guests can quickly find their way and join the event without unnecessary hassle.</p></div></div></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val1"><span class="n">01</span><b data-uk="Враження на першому місці">Experience comes first</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val1"><div><p data-uk="Кожна подія починається з досвіду, який ми хочемо залишити людям. Технологія — наш інструмент, а значущі моменти — наша мета.">Every event begins with the experience we want to leave people with. Technology is our tool; meaningful moments are our goal.</p></div></div></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val2"><span class="n">02</span><b data-uk="Свобода вибору">Freedom of choice</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val2"><div><p data-uk="Різні люди, різні смаки, різні ритми. Кожен обирає власний звук, залишаючись частиною спільного досвіду.">Different people, different tastes, different rhythms. Everyone picks their own sound while staying part of a shared experience.</p></div></div></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val3"><span class="n">03</span><b data-uk="Увага до деталей">Attention to detail</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val3"><div><p data-uk="Ми дбаємо про кожен етап: від вибору формату до технічної підготовки та супроводу події.">We take care of every stage: from choosing the format to technical preparation and supporting the event.</p></div></div></li>
+          <li><button class="vq" type="button" aria-expanded="false" aria-controls="val4"><span class="n">04</span><b data-uk="Простір для нових можливостей">Room for new possibilities</b><span class="pm" aria-hidden="true"></span></button><div class="va" id="val4"><div><p data-uk="Silent Disco дозволяє переосмислювати звичні формати подій і проводити їх у місцях, де традиційні звукові системи недоречні або неможливі.">Silent Disco lets us rethink familiar event formats and hold them in places where traditional sound systems are out of place or impossible.</p></div></div></li>
         </ul>
-        <p class="sx-vision" data-uk="Ми бачимо майбутнє подій у більшій свободі взаємодії, творчості та вибору — де різність не заважає людям бути разом.">We see the future of events in greater freedom of interaction, creativity and choice — where being different doesn’t keep people from being together.</p>
+        <p class="sx-vision" data-uk="Ми віримо, що майбутнє подій визначається не лише тим, що люди бачать і чують, а й тим, що вони відчувають та як взаємодіють одне з одним.">We believe the future of events is shaped not only by what people see and hear, but by what they feel and how they interact with one another.</p>
         <nav class="sx-links" aria-label="SILENT">
           <a href="https://silent.org.ua/experiences/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/" data-href-en="https://silent.org.ua/en/experiences/" data-uk="Формати">Formats</a>
           <a href="https://silent.org.ua/about/" target="_blank" rel="noopener" data-uk="Про SILENT">About SILENT</a>
@@ -993,27 +1033,28 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
         </nav>
       </article>
       <article class="sx-block">
-        <span class="sx-eyebrow" data-uk="Для кого">Who it is for</span>
-        <h3 data-uk="Одна технологія. Десятки форматів.">One technology. Dozens of formats.</h3>
-        <p class="lead" data-uk="SILENT підходить для подій, де важливі спільність і свобода вибору.">SILENT suits events where togetherness and freedom of choice matter.</p>
-        <p data-uk="Ми допомагаємо підібрати формат, доставляємо та налаштовуємо обладнання й забезпечуємо підтримку. Вам залишається насолоджуватися подією разом із гостями.">We help choose the format, deliver and set up the equipment and provide support. All that is left for you is to enjoy the event together with your guests.</p>
+        <span class="sx-eyebrow" data-uk="Формати подій">Event formats</span>
+        <h3 data-uk="Одна технологія. Безліч можливостей.">One technology. Endless possibilities.</h3>
+        <p class="lead" data-uk="SILENT адаптується до різних просторів, аудиторій та приводів.">SILENT adapts to different spaces, audiences and occasions.</p>
+        <p data-uk="Ми допомагаємо обрати відповідний формат, забезпечуємо обладнання та супроводжуємо подію від підготовки до завершення.">We help choose the right format, provide the equipment and support the event from preparation to the finish.</p>
         <ul class="sx-list sx-uses">
-          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18"/></svg></i><b data-uk="Бізнес">Business</b><span data-uk="Корпоративи, конференції, бренд-активації">Corporate events, conferences, brand activations</span><a class="sx-more" href="https://silent.org.ua/experiences/corporate/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/corporate/" data-href-en="https://silent.org.ua/en/experiences/corporate/" data-uk="Детальніше">Learn more</a></li>
-          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M3 7h18v3H3zM12 7v13M12 7C10.5 3.5 7 4 8 6.2 8.6 7 12 7 12 7zM12 7c1.5-3.5 5-3 4-.8C15.4 7 12 7 12 7z"/></svg></i><b data-uk="Свята">Celebrations</b><span data-uk="Дні народження, весілля, випускні, дівич-вечори">Birthdays, weddings, graduations, hen parties</span><a class="sx-more" href="https://silent.org.ua/experiences/birthday/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/birthday/" data-href-en="https://silent.org.ua/en/experiences/birthday/" data-uk="Детальніше">Learn more</a></li>
-          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 19.5l1-4.2L15.8 5a2 2 0 0 1 2.9 0l.3.3a2 2 0 0 1 0 2.9L8.7 18.5zM14 6.8l3.2 3.2M5.5 15.3l3.2 3.2"/></svg></i><b data-uk="Діти й школи">Kids &amp; schools</b><span data-uk="Шкільні свята, табори, молодіжні зустрічі">School parties, camps, youth meetups</span><a class="sx-more" href="https://silent.org.ua/experiences/school/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/school/" data-href-en="https://silent.org.ua/en/experiences/school/" data-uk="Детальніше">Learn more</a></li>
-          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M4.5 9.5h15M12 3.5l8 4H4zM6.5 10v8M10.2 10v8M13.8 10v8M17.5 10v8"/></svg></i><b data-uk="Освіта й культура">Education &amp; culture</b><span data-uk="Музеї, воркшопи, концерти, покази">Museums, workshops, concerts, shows</span><a class="sx-more" href="https://silent.org.ua/experiences/students/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/students/" data-href-en="https://silent.org.ua/en/experiences/students/" data-uk="Детальніше">Learn more</a></li>
-          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l2.2-5 4 10 2.3-5H21"/></svg></i><b data-uk="Спорт і wellness">Sport &amp; wellness</b><span data-uk="Йога, забіги, медитації">Yoga, runs, meditation</span><a class="sx-more" href="https://silent.org.ua/experiences/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/" data-href-en="https://silent.org.ua/en/experiences/" data-uk="Детальніше">Learn more</a></li>
-          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19.5c0-3.2 2.5-5.3 5.5-5.3s5.5 2.1 5.5 5.3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.8 14.3c2.7-.4 4.7 1.4 4.7 4.4"/></svg></i><b data-uk="Спільноти">Communities</b><span data-uk="Фестивалі, ярмарки, інклюзивні події">Festivals, markets, inclusive events</span><a class="sx-more" href="https://silent.org.ua/experiences/festivals/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/festivals/" data-href-en="https://silent.org.ua/en/experiences/festivals/" data-uk="Детальніше">Learn more</a></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18"/></svg></i><b data-uk="Бізнес">Business</b><span data-uk="Корпоративні заходи, конференції, бренд-активації">Corporate events, conferences, brand activations</span><a class="sx-more" href="https://silent.org.ua/experiences/corporate/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/corporate/" data-href-en="https://silent.org.ua/en/experiences/corporate/" data-uk="Детальніше">Learn more</a></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M3 7h18v3H3zM12 7v13M12 7C10.5 3.5 7 4 8 6.2 8.6 7 12 7 12 7zM12 7c1.5-3.5 5-3 4-.8C15.4 7 12 7 12 7z"/></svg></i><b data-uk="Свята">Celebrations</b><span data-uk="Весілля, дні народження, дівич-вечори, випускні">Weddings, birthdays, hen parties, graduations</span><a class="sx-more" href="https://silent.org.ua/experiences/birthday/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/birthday/" data-href-en="https://silent.org.ua/en/experiences/birthday/" data-uk="Детальніше">Learn more</a></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 19.5l1-4.2L15.8 5a2 2 0 0 1 2.9 0l.3.3a2 2 0 0 1 0 2.9L8.7 18.5zM14 6.8l3.2 3.2M5.5 15.3l3.2 3.2"/></svg></i><b data-uk="Діти та<br class='dbr'>освіта">Kids &amp;<br class="dbr">education</b><span data-uk="Шкільні свята, табори, молодіжні події">School parties, camps, youth events</span><a class="sx-more" href="https://silent.org.ua/experiences/school/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/school/" data-href-en="https://silent.org.ua/en/experiences/school/" data-uk="Детальніше">Learn more</a></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M4.5 9.5h15M12 3.5l8 4H4zM6.5 10v8M10.2 10v8M13.8 10v8M17.5 10v8"/></svg></i><b data-uk="Культура<br class='dbr'>та освіта">Culture &amp;<br class="dbr">education</b><span data-uk="Музеї, виставки, майстеркласи, концерти">Museums, exhibitions, workshops, concerts</span><a class="sx-more" href="https://silent.org.ua/experiences/students/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/students/" data-href-en="https://silent.org.ua/en/experiences/students/" data-uk="Детальніше">Learn more</a></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l2.2-5 4 10 2.3-5H21"/></svg></i><b data-uk="Спорт<br class='dbr'>та wellness">Sport &amp;<br class="dbr">wellness</b><span data-uk="Йога, пробіжки, медитації">Yoga, runs, meditation</span><a class="sx-more" href="https://silent.org.ua/experiences/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/" data-href-en="https://silent.org.ua/en/experiences/" data-uk="Детальніше">Learn more</a></li>
+          <li><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19.5c0-3.2 2.5-5.3 5.5-5.3s5.5 2.1 5.5 5.3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.8 14.3c2.7-.4 4.7 1.4 4.7 4.4"/></svg></i><b data-uk="Спільноти<br class='dbr'>та фестивалі">Communities &amp;<br class="dbr">festivals</b><span data-uk="Фестивалі, маркети, громадські заходи">Festivals, markets, community events</span><a class="sx-more" href="https://silent.org.ua/experiences/festivals/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/festivals/" data-href-en="https://silent.org.ua/en/experiences/festivals/" data-uk="Детальніше">Learn more</a></li>
         </ul>
+        <a class="btn go sx-cta" href="https://silent.org.ua/experiences/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/experiences/" data-href-en="https://silent.org.ua/en/experiences/" data-uk="Дослідити формати подій →">Explore event formats →</a>
       </article>
     </div>
     <div class="sx-strip rv">
-      <img class="mark" src="img/silent/silent-mark-amber.png" alt="" width="240" height="240" loading="lazy">
+      <img class="mark" src="img/silent/silent-mark-amber-tight.png" alt="" width="178" height="153" loading="lazy">
       <div class="txt">
-        <h3 data-uk="Розкажіть про ідею вашої події">Tell us your event idea</h3>
-        <small data-uk="Разом підберемо формат. Від 40 гостей, налаштування займає близько 30 хвилин.">We will find the format together. From 40 guests, setup takes about 30 minutes.</small>
+        <h3 data-uk="Маєш ідею? Перетворімо її на враження.">Have an idea? Let’s turn it into an experience.</h3>
+        <small data-uk="Ми допоможемо підібрати відповідний формат і втілити його разом із SILENT.">We will help choose the right format and bring it to life together with SILENT.</small>
       </div>
-      <a class="btn fill go" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="<span>Перевірити дату<span class='dom'> на silent.org.ua</span></span> →"><span>Check a date<span class="dom"> on silent.org.ua</span></span> →</a>
+      <a class="btn fill go" href="https://silent.org.ua/" target="_blank" rel="noopener" data-href-uk="https://silent.org.ua/" data-href-en="https://silent.org.ua/en/" data-uk="Відкрити SILENT →">Discover SILENT →</a>
     </div>
   </div>
 </section>
