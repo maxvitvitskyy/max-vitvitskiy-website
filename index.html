@@ -314,7 +314,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .work .cap .st{display:inline-flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:500}
 .work .cap .st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .work .cap .ed{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-@media(max-width:699px){.work .cap{gap:6px;margin-top:10px;padding-top:10px}.work .cap .st,.work .cap .ed{font-size:12px;letter-spacing:.02em}.work .cap .st{gap:6px}}
+@media(max-width:699px){.work .cap{gap:6px;margin-top:10px;padding-top:10px}.work .cap .ttl,.work .cap .n{font-size:25px}.work .cap .st,.work .cap .ed{font-size:12px;letter-spacing:.02em}.work .cap .st{gap:6px}}
 .work .cap .ar,.channel>span .ar{display:inline-block;flex:none;vertical-align:middle;width:1.25em;height:.7em;margin:-.1em 0 0 .5em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .45s var(--ease)}
 .work:hover .cap .ar,.work:focus-visible .cap .ar,.channel:hover>span .ar,.channel:focus-visible>span .ar{transform:translateX(6px)}
 .btn:hover .ar,.btn:focus-visible .ar,.cta:focus-visible .arr{transform:translateX(3px)}
@@ -333,6 +333,33 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .reel{flex:0 0 min(58vw,270px);aspect-ratio:9/16;scroll-snap-align:start;overflow:hidden;position:relative;border-radius:var(--r)}
 .reel img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .reel:hover img{transform:scale(1.06)}
+
+.st-ov{--sw:calc(min(100dvh,100vw*16/9)*9/16);position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:#000;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s .45s;touch-action:pan-y}
+.st-ov.on{opacity:1;visibility:visible;transition:opacity .45s var(--ease)}
+.st-bg{position:absolute;inset:-12%;width:124%;height:124%;object-fit:cover;filter:blur(46px) saturate(1.35) brightness(.55);transition:opacity .6s}
+.st-stage{position:relative;height:min(100dvh,calc(100vw*16/9));aspect-ratio:9/16;max-width:100vw;border-radius:clamp(0px,2vw,22px);overflow:hidden;background:#000;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.st-yt{position:absolute;inset:0}.st-yt iframe{width:100%;height:100%;border:0;display:block}
+.st-stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.55),transparent 22%,transparent 72%,rgba(0,0,0,.6))}
+.st-bars{position:absolute;z-index:3;left:12px;right:12px;top:max(12px,env(safe-area-inset-top));display:flex;gap:4px}
+.st-bars i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.28);overflow:hidden}
+.st-bars i b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:0 50%}
+.st-bars i.done b{transform:scaleX(1)}
+.st-top{position:absolute;z-index:3;left:14px;right:14px;top:calc(max(12px,env(safe-area-inset-top)) + 16px);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.st-ttl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.st-ttl-old{font-family:var(--head);text-transform:uppercase;font-size:20px;line-height:1.05;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.st-top button,.st-nav,.st-x{appearance:none;border:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.18);color:#fff;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 2px 14px rgba(0,0,0,.35);transition:background .25s,transform .25s var(--ease)}
+.st-top button:hover,.st-nav:hover,.st-x:hover{background:rgba(255,255,255,.32)}
+.st-x{position:absolute;z-index:5;top:max(14px,env(safe-area-inset-top));right:14px}
+.st-top .st-btns{display:flex;gap:8px}
+.st-top svg,.st-x svg,.st-nav svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.st-tap{position:absolute;z-index:2;top:70px;bottom:0;width:34%}
+.st-tap.l{left:0}.st-tap.r{right:0}
+.st-nav{position:absolute;z-index:4;top:50%;margin-top:-21px;display:none}
+@media(min-width:900px){.st-nav{display:grid}.st-nav.l{left:max(12px,calc(50% - var(--sw)/2 - 56px))}.st-nav.r{right:max(12px,calc(50% - var(--sw)/2 - 56px))}}
+@media(max-width:899px){.st-top{padding-right:50px}}
+@media(prefers-reduced-motion:reduce){.st-ov,.st-bg{transition:none}}
+.reel.nocover{background:radial-gradient(120% 80% at 50% 0%,#1d2a22,var(--ink) 70%);border:1px solid var(--line)}
+.reel .rt{position:absolute;z-index:2;left:18px;right:18px;bottom:20px;font-family:var(--head);text-transform:uppercase;font-size:clamp(26px,7vw,32px);line-height:1;color:var(--cream,#f1e0c5)}
 .reel::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 70%,rgba(0,0,0,.5))}
 .reel .play{position:absolute;z-index:2;right:30px;top:30px;width:40px;height:40px;border-radius:50%;background:rgba(255,166,48,.92);display:grid;place-items:center}
 /* a ring of "watch · watch · watch" turning slowly around the play button; letters are placed one by one, so every browser draws it the same */
@@ -841,18 +868,20 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   </div>
   <div class="wrap sec-foot sec-foot-top rv"><span class="hint swipe"><span data-uk="Гортай">Swipe</span><i class="ar" aria-hidden="true"></i></span><span class="hint" data-uk="Нові відео">New videos</span></div>
   <div class="reels rv">
-    <a class="reel" href="#" aria-label="Наша культура втратила гальма"><img src="img/reel1.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Цей страх — ознака змін"><img src="img/reel2.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Єдина річ, яку неможливо повторити"><img src="img/reel3.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Твій дар повільно згасає"><img src="img/reel4.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Ти живеш у світі чужих ідей"><img src="img/reel5.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Бог руйнує те, що тебе стримувало"><img src="img/reel6.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Не знаєш, що робити далі?"><img src="img/reel7.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="z3wZ24TWkMk" aria-label="Ти живеш у світі чужих ідей"><img src="img/reel5.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="igQcZybBb_A" aria-label="Я б хотів почути це раніше"><img src="img/reel9.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="7bFUIudiw8M" aria-label="Теорія смаку"><img src="img/reel12.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="UKTzBjbnva0" aria-label="Наша культура втратила гальма"><img src="img/reel1.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="WYHImBuRrKk" aria-label="Цей страх — ознака змін"><img src="img/reel2.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="FyOOx2I1ppQ" aria-label="Твій дар повільно згасає"><img src="img/reel4.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="AGISwUXez5I" aria-label="Теорія смаку 2"><img src="img/reel13.jpg" alt="" width="540" height="960" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="vnyzig_Sa0Y" aria-label="Бог руйнує те, що тебе стримувало"><img src="img/reel6.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="kkgaC5hz5XE" aria-label="Не знаєш, що робити далі?"><img src="img/reel7.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
     <a class="reel" href="#" aria-label="Вже не той, ким був раніше?"><img src="img/reel8.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Я б хотів почути це раніше"><img src="img/reel9.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Не знаєш, як зробити перший крок?"><img src="img/reel10.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Ти вже творець"><img src="img/reel11.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
-    <a class="reel" href="#" aria-label="Теорія смаку"><img src="img/reel12.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="Is9NXn4ncns" aria-label="Теорія смаку 3"><img src="img/reel14.jpg" alt="" width="540" height="960" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="EL3sE-0u_lA" aria-label="Ти вже творець"><img src="img/reel11.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="AEbOM5y0Ciw" aria-label="Ось чому ти не почав"><img src="img/reel16.jpg" alt="" width="680" height="1208" loading="lazy"><span class="play"></span></a>
+    <a class="reel" href="#" data-yt="xJmS1n3EMcc" aria-label="Теорія смаку: Феррарі"><img src="img/reel15.jpg" alt="" width="540" height="960" loading="lazy"><span class="play"></span></a>
   </div>
   <div class="wrap">
     <div class="teach rv">
@@ -1189,6 +1218,65 @@ if(!window.CSSViewTransitionRule&&!matchMedia('(prefers-reduced-motion: reduce)'
   });
   addEventListener('pageshow',function(e){if(e.persisted)document.documentElement.classList.remove('leaving')});
 }
+</script>
+<script>
+/* reels → full-screen story viewer (YouTube Shorts) */
+(function(){
+  const items=[...document.querySelectorAll('.reel[data-yt]')];
+  document.querySelectorAll('.reel:not([data-yt])').forEach(r=>r.addEventListener('click',e=>e.preventDefault()));
+  if(!items.length)return;
+  const ov=document.createElement('div');ov.className='st-ov';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-label','Відео');
+  const ic=d=>'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+d+'"/></svg>';
+  ov.innerHTML='<canvas class="st-bg" width="48" height="86"></canvas><div class="st-stage"><div class="st-yt"><div id="stYT"></div></div><div class="st-bars"></div><div class="st-top"><span class="st-ttl"></span><span class="st-btns"><button type="button" class="st-mute" aria-label="Звук">'+ic('M4 9v6h4l5 4V5L8 9zM17 9a4 4 0 010 6')+'</button></span></div><div class="st-tap l"></div><div class="st-tap r"></div></div><button type="button" class="st-x" aria-label="Закрити відео">'+ic('M6 6l12 12M18 6L6 18')+'</button><button type="button" class="st-nav l" aria-label="Назад">'+ic('M15 5l-7 7 7 7')+'</button><button type="button" class="st-nav r" aria-label="Далі">'+ic('M9 5l7 7-7 7')+'</button>';
+  document.body.appendChild(ov);
+  const bars=ov.querySelector('.st-bars'),ttl=ov.querySelector('.st-ttl'),bg=ov.querySelector('canvas'),mute=ov.querySelector('.st-mute');
+  bars.innerHTML=items.map(()=>'<i><b></b></i>').join('');
+  const segs=[...bars.children];let cur=-1,muted=false,opener=null,P=null,pending=null,tick=0;
+  const setBar=(k,f)=>{segs[k].firstChild.style.transform='scaleX('+f+')'};
+  function loadAPI(cb){
+    if(window.YT&&YT.Player)return cb();
+    const prev=window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady=()=>{if(prev)prev();cb()};
+    if(!document.getElementById('yt-api')){const t=document.createElement('script');t.id='yt-api';t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t)}
+  }
+  function bgFrom(id){
+    const im=new Image();im.onload=()=>{if(items[cur]&&items[cur].dataset.yt===id){try{bg.getContext('2d').drawImage(im,0,0,bg.width,bg.height)}catch(e){}}};
+    im.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';
+  }
+  function poll(){clearInterval(tick);tick=setInterval(()=>{if(!P||!P.getDuration||cur<0)return;const d=P.getDuration();if(d>0)setBar(cur,Math.min(1,P.getCurrentTime()/d))},120)}
+  function onState(e){if(e.data===0)go(cur+1)}
+  function go(i){
+    if(i<0)i=0;if(i>=items.length){close();return}
+    cur=i;const it=items[i],id=it.dataset.yt;
+    segs.forEach((sg,k)=>{sg.classList.toggle('done',k<i);setBar(k,k<i?1:0)});
+    ttl.textContent=it.getAttribute('aria-label')||'';
+    const im=it.querySelector('img');
+    if(im){try{bg.getContext('2d').drawImage(im,0,0,bg.width,bg.height)}catch(e){}}else bgFrom(id);
+    loadAPI(()=>{
+      if(cur<0)return;
+      const cid=items[cur].dataset.yt;
+      if(!P){
+        P=new YT.Player('stYT',{host:'https://www.youtube-nocookie.com',videoId:cid,playerVars:{autoplay:1,playsinline:1,rel:0,controls:0,modestbranding:1,iv_load_policy:3,fs:0,disablekb:1},events:{onReady:e=>{if(muted)e.target.mute();e.target.playVideo();poll()},onStateChange:onState}});
+      }else{P.loadVideoById(cid);if(muted)P.mute();else P.unMute()}
+    });
+  }
+  function open(i){opener=document.activeElement;ov.classList.add('on');document.documentElement.style.overflow='hidden';go(i);ov.querySelector('.st-x').focus()}
+  function close(){ov.classList.remove('on');clearInterval(tick);if(P&&P.stopVideo)P.stopVideo();cur=-1;document.documentElement.style.overflow='';if(opener&&opener.focus)opener.focus()}
+  items.forEach((it,i)=>it.addEventListener('click',e=>{e.preventDefault();open(i)}));
+  ov.querySelector('.st-x').onclick=close;
+  ov.querySelectorAll('.l').forEach(b=>b.onclick=()=>go(cur-1));
+  ov.querySelectorAll('.r').forEach(b=>b.onclick=()=>go(cur+1));
+  mute.onclick=()=>{muted=!muted;if(P){muted?P.mute():P.unMute()}mute.style.opacity=muted?.55:1};
+  ov.addEventListener('click',e=>{if(!e.target.closest('.st-stage,.st-nav,.st-x'))close()});
+  const toggle=()=>{if(!P)return;P.getPlayerState()===1?P.pauseVideo():P.playVideo()};
+  addEventListener('keydown',e=>{if(!ov.classList.contains('on'))return;if(e.key==='Escape')close();else if(e.key==='ArrowRight')go(cur+1);else if(e.key==='ArrowLeft')go(cur-1);else if(e.key===' '){e.preventDefault();toggle()}});
+  /* hold to pause, swipe to flip */
+  const st=ov.querySelector('.st-stage');let x0=0,t0=0,held=false,sw=false;
+  st.addEventListener('pointerdown',e=>{x0=e.clientX;t0=Date.now();held=false;setTimeout(()=>{if(t0&&Date.now()-t0>=250){held=true;if(P)P.pauseVideo()}},260)});
+  const up=e=>{if(!t0)return;const dx=e.clientX-x0;t0=0;if(held&&P)P.playVideo();sw=Math.abs(dx)>60;if(sw)go(cur+(dx<0?1:-1))};
+  st.addEventListener('pointerup',up);st.addEventListener('pointercancel',()=>{t0=0;if(held&&P)P.playVideo()});
+  st.addEventListener('click',e=>{if(held||sw){e.stopPropagation();sw=false}},true);
+})();
 </script>
 </body>
 </html>
