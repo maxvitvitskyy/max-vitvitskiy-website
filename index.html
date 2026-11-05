@@ -58,6 +58,7 @@
   --r:16px;
   --arrow:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='33 -513 581 348'><path transform='scale(1,-1)' fill='black' d='M417 165 401 183 566 328H33V350H566L401 496L417 513L614 339Z'/></svg>");--arrow-long:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='33 -513 860 348'><path transform='scale(1,-1)' fill='black' d='M697 165 681 183 846 328H33.1V350H846L681 496L697 513L893 339Z'/></svg>");
   --section:clamp(88px,11vw,160px);
+  --btn-h:56px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:dark;background:var(--coal)}
@@ -73,7 +74,7 @@ section[id]{scroll-margin-top:56px}
 /* fully hidden until keyboard focus: Safari draws the page under its status bar, where a merely shifted button still showed */
 .skip:focus-visible{transform:translateY(max(0px,env(safe-area-inset-top)));opacity:1;pointer-events:auto}
 .display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.01em}
-.eyebrow{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber)}
+.eyebrow{font-family:var(--text);font-weight:500;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber)}
 .wrap{padding-inline:var(--gut);max-width:1500px;margin-inline:auto}
 section{position:relative}
 ::selection{background:var(--amber);color:var(--ink)}
@@ -282,7 +283,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .sec-head .sub{grid-column:2;align-self:stretch;flex-direction:column;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:calc(var(--fs)*-.042);padding:0 0 calc(var(--fs)*.122)}
   .sec-head .sub p{max-width:16em;text-wrap:balance;font-size:max(17px,calc(var(--fs)*.14));line-height:1.2}
 }
-.btn{font-family:var(--body);font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 30px;border:1px solid var(--amber);border-radius:999px;font-size:15px;line-height:1;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--amber);transition:background .4s,color .4s,gap .4s var(--ease)}
+.btn{font-family:var(--body);font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:var(--btn-h);padding:0 30px;border:1px solid var(--amber);border-radius:999px;font-size:15px;line-height:1;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--amber);transition:background .4s,color .4s,gap .4s var(--ease)}
 .btn .ar{display:block;flex:none;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
 .btn:hover{background:var(--amber);color:var(--ink);gap:22px}
 .btn.fill{background:var(--amber);color:var(--ink)}
@@ -620,7 +621,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .sx-uses .ic{display:grid;place-items:center;width:28px;height:28px;color:var(--amber);margin-bottom:4px}
 .sx-uses .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
 .sx-uses span{font-size:13.5px;line-height:1.45}
-.sx-more{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;min-height:36px;font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);transition:gap .35s var(--ease),color .3s}
+.sx-more{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;min-height:44px;font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);transition:gap .35s var(--ease),color .3s}
 .sx-more::after{content:"";flex:none;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
 .sx-more:hover{color:var(--sand)}.sx-more:hover::after,.sx-more:focus-visible::after{transform:translateX(5px)}
 .sx-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:28px}
@@ -686,7 +687,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 
 /* Create / Inspire / Experience sublines: use the full column on phones, balanced lines */
 @media(max-width:899px){.sec-head .sub p.two{max-width:none;text-wrap:balance}}
-@media(max-width:899px){.btn{min-height:50px;font-size:14px;padding:0 26px;gap:12px}.sec-head .sub{gap:22px}}
+@media(max-width:899px){:root{--btn-h:50px}.btn{font-size:14px;padding:0 26px;gap:12px}.sec-head .sub{gap:22px}}
 /* tablet refinements */
 @media(min-width:600px) and (max-width:899px){
   .sec-head h2,.exp .sec-head h2{font-size:calc((100vw - 2*var(--gut))/3.7)}
@@ -703,10 +704,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .about-grid{display:grid;gap:36px}
 .about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.about-img::after{content:"";position:absolute;inset:0;border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line)}
 .about-txt{container-type:inline-size}
-/* name fills the text column on one line: 22.5cqi ≈ column width / 4.41 (measured glyph run) */
-.about h2{font-size:22.5cqi;white-space:nowrap;margin-bottom:18px}
+/* name fills the text column on one line: 17.3cqi ≈ column width / 5.78 (measured BazaART glyph run) */
+.about h2{font-size:17.3cqi;white-space:nowrap;margin-bottom:10px}
 .about p{font-size:clamp(16px,1.4vw,18px);line-height:1.75;text-wrap:pretty}
 .bio p+p,.bio-more>div>p{margin-top:1em}
 /* collapsed bio shows the next lines fading out, so it reads as text that continues */
@@ -725,6 +725,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(max-width:899px){.about .more{display:flex;width:100%;justify-content:center}}
 .about .tags{font-family:var(--text);margin-bottom:clamp(28px,3vw,40px);display:flex;flex-wrap:wrap;gap:8px 4cqi;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
 .about h2{margin-top:18px}
+.about h2{font-family:"BazaART",var(--display);text-transform:none;font-weight:400;line-height:.95;padding:.04em .06em .2em;background:linear-gradient(180deg,#f8ecd6 0%,#f3dca1 45%,#eba94b 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 6px 26px rgba(1,17,10,.45))}
 .about .tags span::before{content:"✦";color:#a02c4c}
 /* tags: a full-width 3 × 2 table with thin inner rules */
 .about .tags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
@@ -740,7 +741,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .about-txt{display:flex;flex-direction:column}
   /* the name is set larger than its column and steps onto the portrait */
   .about-txt{position:relative;z-index:2}
-  .about h2{font-size:29cqi;margin-left:-31cqi;text-shadow:0 2px 28px rgba(0,0,0,.55)}
+  /* larger name: the portrait's edge cuts through the middle of the "a" (M + half an a ≈ 1.04em) */
+  .about h2{width:max-content;font-size:25.3cqi;margin-left:calc(-1*(clamp(40px,6vw,104px) + 1.04em))}
   .about .tags,.about .bio{position:relative}
   .about .bio{flex:1;display:flex;flex-direction:column}
   .about .bio-more{flex:1 1 0;height:auto;min-height:6.4em}.about .bio-more.open{flex:none}.about .bio .more{align-self:flex-start}
@@ -765,7 +767,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .exp .sec-head .sub p.dskp{display:none}
 .exp .sec-head .sub p.two,.exp .sec-head .sub p.dskp{font-family:var(--body);font-weight:400}
 @media(max-width:899px){.exp .sec-head .sub p.two{font-size:clamp(15px,4.3vw,19px);line-height:1.55}}
-.sx-block .sx-cta{margin-top:clamp(24px,3vw,36px);align-self:stretch;width:100%;min-height:48px;height:48px;padding-block:0;font-size:14px;letter-spacing:.14em}
+.sx-block .sx-cta{margin-top:clamp(24px,3vw,36px);align-self:stretch;width:100%;min-height:var(--btn-h);height:var(--btn-h);padding-block:0;font-size:14px;letter-spacing:.14em}
 @media(min-width:900px){
   .exp .sec-head .sub{gap:18px}
   .exp .sec-head .sub .lede{font-size:clamp(28px,calc(var(--fs)*.19),42px);margin-bottom:0}
@@ -851,10 +853,10 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .sec-head p.lede,.exp .sec-head .sub p.lede{color:var(--acc)}
 .sec-head p.lede em{font-style:italic;color:transparent;background:linear-gradient(0deg,var(--acc-lo) 0%,var(--acc) 55%,var(--acc-hi) 100%);-webkit-background-clip:text;background-clip:text;padding:0 .16em 0 .04em;margin:0 -.12em 0 -.04em}
 /* contact: the hero arch comes back empty and lit — a doorway waiting for your idea */
-.contact{text-align:center;padding-block:clamp(90px,12vw,170px) 40px;background:radial-gradient(60% 44% at 50% 28%,rgba(255,166,48,.07),transparent 72%),#000}
+.contact{text-align:center;padding-block:var(--section) 40px;background:radial-gradient(60% 44% at 50% 28%,rgba(255,166,48,.07),transparent 72%),#000}
 .c-grid{display:grid;gap:clamp(40px,6vw,56px);align-items:center}
 .c-side{width:min(88vw,380px);margin-inline:auto;margin-bottom:34px;container-type:inline-size}
-.c-door{position:relative;width:100%;min-height:calc(127cqw + 56px);display:flex;flex-direction:column;align-items:center;margin-inline:auto;border-radius:999px 999px 27px 27px;overflow:hidden;background:#060403;box-shadow:inset 0 0 0 1px rgba(255,170,56,.62),inset 0 0 22px rgba(255,150,40,.16);transition:box-shadow .8s var(--ease)}
+.c-door{position:relative;width:100%;min-height:calc(127cqw + 56px);display:flex;flex-direction:column;align-items:center;margin-inline:auto;border-radius:999px 999px calc(var(--btn-h)/2) calc(var(--btn-h)/2);overflow:hidden;background:#060403;box-shadow:inset 0 0 0 1px rgba(255,170,56,.62),inset 0 0 22px rgba(255,150,40,.16);transition:box-shadow .8s var(--ease)}
 /* neon: dark and unlit by default; on hover the tube stutters on, then its light spills over the arch */
 .c-mark{position:relative;z-index:1;width:29.9%;height:auto;margin-top:clamp(87px,25.3%,138px);margin-bottom:44px;opacity:.16;filter:brightness(.5) saturate(.6);transition:opacity .9s var(--ease),filter .9s var(--ease)}
 .c-glow{position:absolute;inset:0 -30%;background:radial-gradient(ellipse 64cqw 70cqw at 50% 34cqw,rgba(255,160,56,.62),rgba(255,122,24,.3) 34%,rgba(230,90,10,.1) 64%,rgba(230,90,10,0) 100%);opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
@@ -891,7 +893,7 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .c-form select:focus~label,.c-form select:valid~label{transform:translateY(-17px) scale(.76);color:var(--amber)}
 .c-form .invalid{border-bottom-color:#ff7a5c}
 .c-submit{position:relative;width:100%;margin:0;display:grid;gap:12px}
-.c-send{position:relative;z-index:1;width:78%;margin:0 0 clamp(26px,8cqw,36px);border-radius:27px;min-height:54px;flex:none;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
+.c-send{position:relative;z-index:1;width:78%;margin:0 0 clamp(26px,8cqw,36px);border-radius:calc(var(--btn-h)/2);min-height:var(--btn-h);flex:none;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
 /* the button shares the doorway's glow: both light up together */
 .c-send:hover,.c-side:has(.c-door:hover) .c-send,.c-grid:has(.c-btn:hover) .c-send,.c-grid:has(.c-btn:focus-visible) .c-send{border-color:rgba(255,196,110,1);box-shadow:inset 0 0 34px rgba(255,160,50,.34),0 0 22px rgba(255,150,40,.2);color:#fff3dc}
 .c-send:hover{background:rgba(255,160,50,.12)}
@@ -925,7 +927,7 @@ html[lang="en"] .contact .c-title{font-size:clamp(30px,9.4vw,76px)}
   .c-copy .c-title{margin-top:auto}
   .c-copy .socials{margin-top:auto;min-height:54px;align-items:center}
 }
-.mail{display:inline-block;margin-top:34px;font-family:var(--text);font-weight:400;font-size:clamp(22px,3vw,40px);letter-spacing:.01em;border-bottom:1px solid var(--amber);padding-bottom:8px;text-transform:none;transition:color .3s}
+.mail{display:inline-block;margin-top:34px;padding-top:12px;font-family:var(--text);font-weight:400;font-size:clamp(22px,3vw,40px);letter-spacing:.01em;border-bottom:1px solid var(--amber);padding-bottom:8px;text-transform:none;transition:color .3s}
 .mail:hover{color:var(--amber)}
 .socials{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
 #contact .socials .ico{background:rgba(5,4,3,.9);border-color:rgba(255,170,56,.62);box-shadow:inset 0 0 14px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s,transform .35s var(--ease)}
