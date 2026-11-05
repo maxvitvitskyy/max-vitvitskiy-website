@@ -700,7 +700,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 
 /* about */
 /* warm glow-brown: fades in from black at the event-idea card, holds behind the photo and text, back to black before Contact */
-.about{background:linear-gradient(180deg,#1d1006 0%,#1d1006 35%,#1c1006 41%,#1a0f05 47%,#180d05 53%,#140b04 59%,#100903 65%,#0c0703 71%,#080502 77%,#050301 83%,#020100 89%,#000000 95%,#000000 100%)}
+.about{background:linear-gradient(180deg,#1d1006 0%,#1d1006 35%,#14100d 100%)}
 .about-grid{display:grid;gap:36px}
 .about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r)}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
@@ -853,33 +853,37 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .sec-head p.lede,.exp .sec-head .sub p.lede{color:var(--acc)}
 .sec-head p.lede em{font-style:italic;color:transparent;background:linear-gradient(0deg,var(--acc-lo) 0%,var(--acc) 55%,var(--acc-hi) 100%);-webkit-background-clip:text;background-clip:text;padding:0 .16em 0 .04em;margin:0 -.12em 0 -.04em}
 /* contact: the hero arch comes back empty and lit — a doorway waiting for your idea */
-.contact{text-align:center;padding-block:var(--section) 40px;background:radial-gradient(60% 44% at 50% 28%,rgba(255,166,48,.07),transparent 72%),#000}
+.contact{text-align:center;padding-block:var(--section) 40px;background:#000;overflow-x:clip}
 .c-grid{display:grid;gap:clamp(40px,6vw,56px);align-items:center}
 .c-side{width:min(88vw,380px);margin-inline:auto;margin-bottom:34px;container-type:inline-size}
-.c-door{position:relative;width:100%;min-height:calc(127cqw + 56px);display:flex;flex-direction:column;align-items:center;margin-inline:auto;border-radius:999px 999px calc(var(--btn-h)/2) calc(var(--btn-h)/2);overflow:hidden;background:#060403;box-shadow:inset 0 0 0 1px rgba(255,170,56,.62),inset 0 0 22px rgba(255,150,40,.16);transition:box-shadow .8s var(--ease)}
+/* the soft amber haze is pinned to the arch itself, so it follows it at every width */
+.c-side{position:relative;isolation:isolate}
+.c-side::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:190%;height:150%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,166,48,.085),rgba(255,166,48,.03) 55%,transparent 100%);pointer-events:none}
+.c-door{position:relative;width:100%;min-height:calc(149cqw - 8px);display:flex;flex-direction:column;align-items:center;margin-inline:auto;border-radius:999px 999px calc(var(--btn-h)/2 + 11cqw) calc(var(--btn-h)/2 + 11cqw);overflow:hidden;background:linear-gradient(145deg,#1a1410 0%,#130f0c 55%,#0f0b09 100%);box-shadow:var(--nm-out),var(--nm-rim);transition:box-shadow .8s var(--ease)}
+/* the whole doorway is switched off (monochrome, dim) until it is hovered or a related control is */
 /* neon: dark and unlit by default; on hover the tube stutters on, then its light spills over the arch */
-.c-mark{position:relative;z-index:1;width:29.9%;height:auto;margin-top:clamp(87px,25.3%,138px);margin-bottom:44px;opacity:.16;filter:brightness(.5) saturate(.6);transition:opacity .9s var(--ease),filter .9s var(--ease)}
-.c-glow{position:absolute;inset:0 -30%;background:radial-gradient(ellipse 64cqw 70cqw at 50% 34cqw,rgba(255,160,56,.62),rgba(255,122,24,.3) 34%,rgba(230,90,10,.1) 64%,rgba(230,90,10,0) 100%);opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
-.c-door::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 30cqw 30cqw at 50% 34cqw,rgba(255,150,48,.42),rgba(255,110,20,.14) 55%,transparent 100%);opacity:0;z-index:0;transition:opacity .9s var(--ease);pointer-events:none}
-.c-door:hover .c-mark,.c-side:has(.c-send:hover) .c-door .c-mark,.c-side:has(.c-send:focus-visible) .c-door .c-mark,.c-grid:has(.c-btn:hover) .c-door .c-mark,.c-grid:has(.c-btn:focus-visible) .c-door .c-mark,.c-grid:has(.c-form:focus-within) .c-door .c-mark{opacity:1;filter:brightness(1.12) saturate(1.15) drop-shadow(0 0 3px rgba(255,150,40,.75)) drop-shadow(0 0 12px rgba(255,128,24,.7)) drop-shadow(0 0 34px rgba(255,100,10,.5));animation:neonOn 1.5s linear 1;transition:opacity .2s,filter .4s}
-.c-door:hover .c-glow,.c-side:has(.c-send:hover) .c-door .c-glow,.c-side:has(.c-send:focus-visible) .c-door .c-glow,.c-grid:has(.c-btn:hover) .c-door .c-glow,.c-grid:has(.c-btn:focus-visible) .c-door .c-glow,.c-grid:has(.c-form:focus-within) .c-door .c-glow{opacity:1;transition:opacity 1.2s var(--ease) .45s;animation:neonGlow 1.5s linear 1}
-.c-door:hover::after,.c-side:has(.c-send:hover) .c-door::after,.c-side:has(.c-send:focus-visible) .c-door::after,.c-grid:has(.c-btn:hover) .c-door::after,.c-grid:has(.c-btn:focus-visible) .c-door::after,.c-grid:has(.c-form:focus-within) .c-door::after{opacity:1;transition:opacity 1.4s var(--ease) .6s}
+.c-mark{position:relative;z-index:1;width:29.9%;height:auto;margin-top:clamp(105px,30.3%,175px);margin-bottom:44px;opacity:.3;filter:brightness(.5) saturate(.3) drop-shadow(-1px -1px 1px rgba(0,0,0,.9)) drop-shadow(1px 1px 1px rgba(255,236,214,.09));transition:opacity .9s var(--ease),filter .9s var(--ease)}
+.c-glow{position:absolute;inset:0 -30%;background:radial-gradient(ellipse 64cqw 70cqw at 50% 39cqw,rgba(255,160,56,.62),rgba(255,122,24,.3) 34%,rgba(230,90,10,.1) 64%,rgba(230,90,10,0) 100%);opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
+.c-door::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 30cqw 30cqw at 50% 39cqw,rgba(255,150,48,.42),rgba(255,110,20,.14) 55%,transparent 100%);opacity:0;z-index:0;transition:opacity .9s var(--ease);pointer-events:none}
+.c-door:hover .c-mark,.c-side:has(.c-send:hover) .c-door .c-mark,.c-side:has(.c-send:focus-visible) .c-door .c-mark,.c-grid:has(.c-btn:hover) .c-door .c-mark,.c-grid:has(.c-btn:focus-visible) .c-door .c-mark,.c-grid:has(.c-form:focus-within) .c-door .c-mark,.c-grid:has(.mail:hover) .c-door .c-mark,.c-grid:has(.socials .ico:hover) .c-door .c-mark,.c-grid:has(.mail:focus-visible) .c-door .c-mark,.c-grid:has(.socials .ico:focus-visible) .c-door .c-mark{opacity:1;filter:brightness(1.12) saturate(1.15) drop-shadow(0 0 3px rgba(255,150,40,.75)) drop-shadow(0 0 12px rgba(255,128,24,.7)) drop-shadow(0 0 34px rgba(255,100,10,.5));animation:neonOn 1.5s linear 1;transition:opacity .2s,filter .4s}
+.c-door:hover .c-glow,.c-side:has(.c-send:hover) .c-door .c-glow,.c-side:has(.c-send:focus-visible) .c-door .c-glow,.c-grid:has(.c-btn:hover) .c-door .c-glow,.c-grid:has(.c-btn:focus-visible) .c-door .c-glow,.c-grid:has(.c-form:focus-within) .c-door .c-glow,.c-grid:has(.mail:hover) .c-door .c-glow,.c-grid:has(.socials .ico:hover) .c-door .c-glow,.c-grid:has(.mail:focus-visible) .c-door .c-glow,.c-grid:has(.socials .ico:focus-visible) .c-door .c-glow{opacity:1;transition:opacity 1.2s var(--ease) .45s;animation:neonGlow 1.5s linear 1}
+.c-door:hover::after,.c-side:has(.c-send:hover) .c-door::after,.c-side:has(.c-send:focus-visible) .c-door::after,.c-grid:has(.c-btn:hover) .c-door::after,.c-grid:has(.c-btn:focus-visible) .c-door::after,.c-grid:has(.c-form:focus-within) .c-door::after,.c-grid:has(.mail:hover) .c-door::after,.c-grid:has(.socials .ico:hover) .c-door::after,.c-grid:has(.mail:focus-visible) .c-door::after,.c-grid:has(.socials .ico:focus-visible) .c-door::after{opacity:1;transition:opacity 1.4s var(--ease) .6s}
 @keyframes neonOn{0%{opacity:.16}5%{opacity:.95}8%{opacity:.16}18%{opacity:.16}20%{opacity:1}24%{opacity:.3}36%{opacity:.3}38%{opacity:.9}41%{opacity:.45}46%{opacity:1}50%{opacity:.7}54%{opacity:1}100%{opacity:1}}
 @keyframes neonGlow{0%,36%{filter:brightness(.4)}40%{filter:brightness(.9)}44%{filter:brightness(.5)}50%{filter:brightness(1)}54%{filter:brightness(.75)}60%,100%{filter:brightness(1)}}
 @media(hover:none),(max-width:899px){.c-mark{opacity:1;filter:brightness(1.12) saturate(1.15) drop-shadow(0 0 3px rgba(255,150,40,.75)) drop-shadow(0 0 12px rgba(255,128,24,.7)) drop-shadow(0 0 34px rgba(255,100,10,.5));animation:neonIdle 6s linear infinite}.c-glow{opacity:1;animation:neonIdleGlow 6s linear infinite}.c-door::after{opacity:1}}
 @keyframes neonIdle{0%,62%,70%,78%,100%{opacity:1}64%{opacity:.62}66%{opacity:1}72%{opacity:.8}74%{opacity:.96}90%{opacity:.93}93%{opacity:1}}
 @keyframes neonIdleGlow{0%,62%,70%,78%,100%{filter:brightness(1)}64%{filter:brightness(.7)}66%{filter:brightness(1)}72%{filter:brightness(.85)}90%{filter:brightness(.95)}}
 @media(prefers-reduced-motion:reduce){.c-mark,.c-glow{animation:none!important}.c-door:hover .c-mark,.c-side:has(.c-send:hover) .c-door .c-mark,.c-side:has(.c-send:focus-visible) .c-door .c-mark,.c-grid:has(.c-btn:hover) .c-door .c-mark,.c-grid:has(.c-btn:focus-visible) .c-door .c-mark,.c-grid:has(.c-form:focus-within) .c-door .c-mark,.c-door:hover .c-glow,.c-side:has(.c-send:hover) .c-door .c-glow,.c-side:has(.c-send:focus-visible) .c-door .c-glow,.c-grid:has(.c-btn:hover) .c-door .c-glow,.c-grid:has(.c-btn:focus-visible) .c-door .c-glow,.c-grid:has(.c-form:focus-within) .c-door .c-glow{animation:none}}
-.c-door::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 64px 4px rgba(0,0,0,.55);pointer-events:none;z-index:1}
+.c-door::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 56px 2px rgba(0,0,0,.28);pointer-events:none;z-index:1}
 /* the doorway as a deep window: one far arch, rays from the frame to it, and a sill running inward */
 .c-sill{display:none;position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,196,110,.95),transparent)}
-.c-form{position:relative;z-index:1;width:78%;display:grid;gap:18px;margin:auto 0 28px}
+.c-form{position:relative;z-index:1;width:78%;display:grid;gap:18px;margin:auto 0 11cqw}
 .c-form .fld{position:relative}
 .c-form input,.c-form textarea{display:block;width:100%;padding:20px 2px 8px;background:transparent;border:0;border-bottom:1px solid rgba(241,224,197,.34);border-radius:0;color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.4;resize:none;outline:0;transition:border-color .3s}
 .c-form textarea{height:52px;min-height:52px;max-height:150px;overflow:hidden}
 .c-form input{height:52px}
 .c-form label{position:absolute;left:2px;top:19px;font-family:var(--body);font-size:15px;color:rgba(241,224,197,.62);pointer-events:none;transform-origin:0 0;transition:transform .3s var(--ease),color .3s}
-.c-form input:focus~label,.c-form textarea:focus~label,.c-form input:not(:placeholder-shown)~label,.c-form textarea:not(:placeholder-shown)~label{transform:translateY(-17px) scale(.76);color:var(--amber)}
+.c-form input:focus~label,.c-form textarea:focus~label,.c-form input:not(:placeholder-shown)~label,.c-form textarea:not(:placeholder-shown)~label{transform:translateY(-13px) scale(.74);color:var(--amber)}
 .c-form input:focus,.c-form textarea:focus{border-bottom-color:var(--amber)}
 .c-form select{display:block;width:100%;height:52px;padding:20px 28px 8px 2px;background:transparent;border:0;border-bottom:1px solid rgba(241,224,197,.34);border-radius:0;color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.4;outline:0;cursor:pointer;-webkit-appearance:none;appearance:none;transition:border-color .3s}
 .c-form .fld-sel::after{content:"";position:absolute;right:4px;top:28px;width:12px;height:8px;background:var(--amber);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M1 1.5 6 6.5 11 1.5'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M1 1.5 6 6.5 11 1.5'/></svg>") center/contain no-repeat;pointer-events:none;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
@@ -890,17 +894,69 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .c-form select:invalid{color:transparent}
 .c-form select option{background:#0b0604;color:var(--cream)}
 .c-form select:focus{border-bottom-color:var(--amber)}
-.c-form select:focus~label,.c-form select:valid~label{transform:translateY(-17px) scale(.76);color:var(--amber)}
+.c-form select:focus~label,.c-form select:valid~label{transform:translateY(-13px) scale(.74);color:var(--amber)}
 .c-form .invalid{border-bottom-color:#ff7a5c}
 .c-submit{position:relative;width:100%;margin:0;display:grid;gap:12px}
-.c-send{position:relative;z-index:1;width:78%;margin:0 0 clamp(26px,8cqw,36px);border-radius:calc(var(--btn-h)/2);min-height:var(--btn-h);flex:none;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
+.c-send{position:relative;z-index:1;width:78%;margin:0 0 11cqw;border-radius:calc(var(--btn-h)/2);min-height:var(--btn-h);flex:none;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
 /* the button shares the doorway's glow: both light up together */
-.c-send:hover,.c-side:has(.c-door:hover) .c-send,.c-grid:has(.c-btn:hover) .c-send,.c-grid:has(.c-btn:focus-visible) .c-send{border-color:rgba(255,196,110,1);box-shadow:inset 0 0 34px rgba(255,160,50,.34),0 0 22px rgba(255,150,40,.2);color:#fff3dc}
-.c-send:hover{background:rgba(255,160,50,.12)}
 .c-send:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .c-status{position:absolute;left:0;right:0;top:100%;margin-top:10px;min-height:1.4em;text-align:center;font-size:13px;line-height:1.45;color:var(--cream)}
+/* ---- neumorphic format tiles: raised slabs of the same material, icons sit in small wells ---- */
+.sx-block .sx-uses li{border-radius:20px;background:linear-gradient(145deg,rgba(255,236,214,.058),rgba(255,236,214,.016));box-shadow:8px 10px 22px rgba(0,0,0,.5),-6px -6px 16px rgba(255,236,214,.03),inset 1px 1px 1px rgba(255,236,214,.06),inset -1px -1px 2px rgba(0,0,0,.25);transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+.sx-block .sx-uses li:hover{box-shadow:5px 6px 14px rgba(0,0,0,.5),-4px -4px 11px rgba(255,236,214,.034),inset 1px 1px 1px rgba(255,236,214,.07),inset 0 0 28px rgba(255,150,40,.07)}
+.sx-block .sx-uses .ic{border-radius:50%;background:rgba(0,0,0,.14);box-shadow:inset 3px 3px 6px rgba(0,0,0,.5),inset -2px -2px 5px rgba(255,236,214,.03);transition:box-shadow .5s var(--ease),color .4s}
+.sx-block .sx-uses .ic svg{width:19px;height:19px}
+.sx-block .sx-uses li:hover .ic{color:#ffc47a;box-shadow:inset 3px 3px 6px rgba(0,0,0,.55),inset -2px -2px 5px rgba(255,236,214,.03),0 0 16px rgba(255,150,40,.2)}
+@media(min-width:900px){.sx-block .sx-uses .ic{width:38px;height:38px;top:14px;right:14px}}
+@media(max-width:899px){.sx-block .sx-uses{padding:6px 8px 14px;margin-inline:-8px}.sx-block .sx-uses li{box-shadow:4px 5px 11px rgba(0,0,0,.5),-3px -3px 8px rgba(255,236,214,.028),inset 1px 1px 1px rgba(255,236,214,.05)}.sx-block .sx-uses .ic{width:34px;height:34px}}
+/* ---- neumorphic call-to-action slab: same material as the tiles and the doorway ---- */
+.sx-strip{border-radius:28px;background:linear-gradient(145deg,rgba(255,236,214,.062),rgba(255,236,214,.014) 60%,rgba(255,150,40,.018));box-shadow:14px 18px 38px rgba(0,0,0,.5),-10px -10px 27px rgba(255,236,214,.032),inset 1px 1px 2px rgba(255,236,214,.06),inset -1.5px -1.5px 4px rgba(0,0,0,.28);transition:box-shadow .6s var(--ease)}
+.sx-strip .mark{box-sizing:border-box;aspect-ratio:1/1;height:auto;object-fit:contain;padding:clamp(10px,1.1vw,14px);border-radius:clamp(16px,1.8vw,22px);background:rgba(0,0,0,.15);box-shadow:inset 5px 5px 10px rgba(0,0,0,.5),inset -4px -4px 8px rgba(255,236,214,.03);filter:drop-shadow(0 0 10px rgba(255,150,40,.4));transition:box-shadow .6s var(--ease),filter .6s var(--ease)}
+.sx-strip:hover .mark{filter:drop-shadow(0 0 16px rgba(255,160,50,.65));box-shadow:inset 5px 5px 10px rgba(0,0,0,.55),inset -4px -4px 8px rgba(255,236,214,.03),inset 0 0 24px rgba(255,150,40,.1)}
+.sx-strip h3{text-shadow:-1px -1px 1px rgba(0,0,0,.55),1px 1px 1px rgba(255,236,214,.07)}
+.sx-strip .btn.go{--bx:30px;padding-inline:calc(var(--bx) + 1.25em + 12px) var(--bx);border:0;background:linear-gradient(145deg,#1d1612,#100c09);color:var(--amber);box-shadow:8px 10px 20px rgba(0,0,0,.5),-6px -6px 15px rgba(255,236,214,.034),inset 1px 1px 1px rgba(255,236,214,.06),inset -1px -1px 2px rgba(0,0,0,.28);transition:box-shadow .5s var(--ease),background .4s,color .4s,gap .4s var(--ease),transform .2s}
+.sx-strip .btn.go:hover{background:linear-gradient(145deg,#ffb24a,#f29a2b);color:var(--ink);box-shadow:8px 10px 20px rgba(0,0,0,.5),-6px -6px 15px rgba(255,236,214,.036),inset 1px 1px 1px rgba(255,255,255,.35),0 0 30px rgba(255,150,40,.3)}
+.sx-strip .btn.go:hover{padding-left:calc(var(--bx) + 1.25em + 22px)}
+.sx-strip .btn.go:active{box-shadow:inset 6px 6px 12px rgba(0,0,0,.55),inset -4px -4px 9px rgba(255,236,214,.03);transform:translateY(1px)}
+.sx-strip .btn.go:focus-visible{outline:2px solid rgba(255,166,48,.7);outline-offset:4px}
+@media(max-width:899px){.sx-strip .btn.go{--bx:18px}.sx-strip{border-radius:22px;box-shadow:9px 12px 26px rgba(0,0,0,.5),-6px -6px 18px rgba(255,236,214,.03),inset 1px 1px 2px rgba(255,236,214,.05),inset -1px -1px 3px rgba(0,0,0,.25)}}
+/* ---- neumorphic social buttons: raised discs of the doorway's material, pressed in on touch ---- */
+#contact .socials .ico{border:0;background:linear-gradient(145deg,#1b1511,#100c0a);color:rgba(241,224,197,.78);box-shadow:7px 8px 16px rgba(0,0,0,.5),-5px -5px 12px rgba(255,236,214,.034),inset 1px 1px 1px rgba(255,236,214,.06),inset -1px -1px 2px rgba(0,0,0,.28);transition:box-shadow .5s var(--ease),color .4s,transform .2s}
+#contact .socials .ico:hover{color:#ffc47a;transform:none;background:linear-gradient(145deg,#1b1511,#100c0a);box-shadow:7px 8px 16px rgba(0,0,0,.5),-5px -5px 12px rgba(255,236,214,.04),inset 1px 1px 1px rgba(255,236,214,.07),inset 0 0 18px rgba(255,150,40,.12),0 0 18px rgba(255,140,40,.14)}
+#contact .socials .ico:active{box-shadow:inset 5px 5px 10px rgba(0,0,0,.55),inset -3px -3px 8px rgba(255,236,214,.03);transform:translateY(1px)}
+#contact .socials .ico:focus-visible{outline:2px solid rgba(255,166,48,.7);outline-offset:4px}
+/* mobile order inside Contact: text block, then the doorway, then the social buttons under it */
+@media(max-width:899px){
+  .c-grid{gap:0}
+  .c-copy{display:contents}
+  .c-copy .c-title{order:1}.c-copy .c-text{order:2}.c-copy .c-actions{order:3}
+  .c-side{order:4;margin-top:clamp(44px,12vw,64px);margin-bottom:0}
+  .c-copy .socials{order:5;margin:clamp(34px,9vw,44px) auto 0;gap:10px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));width:min(88vw,380px)}
+  .contact .socials .ico{width:100%;height:auto;aspect-ratio:1/1}
+}
+@media(max-width:359px){.c-copy .socials{gap:7px}}
+/* ---- neumorphic doorway: one warm-charcoal material; depth comes from paired light and shadow, never from strokes ---- */
+.contact{--nm-out:14px 18px 38px rgba(0,0,0,.5),-10px -10px 27px rgba(255,236,214,.032);--nm-rim:inset 1px 1px 2px rgba(255,236,214,.05),inset -1.5px -1.5px 4px rgba(0,0,0,.28);--nm-well:inset 5px 5px 10px rgba(0,0,0,.48),inset -4px -4px 8px rgba(255,236,214,.022);background:#14100d}
+.c-form,.c-send{filter:grayscale(1) brightness(.82);transition:filter 1s var(--ease),box-shadow .6s var(--ease),color .5s,transform .2s}
+.c-form .fld{border-radius:20px;background:#110d0b;box-shadow:var(--nm-well);transition:box-shadow .5s var(--ease)}
+.c-form .fld:focus-within{box-shadow:var(--nm-well),0 0 0 1px rgba(255,166,48,.3),0 0 26px rgba(255,150,40,.12)}
+.c-form .fld:has(.invalid){box-shadow:var(--nm-well),0 0 0 1px rgba(255,122,92,.55)}
+.c-form{gap:16px}
+.c-form input,.c-form textarea,.c-form select{border:0;border-radius:20px;padding:25px 20px 8px;height:58px;background:transparent}
+.c-form textarea{min-height:58px;height:58px}
+.c-form select{padding-right:46px}
+.c-form label{left:20px;top:20px;color:rgba(241,224,197,.55)}
+.c-form .fld-sel::after{right:20px;top:25px}
+.c-form input:focus,.c-form textarea:focus,.c-form select:focus{border:0}
+.c-send{background:linear-gradient(145deg,#1b1511,#0f0b09);border:0;box-shadow:7px 8px 17px rgba(0,0,0,.5),-5px -5px 13px rgba(255,236,214,.032),inset 1px 1px 1px rgba(255,236,214,.05),inset -1px -1px 2px rgba(0,0,0,.25);color:rgba(241,224,197,.7)}
+.c-send:active{box-shadow:inset 5px 5px 10px rgba(0,0,0,.5),inset -4px -4px 8px rgba(255,236,214,.025);transform:translateY(1px)}
+.c-send:focus-visible{outline:2px solid rgba(255,166,48,.7);outline-offset:4px}
+.c-door:hover .c-form,.c-grid:has(.c-btn:hover) .c-door .c-form,.c-grid:has(.c-btn:focus-visible) .c-door .c-form,.c-grid:has(.mail:hover) .c-door .c-form,.c-grid:has(.mail:focus-visible) .c-door .c-form,.c-grid:has(.socials .ico:hover) .c-door .c-form,.c-grid:has(.socials .ico:focus-visible) .c-door .c-form,.c-grid:has(.c-form:focus-within) .c-door .c-form,.c-door:hover .c-send,.c-grid:has(.c-btn:hover) .c-door .c-send,.c-grid:has(.c-btn:focus-visible) .c-door .c-send,.c-grid:has(.mail:hover) .c-door .c-send,.c-grid:has(.mail:focus-visible) .c-door .c-send,.c-grid:has(.socials .ico:hover) .c-door .c-send,.c-grid:has(.socials .ico:focus-visible) .c-door .c-send,.c-grid:has(.c-form:focus-within) .c-door .c-send{filter:none}
+.c-door:hover .c-send,.c-grid:has(.c-btn:hover) .c-door .c-send,.c-grid:has(.c-btn:focus-visible) .c-door .c-send,.c-grid:has(.mail:hover) .c-door .c-send,.c-grid:has(.mail:focus-visible) .c-door .c-send,.c-grid:has(.socials .ico:hover) .c-door .c-send,.c-grid:has(.socials .ico:focus-visible) .c-door .c-send,.c-grid:has(.c-form:focus-within) .c-door .c-send{color:#ffc47a;box-shadow:7px 8px 17px rgba(0,0,0,.5),-5px -5px 13px rgba(255,236,214,.036),inset 1px 1px 1px rgba(255,236,214,.07),inset 0 0 26px rgba(255,150,40,.12),0 0 28px rgba(255,140,40,.14)}
+.c-door:hover,.c-grid:has(.c-btn:hover) .c-door,.c-grid:has(.c-btn:focus-visible) .c-door,.c-grid:has(.mail:hover) .c-door,.c-grid:has(.mail:focus-visible) .c-door,.c-grid:has(.socials .ico:hover) .c-door,.c-grid:has(.socials .ico:focus-visible) .c-door,.c-grid:has(.c-form:focus-within) .c-door{box-shadow:var(--nm-out),var(--nm-rim),inset 0 0 80px rgba(255,140,40,.09)}
+.c-door .c-send:hover{background:linear-gradient(145deg,#ffb24a,#f29a2b);color:var(--ink);box-shadow:7px 8px 17px rgba(0,0,0,.5),-5px -5px 13px rgba(255,236,214,.036),inset 1px 1px 1px rgba(255,255,255,.35),0 0 30px rgba(255,150,40,.3)}
+@media(hover:none),(max-width:899px){.c-form,.c-send{filter:none}.contact{--nm-out:10px 12px 27px rgba(0,0,0,.5),-7px -7px 20px rgba(255,236,214,.032)}}
 /* the doorway lights up when the pointer reaches it, the mail button, or the form */
-.c-door:hover,.c-grid:has(.c-btn:hover) .c-door,.c-grid:has(.c-btn:focus-visible) .c-door,.c-side:has(.c-send:hover) .c-door,.c-side:has(.c-send:focus-visible) .c-door{box-shadow:inset 0 0 0 1px rgba(255,196,110,1),inset 0 0 34px rgba(255,160,50,.34)}
 .contact .c-title{margin:0;font-size:clamp(34px,13vw,92px);line-height:.88;text-transform:uppercase;letter-spacing:0;font-weight:400;text-align:left}
 .c-title .ln{display:flex;align-items:last baseline;gap:.3em;white-space:nowrap}
 .c-title em{font-style:italic;color:transparent;background:linear-gradient(0deg,#F5920A 0%,#FFB93D 55%,#FFCE7A 100%);-webkit-background-clip:text;background-clip:text;padding-right:.08em}
@@ -916,7 +972,7 @@ html[lang="en"] .contact .c-title{font-size:clamp(30px,9.4vw,76px)}
 .contact .socials{justify-content:center;margin-top:clamp(30px,3.4vw,44px)}
 .c-btn:focus-visible,.mail:focus-visible,.socials .ico:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
 @media(min-width:900px){
-  .contact{text-align:left;background:radial-gradient(52% 60% at 76% 56%,rgba(255,166,48,.08),transparent 72%),#000}
+  .contact{text-align:left}
   .c-grid{grid-template-columns:minmax(0,6fr) minmax(0,5.6fr);gap:clamp(48px,6vw,104px)}
   .c-side{order:2}
   .c-side{width:100%;max-width:560px;margin-inline:0;margin-bottom:0;justify-self:center}
@@ -931,8 +987,6 @@ html[lang="en"] .contact .c-title{font-size:clamp(30px,9.4vw,76px)}
 .mail{display:inline-block;margin-top:34px;padding-top:12px;font-family:var(--text);font-weight:400;font-size:clamp(22px,3vw,40px);letter-spacing:.01em;border-bottom:1px solid var(--amber);padding-bottom:8px;text-transform:none;transition:color .3s}
 .mail:hover{color:var(--amber)}
 .socials{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
-#contact .socials .ico{background:rgba(5,4,3,.9);border-color:rgba(255,170,56,.62);box-shadow:inset 0 0 14px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s,transform .35s var(--ease)}
-#contact .socials .ico:hover{background:rgba(255,160,50,.12);border-color:rgba(255,196,110,1);box-shadow:inset 0 0 22px rgba(255,160,50,.34),0 0 18px rgba(255,150,40,.2);color:#fff3dc}
 .fl{display:block;width:min(105px,17.5vw);height:auto;margin:48px auto 0;opacity:.95}
 footer{font-family:var(--text);margin-top:clamp(70px,10vw,140px);padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
 @media(max-width:599px){footer{flex-direction:column;align-items:center;text-align:center}}
@@ -1251,7 +1305,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
         <h2 class="display c-title" data-uk="<span class='ln'>Маєш <em>ідею?</em></span><span class='ln'>Створімо щось</span><span class='ln'><em>особливе.</em><small class='cap cap-b' aria-hidden='true'>Створюй<br>Надихай<br>Проживай</small></span>"><span class="ln">Have an <em>idea?</em></span><span class="ln">Let’s create</span><span class="ln"><em>something</em> special.<small class="cap cap-b" aria-hidden="true">Create<br>Inspire<br>Experience</small></span></h2>
         <p class="c-text" data-uk="Мені цікаві змістовні колаборації, творчі проєкти та нові можливості для втілення ідей. Мистецькі проєкти, виступи, освітні ініціативи, підприємницькі партнерства чи щось зовсім несподіване — буду радий знайомству.">I’m interested in meaningful collaborations, creative projects and new opportunities to bring ideas to life. Art projects, talks, educational initiatives, business partnerships or something completely unexpected — I’d be glad to connect.</p>
         <div class="c-actions"><a class="btn fill c-btn" href="#cf-name" data-uk="Написати мені">Write to me<i class="ar" aria-hidden="true"></i></a><a class="mail" href="mailto:maxim.vitvitskiy@gmail.com">maxim.vitvitskiy@gmail.com</a></div>
-        <div class="socials"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
+        <div class="socials"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a><a class="ico" href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M10.8 17.9 12.3 10.8M9.6 13.4c-.9-2.2.3-4.5 2.7-4.5 1.9 0 3 1.1 3 2.7 0 1.9-1.1 3.3-2.5 3.3-.8 0-1.4-.5-1.4-1.2"/></svg></a><a class="ico" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.6v5.9M8 7.7v.01M11.7 16.5v-5.9M11.7 13.2c0-1.7 1.2-2.7 2.6-2.7s2.4.9 2.4 2.7v3.3"/></svg></a></div>
       </div>
     </div>
     <footer><span>© 2026 Max Vitvitskiy</span><span data-uk="Створюй · Надихай · Проживай">Create · Inspire · Experience</span></footer>
@@ -1481,7 +1535,7 @@ fitLede();
     sl.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'||(e.altKey&&e.key==='ArrowDown'))fs.classList.add('open');if(e.key==='Escape')fs.classList.remove('open')});
     ['change','blur'].forEach(ev=>sl.addEventListener(ev,()=>fs.classList.remove('open')));
   }
-  const ta=f.querySelector('textarea');const grow=()=>{ta.style.height='52px';ta.style.height=Math.min(150,Math.max(52,ta.scrollHeight))+'px'};ta.addEventListener('input',grow);
+  const ta=f.querySelector('textarea');const grow=()=>{ta.style.height='58px';ta.style.height=Math.min(150,Math.max(58,ta.scrollHeight))+'px'};ta.addEventListener('input',grow);
   const cta=document.querySelector('.c-btn');
   if(cta)cta.addEventListener('click',e=>{e.preventDefault();const d=document.querySelector('.c-door');d.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('cf-name').focus({preventScroll:true}),450)});
 })();
