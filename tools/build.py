@@ -36,6 +36,16 @@ def e(t):
     return html.escape(str(t), quote=True)
 
 
+def ver(p):
+    """image path with a content hash, so a replaced cover is never served from a stale cache"""
+    import hashlib
+    try:
+        with open(os.path.join(ROOT, p), 'rb') as f:
+            return p + '?v=' + hashlib.md5(f.read()).hexdigest()[:8]
+    except OSError:
+        return p
+
+
 def thumb(s):
     return re.sub(r'/(\d)\.jpg$', r'/t\1.jpg', s)
 
@@ -80,7 +90,7 @@ def card(i, w):
     alt = w.get('cardAlt') or (w.get('alts') or [''])[0]
     sold = '1' if w['status'] == 'Продана' else '0'
     st = '<span class="st sold">' if sold == '1' else '<span class="st">'
-    inner = (f'\n      <span class="ph"><img src="{e(w["img"])}" alt="{e(alt)}" width="840" height="1050" loading="{"eager" if i < 3 else "lazy"}"></span>'
+    inner = (f'\n      <span class="ph"><img src="{e(ver(w["img"]))}" alt="{e(alt)}" width="840" height="1050" loading="{"eager" if i < 3 else "lazy"}"></span>'
              f'\n      <span class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:03d}</span></span>'
              f'<span class="row">{st}{e(w["status"])}</span><span class="ed">{e(w["edition"])}</span></span></span>\n    ')
     attrs = f'data-i="{i}" data-cat="{e(' '.join(w['themes']))}" data-sold="{sold}" aria-label="{e(w["title"])}"'
@@ -166,7 +176,7 @@ def home(W):
     src = read('index.html')
     rows = []
     for w in W[:15]:
-        rows.append(f'    <a class="work" href="works/{w["slug"]}/"><div class="ph"><img src="{e(w["img"])}" alt="{e(w.get("cardAlt") or w["title"])}" width="840" height="1050" loading="lazy"></div>'
+        rows.append(f'    <a class="work" href="works/{w["slug"]}/"><div class="ph"><img src="{e(ver(w["img"]))}" alt="{e(w.get("cardAlt") or w["title"])}" width="840" height="1050" loading="lazy"></div>'
                     f'<div class="cap"><span class="row"><span class="ttl">{e(w["title"])}</span><span class="n">{w["n"]:03d}</span></span>'
                     f'<span class="row"><span class="st" data-uk="Доступна">Available</span><span class="ed" data-uk="Тираж 10">Edition of 10</span></span></div></a>')
     src, n = re.subn(r'(<div class="gallery rv">\n)(?:    <a class="work" href="[^"]*">.*?</a>\n)+(    <a class="work all")', lambda m: m.group(1) + '\n'.join(rows) + '\n' + m.group(2), src, count=1, flags=re.S)

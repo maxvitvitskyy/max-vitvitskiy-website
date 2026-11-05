@@ -56,7 +56,7 @@ def card(w):
     items = ['Тираж 10 примірників', f'Музейне полотно, архівні чорнила{year}', '40×60 — 80×120 см, рама з масиву дерева', 'Підпис і сертифікат автентичності']
     lis = ''.join(f'<li>{CHECK}{e(x)}</li>' for x in items)
     return f'''<!doctype html><meta charset="utf-8"><style>{CSS % {"f": U("fonts"), "fs": fs}}</style>
-<div class="art"><img src="{U(w['imgs'][0])}"></div>
+<div class="art"><img src="{U(w.get('ogImg') or w['imgs'][0])}"></div>
 <img class="mark" src="{U('img/logo-mark.png')}">
 <div class="tx">
   <div class="body"><h1>{e(t)}</h1><p class="sub">{e(sub)}</p><ul>{lis}</ul></div>

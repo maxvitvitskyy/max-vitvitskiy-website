@@ -4,21 +4,25 @@
   "n": 1,
   "title": "Creation",
   "img": "img/works/creation/card.jpg",
-  "cardAlt": "Creation в інтер’єрі — картина Max Vitvitskiy",
+  "cardAlt": "Creation в інтер’єрі з кам’яною стіною — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Візуальна медитація про красу й таємницю творіння. Жінка й вовк тут не протилежності, а частини одного задуму, а темні квіти, глибокі тіні й тепле бурштинове світло створюють кінематографічну атмосферу тиші й споглядання.",
   "imgs": [
    "img/works/creation/1.jpg",
+   "img/works/creation/7.jpg",
    "img/works/creation/2.jpg",
+   "img/works/creation/6.jpg",
    "img/works/creation/3.jpg",
    "img/works/creation/4.jpg",
    "img/works/creation/5.jpg"
   ],
   "alts": [
    "Creation — жінка й вовк серед темних квітів, картина Max Vitvitskiy",
+   "Creation в інтер’єрі з кам’яною стіною — картина в рамі над лавою",
    "Creation в інтер’єрі вітальні — картина в рамі на стіні",
+   "Creation в інтер’єрі — картина Max Vitvitskiy",
    "Creation — крупний план полотна музейної якості",
    "Creation — картина в дерев’яній рамі на дивані",
    "Creation — порівняння розмірів 40×60, 60×90 і 80×120 см над диваном"
@@ -183,21 +187,27 @@
   "n": 2,
   "title": "Open My Eyes",
   "img": "img/works/open-my-eyes/card.jpg",
-  "cardAlt": "Open My Eyes в інтер’єрі — картина Max Vitvitskiy",
+  "cardAlt": "Open My Eyes в інтер’єрі барної зони — картина Max Vitvitskiy на стіні з теплим світлом",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний портрет про сприйняття, що виходить за межі зору: рибки-півники й троянди частково приховують обличчя й запрошують зазирнути глибше. Смарагдові й мідні тони, багатошарові деталі та тиха напруга між видимим і справжнім.",
   "imgs": [
    "img/works/open-my-eyes/1.jpg",
+   "img/works/open-my-eyes/7.jpg",
+   "img/works/open-my-eyes/8.jpg",
    "img/works/open-my-eyes/2.jpg",
+   "img/works/open-my-eyes/6.jpg",
    "img/works/open-my-eyes/3.jpg",
    "img/works/open-my-eyes/4.jpg",
    "img/works/open-my-eyes/5.jpg"
   ],
   "alts": [
    "Open My Eyes — жіночий портрет із рибками-півниками та трояндами, обличчя частково приховане, картина Max Vitvitskiy",
+   "Open My Eyes в інтер’єрі барної зони — картина Max Vitvitskiy на стіні з теплим світлом",
+   "Open My Eyes — картина в дерев’яній рамі збоку у світлому інтер’єрі, видно глибину кольору й фактуру",
    "Open My Eyes в інтер’єрі вітальні — картина в рамі на стіні",
+   "Open My Eyes — картина в рамі над диваном у теплому інтер’єрі, жінка на килимі зі свічками",
    "Open My Eyes — крупний план полотна музейної якості",
    "Open My Eyes — картина в дерев’яній рамі на дивані",
    "Open My Eyes — порівняння розмірів 40×60, 60×90 і 80×120 см над диваном"
@@ -373,6 +383,7 @@
   "desc": "Сюрреалістичний портрет про те, що світло часто входить у наше життя саме там, де ми почуваємося найбільш захищеними, аж доки цей захист не дає тріщину. Розколотий шолом, метелики й тепле золоте світло складаються в споглядальну історію про зцілення й внутрішнє пробудження.",
   "imgs": [
    "img/works/natural-light/1.jpg",
+   "img/works/natural-light/6.jpg",
    "img/works/natural-light/2.jpg",
    "img/works/natural-light/3.jpg",
    "img/works/natural-light/4.jpg",
@@ -380,6 +391,7 @@
   ],
   "alts": [
    "Natural Light — портрет у розколотому шоломі, крізь тріщини входить тепле світло й метелики, картина Max Vitvitskiy",
+   "Natural Light в інтер’єрі — картина Max Vitvitskiy",
    "Natural Light в інтер’єрі вітальні — картина в рамі на стіні",
    "Natural Light — крупний план полотна музейної якості",
    "Natural Light — картина в дерев’яній рамі на дивані",
@@ -547,13 +559,15 @@
   "n": 4,
   "title": "In His Image",
   "img": "img/works/in-his-image/card.jpg",
-  "cardAlt": "In His Image в інтер’єрі — картина Max Vitvitskiy",
+  "cardAlt": "In His Image у просторій вітальні з дерев’яними панелями — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Максималістський сюрреалістичний колаж: жіночий портрет серед фрагментів класичних скульптур, архітектури, метеликів і птахів. Робота про людську ідентичність як відображення Творця й про пошук себе в образах, що нас надихають.",
   "imgs": [
    "img/works/in-his-image/1.jpg",
+   "img/works/in-his-image/6.jpg",
+   "img/works/in-his-image/7.jpg",
    "img/works/in-his-image/2.jpg",
    "img/works/in-his-image/3.jpg",
    "img/works/in-his-image/4.jpg",
@@ -561,6 +575,8 @@
   ],
   "alts": [
    "In His Image — жіночий портрет у золотій рамі серед класичних скульптур, архітектури й метеликів, картина Max Vitvitskiy",
+   "In His Image в просторій вітальні з дерев’яними панелями — велика картина в рамі на стіні",
+   "In His Image — картина над зеленим шкіряним кріслом у теплій бібліотеці зі світлом, жінка сидить перед нею",
    "In His Image в інтер’єрі вітальні — картина в рамі на стіні",
    "In His Image — крупний план полотна музейної якості",
    "In His Image — картина в дерев’яній рамі на дивані",
@@ -728,21 +744,25 @@
   "n": 5,
   "title": "Miracle",
   "img": "img/works/miracle/card.jpg",
-  "cardAlt": "Miracle в інтер’єрі — картина Max Vitvitskiy",
+  "cardAlt": "Miracle в інтер’єрі сходового холу — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Чорно-білий символічний портрет про тихе диво, сховане в кожному людському житті. Спокійний погляд дитини, тропічне листя, пелікан-охоронець і тендітні метелики — споглядальна робота, що додає інтер’єру глибини, тиші й таємниці.",
   "imgs": [
    "img/works/miracle/1.jpg",
+   "img/works/miracle/7.jpg",
    "img/works/miracle/2.jpg",
+   "img/works/miracle/6.jpg",
    "img/works/miracle/3.jpg",
    "img/works/miracle/4.jpg",
    "img/works/miracle/5.jpg"
   ],
   "alts": [
    "Miracle — чорно-білий портрет дитини серед тропічного листя з пеліканом і метеликами, картина Max Vitvitskiy",
+   "Miracle в інтер’єрі сходового холу — чорно-біла картина в рамі на стіні",
    "Miracle в інтер’єрі вітальні — картина в рамі на стіні",
+   "Miracle в інтер’єрі — картина Max Vitvitskiy",
    "Miracle — крупний план полотна музейної якості",
    "Miracle — картина в дерев’яній рамі на дивані",
    "Miracle — порівняння розмірів 40×60, 60×90 і 80×120 см над диваном"
@@ -918,6 +938,7 @@
   "desc": "Драматичний сюрреалістичний портрет про мить, коли людський дух пробуджується через любов і внутрішнє перетворення. Жіноча постать постає з хвиль кольору й світла серед червоних папуг і пелюсток — робота, що наповнює інтер’єр емоцією, енергією й рухом.",
   "imgs": [
    "img/works/soul-awakening/1.jpg",
+   "img/works/soul-awakening/6.jpg",
    "img/works/soul-awakening/2.jpg",
    "img/works/soul-awakening/3.jpg",
    "img/works/soul-awakening/4.jpg",
@@ -925,6 +946,7 @@
   ],
   "alts": [
    "Soul Awakening — жіноча постать у вибуху червоного кольору з папугами й пелюстками, картина Max Vitvitskiy",
+   "Soul Awakening в інтер’єрі — картина Max Vitvitskiy",
    "Soul Awakening в інтер’єрі вітальні — картина в рамі на стіні",
    "Soul Awakening — крупний план полотна музейної якості",
    "Soul Awakening — картина в дерев’яній рамі на дивані",
@@ -1101,6 +1123,7 @@
   "desc": "Сюрреалістична анімалістична робота про несподівану мить гармонії й довіри: величний тигр і маленька смілива білка серед червоних троянд. Тепло, таємниця й відчуття дива для вітальні, кабінету чи спальні.",
   "imgs": [
    "img/works/friendship/1.jpg",
+   "img/works/friendship/6.jpg",
    "img/works/friendship/2.jpg",
    "img/works/friendship/3.jpg",
    "img/works/friendship/4.jpg",
@@ -1108,6 +1131,7 @@
   ],
   "alts": [
    "Friendship — тигр і маленька білка серед червоних троянд і метеликів, картина Max Vitvitskiy",
+   "Friendship в інтер’єрі — картина Max Vitvitskiy",
    "Friendship в інтер’єрі вітальні — картина в рамі на стіні",
    "Friendship — крупний план полотна музейної якості",
    "Friendship — картина в дерев’яній рамі на дивані",
@@ -1283,6 +1307,7 @@
   "desc": "Максималістська сюрреалістична робота про шлях до себе: величний олень у золотих прикрасах серед тропічної зелені й екзотичних птахів. Візуальна медитація про різницю між соціальними масками й нашою справжньою суттю.",
   "imgs": [
    "img/works/who-you-are/1.jpg",
+   "img/works/who-you-are/6.jpg",
    "img/works/who-you-are/2.jpg",
    "img/works/who-you-are/3.jpg",
    "img/works/who-you-are/4.jpg",
@@ -1290,6 +1315,7 @@
   ],
   "alts": [
    "Who You Are — олень у золотих прикрасах серед тропічного листя й екзотичних птахів, картина Max Vitvitskiy",
+   "Who You Are в інтер’єрі — картина Max Vitvitskiy",
    "Who You Are в інтер’єрі вітальні — картина в рамі на стіні",
    "Who You Are — крупний план полотна музейної якості",
    "Who You Are — картина в дерев’яній рамі на дивані",
@@ -1464,6 +1490,7 @@
   "desc": "Символічна робота, натхненна стійкістю України під час російсько-української війни. Жіноча постать серед вогню, соняшника, метеликів і білих голубів — образ відродження, надії, миру й незламності людського духу.",
   "imgs": [
    "img/works/rise-from-the-ashes/1.jpg",
+   "img/works/rise-from-the-ashes/6.jpg",
    "img/works/rise-from-the-ashes/2.jpg",
    "img/works/rise-from-the-ashes/3.jpg",
    "img/works/rise-from-the-ashes/4.jpg",
@@ -1471,6 +1498,7 @@
   ],
   "alts": [
    "Rise from the Ashes — жіноча постать у сяйві соняшника серед вогню, метеликів і білих голубів, картина Max Vitvitskiy",
+   "Rise from the Ashes в інтер’єрі — картина Max Vitvitskiy",
    "Rise from the Ashes в інтер’єрі вітальні — картина в рамі на стіні",
    "Rise from the Ashes — крупний план полотна музейної якості",
    "Rise from the Ashes — картина в дерев’яній рамі на дивані",
@@ -1649,6 +1677,7 @@
   "desc": "Християнська робота, натхненна біблійним образом Христа як Лева з племені Юди й Агнця Божого: сила й жертва, влада й невинність, явлені в історії спасіння. Змістовний духовний акцент для дому, молитовного простору чи церкви.",
   "imgs": [
    "img/works/lion-and-lamb/1.jpg",
+   "img/works/lion-and-lamb/6.jpg",
    "img/works/lion-and-lamb/2.jpg",
    "img/works/lion-and-lamb/3.jpg",
    "img/works/lion-and-lamb/4.jpg",
@@ -1656,6 +1685,7 @@
   ],
   "alts": [
    "Lion and Lamb — лев у короні й ягня серед метеликів, світла й голуба, картина Max Vitvitskiy",
+   "Lion and Lamb в інтер’єрі — картина Max Vitvitskiy",
    "Lion and Lamb в інтер’єрі вітальні — картина в рамі на стіні",
    "Lion and Lamb — крупний план полотна музейної якості",
    "Lion and Lamb — картина в дерев’яній рамі на дивані",
@@ -1831,6 +1861,7 @@
   "desc": "Християнська робота про духовну боротьбу й Божий захист: архангел у золотих обладунках із розгорнутими крилами серед світла, квітів і полум’я. Створена 2022 року як нагадування, що навіть у найтемніший час ми не самі.",
   "imgs": [
    "img/works/god-is-fighting-for-us/1.jpg",
+   "img/works/god-is-fighting-for-us/6.jpg",
    "img/works/god-is-fighting-for-us/2.jpg",
    "img/works/god-is-fighting-for-us/3.jpg",
    "img/works/god-is-fighting-for-us/4.jpg",
@@ -1838,6 +1869,7 @@
   ],
   "alts": [
    "God Is Fighting For Us — архангел у золотих обладунках із розгорнутими крилами серед квітів і вогню, картина Max Vitvitskiy",
+   "God Is Fighting For Us в інтер’єрі — картина Max Vitvitskiy",
    "God Is Fighting For Us в інтер’єрі вітальні — картина в рамі на стіні",
    "God Is Fighting For Us — крупний план полотна музейної якості",
    "God Is Fighting For Us — картина в дерев’яній рамі на дивані",
@@ -2004,13 +2036,14 @@
   "n": 12,
   "title": "Becoming the Swan",
   "img": "img/works/becoming-the-swan/card.jpg",
-  "cardAlt": "Becoming the Swan в інтер’єрі — картина Max Vitvitskiy",
+  "cardAlt": "Becoming the Swan в інтер’єрі з жінкою в білій блузі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Символічна сюрреалістична робота про самопізнання — мить, коли сприйняття змінюється і ми починаємо бачити себе не крізь сумнів, а крізь правду. Вишуканий і глибокий акцент, що додає інтер’єру емоції, елегантності й зосередженості.",
   "imgs": [
    "img/works/becoming-the-swan/1.jpg",
+   "img/works/becoming-the-swan/6.jpg",
    "img/works/becoming-the-swan/2.jpg",
    "img/works/becoming-the-swan/3.jpg",
    "img/works/becoming-the-swan/4.jpg",
@@ -2018,6 +2051,7 @@
   ],
   "alts": [
    "Becoming the Swan — жіночий профіль і чорні лебеді в темних тонах, картина Max Vitvitskiy",
+   "Becoming the Swan — монохромна картина з лебедями й профілем жінки, перед нею модель у білій блузі на дивані",
    "Becoming the Swan в інтер’єрі вітальні — картина в рамі на стіні",
    "Becoming the Swan — крупний план полотна музейної якості",
    "Becoming the Swan — картина в дерев’яній рамі на дивані",
@@ -2187,13 +2221,14 @@
   "n": 13,
   "title": "Beautiful Things",
   "img": "img/works/beautiful-things/card.jpg",
-  "cardAlt": "Beautiful Things в інтер’єрі — картина Max Vitvitskiy",
+  "cardAlt": "Beautiful Things у темному інтер’єрі з жінкою в чорній сукні — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Символічна робота про тиху впевненість — ту, що не шукає уваги, але природно її притягує. Лебідь під повним місяцем, тепле світло в темряві й мить спокою: спокійний і вишуканий акцент, що наповнює інтер’єр атмосферою й глибиною.",
   "imgs": [
    "img/works/beautiful-things/1.jpg",
+   "img/works/beautiful-things/6.jpg",
    "img/works/beautiful-things/2.jpg",
    "img/works/beautiful-things/3.jpg",
    "img/works/beautiful-things/4.jpg",
@@ -2201,6 +2236,7 @@
   ],
   "alts": [
    "Beautiful Things — білий лебідь під повним місяцем серед теплого світла й квітів, картина Max Vitvitskiy",
+   "Beautiful Things — картина з лебедем і місяцем у темному інтер’єрі, поруч жінка в чорній сукні",
    "Beautiful Things в інтер’єрі вітальні — картина в рамі на стіні",
    "Beautiful Things — крупний план полотна музейної якості",
    "Beautiful Things — картина в дерев’яній рамі на дивані",
@@ -2375,6 +2411,7 @@
   "desc": "Сюрреалістичний жіночий портрет: метелик прикриває око, довкола — яскраві червоні квіти, глибокий синій і екзотичні птахи. Сміливий емоційний акцент із драматичним колірним контрастом для вітальні, спальні чи творчої студії.",
   "imgs": [
    "img/works/ataro/1.jpg",
+   "img/works/ataro/6.jpg",
    "img/works/ataro/2.jpg",
    "img/works/ataro/3.jpg",
    "img/works/ataro/4.jpg",
@@ -2382,6 +2419,7 @@
   ],
   "alts": [
    "Ataro — жіночий портрет із метеликом на оці серед червоних квітів і синіх птахів, картина Max Vitvitskiy",
+   "Ataro в інтер’єрі — картина Max Vitvitskiy",
    "Ataro в інтер’єрі вітальні — картина в рамі на стіні",
    "Ataro — крупний план полотна музейної якості",
    "Ataro — картина в дерев’яній рамі на дивані",
@@ -2560,6 +2598,7 @@
   "desc": "Дівчинка серед соняшників, метеликів і птахів у теплому золотому світлі й глибоких синіх тонах — символ віри, внутрішнього напрямку й свідомого вибору йти до світла. Робота, що приносить у дім тепло, надію й духовну глибину.",
   "imgs": [
    "img/works/face-the-sun/1.jpg",
+   "img/works/face-the-sun/6.jpg",
    "img/works/face-the-sun/2.jpg",
    "img/works/face-the-sun/3.jpg",
    "img/works/face-the-sun/4.jpg",
@@ -2567,6 +2606,7 @@
   ],
   "alts": [
    "Face the Sun — дівчинка серед соняшників, метеликів і птахів у теплому золотому світлі, картина Max Vitvitskiy",
+   "Face the Sun в інтер’єрі — картина Max Vitvitskiy",
    "Face the Sun в інтер’єрі вітальні — картина в рамі на стіні",
    "Face the Sun — крупний план полотна музейної якості",
    "Face the Sun — картина в дерев’яній рамі на дивані",
@@ -2925,6 +2965,7 @@
   "desc": "Пара в тихій, інтимній миті серед м’яких квітів, сяйва й теплих кінематографічних тонів — символ любові, зв’язку й внутрішнього світла, яке ми знаходимо через іншу людину. Робота, що приносить у спальню чи вітальню тепло й емоційну глибину.",
   "imgs": [
    "img/works/in-your-light/1.jpg",
+   "img/works/in-your-light/6.jpg",
    "img/works/in-your-light/2.jpg",
    "img/works/in-your-light/3.jpg",
    "img/works/in-your-light/4.jpg",
@@ -2932,6 +2973,7 @@
   ],
   "alts": [
    "In Your Light — силуети закоханої пари в теплому сяйві серед квітів, картина Max Vitvitskiy",
+   "In Your Light в інтер’єрі — картина Max Vitvitskiy",
    "In Your Light в інтер’єрі вітальні — картина в рамі на стіні",
    "In Your Light — крупний план полотна музейної якості",
    "In Your Light — картина в дерев’яній рамі на дивані",
@@ -3289,6 +3331,7 @@
   "desc": "Сильна жінка-музикантка у вихорі тканини, дикої енергії й кінематографічного руху — візуальний вираз сміливості, творення й втілення задуманого. Яскравий акцент, що наповнює інтер’єр, студію чи вітальню пристрастю й творчою енергією.",
   "imgs": [
    "img/works/manifest-yourself/1.jpg",
+   "img/works/manifest-yourself/6.jpg",
    "img/works/manifest-yourself/2.jpg",
    "img/works/manifest-yourself/3.jpg",
    "img/works/manifest-yourself/4.jpg",
@@ -3296,6 +3339,7 @@
   ],
   "alts": [
    "Manifest Yourself — жінка з віолончеллю у вихорі червоної тканини поруч із леопардами, картина Max Vitvitskiy",
+   "Manifest Yourself в інтер’єрі — картина Max Vitvitskiy",
    "Manifest Yourself в інтер’єрі вітальні — картина в рамі на стіні",
    "Manifest Yourself — крупний план полотна музейної якості",
    "Manifest Yourself — картина в дерев’яній рамі на дивані",
@@ -3471,6 +3515,7 @@
   "desc": "Спокійний і сильний білий тигр у сяйливій арці серед квітів і теплого світла — візуальна рефлексія про терпіння, внутрішню силу й довіру до процесу становлення. Акцент, що приносить у спальню, студію чи кабінет спокій, глибину й тиху впевненість.",
   "imgs": [
    "img/works/while-im-waiting/1.jpg",
+   "img/works/while-im-waiting/6.jpg",
    "img/works/while-im-waiting/2.jpg",
    "img/works/while-im-waiting/3.jpg",
    "img/works/while-im-waiting/4.jpg",
@@ -3478,6 +3523,7 @@
   ],
   "alts": [
    "While I’m Waiting — білий тигр у сяйливій арці серед квітів і теплого світла, картина Max Vitvitskiy",
+   "While I’m Waiting в інтер’єрі — картина Max Vitvitskiy",
    "While I’m Waiting в інтер’єрі вітальні — картина в рамі на стіні",
    "While I’m Waiting — крупний план полотна музейної якості",
    "While I’m Waiting — картина в дерев’яній рамі на дивані",
@@ -3835,6 +3881,7 @@
   "desc": "Спокійний жіночий образ серед глибокої зелені й теплого світла — робота про внутрішній мир, усвідомленість і людську глибину. Акцент, що приносить у дім тишу й рівновагу.",
   "imgs": [
    "img/works/peace-of-mind/1.jpg",
+   "img/works/peace-of-mind/6.jpg",
    "img/works/peace-of-mind/2.jpg",
    "img/works/peace-of-mind/3.jpg",
    "img/works/peace-of-mind/4.jpg",
@@ -3842,6 +3889,7 @@
   ],
   "alts": [
    "Peace of Mind — жінка в спокої серед глибокої зелені й теплого світла, картина Max Vitvitskiy",
+   "Peace of Mind в інтер’єрі — картина Max Vitvitskiy",
    "Peace of Mind в інтер’єрі вітальні — картина в рамі на стіні",
    "Peace of Mind — крупний план полотна музейної якості",
    "Peace of Mind — картина в дерев’яній рамі на дивані",
@@ -5079,6 +5127,7 @@
    "portraits",
    "flowers",
    "transformation"
-  ]
+  ],
+  "ogImg": "img/works/a-thousand-moments-later/art.jpg"
  }
 ]
