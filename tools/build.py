@@ -143,7 +143,7 @@ def dialog(w, n, total, lang='uk', W=None):
     rel = ''
     if W is not None and w.get('rel'):
         rel = ('<nav class="rel" aria-labelledby="rel-t"><h2 id="rel-t">' + ('Related works' if en else 'Схожі роботи') + '</h2><div class="rg">'
-               + ''.join(f'<a href="{pre}works/{W[k]["slug"]}/"><img src="{e(ver(W[k]["img"]))}" alt="{e(W[k]["cardAlt"])}" width="840" height="1050" loading="lazy"><span>{e(W[k]["title"])}</span></a>' for k in w['rel'])
+               + ''.join(f'<a href="{pre}works/{W[k]["slug"]}/"><img src="{e(thumb(W[k]["imgs"][0]))}" alt="{e(W[k]["alts"][0])}" width="320" height="400" loading="lazy"><span>{e(W[k]["title"])}</span></a>' for k in w['rel'])
               + '</div></nav>')
     out = f'''<div class="dv open solo" id="dv" aria-labelledby="dv-t">
   <button class="x" type="button" aria-label="До каталогу"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
