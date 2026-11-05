@@ -434,7 +434,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .collage .c1,.collage .c3{scroll-snap-align:start}
 }
 .collage .c1{--p:52% 25%;--z:1.9;--o:52% 27%}
-.collage .c2{--p:50% 80%}
+.collage .c2{--p:55% 38%}
 .collage .c3{--p:6% 50%;--z:1.5;--o:9% 56%}
 .collage .c4{--p:85% 35%;--z:1.8;--o:84% 36%}
 .collage .c5::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.85))}
@@ -468,6 +468,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .duo .note{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
 .duo .band{display:flex;flex-direction:column}
 .duo .note{flex:1}
+.duo .note p+p{margin-top:12px}
 .btn-lite{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:22px;padding:0 22px;border:1px solid rgba(241,224,197,.28);border-radius:99px;font-size:13px;letter-spacing:.06em;color:var(--cream);transition:border-color .3s,color .3s,gap .3s var(--ease)}
 .btn-lite::after{content:"";flex:none;width:1.25em;height:.7em;background:var(--amber);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .35s var(--ease)}
 .btn-lite:hover{border-color:var(--amber);color:var(--amber)}
@@ -552,7 +553,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .exp-perks li{gap:8px;padding:18px clamp(12px,1.4vw,22px) 4px}
     .exp-perks li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:end}
   .exp-perks .pic{grid-column:1;grid-row:1;width:30px;height:30px;margin:0}
-  .exp-perks b{grid-column:2;grid-row:1}
+  .exp-perks b{grid-column:2;grid-row:1;transform:translateY(calc(.218em - 3.1px))}
   .exp-perks span{grid-column:1/-1;grid-row:2}
   .exp-perks b{font-size:clamp(22px,1.9vw,29px)}
   .exp-perks{container-type:inline-size}
@@ -806,6 +807,36 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .sx-block .lead{font-size:clamp(22px,6vw,25px);line-height:1.28;margin-bottom:16px}
   .exp .sec-head .sub .lede{margin-bottom:12px}
 }
+
+/* CREATE / INSPIRE intro: subtitle under the heading, lead paragraph, second sentence on wide screens */
+:is(#create,#inspire) .sec-head p.lede{font-family:var(--head);text-transform:uppercase;font-weight:400;color:var(--amber);font-size:clamp(24px,7vw,32px);line-height:1;max-width:none;margin-bottom:12px;white-space:nowrap}
+:is(#create,#inspire) .sec-head .sub p.two{font-family:var(--body);font-weight:400;font-size:clamp(15px,4.2vw,17px);line-height:1.6;max-width:36em;color:var(--cream);text-wrap:pretty}
+:is(#create,#inspire) .sec-head .sub .dsk{display:none}
+@media(min-width:900px){
+  :is(#create,#inspire) .sec-head{--ls:calc(var(--fs)*.219)}
+  :is(#create,#inspire) .sec-head p.lede{font-size:var(--ls);margin:-8px 0 0;grid-column:1;grid-row:3}
+  :is(#create,#inspire) .sec-head .sub{grid-row:2/4;margin-top:calc(var(--fs)*-.069);padding-bottom:calc(var(--ls)*.22)}
+  :is(#create,#inspire) .sec-head .sub p.two{font-size:clamp(17px,calc(var(--fs)*.095),20px)}
+}
+@media(min-width:1300px){:is(#create,#inspire) .sec-head .sub .dsk{display:inline}}
+
+/* desktop viewer: neighbouring videos sit on both sides and slide past */
+.st-rail{display:none}
+@media(min-width:900px){
+  .st-ov{overflow:hidden}
+  .st-rail{display:flex;gap:34px;position:absolute;left:calc(50% - var(--sw)/2);top:calc(50% - var(--sh)/2);will-change:transform}
+  .st-sl{flex:none;width:var(--sw);height:var(--sh);border:0;padding:0;border-radius:22px;overflow:hidden;background:#000;cursor:pointer;opacity:0;transform:scale(.55);transition:transform .6s var(--ease),opacity .6s var(--ease)}
+  .st-sl img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+  .st-sl::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35);transition:opacity .3s}
+  .st-sl{position:relative}
+  .st-sl[data-d="0"]{opacity:1;transform:none}.st-sl[data-d="0"]::after{opacity:0}
+  .st-sl[data-d="1"]{opacity:.7;transform:scale(.82)}.st-sl[data-d="1"]:hover{opacity:.95}
+  .st-sl[data-d="2"]{opacity:.32;transform:scale(.66)}
+  .st-sl[data-d="3"]{opacity:0;transform:scale(.55);pointer-events:none}
+  .st-stage{z-index:2;transition:opacity .3s ease}
+  .st-nav{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){.st-sl{transition:none}}
 /* contact */
 .contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
   radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.14),transparent 70%),
@@ -896,7 +927,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
       <picture><source type="image/webp" srcset="img/hero-480.webp 480w, img/hero-720.webp 720w, img/hero-960.webp 960w" sizes="(max-width:899px) 52vw, 260px"><img class="hero-fig" src="img/hero.png" alt="Max Vitvitskiy" width="1200" height="2793" fetchpriority="high" decoding="async"></picture>
     </div>
     <div class="hero-copy">
-      <p data-uk="Я створюю мистецтво, проєктую досвіди, що об’єднують людей, і допомагаю розкривати <em>творчий потенціал</em>.">I create art, design experiences that bring people together, and help unlock <em>creative potential</em>.</p>
+      <p data-uk="Я створюю мистецтво, реалізовую проєкти, що об’єднують людей, і досліджую нові способи <em>втілювати ідеї в життя</em>.">I create art, build projects that bring people together, and explore new ways to <em>bring ideas to life</em>.</p>
     </div>
   </div>
   <div class="cta-row">
@@ -913,7 +944,8 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   <div class="wrap sec-head rv">
     <span class="num" data-uk="01 / Я створюю">01 / I create</span>
     <h2 class="display">Create</h2>
-    <div class="sub"><p class="two" data-uk="Моє мистецтво — живопис, фотографія, цифрова композиція та візуальні експерименти.">My art — painting, photography, digital composition and visual experiments.</p><a class="btn fill" href="works.html" data-uk="Дивитись мистецтво →">View art →</a></div>
+    <p class="lede" data-uk="Мистецтво як спосіб бачити.">Art as a way of seeing.</p>
+    <div class="sub"><p class="two" data-uk="Я створюю візуальні роботи на перетині фотографії, цифрової композиції та художнього експерименту.<span class='dsk'> У своїх роботах досліджую взаємозв’язок краси, символізму та сенсів, створюючи образи, які запрошують побачити більше, ніж лежить на поверхні.</span>">I create visual works at the intersection of photography, digital composition and artistic experiment.<span class="dsk"> In my work I explore the relationship between beauty, symbolism and meaning, creating images that invite you to see more than lies on the surface.</span></p><a class="btn fill" href="works.html" data-uk="Дивитись мистецтво →">View art →</a></div>
   </div>
   <div class="wrap sec-foot sec-foot-top rv"><span class="hint swipe"><span data-uk="Гортай">Swipe</span><i class="ar" aria-hidden="true"></i></span><span class="hint" data-uk="Обрані роботи">Selected works</span></div>
   <div class="gallery rv">
@@ -936,14 +968,14 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   </div>
   <div class="wrap duo rv">
     <figure class="band">
-      <a class="band-in go-card" href="works.html"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" width="1591" height="988" loading="lazy"><div class="cap"><span class="kick" translate="no">Made for you</span><h3><span data-uk="Картини під замовлення">Commissioned paintings</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
-      <p class="note" data-uk="Створюю авторські картини на замовлення — для особистих колекцій, інтер’єрів або особливих подарунків. Від вашої ідеї до мого художнього втілення — кожна робота народжується як окрема історія з власним змістом.">I create original paintings to commission — for private collections, interiors or special gifts. From your idea to my artistic interpretation — each work is born as its own story with its own meaning.</p>
-      <a class="btn-lite" href="mailto:maxim.vitvitskiy@gmail.com?subject=Commissioned%20painting" data-uk="Обговорити індивідуальний формат">Discuss a custom format</a>
+      <a class="band-in go-card" href="mailto:maxim.vitvitskiy@gmail.com?subject=Commissioned%20artwork"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" width="1591" height="988" loading="lazy"><div class="cap"><span class="kick" data-uk="Авторські роботи на замовлення">Original works to order</span><h3><span data-uk="Створено для тебе">Made for you</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
+      <div class="note"><p data-uk="Створюю оригінальні художні роботи на замовлення для приватних колекцій, інтер’єрів та особливих подій.">I create original artworks to commission for private collections, interiors and special occasions.</p><p data-uk="Поділися своєю ідеєю, історією чи натхненням — я перетворю їх на індивідуальну візуальну композицію.">Share your idea, story or inspiration — I will turn it into an individual visual composition.</p></div>
+      <a class="btn-lite" href="mailto:maxim.vitvitskiy@gmail.com?subject=Commissioned%20artwork" data-uk="Обговорити створення роботи">Discuss creating a work</a>
     </figure>
     <figure class="band">
-      <a class="band-in go-card" href="works.html"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" width="1536" height="1024" loading="lazy"><div class="cap"><span class="kick" translate="no">The Collection</span><h3><span data-uk="Картини з колекції">Paintings from the collection</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
-      <p class="note" data-uk="Обрані роботи з моєї колекції доступні для придбання — для особистих колекцій, інтер’єрів і бізнес-просторів. Кожна робота має визначений тираж і сертифікат автентичності.">Selected works from my collection are available to buy — for private collections, interiors and business spaces. Each work has a set edition size and a certificate of authenticity.</p>
-      <a class="btn-lite" href="works.html" data-uk="Обрати роботу з колекції">Choose a work from the collection</a>
+      <a class="band-in go-card" href="works.html"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" width="1536" height="1024" loading="lazy"><div class="cap"><span class="kick" data-uk="Лімітовані артвидання">Limited art editions</span><h3><span data-uk="Авторська колекція">Signature collection</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
+      <div class="note"><p data-uk="Відкрий для себе вибрані роботи з моєї авторської колекції, доступні у форматі лімітованих фізичних артпринтів.">Discover selected works from my signature collection, available as limited-edition physical art prints.</p><p data-uk="Кожна робота випускається обмеженим тиражем і супроводжується сертифікатом автентичності.">Each work is released in a limited edition and comes with a certificate of authenticity.</p></div>
+      <a class="btn-lite" href="works.html" data-uk="Переглянути доступні роботи">View available works</a>
     </figure>
   </div>
 </section>
@@ -953,7 +985,8 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   <div class="wrap sec-head rv">
     <span class="num" data-uk="02 / Я ділюся тим, що знаю">02 / I share what I know</span>
     <h2 class="display">Inspire</h2>
-    <div class="sub"><p class="two" data-uk="Ідеї, досвід і практики про творчість, мистецтво та шлях митця.">Ideas, experience and practices on creativity, art and the path of an artist.</p><a class="btn fill" href="https://www.youtube.com/@MaxVitvitskiy" data-uk="Дивитись →">Watch →</a></div>
+    <p class="lede" data-uk="Творчість — це навичка, яку можна розвивати.">Creativity is a skill you can develop.</p>
+    <div class="sub"><p class="two" data-uk="Я досліджую творче мислення, візуальну культуру та шлях від ідеї до її втілення.<span class='dsk'> Через навчання, виступи та творчу практику ділюся досвідом і підходами, які допомагають долати внутрішні бар’єри, розвивати власне бачення та сміливіше реалізовувати свій потенціал.</span>">I explore creative thinking, visual culture and the path from an idea to its realisation.<span class="dsk"> Through teaching, talks and creative practice, I share experience and approaches that help overcome inner barriers, develop your own vision and realise your potential with more courage.</span></p><a class="btn fill" href="https://www.youtube.com/@MaxVitvitskiy" data-uk="Дослідити →">Explore →</a></div>
   </div>
   <div class="wrap sec-foot sec-foot-top rv"><span class="hint swipe"><span data-uk="Гортай">Swipe</span><i class="ar" aria-hidden="true"></i></span><span class="hint" data-uk="Нові відео">New videos</span></div>
   <div class="reels rv">
@@ -983,7 +1016,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
     <div class="collage rv">
       <figure class="c5"><img width="1400" height="1400" src="img/teach5.jpg" alt="Max Vitvitskiy teaching a workshop" loading="lazy"><figcaption><span data-uk="Виступи · Воркшопи">Talks · Workshops</span><b data-uk="Живі зустрічі">Live sessions</b></figcaption></figure>
       <figure class="c1"><img width="1400" height="875" src="img/teach1.jpg" alt="Workshop room" loading="lazy"></figure>
-      <figure class="c2"><img width="875" height="1400" src="img/teach2.jpg" alt="Workshop participants with laptops" loading="lazy"></figure>
+      <figure class="c2"><img width="1200" height="750" src="img/teach-listeners.jpg" alt="Workshop participants listening" loading="lazy"></figure>
       <figure class="c3"><img width="1400" height="875" src="img/teach3.jpg" alt="Max Vitvitskiy speaking to the room" loading="lazy"></figure>
       <figure class="c4"><img width="1400" height="875" src="img/teach4.jpg" alt="Workshop participants at tables" loading="lazy"></figure>
     </div>
@@ -1021,9 +1054,9 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
       <li><i class="pic" aria-hidden="true"><svg class="pi pi-pin" viewBox="0 0 24 24"><g class="pin"><path d="M12 22S2.5 15.2 2.5 9.5a9.5 9.5 0 0 1 19 0C21.5 15.2 12 22 12 22z"/><circle cx="12" cy="9.5" r="3.3"/></g><ellipse class="rip" cx="12" cy="23.2" rx="3.6" ry=".8"/></svg></i><b data-uk="Будь-де">Anywhere</b><span data-uk="Без колонок і шуму — від даху до музею<span class='dsk'>, де гучний звук недоречний</span>">No speakers, no noise — any venue<span class="dsk">, from rooftops to museums</span></span></li>
     </ul>
   </div>
-  <div class="sx-gallery rv" data-pool='["img/silent/ph/p00.jpg", "img/silent/ph/p01.jpg", "img/silent/ph/p02.jpg", "img/silent/ph/p04.jpg", "img/silent/ph/p05.jpg", "img/silent/ph/p06.jpg", "img/silent/ph/p07.jpg", "img/silent/ph/p08.jpg", "img/silent/ph/p09.jpg", "img/silent/ph/p10.jpg", "img/silent/ph/p11.jpg", "img/silent/ph/p12.jpg", "img/silent/ph/p13.jpg", "img/silent/ph/p14.jpg", "img/silent/ph/p15.jpg", "img/silent/ph/p16.jpg", "img/silent/ph/p17.jpg", "img/silent/ph/p18.jpg", "img/silent/ph/p19.jpg", "img/silent/ph/p20.jpg", "img/silent/ph/p21.jpg", "img/silent/ph/p22.jpg", "img/silent/ph/p23.jpg", "img/silent/ph/p24.jpg", "img/silent/ph/p25.jpg", "img/silent/ph/p26.jpg", "img/silent/ph/p27.jpg", "img/silent/ph/p28.jpg", "img/silent/ph/p29.jpg", "img/silent/ph/p30.jpg", "img/silent/ph/p31.jpg"]' aria-hidden="true">
-    <div class="lane l1"><div class="tile"><img class="on" src="img/silent/ph/p11.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p28.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p24.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p31.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p06.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p29.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p15.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p21.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
-    <div class="lane l2"><div class="tile"><img class="on" src="img/silent/ph/p12.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p30.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p27.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p22.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p09.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p25.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p07.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p04.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
+  <div class="sx-gallery rv" data-pool='["img/silent/ph/p00.jpg", "img/silent/ph/p01.jpg", "img/silent/ph/p02.jpg", "img/silent/ph/p04.jpg", "img/silent/ph/p05.jpg", "img/silent/ph/p06.jpg", "img/silent/ph/p07.jpg", "img/silent/ph/p08.jpg", "img/silent/ph/p09.jpg", "img/silent/ph/p10.jpg", "img/silent/ph/p11.jpg", "img/silent/ph/p12.jpg", "img/silent/ph/p13.jpg", "img/silent/ph/p14.jpg", "img/silent/ph/p15.jpg", "img/silent/ph/p16.jpg", "img/silent/ph/p17.jpg", "img/silent/ph/p18.jpg", "img/silent/ph/p19.jpg", "img/silent/ph/p20.jpg", "img/silent/ph/p23.jpg", "img/silent/ph/p24.jpg", "img/silent/ph/p25.jpg", "img/silent/ph/p26.jpg", "img/silent/ph/p27.jpg", "img/silent/ph/p28.jpg", "img/silent/ph/p29.jpg", "img/silent/ph/p31.jpg", "img/silent/ph/p32.jpg", "img/silent/ph/p33.jpg", "img/silent/ph/p34.jpg", "img/silent/ph/p35.jpg", "img/silent/ph/p36.jpg", "img/silent/ph/p37.jpg"]' aria-hidden="true">
+    <div class="lane l1"><div class="tile"><img class="on" src="img/silent/ph/p11.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p28.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p24.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p31.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p06.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p29.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p15.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p00.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
+    <div class="lane l2"><div class="tile"><img class="on" src="img/silent/ph/p12.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p02.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p27.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p01.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p09.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p25.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p07.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div><div class="tile"><img class="on" src="img/silent/ph/p04.jpg" alt="" width="800" height="800" loading="lazy"><img alt="" width="800" height="800"></div></div>
   </div>
   <div class="wrap">
     <div class="sx-blocks rv">
@@ -1137,7 +1170,7 @@ const L=document.querySelectorAll('[data-uk]');L.forEach(e=>e.dataset.en=e.inner
 function buildRings(l){const w=l==='uk'?'ДИВИТИСЯ':'WATCH',n=l==='uk'?3:4,t=[...(w+' · ').repeat(n)];
   document.querySelectorAll('.reel .play').forEach(pl=>{let r=pl.querySelector('.ring');if(!r){r=document.createElement('span');r.className='ring';r.setAttribute('aria-hidden','true');pl.appendChild(r)}
     r.innerHTML=t.map((c,i)=>'<b style="transform:rotate('+(i*360/t.length).toFixed(2)+'deg)">'+(c===' '?'&nbsp;':c)+'</b>').join('')})}
-function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn,.work .cap span,.channel>span:last-child').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();updMore();
+function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk:e.dataset.en);document.documentElement.lang=l;document.querySelectorAll('[data-href-uk]').forEach(a=>a.href=l==='uk'?a.dataset.hrefUk:a.dataset.hrefEn);document.querySelectorAll('.btn,.work .cap span,.channel>span:last-child').forEach(b=>{if(/→\s*$/.test(b.innerHTML))b.innerHTML=b.innerHTML.replace(/\s*→\s*$/,'')+'<i class="ar" aria-hidden="true"></i>'});if(window.typeArch)typeArch();if(window.alignTag)alignTag();if(window.fitLede)fitLede();updMore();
   document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('on',b.dataset.l===l);b.setAttribute('aria-pressed',b.dataset.l===l)});try{localStorage.setItem('lang',l)}catch(e){}}
 document.addEventListener('click',e=>{const a=e.target.closest('a[href="#"]');if(a)e.preventDefault()});
 /* the area Safari reveals when you pull past the page edge: hero colour on top, the black page end at the bottom */
@@ -1282,6 +1315,28 @@ function typeArch(){
   addEventListener('load',fitArch,{once:true});
 }
 
+
+/* Create: subtitle set to exactly the width of the CREATE word */
+function fitLede(){
+  document.querySelectorAll('#create .sec-head,#inspire .sec-head').forEach(sh=>{
+    const l=sh.querySelector(':scope>p.lede'),h=sh.querySelector('h2');
+    if(!l||!h)return;
+    l.style.fontSize='';l.style.whiteSpace='';l.style.marginLeft=getComputedStyle(h).marginLeft;sh.style.removeProperty('--ls');
+    const m=e=>{const r=document.createRange();r.selectNodeContents(e);return r.getBoundingClientRect().width};
+    l.style.whiteSpace='nowrap';
+    const wh=m(h),wl=m(l),f0=parseFloat(getComputedStyle(l).fontSize);
+    if(!wh||!wl)return;
+    let px=f0*wh/wl;
+    if(px<18){px=Math.max(20,Math.min(26,innerWidth*.06));l.style.whiteSpace='normal';l.style.textWrap='balance'}
+    l.style.fontSize=px.toFixed(2)+'px';sh.style.setProperty('--ls',px.toFixed(2)+'px');
+  });
+}
+window.fitLede=fitLede;
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitLede);
+addEventListener('load',fitLede,{once:true});
+let _fl;addEventListener('resize',()=>{clearTimeout(_fl);_fl=setTimeout(fitLede,120)});
+fitLede();
+
 /* silent gallery: two lanes drift toward each other, photos swap at random */
 (function(){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1330,10 +1385,22 @@ if(!window.CSSViewTransitionRule&&!matchMedia('(prefers-reduced-motion: reduce)'
   if(!items.length)return;
   const ov=document.createElement('div');ov.className='st-ov';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-label','Відео');
   const ic=d=>'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+d+'"/></svg>';
-  ov.innerHTML='<canvas class="st-bg" width="48" height="86"></canvas><div class="st-stage"><div class="st-yt"><div id="stYT"></div></div><div class="st-bars"></div><div class="st-tap l"></div><div class="st-tap r"></div></div><span class="st-ttl"></span><button type="button" class="st-mute" aria-label="Звук">'+ic('M4 9v6h4l5 4V5L8 9zM17 9a4 4 0 010 6')+'</button><button type="button" class="st-x" aria-label="Закрити відео">'+ic('M6 6l12 12M18 6L6 18')+'</button><button type="button" class="st-nav l" aria-label="Назад">'+ic('M15 5l-7 7 7 7')+'</button><button type="button" class="st-nav r" aria-label="Далі">'+ic('M9 5l7 7-7 7')+'</button>';
+  ov.innerHTML='<canvas class="st-bg" width="48" height="86"></canvas><div class="st-rail"></div><div class="st-stage"><div class="st-yt"><div id="stYT"></div></div><div class="st-bars"></div><div class="st-tap l"></div><div class="st-tap r"></div></div><span class="st-ttl"></span><button type="button" class="st-mute" aria-label="Звук">'+ic('M4 9v6h4l5 4V5L8 9zM17 9a4 4 0 010 6')+'</button><button type="button" class="st-x" aria-label="Закрити відео">'+ic('M6 6l12 12M18 6L6 18')+'</button><button type="button" class="st-nav l" aria-label="Назад">'+ic('M15 5l-7 7 7 7')+'</button><button type="button" class="st-nav r" aria-label="Далі">'+ic('M9 5l7 7-7 7')+'</button>';
   document.body.appendChild(ov);
   const bars=ov.querySelector('.st-bars'),ttl=ov.querySelector('.st-ttl'),bg=ov.querySelector('canvas'),mute=ov.querySelector('.st-mute');
   bars.innerHTML=items.map(()=>'<i><b></b></i>').join('');
+  const mq=matchMedia('(min-width:900px)'),rail=ov.querySelector('.st-rail'),stg=ov.querySelector('.st-stage');
+  rail.innerHTML=items.map((it,i)=>{const im=it.querySelector('img');return '<button type="button" class="st-sl" data-i="'+i+'" data-d="3" tabindex="-1" aria-label="'+(it.getAttribute('aria-label')||'')+'">'+(im?'<img src="'+im.getAttribute('src')+'" alt="">':'')+'</button>'}).join('');
+  const slides=[...rail.children];let tok=0;
+  const layout=()=>{const r=stg.getBoundingClientRect();if(r.width){ov.style.setProperty('--sw',r.width+'px');ov.style.setProperty('--sh',r.height+'px')}};
+  const place=(i,anim)=>{
+    const gap=parseFloat(getComputedStyle(rail).columnGap)||34,sw=parseFloat(getComputedStyle(ov).getPropertyValue('--sw'))||stg.getBoundingClientRect().width;
+    rail.style.transition=anim?'transform .6s cubic-bezier(.16,1,.3,1)':'none';
+    rail.style.transform='translateX('+(-i*(sw+gap))+'px)';
+    slides.forEach((el,k)=>{el.dataset.d=Math.min(Math.abs(k-i),3)});
+  };
+  slides.forEach(el=>el.addEventListener('click',()=>{const k=+el.dataset.i;if(k!==cur)go(k)}));
+  addEventListener('resize',()=>{if(cur<0)return;layout();place(cur,false)});
   const segs=[...bars.children];let cur=-1,muted=false,opener=null,P=null,pending=null,tick=0;
   const setBar=(k,f)=>{segs[k].firstChild.style.transform='scaleX('+f+')'};
   function loadAPI(cb){
@@ -1350,27 +1417,31 @@ if(!window.CSSViewTransitionRule&&!matchMedia('(prefers-reduced-motion: reduce)'
   function onState(e){if(e.data===0)go(cur+1)}
   function go(i){
     if(i<0)i=0;if(i>=items.length){close();return}
+    const wasOn=cur>=0,desk=mq.matches,my=++tok;
     cur=i;const it=items[i],id=it.dataset.yt;
+    if(desk){layout();place(i,wasOn);stg.style.opacity=wasOn?'0':'1'}
     segs.forEach((sg,k)=>{sg.classList.toggle('done',k<i);setBar(k,k<i?1:0)});
     ttl.textContent=it.getAttribute('aria-label')||'';
     const im=it.querySelector('img');
     if(im){try{bg.getContext('2d').drawImage(im,0,0,bg.width,bg.height)}catch(e){}}else bgFrom(id);
-    loadAPI(()=>{
-      if(cur<0)return;
+    const run=()=>{if(my!==tok)return;if(desk&&wasOn)stg.style.opacity='1';loadAPI(()=>{
+      if(cur<0||my!==tok)return;
       const cid=items[cur].dataset.yt;
       if(!P){
         P=new YT.Player('stYT',{host:'https://www.youtube-nocookie.com',videoId:cid,playerVars:{autoplay:1,playsinline:1,rel:0,controls:0,modestbranding:1,iv_load_policy:3,fs:0,disablekb:1},events:{onReady:e=>{if(muted)e.target.mute();e.target.playVideo();poll()},onStateChange:onState}});
       }else{P.loadVideoById(cid);if(muted)P.mute();else P.unMute()}
-    });
+    })};
+    if(desk&&wasOn)setTimeout(run,520);else run();
   }
-  function open(i){opener=document.activeElement;ov.classList.add('on');document.documentElement.style.overflow='hidden';go(i);ov.querySelector('.st-x').focus()}
-  function close(){ov.classList.remove('on');clearInterval(tick);if(P&&P.stopVideo)P.stopVideo();cur=-1;document.documentElement.style.overflow='';if(opener&&opener.focus)opener.focus()}
+  function open(i){opener=document.activeElement;ov.classList.add('on');layout();document.documentElement.style.overflow='hidden';go(i);ov.querySelector('.st-x').focus()}
+  function close(){stg.style.opacity='1';ov.classList.remove('on');clearInterval(tick);if(P&&P.stopVideo)P.stopVideo();cur=-1;document.documentElement.style.overflow='';if(opener&&opener.focus)opener.focus()}
   items.forEach((it,i)=>it.addEventListener('click',e=>{e.preventDefault();open(i)}));
+  const ib=document.querySelector('#inspire .sub .btn');if(ib)ib.addEventListener('click',e=>{e.preventDefault();open(0)});
   ov.querySelector('.st-x').onclick=close;
   ov.querySelectorAll('.l').forEach(b=>b.onclick=()=>go(cur-1));
   ov.querySelectorAll('.r').forEach(b=>b.onclick=()=>go(cur+1));
   mute.onclick=()=>{muted=!muted;if(P){muted?P.mute():P.unMute()}mute.style.opacity=muted?.55:1};
-  ov.addEventListener('click',e=>{if(!e.target.closest('.st-stage,.st-nav,.st-x'))close()});
+  ov.addEventListener('click',e=>{if(!e.target.closest('.st-stage,.st-nav,.st-x,.st-sl,.st-mute'))close()});
   const toggle=()=>{if(!P)return;P.getPlayerState()===1?P.pauseVideo():P.playVideo()};
   addEventListener('keydown',e=>{if(!ov.classList.contains('on'))return;if(e.key==='Escape')close();else if(e.key==='ArrowRight')go(cur+1);else if(e.key==='ArrowLeft')go(cur-1);else if(e.key===' '){e.preventDefault();toggle()}});
   /* hold to pause, swipe to flip */
