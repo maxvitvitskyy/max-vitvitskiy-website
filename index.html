@@ -556,7 +556,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .exp-perks .pic{grid-column:1;grid-row:1;width:30px;height:30px;margin:0}
   .exp-perks b{grid-column:2;grid-row:1;transform:translateY(calc(.218em - 3.1px))}
   .exp-perks span{grid-column:1/-1;grid-row:2}
-  .exp-perks b{font-size:clamp(22px,1.9vw,29px)}
+  .exp-perks b{font-size:min(clamp(22px,1.9vw,29px),4.35cqi);white-space:nowrap}
   .exp-perks{container-type:inline-size}
   .exp-perks li{align-content:start}
   .exp-perks span{font-size:clamp(13px,2.3cqi,17px);hyphens:manual;-webkit-hyphens:manual}
@@ -930,10 +930,18 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
   .c-copy{display:contents}
   .c-copy .c-title{order:1}.c-copy .c-text{order:2}.c-copy .c-actions{order:3}
   .c-side{order:4;margin-top:clamp(44px,12vw,64px);margin-bottom:0}
-  .c-copy .socials{order:5;margin:clamp(34px,9vw,44px) auto 0;gap:10px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));width:min(88vw,380px)}
+  .c-copy .socials{order:5;margin:clamp(34px,9vw,44px) auto 0;gap:10px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));width:min(88vw,380px)}
   .contact .socials .ico{width:100%;height:auto;aspect-ratio:1/1}
 }
 @media(max-width:359px){.c-copy .socials{gap:7px}}
+/* wrapping hygiene across UA and EN: labels stay on one line, paragraphs avoid orphans */
+.sx-more{white-space:nowrap}
+.vq b,.exp-perks span,.sx-strip small,.two,.dskp,.c-text,.sx-list span{text-wrap:pretty}
+.vq b{text-wrap:balance}
+.exp-perks b{text-wrap:balance}
+@media(max-width:359px){.c-form label{font-size:14px}}
+#contact .socials .ico svg{width:24px;height:24px}
+@media(max-width:899px){#contact .socials .ico svg{width:27px;height:27px}}
 /* ---- neumorphic doorway: one warm-charcoal material; depth comes from paired light and shadow, never from strokes ---- */
 .contact{--nm-out:14px 18px 38px rgba(0,0,0,.5),-10px -10px 27px rgba(255,236,214,.032);--nm-rim:inset 1px 1px 2px rgba(255,236,214,.05),inset -1.5px -1.5px 4px rgba(0,0,0,.28);--nm-well:inset 5px 5px 10px rgba(0,0,0,.48),inset -4px -4px 8px rgba(255,236,214,.022);background:#14100d}
 .c-form,.c-send{filter:grayscale(1) brightness(.82);transition:filter 1s var(--ease),box-shadow .6s var(--ease),color .5s,transform .2s}
@@ -966,8 +974,8 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 html[lang="en"] .contact .c-title{font-size:clamp(30px,9.4vw,76px)}
 .c-text{margin:clamp(24px,2.8vw,38px) auto 0;max-width:34em;font-family:var(--body);font-weight:400;font-size:clamp(15.5px,1.3vw,18px);line-height:1.7;color:var(--cream);text-wrap:pretty;text-align:left}
 .c-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 30px;margin-top:clamp(26px,3vw,36px)}
-.c-actions .mail{margin:0;font-size:clamp(18px,1.7vw,24px)}
-@media(max-width:899px){.c-text{margin-inline:0}.c-actions{justify-content:flex-start;gap:14px 18px}.c-actions .btn{padding:0 18px;font-size:13px;letter-spacing:.14em;flex:none}.c-actions .mail{font-size:15.5px;white-space:nowrap}}
+.c-actions .mail{margin:0;font-size:clamp(24px,2.3vw,32px)}
+@media(max-width:899px){.c-text{margin-inline:0}.c-actions{justify-content:flex-start;gap:14px 18px}.c-actions .btn{padding:0 24px;font-size:14px;letter-spacing:.14em;flex:none}.c-actions .btn .ml{display:none}.c-actions .mail{font-size:clamp(20px,5.4vw,25px);white-space:nowrap}}
 .contact .socials{justify-content:center;margin-top:clamp(30px,3.4vw,44px)}
 .c-btn:focus-visible,.mail:focus-visible,.socials .ico:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
 @media(min-width:900px){
@@ -1105,9 +1113,9 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   </div>
   <div class="wrap duo rv">
     <figure class="band">
-      <a class="band-in go-card" href="mailto:maxim.vitvitskiy@gmail.com?subject=Commissioned%20artwork"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" width="1591" height="988" loading="lazy"><div class="cap"><span class="kick" data-uk="Авторські роботи на замовлення">Original works to order</span><h3><span data-uk="Створено для тебе">Made for you</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
+      <a class="band-in go-card" href="#cf-name" data-topic="commission"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" width="1591" height="988" loading="lazy"><div class="cap"><span class="kick" data-uk="Авторські роботи на замовлення">Original works to order</span><h3><span data-uk="Створено для тебе">Made for you</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <div class="note"><p data-uk="Створюю оригінальні художні роботи на замовлення для приватних колекцій, інтер’єрів та особливих подій.">I create original artworks to commission for private collections, interiors and special occasions.</p><p data-uk="Поділися своєю ідеєю, історією чи натхненням — я перетворю їх на індивідуальну візуальну композицію.">Share your idea, story or inspiration — I will turn it into an individual visual composition.</p></div>
-      <a class="btn-lite" href="mailto:maxim.vitvitskiy@gmail.com?subject=Commissioned%20artwork" data-uk="Обговорити створення роботи">Discuss creating a work</a>
+      <a class="btn-lite" href="#cf-name" data-topic="commission" data-uk="Обговорити створення роботи">Discuss creating a work</a>
     </figure>
     <figure class="band">
       <a class="band-in go-card" href="works.html"><img src="img/studio2.jpg" alt="Max Vitvitskiy next to a large artwork" width="1536" height="1024" loading="lazy"><div class="cap"><span class="kick" data-uk="Лімітовані артвидання">Limited art editions</span><h3><span data-uk="Авторська колекція">Signature collection</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
@@ -1147,7 +1155,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
       <h3 data-uk="Досвід<br>викладання">Teaching<br>experience</h3>
       <div>
         <p data-uk="Проводжу воркшопи та лекції про творчість, пошук власного стилю й подолання творчих блоків. Ділюся власним досвідом і практиками, які допомагають знаходити ідеї та втілювати їх у життя.">I run workshops and talks on creativity, finding your own style and overcoming creative blocks. I share my own experience and the practices that help find ideas and bring them to life.</p>
-        <a class="btn fill" href="mailto:maxim.vitvitskiy@gmail.com?subject=Workshops%20%26%20talks" data-uk="Обговорити формат →">Discuss a format →</a>
+        <a class="btn fill" href="#cf-name" data-topic="talk" data-uk="Обговорити формат →">Discuss a format →</a>
       </div>
     </div>
     <div class="collage rv">
@@ -1161,12 +1169,12 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
       <div class="col">
         <h3 data-uk="Спікінг, тренінги, майстер-класи">Speaking, trainings, masterclasses</h3>
         <p data-uk="Проводжу виступи та практичні майстеркласи на теми творчості, візуального мислення, дизайну й особистого творчого розвитку. Поєдную практичні вправи, власний досвід та нові погляди, допомагаючи людям і командам знаходити нестандартні рішення та переходити від ідей до дій.">I give talks and hands-on workshops on creativity, visual thinking, design and personal creative growth. I combine practical exercises, my own experience and fresh perspectives, helping people and teams find unconventional solutions and move from ideas to action.</p>
-        <a class="btn-lite" href="mailto:maxim.vitvitskiy@gmail.com?subject=Talk%20or%20masterclass" data-uk="Обговорити виступ або майстерклас">Discuss a talk or masterclass</a>
+        <a class="btn-lite" href="#cf-name" data-topic="talk" data-uk="Обговорити виступ або майстерклас">Discuss a talk or masterclass</a>
       </div>
       <div class="col">
         <h3 data-uk="Творчий коучинг та індивідуальні уроки">Creative coaching and private lessons</h3>
         <p data-uk="Допомагаю розвивати творчі навички, візуальне мислення та знаходити власний художній напрям. Від композиції, кольору й розробки концепцій до подолання творчих блоків і впевненості у власній роботі — кожен навчальний процес будується навколо індивідуальних цілей.">I help develop creative skills, visual thinking and find your own artistic direction. From composition, colour and concept development to overcoming creative blocks and confidence in your own work — every learning process is built around individual goals.</p>
-        <a class="btn-lite" href="mailto:maxim.vitvitskiy@gmail.com?subject=Mentoring" data-uk="Обговорити менторство">Discuss mentoring</a>
+        <a class="btn-lite" href="#cf-name" data-topic="mentoring" data-uk="Обговорити менторство">Discuss mentoring</a>
       </div>
     </div>
     <div class="topics rv">
@@ -1292,7 +1300,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
             <option value="silent" data-uk="Івент SILENT">SILENT event</option>
             <option value="collab" data-uk="Співпраця чи проєкт">Collaboration or project</option>
             <option value="other" data-uk="Інше">Something else</option>
-          </select><label for="cf-topic" data-uk="Що хочеш обговорити?">What would you like to discuss?</label></div>
+          </select><label for="cf-topic" data-uk="Що хочеш обговорити?">What shall we discuss?</label></div>
           <div class="fld"><textarea id="cf-msg" name="message" rows="1" placeholder=" " required></textarea><label for="cf-msg" data-uk="Повідомлення">Message</label></div>
           <a class="c-mailto" href="mailto:maxim.vitvitskiy@gmail.com" hidden tabindex="-1" aria-hidden="true"></a>
         </form>
@@ -1303,8 +1311,8 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
       <div class="c-copy">
         <h2 class="display c-title" data-uk="<span class='ln'>Маєш <em>ідею?</em></span><span class='ln'>Створімо щось</span><span class='ln'><em>особливе.</em><small class='cap cap-b' aria-hidden='true'>Створюй<br>Надихай<br>Проживай</small></span>"><span class="ln">Have an <em>idea?</em></span><span class="ln">Let’s create</span><span class="ln"><em>something</em> special.<small class="cap cap-b" aria-hidden="true">Create<br>Inspire<br>Experience</small></span></h2>
         <p class="c-text" data-uk="Мені цікаві змістовні колаборації, творчі проєкти та нові можливості для втілення ідей. Мистецькі проєкти, виступи, освітні ініціативи, підприємницькі партнерства чи щось зовсім несподіване — буду радий знайомству.">I’m interested in meaningful collaborations, creative projects and new opportunities to bring ideas to life. Art projects, talks, educational initiatives, business partnerships or something completely unexpected — I’d be glad to connect.</p>
-        <div class="c-actions"><a class="btn fill c-btn" href="#cf-name" data-uk="Написати мені">Write to me<i class="ar" aria-hidden="true"></i></a><a class="mail" href="mailto:maxim.vitvitskiy@gmail.com">maxim.vitvitskiy@gmail.com</a></div>
-        <div class="socials"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a><a class="ico" href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M10.8 17.9 12.3 10.8M9.6 13.4c-.9-2.2.3-4.5 2.7-4.5 1.9 0 3 1.1 3 2.7 0 1.9-1.1 3.3-2.5 3.3-.8 0-1.4-.5-1.4-1.2"/></svg></a><a class="ico" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.6v5.9M8 7.7v.01M11.7 16.5v-5.9M11.7 13.2c0-1.7 1.2-2.7 2.6-2.7s2.4.9 2.4 2.7v3.3"/></svg></a></div>
+        <div class="c-actions"><a class="btn fill c-btn" href="#cf-name" data-uk="Написати<span class='ml'> мені</span>">Write<span class="ml"> to me</span><i class="ar" aria-hidden="true"></i></a><a class="mail" href="mailto:maxim.vitvitskiy@gmail.com">maxim.vitvitskiy@gmail.com</a></div>
+        <div class="socials"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a><a class="ico" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.6v5.9M8 7.7v.01M11.7 16.5v-5.9M11.7 13.2c0-1.7 1.2-2.7 2.6-2.7s2.4.9 2.4 2.7v3.3"/></svg></a></div>
       </div>
     </div>
     <footer><span>© 2026 Max Vitvitskiy</span><span data-uk="Створюй · Надихай · Проживай">Create · Inspire · Experience</span></footer>
@@ -1373,7 +1381,7 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
   const tp=document.querySelector('.topics');
   if(tp){const sp=[...tp.querySelectorAll('span')];sp.forEach((e,i)=>mark(e,'a-up',Math.min(i,9)*50));groups.set(tp,sp)}
   /* a fully masked element has no visible area, so the observer watches its parent instead */
-  [[HEAD,'a-mask'],[IMG,'a-img'],[UP,'a-up']].forEach(([sel,c])=>document.querySelectorAll(sel).forEach(el=>{if(done.has(el)||el.closest('.hero'))return;mark(el,c,0);const host=el.parentElement;if(!groups.has(host))groups.set(host,[]);groups.get(host).push(el)}));
+  [[HEAD,'a-mask'],[IMG,'a-img'],[UP,'a-up']].forEach(([sel,c])=>document.querySelectorAll(sel).forEach(el=>{if(done.has(el)||el.closest('.hero'))return;mark(el,c,0);let host=el.parentElement;while(host&&host.parentElement&&getComputedStyle(host).display==='contents')host=host.parentElement;if(!groups.has(host))groups.set(host,[]);groups.get(host).push(el)}));
   /* Experience choreography: number, title, glow blooms behind, guest rises out of it, then the copy */
   const girl=document.querySelector('.exp-girl'),glow=document.querySelector('.exp-glow');
   if(girl)girl.classList.replace('a-up','a-girl');
@@ -1535,6 +1543,9 @@ fitLede();
     ['change','blur'].forEach(ev=>sl.addEventListener(ev,()=>fs.classList.remove('open')));
   }
   const ta=f.querySelector('textarea');const grow=()=>{ta.style.height='58px';ta.style.height=Math.min(150,Math.max(58,ta.scrollHeight))+'px'};ta.addEventListener('input',grow);
+  /* every "discuss / write" button on the page leads to this form, with the matching topic preselected */
+  document.querySelectorAll('a[data-topic]').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();if(f.topic){f.topic.value=l.dataset.topic;f.topic.dispatchEvent(new Event('change',{bubbles:true}))}
+    const d=document.querySelector('.c-door');d.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('cf-name').focus({preventScroll:true}),600)}));
   const cta=document.querySelector('.c-btn');
   if(cta)cta.addEventListener('click',e=>{e.preventDefault();const d=document.querySelector('.c-door');d.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('cf-name').focus({preventScroll:true}),450)});
 })();
