@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /data/
+
+Sitemap: https://maxvitvitskiy.com/sitemap.xml

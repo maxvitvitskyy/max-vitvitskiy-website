@@ -4,9 +4,11 @@
 Left: the artwork at 4:5, as large as the card allows. Right: wordmark, title, one-line subject,
 key specs, price from, and an "on sale" badge. Rendered with headless Chrome in the site's own fonts.
 
-Run from the repo root:  python3 tools/og.py [slug ...]
+Run from the repo root:  python3 tools/og.py [en] [slug ...]   ("en" renders og-en.jpg with English text)
 """
 import html, json, os, subprocess, sys, tempfile
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import i18n
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,37 +49,43 @@ li svg{flex:none;width:20px;height:20px}
 CHECK = '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9.25" fill="none" stroke="#FFA630" stroke-opacity=".55" stroke-width="1.2"/><path d="M6 10.4l2.6 2.6L14.2 7.3" fill="none" stroke="#FFA630" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 
-def card(w):
+def card(w, en=False):
     t = w['title']
     fs = 66 if len(t) <= 16 else 56 if len(t) <= 24 else 48
     sub = w.get('meaning') or w.get('seo') or ''
     sub = sub[:1].upper() + sub[1:]
     year = f' · {w["year"]}' if w.get('year') else ''
     items = ['Тираж 10 примірників', f'Музейне полотно, архівні чорнила{year}', '40×60 — 80×120 см, рама з масиву дерева', 'Підпис і сертифікат автентичності']
+    if en:
+        items = ['Edition of 10', f'Museum-quality canvas, archival inks{year}', '16×24 — 32×48 in, solid wood frame', 'Signed, with certificate of authenticity']
     lis = ''.join(f'<li>{CHECK}{e(x)}</li>' for x in items)
     return f'''<!doctype html><meta charset="utf-8"><style>{CSS % {"f": U("fonts"), "fs": fs}}</style>
 <div class="art"><img src="{U(w.get('ogImg') or w['imgs'][0])}"></div>
 <img class="mark" src="{U('img/logo-mark.png')}">
 <div class="tx">
   <div class="body"><h1>{e(t)}</h1><p class="sub">{e(sub)}</p><ul>{lis}</ul></div>
-  <div class="foot"><span class="badge"><i></i>У продажу</span><span class="word">Max Vitvitskiy</span></div>
+  <div class="foot"><span class="badge"><i></i>{"Available" if en else "У продажу"}</span><span class="word">Max Vitvitskiy</span></div>
 </div>'''
 
 
 def main():
     W = json.load(open(os.path.join(ROOT, 'data/works.json'), encoding='utf-8'))
-    only = set(sys.argv[1:])
+    args = sys.argv[1:]
+    en = 'en' in args
+    only = {a for a in args if a != 'en'}
+    if en:
+        W = i18n.localize(W)
     with tempfile.TemporaryDirectory() as tmp:
         for w in W:
             if not w.get('slug') or (only and w['slug'] not in only) or not w.get('sizes'):
                 continue
             src = os.path.join(tmp, w['slug'] + '.html')
             png = os.path.join(tmp, w['slug'] + '.png')
-            open(src, 'w', encoding='utf-8').write(card(w))
+            open(src, 'w', encoding='utf-8').write(card(w, en))
             subprocess.run([CHROME, '--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files',
                             '--force-device-scale-factor=1', '--window-size=1200,630', '--virtual-time-budget=3000',
                             f'--screenshot={png}', 'file://' + src], check=True, capture_output=True)
-            out = os.path.join(ROOT, 'img/works', w['slug'], 'og.jpg')
+            out = os.path.join(ROOT, 'img/works', w['slug'], 'og-en.jpg' if en else 'og.jpg')
             Image.open(png).convert('RGB').crop((0, 0, 1200, 630)).save(out, 'JPEG', quality=86, optimize=True, progressive=True)
             print(w['slug'], flush=True)
 

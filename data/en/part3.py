@@ -1,0 +1,38 @@
+EN3 = {
+"we-are-mosaics": dict(
+ lead="A surreal portrait about the beauty of healing and unity: the fragments of our lives come together into a fascinating whole. A black swan and a tiger, golden light shining through fractured lines, a stained-glass arch. A piece for a living room, study or bedroom, and a meaningful gift.",
+ story=["<em>“We are all mosaics: pieces of light, love, history and stars glued together.”</em>",
+  "This surreal composition explores the idea that every fracture in our journey is a place where light shines through, creating something brand new.",
+  "<strong>Fractured lines and light</strong> symbolise experiences we might consider “broken” but which actually become the foundation for a new, more complex beauty.",
+  "<strong>The black swan and the tiger</strong> represent the unity of opposites: grace and strength, calm and wild energy, coexisting within every soul.",
+  "<strong>The mosaic effect</strong> is a reminder that everything is connected, and everything has meaning if you look for it.",
+  "<em>This is not just a print; it is a manifesto that you are a masterpiece, held together by magic, music and words.</em>"],
+ meaning="We are all mosaics: every fracture in our journey is a place where light shines through.",
+ seo="portrait of a woman with a black swan and a tiger in a stained-glass arch: a mosaic of light and fractures"),
+"bloom-with-grace": dict(
+ lead="A surreal underwater female figure among red fish, organic forms and the textures of ocean depth: a powerful story of transformation, resilience and beauty even in the deep. A work with emotional depth, mystery and bold presence.",
+ story=["<em>“Bloom with grace wherever life plants you.”</em>",
+  "Not every place we find ourselves looks like light. Sometimes it is depth, pressure, silence. This work was born from exactly such a space.",
+  "The woman is submerged beneath the surface, surrounded not by comfort but by the unknown. <strong>The red fish</strong> wraps around her as both strength and protection. <strong>The octopus</strong> becomes part of her form. Even fragile remains, bones, textures, fragments, turn into something alive and beautiful.",
+  "This is not about escaping the depth but about becoming yourself in it. Even in the deepest waters there is light above, and even there you can bloom.",
+  "<em>We do not need perfect conditions to become who we are meant to be. Sometimes the depth itself becomes the place where we truly open up.</em>"],
+ meaning="Bloom with grace wherever life plants you. A work about the strength to become yourself even in the depth, under pressure and in the unknown, without losing softness.",
+ seo="surreal art with an underwater woman and a red fish"),
+"prepare-the-way-for-the-king": dict(
+ lead="A Christian Christmas work about the birth of Jesus: warm light, deep red and gold, animals by the manger. Created to inspire, deepen faith and bring spiritual meaning into everyday space.",
+ story=["<em>“Prepare the way of the Lord, make His paths straight.”</em> (Mark 1:3)",
+  "Christmas is the moment God comes into the world quietly, in simplicity, among ordinary things. This work invites you to pause before this mystery and prepare a place for Him in your heart.",
+  "<strong>The warm light</strong> at the centre is hope that comes into the darkness. <strong>Deep red and gold</strong> are the love and royal dignity of the Child born in a manger.",
+  "<em>A reminder of the meaning of Christmas, not only for the holidays but every day.</em>"],
+ meaning="“Prepare the way of the Lord.” A Christmas work about God coming into the world quietly and simply, and the place we prepare for Him in our heart.",
+ seo="Christian Christmas art: the Nativity"),
+"waterline": dict(
+ lead="A surreal portrait about the boundary between the inner self and the outer world: water frozen at the level of the lips, crimson streaks upon dark skin and closed eyes. A work for anyone seeking a profound, philosophical accent for a study, living room or bedroom, and for collectors drawn to self-reflection.",
+ story=["“Waterline” is a visual confession about the boundary we draw between the self and the world. It captures a moment of frozen decision: to drown in one’s own truth or to remain on the surface at the cost of one’s voice.",
+  "<strong>The water’s edge</strong> represents social pressure and the fear of judgment. It acts as a barrier that silences the voice, turning expression into deeper immersion.",
+  "<strong>Crimson traces</strong> represent the “dark side” of the soul: concentrated energy, pain and the secrets we hide. They suggest an inner world too intense for the surface to comprehend.",
+  "<strong>Closed eyes</strong> are a symbol of absolute self-immersion. When the external world requires too much filtering, the subject chooses the sanctuary of the internal abyss.",
+  "<strong>The burden</strong> illustrates the crushing weight of thoughts that become leaden when there is no one to share them with."],
+ meaning="The boundary between self and world: to drown in one’s own truth or to remain on the surface at the cost of one’s voice.",
+ seo="portrait with closed eyes, crimson traces and water at the level of the lips"),
+}
