@@ -130,7 +130,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .menu.open{opacity:1;visibility:visible}
 .menu a.big{font-family:var(--display);font-size:clamp(52px,16vw,96px);line-height:1.02;text-transform:uppercase;transform:translateY(24px);opacity:0;transition:transform .6s var(--ease),opacity .6s,color .3s}
 .menu.open a.big{transform:none;opacity:1}
-.menu.open a.big:nth-child(2){transition-delay:.06s}.menu.open a.big:nth-child(3){transition-delay:.12s}.menu.open a.big:nth-child(4){transition-delay:.18s}.menu.open a.big:nth-child(5){transition-delay:.24s}
+.menu.open a.big:nth-child(2){transition-delay:.06s}.menu.open a.big:nth-child(3){transition-delay:.12s}.menu.open a.big:nth-child(4){transition-delay:.18s}.menu.open a.big:nth-child(5){transition-delay:.24s}.menu.open a.big:nth-child(6){transition-delay:.3s}
 .menu a.big:active{color:var(--amber)}
 .menu .soc{margin-top:32px;display:flex;gap:14px}
 @media(min-width:900px){.nav ul{display:flex}.burger{display:none}.menu{display:none}}
@@ -680,6 +680,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .cols2 .col{padding-top:20px;border-top:1px solid var(--line)}
 .cols2 h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(26px,2.8vw,38px);line-height:1;margin-bottom:14px}
 .cols2 p{font-size:clamp(15.5px,1.2vw,17px);line-height:1.75;text-wrap:pretty;max-width:58ch;color:var(--cream)}
+.cols2 .col{display:flex;flex-direction:column}
+.cols2 .col p{flex:1}
+.cols2 .btn-lite{margin-top:22px}
 
 /* Create / Inspire / Experience sublines: use the full column on phones, balanced lines */
 @media(max-width:899px){.sec-head .sub p.two{max-width:none;text-wrap:balance}}
@@ -837,17 +840,87 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .st-nav{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){.st-sl{transition:none}}
-/* contact */
-.contact{text-align:center;padding-block:clamp(90px,14vw,200px) 40px;background:
-  radial-gradient(60% 40% at 50% 30%,rgba(41,115,115,.14),transparent 70%),
-  #000}
-.contact h2{font-size:clamp(44px,8.5vw,140px);line-height:.88;margin-top:20px}
-.contact h2 i{color:var(--amber)}
-/* line breaks per width: desktop "Відкритий до нових / ідей та співпраці", mobile "Відкритий / до нових ідей / та співпраці" */
-.contact h2 br.m{display:none}
-@media(max-width:899px){.contact h2 br.m{display:inline}.contact h2 br.d{display:none}}
-/* phones/tablets: the Ukrainian two-line heading fills the column (its longer line ≈ 5.8 × font-size) */
-@media(max-width:899px){.contact h2{font-size:calc((100vw - 2*var(--gut))/6)}}
+/* contact: the hero arch comes back empty and lit — a doorway waiting for your idea */
+.contact{text-align:center;padding-block:clamp(90px,12vw,170px) 40px;background:radial-gradient(60% 44% at 50% 28%,rgba(255,166,48,.07),transparent 72%),#000}
+.c-grid{display:grid;gap:clamp(40px,6vw,56px);align-items:center}
+.c-side{width:min(88vw,380px);margin-inline:auto;margin-bottom:34px;container-type:inline-size}
+.c-door{position:relative;width:100%;min-height:127cqw;display:flex;flex-direction:column;align-items:center;margin-inline:auto;border-radius:999px 999px 0 0;overflow:hidden;background:linear-gradient(180deg,#050403 0%,#0b0604 62%,#160a04 100%);box-shadow:inset 0 0 0 1px rgba(255,170,56,.62),inset 0 0 22px rgba(255,150,40,.16);transition:box-shadow .8s var(--ease)}
+.c-door::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 64px 4px rgba(0,0,0,.55);pointer-events:none;z-index:1}
+/* the doorway as a deep window: one far arch, rays from the frame to it, and a sill running inward */
+.c-tunnel{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.c-tunnel path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;transition:stroke .8s var(--ease),fill-opacity .8s var(--ease)}
+.c-tunnel .t-inner{stroke:rgba(255,166,48,.17);stroke-width:1}
+.c-tunnel .t-ray{stroke:rgba(255,166,48,.1);stroke-width:1}
+.c-tunnel .t-sill{fill:url(#c-sillg);stroke:rgba(255,190,100,.14);stroke-width:1}
+html.js .c-door:not(.c-lit) .c-tunnel path:not(.t-sill){stroke-dasharray:1;stroke-dashoffset:1}
+html.js .c-door:not(.c-lit) .c-tunnel .t-sill{opacity:0}
+html.js .c-door.c-lit .c-tunnel path:not(.t-sill){stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset 1.8s var(--rise) calc(.4s + var(--i,0)*.08s),stroke .8s var(--ease)}
+html.js .c-door.c-lit .c-tunnel .t-inner{transition-delay:.2s,0s}
+html.js .c-door.c-lit .c-tunnel .t-sill{transition:opacity 1.8s var(--rise) .9s,stroke .8s var(--ease)}
+.c-glow{position:absolute;left:-30%;right:-30%;bottom:-12%;height:96%;background:radial-gradient(ellipse 52% 100% at 50% 100%,rgba(255,192,96,.95),rgba(255,140,44,.4) 40%,rgba(255,120,30,.1) 76%,rgba(255,120,30,0) 100%);animation:doorBreath 7s ease-in-out infinite;transition:filter .8s var(--ease)}
+.c-sill{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,196,110,.95),transparent)}
+.c-mark{position:relative;z-index:1;width:27.2%;height:auto;margin-top:clamp(76px,22%,120px);margin-bottom:44px;opacity:.96}
+.c-form{position:relative;z-index:1;width:78%;display:grid;gap:18px;margin:auto 0 27%}
+.c-form .fld{position:relative}
+.c-form input,.c-form textarea{display:block;width:100%;padding:20px 2px 8px;background:transparent;border:0;border-bottom:1px solid rgba(241,224,197,.34);border-radius:0;color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.4;resize:none;outline:0;transition:border-color .3s}
+.c-form textarea{height:52px;min-height:52px;max-height:150px;overflow:hidden}
+.c-form input{height:52px}
+.c-form label{position:absolute;left:2px;top:19px;font-family:var(--body);font-size:15px;color:rgba(241,224,197,.62);pointer-events:none;transform-origin:0 0;transition:transform .3s var(--ease),color .3s}
+.c-form input:focus~label,.c-form textarea:focus~label,.c-form input:not(:placeholder-shown)~label,.c-form textarea:not(:placeholder-shown)~label{transform:translateY(-17px) scale(.76);color:var(--amber)}
+.c-form input:focus,.c-form textarea:focus{border-bottom-color:var(--amber)}
+.c-form select{display:block;width:100%;height:52px;padding:20px 28px 8px 2px;background:transparent;border:0;border-bottom:1px solid rgba(241,224,197,.34);border-radius:0;color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.4;outline:0;cursor:pointer;-webkit-appearance:none;appearance:none;transition:border-color .3s}
+.c-form .fld-sel::after{content:"";position:absolute;right:4px;top:28px;width:12px;height:8px;background:var(--amber);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M1 1.5 6 6.5 11 1.5'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M1 1.5 6 6.5 11 1.5'/></svg>") center/contain no-repeat;pointer-events:none;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.c-form .fld-sel.open::after{transform:rotate(180deg)}
+.c-form .fld-sel:hover::after{transform:translateY(2px)}
+.c-form .fld-sel.open:hover::after{transform:rotate(180deg) translateY(2px)}
+@media(prefers-reduced-motion:reduce){.c-form .fld-sel::after{transition:none}}
+.c-form select:invalid{color:transparent}
+.c-form select option{background:#0b0604;color:var(--cream)}
+.c-form select:focus{border-bottom-color:var(--amber)}
+.c-form select:focus~label,.c-form select:valid~label{transform:translateY(-17px) scale(.76);color:var(--amber)}
+.c-form .invalid{border-bottom-color:#ff7a5c}
+.c-submit{position:relative;width:100%;margin:clamp(14px,1.6vw,20px) 0 0;display:grid;gap:12px}
+.c-send{width:100%;min-height:54px;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
+/* the button shares the doorway's glow: both light up together */
+.c-send:hover,.c-side:has(.c-door:hover) .c-send,.c-grid:has(.c-btn:hover) .c-send,.c-grid:has(.c-btn:focus-visible) .c-send{border-color:rgba(255,196,110,1);box-shadow:inset 0 0 34px rgba(255,160,50,.34),0 0 22px rgba(255,150,40,.2);color:#fff3dc}
+.c-send:hover{background:rgba(255,160,50,.12)}
+.c-send:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.c-status{position:absolute;left:0;right:0;top:100%;margin-top:10px;min-height:1.4em;text-align:center;font-size:13px;line-height:1.45;color:var(--cream)}
+.c-grid:has(.c-form:focus-within) .c-door::after{opacity:.8}
+@keyframes doorBreath{0%,100%{opacity:.78;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+html.js .c-door:not(.c-lit) .c-glow{opacity:0;transform:translateY(24%) scale(.82);animation:none}
+html.js .c-door.c-lit .c-glow{transition:opacity 1.9s var(--rise),transform 2.2s var(--rise)}
+@media(prefers-reduced-motion:reduce){.c-glow{animation:none}}
+/* the doorway lights up when the pointer reaches it, the mail button, or the form */
+.c-door::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 78% 74% at 50% 100%,rgba(255,150,48,.72),rgba(255,120,30,.22) 55%,transparent 80%);opacity:0;z-index:0;transition:opacity .8s var(--ease);pointer-events:none}
+.c-door:hover::after,.c-grid:has(.c-btn:hover) .c-door::after,.c-grid:has(.c-btn:focus-visible) .c-door::after,.c-side:has(.c-send:hover) .c-door::after,.c-side:has(.c-send:focus-visible) .c-door::after{opacity:1}
+.c-door:hover,.c-grid:has(.c-btn:hover) .c-door,.c-grid:has(.c-btn:focus-visible) .c-door,.c-side:has(.c-send:hover) .c-door,.c-side:has(.c-send:focus-visible) .c-door{box-shadow:inset 0 0 0 1px rgba(255,196,110,1),inset 0 0 34px rgba(255,160,50,.34)}
+.contact .c-title{margin:0;font-size:clamp(34px,13vw,92px);line-height:.88;text-transform:uppercase;letter-spacing:0;font-weight:400;text-align:left}
+.c-title .ln{display:flex;align-items:last baseline;gap:.3em;white-space:nowrap}
+.c-title em{font-style:italic;color:transparent;background:linear-gradient(0deg,#F5920A 0%,#FFB93D 55%,#FFCE7A 100%);-webkit-background-clip:text;background-clip:text;padding-right:.08em}
+.c-title .cap{font-family:var(--text);font-size:max(12px,.16em);letter-spacing:.2em;line-height:1.55;text-transform:uppercase;color:#7ea39e;font-weight:400;white-space:normal;align-self:flex-start;margin-top:.72em;text-align:left}
+.c-title .cap i{display:block;font-style:normal}
+.c-title .cap-b{align-self:last baseline;margin:0}
+@media(max-width:599px){.c-title .cap{display:none}.c-title .ln{justify-content:center}.contact .c-title{text-align:center}.c-text{text-align:center}}
+html[lang="en"] .contact .c-title{font-size:clamp(30px,9.4vw,76px)}
+.c-text{margin:clamp(24px,2.8vw,38px) auto 0;max-width:34em;font-family:var(--body);font-weight:400;font-size:clamp(15.5px,1.3vw,18px);line-height:1.7;color:var(--cream);text-wrap:pretty;text-align:left}
+.c-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 30px;margin-top:clamp(26px,3vw,36px)}
+.c-actions .mail{margin:0;font-size:clamp(18px,1.7vw,24px)}
+.contact .socials{justify-content:center;margin-top:clamp(30px,3.4vw,44px)}
+.c-btn:focus-visible,.mail:focus-visible,.socials .ico:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
+@media(min-width:900px){
+  .contact{text-align:left;background:radial-gradient(52% 60% at 76% 56%,rgba(255,166,48,.08),transparent 72%),#000}
+  .c-grid{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(56px,8vw,132px)}
+  .c-side{order:2}
+  .c-side{width:100%;max-width:460px;margin-inline:0;margin-bottom:0;justify-self:center}
+  .c-actions,.contact .socials{justify-content:flex-start}
+  .contact .c-title{font-size:min(6.5vw,92px)}
+  html[lang="en"] .contact .c-title{font-size:min(5.2vw,74px)}
+  .c-text{margin-inline:0}
+  .c-copy{align-self:stretch;display:flex;flex-direction:column;align-items:flex-start}
+  .c-copy .c-title{margin-top:auto}
+  .c-copy .socials{margin-top:auto;min-height:54px;align-items:center}
+}
 .mail{display:inline-block;margin-top:34px;font-family:var(--text);font-weight:400;font-size:clamp(22px,3vw,40px);letter-spacing:.01em;border-bottom:1px solid var(--amber);padding-bottom:8px;text-transform:none;transition:color .3s}
 .mail:hover{color:var(--amber)}
 .socials{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap}
@@ -896,6 +969,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   <a class="logo" href="#top" aria-label="Max Vitvitskiy"><img src="img/logo-mark.png" alt="" width="600" height="255"></a>
   <ul>
     <li><a href="#create">Create</a></li>
+    <li><a href="works.html" data-uk="Галерея">Gallery</a></li>
     <li><a href="#inspire">Inspire</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#about" data-uk="Про мене">About</a></li>
@@ -906,6 +980,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
 
 <nav class="menu" id="menu" aria-label="Menu">
   <a class="big" href="#create">Create</a>
+  <a class="big" href="works.html" data-uk="Галерея">Gallery</a>
   <a class="big" href="#inspire">Inspire</a>
   <a class="big" href="#experience">Experience</a>
   <a class="big" href="#about" data-uk="Про мене">About</a>
@@ -1023,15 +1098,17 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
     <div class="cols2 rv">
       <div class="col">
         <h3 data-uk="Спікінг, тренінги, майстер-класи">Speaking, trainings, masterclasses</h3>
-        <p data-uk="Творче мислення можна розвивати. Я працюю з митцями, дизайнерами та командами, допомагаючи знаходити нові підходи, виходити за межі звичних рішень і сміливіше втілювати ідеї. У своїх виступах і воркшопах поєдную власний досвід, практику та натхнення до дії.">Creative thinking can be developed. I work with artists, designers and teams, helping them find new approaches, go beyond familiar solutions and bring ideas to life more boldly. In my talks and workshops I combine my own experience, practice and inspiration to act.</p>
+        <p data-uk="Проводжу виступи та практичні майстеркласи на теми творчості, візуального мислення, дизайну й особистого творчого розвитку. Поєдную практичні вправи, власний досвід та нові погляди, допомагаючи людям і командам знаходити нестандартні рішення та переходити від ідей до дій.">I give talks and hands-on workshops on creativity, visual thinking, design and personal creative growth. I combine practical exercises, my own experience and fresh perspectives, helping people and teams find unconventional solutions and move from ideas to action.</p>
+        <a class="btn-lite" href="mailto:maxim.vitvitskiy@gmail.com?subject=Talk%20or%20masterclass" data-uk="Обговорити виступ або майстерклас">Discuss a talk or masterclass</a>
       </div>
       <div class="col">
         <h3 data-uk="Творчий коучинг та індивідуальні уроки">Creative coaching and private lessons</h3>
-        <p data-uk="Кожен творчий шлях має свій напрям і темп. Допомагаю поєднувати інтуїцію з технікою, розвивати візуальне мислення та втілювати ідеї. Навчання адаптую до твоїх потреб: від композиції й кольору до пошуку концепції та формування власного творчого почерку.">Every creative path has its own direction and pace. I help combine intuition with technique, develop visual thinking and bring ideas to life. I adapt the teaching to your needs: from composition and colour to finding a concept and shaping your own creative signature.</p>
+        <p data-uk="Допомагаю розвивати творчі навички, візуальне мислення та знаходити власний художній напрям. Від композиції, кольору й розробки концепцій до подолання творчих блоків і впевненості у власній роботі — кожен навчальний процес будується навколо індивідуальних цілей.">I help develop creative skills, visual thinking and find your own artistic direction. From composition, colour and concept development to overcoming creative blocks and confidence in your own work — every learning process is built around individual goals.</p>
+        <a class="btn-lite" href="mailto:maxim.vitvitskiy@gmail.com?subject=Mentoring" data-uk="Обговорити менторство">Discuss mentoring</a>
       </div>
     </div>
     <div class="topics rv">
-      <div class="trow"><span data-uk="Творчість">Creativity</span><span data-uk="Творчі блоки">Creative blocks</span><span data-uk="Пошук власного стилю">Finding your style</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Мистецтво і сенс">Art &amp; meaning</span></div><div class="trow"><span data-uk="AI і творчість">AI &amp; creativity</span><span data-uk="Шлях митця">Path of an artist</span><span data-uk="Натхнення">Inspiration</span><span data-uk="Розвиток смаку">Developing taste</span><span data-uk="Візуальне мислення">Visual thinking</span></div>
+      <div class="trow"><span data-uk="Творче мислення">Creative thinking</span><span data-uk="Подолання творчих блоків">Overcoming creative blocks</span><span data-uk="Пошук власного стилю">Finding your own style</span><span data-uk="Візуальний сторітелінг">Visual storytelling</span><span data-uk="Розвиток художнього смаку">Developing artistic taste</span></div><div class="trow"><span data-uk="Мистецтво та сенси">Art and meaning</span><span data-uk="Творчість і штучний інтелект">Creativity and AI</span><span data-uk="Творчий шлях">The creative path</span><span data-uk="Страх проявлятися">Fear of showing up</span><span data-uk="Натхнення та практика">Inspiration and practice</span></div>
     </div>
     <div class="channels rv">
       <a class="channel" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener"><span class="ci"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></span>YouTube</span><span data-uk="Відео та Shorts →">Videos & Shorts →</span></a>
@@ -1116,14 +1193,14 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
       <h2 class="display" translate="no">Max Vitvitskiy</h2>
       <div class="tags"><span data-uk="Мистецтво">Art</span><span data-uk="Творчість">Creativity</span><span data-uk="Технології">Technology</span><span data-uk="Музика">Music</span><span data-uk="Духовність">Spirituality</span><span data-uk="Натхнення">Inspiration</span></div>
       <div class="bio">
-        <p data-uk="Я — український візуальний митець, який працює з фотографією та цифровою композицією.">I’m a Ukrainian visual artist working with photography and digital composition.</p>
-        <p data-uk="Я створюю символічні, сюрреалістичні образи, що досліджують моменти присутності — ті миті, коли людина відчуває себе водночас маленькою перед величчю світу й глибоко пов’язаною з чимось більшим за себе.">I create symbolic, surreal images that explore moments of presence — those instants when a person feels both small before the greatness of the world and deeply connected to something larger than themselves.</p>
-        <p data-uk="У моїх роботах часто повторюються квіти, тварини та людська постать. Для мене це образи крихкості й сили, життя та пошуку сенсу. Через них я досліджую взаємозв’язок між тимчасовим і вічним, видимим і невидимим.">Flowers, animals and the human figure recur throughout my work. For me they are images of fragility and strength, of life and the search for meaning. Through them I explore the bond between the temporary and the eternal, the visible and the invisible.</p>
+        <p data-uk="Я — український митець, підприємець і наставник у сфері творчості.">I am a Ukrainian artist, entrepreneur and mentor in the field of creativity.</p>
+        <p data-uk="Мої роботи та проєкти народжуються з цікавості до світу, бажання створювати речі зі змістом і віри в те, що ідеї здатні змінювати наше сприйняття та досвід життя.">My works and projects are born from curiosity about the world, a desire to create things with meaning and a belief that ideas can change how we perceive and experience life.</p>
+        <p data-uk="Як митець, я працюю з фотографією та цифровою композицією, досліджуючи символізм, сюрреалізм і взаємозв’язок видимого та невидимого.">As an artist, I work with photography and digital composition, exploring symbolism, surrealism and the relationship between the visible and the invisible.</p>
         <div class="bio-more" id="bio-more"><div>
-          <p data-uk="Мене цікавить мистецтво, яке уповільнює погляд і повертає увагу до того, що справді має значення. Моя творчість — не про декорацію, а про присутність. Це запрошення зупинитися, вдихнути й відчути.">I’m drawn to art that slows the gaze and brings attention back to what truly matters. My work is not about decoration but about presence. It is an invitation to pause, breathe and feel.</p>
-          <p data-uk="Віра є важливою частиною мого життя і природно впливає на моє бачення світу та творчість. Я не прагну ілюструвати її буквально — радше вона залишається тихою основою, що проходить крізь мої роботи.">Faith is an important part of my life and naturally shapes how I see the world and how I create. I don’t try to illustrate it literally — rather, it remains a quiet foundation running through my work.</p>
-          <p data-uk="Усі мої роботи створюються вручну в цифровому середовищі, без використання штучного інтелекту. Кожен твір ретельно вибудовується як цілісна композиція та виходить як фізична робота обмеженого тиражу.">All my works are made by hand in a digital environment, without the use of artificial intelligence. Each piece is carefully built as a complete composition and released as a physical limited-edition work.</p>
-          <p data-uk="Окрім власної художньої практики, я досліджую творчість як спосіб пізнання себе, створюю досвіди для людей і ділюся тим, що допомагає іншим розкривати власний творчий потенціал.">Beyond my own art practice, I explore creativity as a way of knowing oneself, create experiences for people and share what helps others unlock their creative potential.</p>
+          <p data-uk="Як наставник, ділюся досвідом і допомагаю іншим розвивати творче мислення, знаходити власне бачення та перетворювати ідеї на осмислені результати.">As a mentor, I share experience and help others develop creative thinking, find their own vision and turn ideas into meaningful results.</p>
+          <p data-uk="Як підприємець, створюю проєкти на перетині технологій, творчості та людського досвіду. Один із них — SILENT, івент-проєкт на основі технології Silent Disco.">As an entrepreneur, I create projects at the intersection of technology, creativity and human experience. One of them is SILENT, an event project based on Silent Disco technology.</p>
+          <p data-uk="Це різні напрями, але їх об’єднує одна ідея: творчість не обмежується створенням мистецтва. Це спосіб мислити, досліджувати можливості та привносити у світ щось нове.">These are different directions, but one idea unites them: creativity is not limited to making art. It is a way of thinking, exploring possibilities and bringing something new into the world.</p>
+          <p data-uk="Віра є важливою частиною мого життя. Вона формує мій світогляд, цінності та ставлення до творчості. Я вірю, що краса, сенс і здатність творити — це дари, які варто розвивати та розділяти з іншими.">Faith is an important part of my life. It shapes my worldview, values and attitude to creativity. I believe that beauty, meaning and the ability to create are gifts worth developing and sharing with others.</p>
           <p data-uk="Я живу й працюю в Україні, продовжуючи свою творчу практику під час повномасштабної війни.">I live and work in Ukraine, continuing my creative practice during the full-scale war.</p>
           <p class="sign" translate="no">Max V.</p>
         </div></div>
@@ -1136,11 +1213,37 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap">
-    <span class="eyebrow rv" data-uk="Контакти">Contact</span>
-    <h2 class="display rv"><span data-uk="Відкритий<br class='m'> до нових<br class='d'> ідей<br class='m'> та <i>співпраці</i>.">Open to new ideas<br>and <i>collaboration</i>.</span></h2>
-    <a class="mail rv" href="mailto:maxim.vitvitskiy@gmail.com">maxim.vitvitskiy@gmail.com</a>
-    <div class="socials rv"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
-    <img class="fl rv" src="img/logo-full.png" alt="Max Vitvitskiy" width="1400" height="831" loading="lazy">
+    <div class="c-grid">
+      <div class="c-side">
+        <div class="c-door"><span class="c-glow" aria-hidden="true"></span><span class="c-sill" aria-hidden="true"></span><svg class="c-tunnel" aria-hidden="true" focusable="false"></svg>
+        <img class="c-mark" src="img/logo-full.png" alt="Max Vitvitskiy" width="1400" height="831" loading="lazy">
+        <form class="c-form" id="contact-form" novalidate>
+          
+          <div class="fld"><input id="cf-name" name="name" type="text" autocomplete="name" placeholder=" " required><label for="cf-name" data-uk="Ім’я">Name</label></div>
+          <div class="fld"><input id="cf-contact" name="contact" type="text" autocomplete="email" placeholder=" " required><label for="cf-contact" data-uk="Email або Telegram">Email or Telegram</label></div>
+          <div class="fld fld-sel"><select id="cf-topic" name="topic" required>
+            <option value="" disabled selected hidden></option>
+            <option value="commission" data-uk="Замовлення роботи">Commissioned artwork</option>
+            <option value="collection" data-uk="Придбання з колекції">Buying from the collection</option>
+            <option value="talk" data-uk="Виступ або майстерклас">Talk or masterclass</option>
+            <option value="mentoring" data-uk="Менторство">Mentoring</option>
+            <option value="silent" data-uk="Івент SILENT">SILENT event</option>
+            <option value="collab" data-uk="Співпраця чи проєкт">Collaboration or project</option>
+            <option value="other" data-uk="Інше">Something else</option>
+          </select><label for="cf-topic" data-uk="Що хочеш обговорити?">What would you like to discuss?</label></div>
+          <div class="fld"><textarea id="cf-msg" name="message" rows="1" placeholder=" " required></textarea><label for="cf-msg" data-uk="Повідомлення">Message</label></div>
+          <a class="c-mailto" href="mailto:maxim.vitvitskiy@gmail.com" hidden tabindex="-1" aria-hidden="true"></a>
+        </form>
+      </div>
+        <div class="c-submit"><button class="btn c-send" type="submit" form="contact-form" data-uk="Надіслати">Send</button><p class="c-status" role="status" aria-live="polite"></p></div>
+      </div>
+      <div class="c-copy">
+        <h2 class="display c-title" data-uk="<span class='ln'>Маєш <em>ідею?</em></span><span class='ln'>Створімо щось</span><span class='ln'><em>особливе.</em><small class='cap cap-b' aria-hidden='true'>Створюй<br>Надихай<br>Проживай</small></span>"><span class="ln">Have an <em>idea?</em></span><span class="ln">Let’s create</span><span class="ln"><em>something</em> special.<small class="cap cap-b" aria-hidden="true">Create<br>Inspire<br>Experience</small></span></h2>
+        <p class="c-text" data-uk="Мені цікаві змістовні колаборації, творчі проєкти та нові можливості для втілення ідей. Мистецькі проєкти, виступи, освітні ініціативи, підприємницькі партнерства чи щось зовсім несподіване — буду радий знайомству.">I’m interested in meaningful collaborations, creative projects and new opportunities to bring ideas to life. Art projects, talks, educational initiatives, business partnerships or something completely unexpected — I’d be glad to connect.</p>
+        <div class="c-actions"><a class="btn fill c-btn" href="#cf-name" data-uk="Написати мені">Write to me<i class="ar" aria-hidden="true"></i></a><a class="mail" href="mailto:maxim.vitvitskiy@gmail.com">maxim.vitvitskiy@gmail.com</a></div>
+        <div class="socials"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
+      </div>
+    </div>
     <footer><span>© 2026 Max Vitvitskiy</span><span data-uk="Створюй · Надихай · Проживай">Create · Inspire · Experience</span></footer>
   </div>
 </section>
@@ -1191,7 +1294,7 @@ setLang(sl||((navigator.language||'').toLowerCase().startsWith('uk')?'uk':'en'))
   const LIST='.gallery,.reels,.collage,.sx-uses,.sx-vals,.channels,.sx-links,.about .tags,.socials';
   const IMG='.work .ph,.reel,.band-in,.collage figure,.about-img';
   const HEAD='h2.display:not(.hero-name),.teach h3,.sx-block h3,.cols2 h3,.duo .cap h3';
-  const UP='.exp-girl,.num,.eyebrow,.sx-eyebrow,.sec-head .sub,.hint,.duo .note,.btn-lite,.teach p,.teach .btn,.cols2 p,.sx-block .lead,.sx-block>p,.sx-vision,.sx-strip,.bio,.mail,.fl,footer,.sx-gallery';
+  const UP='.exp-girl,.num,.eyebrow,.sx-eyebrow,.sec-head .sub,.hint,.duo .note,.btn-lite,.teach p,.teach .btn,.cols2 p,.sx-block .lead,.sx-block>p,.sx-vision,.sx-strip,.bio,.mail,.c-text,.c-actions,footer,.sx-gallery';
   const done=new Set(),groups=new Map();
   const mark=(el,c,d)=>{el.classList.add(c);if(d)el.style.setProperty('--d',d+'ms');done.add(el)};
   document.querySelectorAll(LIST).forEach(box=>{
@@ -1336,6 +1439,64 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitLede);
 addEventListener('load',fitLede,{once:true});
 let _fl;addEventListener('resize',()=>{clearTimeout(_fl);_fl=setTimeout(fitLede,120)});
 fitLede();
+
+
+/* contact: the doorway lights up the first time it is in view */
+(function(){const d=document.querySelector('.c-door');if(!d)return;
+  if(!('IntersectionObserver' in window)){d.classList.add('c-lit');return}
+  const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){d.classList.add('c-lit');o.disconnect()}},{threshold:.35});o.observe(d)})();
+
+
+/* contact form: no backend, so the message is prepared in the visitor's own mail app */
+(function(){
+  const f=document.getElementById('contact-form');if(!f)return;
+  const st=document.querySelector('.c-status'),ml=f.querySelector('.c-mailto');
+  const uk=()=>document.documentElement.lang==='uk';
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    let ok=true;f.querySelectorAll('input,textarea,select').forEach(el=>{const bad=!el.value.trim();el.classList.toggle('invalid',bad);if(bad&&ok){el.focus();ok=false}});
+    if(!ok){st.textContent=uk()?'Заповни всі поля, будь ласка.':'Please fill in all fields.';return}
+    const n=f.name.value.trim(),c=f.contact.value.trim(),m=f.message.value.trim();
+    const t=f.topic.options[f.topic.selectedIndex].textContent.trim();
+    const subj=(uk()?'Сайт: ':'Site: ')+t+' — '+n;
+    const body=(uk()?'Тема: ':'Topic: ')+t+'\n'+(uk()?'Ім’я: ':'Name: ')+n+'\n'+(uk()?'Контакт: ':'Contact: ')+c+'\n\n'+m;
+    ml.href='mailto:maxim.vitvitskiy@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+    ml.click();
+    st.textContent=uk()?'Лист підготовлено у твоєму поштовому застосунку — залишилось натиснути «Надіслати».':'The message is ready in your mail app — just hit Send.';
+  });
+  f.addEventListener('input',e=>{if(e.target.classList)e.target.classList.remove('invalid')});f.addEventListener('change',e=>{if(e.target.classList)e.target.classList.remove('invalid')});
+  const fs=f.querySelector('.fld-sel'),sl=f.topic;
+  if(fs){
+    sl.addEventListener('mousedown',()=>fs.classList.toggle('open'));
+    sl.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'||(e.altKey&&e.key==='ArrowDown'))fs.classList.add('open');if(e.key==='Escape')fs.classList.remove('open')});
+    ['change','blur'].forEach(ev=>sl.addEventListener(ev,()=>fs.classList.remove('open')));
+  }
+  const ta=f.querySelector('textarea');const grow=()=>{ta.style.height='52px';ta.style.height=Math.min(150,Math.max(52,ta.scrollHeight))+'px'};ta.addEventListener('input',grow);
+  const cta=document.querySelector('.c-btn');
+  if(cta)cta.addEventListener('click',e=>{e.preventDefault();const d=document.querySelector('.c-door');d.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('cf-name').focus({preventScroll:true}),450)});
+})();
+
+
+/* contact: the tunnel geometry follows the doorway's real size */
+(function(){
+  const door=document.querySelector('.c-door'),svg=door&&door.querySelector('.c-tunnel');if(!svg)return;
+  const NS='http://www.w3.org/2000/svg';
+  const build=()=>{
+    const W=door.clientWidth,H=door.clientHeight;if(!W||!H)return;
+    const d=W*.075,sill=W*.115,R=W/2,ri=R-d,ciy=R-.4*d,base=H-sill;
+    const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+    svg.textContent='';svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    const defs=el('defs',{});const g=el('linearGradient',{id:'c-sillg',x1:0,y1:1,x2:0,y2:0});
+    g.appendChild(el('stop',{offset:0,'stop-color':'#ffb25a','stop-opacity':.16}));g.appendChild(el('stop',{offset:1,'stop-color':'#ff8a2a','stop-opacity':0}));defs.appendChild(g);svg.appendChild(defs);
+    svg.appendChild(el('path',{class:'t-sill',d:'M0,'+H+' L'+W+','+H+' L'+(W-d)+','+base+' L'+d+','+base+' Z'}));
+    svg.appendChild(el('path',{class:'t-inner',pathLength:1,d:'M'+d+','+base+' V'+ciy+' A'+ri+','+ri+' 0 0 1 '+(W-d)+','+ciy+' V'+base+' Z'}));
+    let i=0;const ray=(x1,y1,x2,y2)=>svg.appendChild(el('path',{class:'t-ray',pathLength:1,style:'--i:'+(i++),d:'M'+x1.toFixed(1)+','+y1.toFixed(1)+' L'+x2.toFixed(1)+','+y2.toFixed(1)}));
+    ray(0,H,d,base);ray(W,H,W-d,base);
+  };
+  build();
+  if('ResizeObserver' in window)new ResizeObserver(build).observe(door);else addEventListener('resize',build);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
+})();
 
 /* silent gallery: two lanes drift toward each other, photos swap at random */
 (function(){
