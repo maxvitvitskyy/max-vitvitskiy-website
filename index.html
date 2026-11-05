@@ -854,7 +854,7 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .contact{text-align:center;padding-block:clamp(90px,12vw,170px) 40px;background:radial-gradient(60% 44% at 50% 28%,rgba(255,166,48,.07),transparent 72%),#000}
 .c-grid{display:grid;gap:clamp(40px,6vw,56px);align-items:center}
 .c-side{width:min(88vw,380px);margin-inline:auto;margin-bottom:34px;container-type:inline-size}
-.c-door{position:relative;width:100%;min-height:127cqw;display:flex;flex-direction:column;align-items:center;margin-inline:auto;border-radius:999px 999px 0 0;overflow:hidden;background:#060403;box-shadow:inset 0 0 0 1px rgba(255,170,56,.62),inset 0 0 22px rgba(255,150,40,.16);transition:box-shadow .8s var(--ease)}
+.c-door{position:relative;width:100%;min-height:calc(127cqw + 56px);display:flex;flex-direction:column;align-items:center;margin-inline:auto;border-radius:999px 999px 27px 27px;overflow:hidden;background:#060403;box-shadow:inset 0 0 0 1px rgba(255,170,56,.62),inset 0 0 22px rgba(255,150,40,.16);transition:box-shadow .8s var(--ease)}
 /* neon: dark and unlit by default; on hover the tube stutters on, then its light spills over the arch */
 .c-mark{position:relative;z-index:1;width:29.9%;height:auto;margin-top:clamp(87px,25.3%,138px);margin-bottom:44px;opacity:.16;filter:brightness(.5) saturate(.6);transition:opacity .9s var(--ease),filter .9s var(--ease)}
 .c-glow{position:absolute;inset:0 -30%;background:radial-gradient(ellipse 64cqw 70cqw at 50% 34cqw,rgba(255,160,56,.62),rgba(255,122,24,.3) 34%,rgba(230,90,10,.1) 64%,rgba(230,90,10,0) 100%);opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
@@ -871,7 +871,7 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .c-door::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 64px 4px rgba(0,0,0,.55);pointer-events:none;z-index:1}
 /* the doorway as a deep window: one far arch, rays from the frame to it, and a sill running inward */
 .c-sill{display:none;position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,196,110,.95),transparent)}
-.c-form{position:relative;z-index:1;width:78%;display:grid;gap:18px;margin:auto 0 13.5%}
+.c-form{position:relative;z-index:1;width:78%;display:grid;gap:18px;margin:auto 0 28px}
 .c-form .fld{position:relative}
 .c-form input,.c-form textarea{display:block;width:100%;padding:20px 2px 8px;background:transparent;border:0;border-bottom:1px solid rgba(241,224,197,.34);border-radius:0;color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.4;resize:none;outline:0;transition:border-color .3s}
 .c-form textarea{height:52px;min-height:52px;max-height:150px;overflow:hidden}
@@ -890,8 +890,8 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .c-form select:focus{border-bottom-color:var(--amber)}
 .c-form select:focus~label,.c-form select:valid~label{transform:translateY(-17px) scale(.76);color:var(--amber)}
 .c-form .invalid{border-bottom-color:#ff7a5c}
-.c-submit{position:relative;width:100%;margin:clamp(14px,1.6vw,20px) 0 0;display:grid;gap:12px}
-.c-send{width:100%;min-height:54px;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
+.c-submit{position:relative;width:100%;margin:0;display:grid;gap:12px}
+.c-send{position:relative;z-index:1;width:78%;margin:0 0 clamp(26px,8cqw,36px);border-radius:27px;min-height:54px;flex:none;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
 /* the button shares the doorway's glow: both light up together */
 .c-send:hover,.c-side:has(.c-door:hover) .c-send,.c-grid:has(.c-btn:hover) .c-send,.c-grid:has(.c-btn:focus-visible) .c-send{border-color:rgba(255,196,110,1);box-shadow:inset 0 0 34px rgba(255,160,50,.34),0 0 22px rgba(255,150,40,.2);color:#fff3dc}
 .c-send:hover{background:rgba(255,160,50,.12)}
@@ -1240,8 +1240,9 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
           <div class="fld"><textarea id="cf-msg" name="message" rows="1" placeholder=" " required></textarea><label for="cf-msg" data-uk="Повідомлення">Message</label></div>
           <a class="c-mailto" href="mailto:maxim.vitvitskiy@gmail.com" hidden tabindex="-1" aria-hidden="true"></a>
         </form>
+        <button class="btn c-send" type="submit" form="contact-form" data-uk="Надіслати">Send</button>
       </div>
-        <div class="c-submit"><button class="btn c-send" type="submit" form="contact-form" data-uk="Надіслати">Send</button><p class="c-status" role="status" aria-live="polite"></p></div>
+        <div class="c-submit"><p class="c-status" role="status" aria-live="polite"></p></div>
       </div>
       <div class="c-copy">
         <h2 class="display c-title" data-uk="<span class='ln'>Маєш <em>ідею?</em></span><span class='ln'>Створімо щось</span><span class='ln'><em>особливе.</em><small class='cap cap-b' aria-hidden='true'>Створюй<br>Надихай<br>Проживай</small></span>"><span class="ln">Have an <em>idea?</em></span><span class="ln">Let’s create</span><span class="ln"><em>something</em> special.<small class="cap cap-b" aria-hidden="true">Create<br>Inspire<br>Experience</small></span></h2>
