@@ -311,7 +311,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .work .tag{font-family:var(--text);position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:99px;background:rgba(1,17,10,.7);backdrop-filter:blur(6px);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--sand)}
 .work .tag.sold{color:var(--muted)}
 /* caption: same as the catalog (works.html) */
-.work .cap{display:grid;gap:8px;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.work{min-width:0}.work .cap{min-width:0;overflow:hidden}.work .cap .n,.work .cap .st{flex:none}.work .cap .ed{min-width:0;overflow:hidden;text-overflow:ellipsis}.work .cap{display:grid;gap:8px;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
 .work .cap .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;white-space:nowrap}
 .work .cap .ttl{min-width:0;font-family:var(--head);text-transform:uppercase;font-size:clamp(19px,2.3vw,31px);line-height:1;overflow:hidden;text-overflow:ellipsis}
 .work .cap .n{font-family:var(--display);font-size:clamp(19px,2.3vw,31px);color:var(--amber);line-height:1}

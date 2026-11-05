@@ -64,7 +64,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .filters{flex-direction:column;gap:6px;align-items:flex-start}.frow{display:flex;gap:6px;width:max-content}.filters button{min-height:36px;padding:0 13px}
 @media(min-width:1100px){.filters{flex-direction:row;flex-wrap:nowrap;gap:6px;overflow:visible}.frow{display:contents}.filters button{flex:1 1 auto;text-align:center;min-height:40px;padding:0 clamp(7px,calc((100vw - 880px)/26),18px);font-size:13px;white-space:nowrap}}
 /* grid: equal cards, no offset */
-.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap);row-gap:calc(var(--gap)*1.5);padding:0 var(--gut) clamp(60px,8vw,120px);max-width:1500px;margin-inline:auto}
+.wall{display:grid;align-items:start;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap);row-gap:calc(var(--gap)*1.5);padding:0 var(--gut) clamp(60px,8vw,120px);max-width:1500px;margin-inline:auto}
 @media(max-width:699px){.wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .w{display:grid;gap:12px;transition:opacity .4s,transform .5s var(--ease)}.w[hidden]{display:none}
 .w .ph{display:block;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.45)}
@@ -80,7 +80,9 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .st.sold{color:var(--muted)}
 .ed{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 @media(max-width:699px){.cap{gap:6px;padding-top:10px}.ttl,.n{font-size:25px}.st,.ed{font-size:12px;letter-spacing:.02em}.st{gap:6px}}
-@media(max-width:359px){.st,.ed{letter-spacing:0}.st{gap:5px}.row{flex-wrap:wrap;row-gap:4px}}
+@media(max-width:359px){.st{gap:5px;letter-spacing:0}.ed{display:none}}
+/* every card keeps its natural height: a long title is cut with an ellipsis instead of pushing the card down, and tracks never stretch */
+.w{align-content:start;grid-template-columns:minmax(0,1fr);min-width:0}.w .ph{min-width:0;width:100%}.w .cap{min-width:0;overflow:hidden}.row{flex-wrap:nowrap;min-width:0}.row .n,.row .st{flex:none}.row .ed{min-width:0;overflow:hidden;text-overflow:ellipsis}.ttl{white-space:nowrap}
 footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
 /* detail view: the work fills the screen, its story beside it */
 .dv{position:fixed;inset:0;z-index:50;background:#070605;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;overscroll-behavior:contain}
