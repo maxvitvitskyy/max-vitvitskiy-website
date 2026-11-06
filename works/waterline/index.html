@@ -311,6 +311,8 @@ html[lang="en"] .close h2 .ln:nth-child(1){padding-left:0}html[lang="en"] .close
 html[lang="en"] .cl-side{margin-top:calc(126.5vw - 2.76*(100vw - 2*var(--gut))/4.9)}
 html[lang="en"] .cl-fly .vase{top:36vw}
 @media(min-width:900px){html[lang="en"] .close h2{font-size:min(11vw,150px)}html[lang="en"] .cl-side{margin-top:0}html[lang="en"] .cl-fly .vase{top:auto}}
+/* desktop depth: the highlighted middle line goes behind the vase's flowers, the other lines stay in front */
+@media(min-width:900px){.close h2{z-index:auto}.close h2 .ln{position:relative;z-index:3}.close h2 .ln:nth-child(2){z-index:1}}
 @media(prefers-reduced-motion:reduce){.cl-fly .f{animation:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
