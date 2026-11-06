@@ -236,12 +236,12 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 /* closing block: heading high on the left, text block low on the right, a vase of flowers between them, butterflies at three depths */
 .close{max-width:1400px;margin:0 auto;padding:clamp(90px,9vw,140px) var(--gut) clamp(80px,9vw,140px);overflow-x:clip}
 .cl-stage{position:relative}
-.close h2{position:relative;z-index:3;font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:12.4vw;color:var(--cream);text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.close h2{position:relative;z-index:3;font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:calc((100vw - 2*var(--gut))/5.95);color:var(--cream);text-shadow:0 2px 18px rgba(0,0,0,.55)}
 .close h2 .ln{display:block;white-space:nowrap}
 .close h2 .ln:nth-child(1){padding-left:.4em}.close h2 .ln:nth-child(2){padding-left:.95em}
 .close h2 i{font-family:var(--display);font-style:italic;color:var(--amber);padding-right:.06em}
-.cl-side{position:relative;z-index:3;margin-top:69.3vw}
-.close .cl-s{font-family:var(--head);text-transform:uppercase;line-height:1.08;letter-spacing:.01em;font-size:7.6vw;color:var(--cream);text-shadow:0 2px 16px rgba(0,0,0,.6)}
+.cl-side{position:relative;z-index:3;margin-top:calc(102.5vw - 2.76*(100vw - 2*var(--gut))/5.95)}
+.close .cl-s{font-family:var(--head);text-transform:uppercase;line-height:1.08;letter-spacing:.01em;font-size:8.13vw;color:var(--cream);text-shadow:0 2px 16px rgba(0,0,0,.6)}
 .close .cl-s b{font-weight:400;color:var(--amber)}
 .close .cl-b{margin-top:18px;color:var(--muted);font-size:clamp(15px,4vw,16px);line-height:1.7;text-wrap:balance;max-width:19em}
 .cl-act{margin-top:26px}
