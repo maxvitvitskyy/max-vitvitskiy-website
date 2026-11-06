@@ -251,7 +251,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(max-width:899px){.hero-copy p{max-width:100%;font-size:clamp(19px,5.6vw,26px)}.hero-copy{padding-top:clamp(8px,2svh,20px);margin-bottom:calc(var(--tagy,0px)*.5)}}
 @media(min-width:900px){.hero-copy{margin-block:auto -85px}.hero-stage{padding-top:calc(max(12px,env(safe-area-inset-top)) + 56px + clamp(20px,3svh,32px) + min(31svh,54vw)*.17)}}
 @media(min-width:900px){.hero-copy p{max-width:62ch;text-wrap:balance;font-size:clamp(24px,2.25vw,30px)}}
-.hero-copy p em{font-family:var(--display);font-style:italic;color:var(--amber)}
+.hero-copy p em{font-family:var(--text);font-weight:500;font-style:italic;color:var(--amber)}
+.hero-copy p .mb{display:none}
+@media(max-width:899px){.hero-copy p .nb{white-space:nowrap}.hero-copy p .mb{display:inline}}
 .cta-row{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line);position:relative;z-index:4}
 .cta{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px var(--gut);border-bottom:1px solid var(--line);transition:background .4s}
 .cta:last-child{border-bottom:0}
@@ -1103,7 +1105,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
       <picture><source type="image/webp" srcset="/img/hero-480.webp 480w, /img/hero-720.webp 720w, /img/hero-960.webp 960w" sizes="(max-width:899px) 52vw, 260px"><img class="hero-fig" src="/img/hero.png" alt="Max Vitvitskiy" width="1200" height="2793" fetchpriority="high" decoding="async"></picture>
     </div>
     <div class="hero-copy">
-      <p data-uk="Я створюю мистецтво, реалізовую проєкти, що об’єднують людей, і досліджую нові способи <em>втілювати ідеї в життя</em>.">I create art, build projects that bring people together, and explore new ways to <em>bring ideas to life</em>.</p>
+      <p data-uk="Я створюю мистецтво, реалізовую проєкти, що об’єднують людей, і досліджую нові<br class='mb'> <span class='nb'>способи <em>втілювати ідеї в життя</em>.</span>">I create art, build projects that bring people together, and explore new ways to <em>bring ideas to life</em>.</p>
     </div>
   </div>
   <div class="cta-row">
