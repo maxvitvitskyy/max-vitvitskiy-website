@@ -74,6 +74,14 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 /* desktop hover: the card crossfades to the work's next gallery frame */
 .w .ph .alt{position:absolute;inset:0;opacity:0}
 @media(hover:hover) and (pointer:fine){.w:hover .ph .alt,.w:focus-visible .ph .alt{opacity:1}}
+/* phones: each card swipes through 3 slides (interior, full artwork, next frame); dots sit in the divider line */
+.w .ph.sl{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.w .ph.sl::-webkit-scrollbar{display:none}
+.w .ph.sl img{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
+.w.sl-on .cap{border-top:0;padding-top:0}
+.dots{position:relative;display:flex;align-items:center;gap:4px;height:16px;--k:0}
+.dots i{flex:1;height:2px;border-radius:2px;background:var(--line)}
+.dots b{position:absolute;left:0;top:7px;height:2px;border-radius:2px;background:var(--amber);width:calc((100% - (var(--n) - 1)*4px)/var(--n));transform:translateX(calc(var(--k)*(100% + 4px)))}
 .cap{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px}
 .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;white-space:nowrap}
 .ttl{min-width:0;font-family:var(--head);text-transform:uppercase;font-size:clamp(19px,2.3vw,31px);line-height:1;overflow:hidden;text-overflow:ellipsis}
@@ -362,6 +370,25 @@ const fb=[...document.querySelectorAll('.filters button')],cards=[...document.qu
 if(matchMedia('(hover:hover) and (pointer:fine)').matches)cards.forEach(c=>{const w=W[+c.dataset.i],src=w&&(w.hover||w.imgs&&w.imgs[1]);if(!src)return;
   const im=document.createElement('img');im.className='alt';im.alt='';im.loading='lazy';im.decoding='async';im.src=src;c.querySelector('.ph').appendChild(im)});
 /* animated filter: GSAP Flip (kept cards glide, leaving ones shrink out, new ones grow in) */
+/* phones: swipeable slides inside each card (card -> full artwork -> next frame) with dots in the divider */
+const phone=matchMedia('(hover:none) and (pointer:coarse)');
+function slides(c){
+  if(c.classList.contains('sl-on'))return;const w=W[+c.dataset.i],ph=c.querySelector('.ph'),cap=c.querySelector('.cap');
+  if(!w||!w.imgs||!ph||!cap)return;
+  const extra=[[w.imgs[0],(w.alts||[])[0]],[w.imgs[1],(w.alts||[])[1]]].filter(x=>x[0]);
+  ph.querySelectorAll('.alt').forEach(x=>x.remove());
+  extra.forEach(([src,alt])=>{const im=document.createElement('img');im.src=src;im.alt=alt||w.title;im.width=840;im.height=1050;im.loading='lazy';im.decoding='async';ph.appendChild(im)});
+  const n=extra.length+1;ph.classList.add('sl');c.classList.add('sl-on');
+  const d=document.createElement('span');d.className='dots';d.setAttribute('aria-hidden','true');d.style.setProperty('--n',n);d.innerHTML=Array.from({length:n},()=>'<i></i>').join('')+'<b></b>';
+  cap.insertBefore(d,cap.firstChild);
+  ph.addEventListener('scroll',()=>d.style.setProperty('--k',Math.min(n-1,Math.max(0,ph.scrollLeft/(ph.clientWidth||1)))),{passive:true});
+}
+function initSlides(){if(phone.matches)cards.forEach(slides)}
+initSlides();phone.addEventListener&&phone.addEventListener('change',initSlides);
+/* one-time nudge so the swipe is discoverable */
+if(phone.matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&window.IntersectionObserver&&cards[0]){
+  const io=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){io.disconnect();const ph=es.find(x=>x.isIntersecting).target;setTimeout(()=>ph.querySelectorAll('img').forEach(i=>i.animate([{transform:'none'},{transform:'translateX(-30px)'},{transform:'none'}],{duration:900,easing:'ease-in-out'})),500)}},{threshold:.9});
+  const first=cards.find(c=>!c.hidden&&c.querySelector('.ph.sl'));first&&io.observe(first.querySelector('.ph'))}
 const wall=document.querySelector('.wall'),bar=document.querySelector('.filters');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 let lastFlip=null,flipToken=0;
