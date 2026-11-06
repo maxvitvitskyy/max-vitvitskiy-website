@@ -301,6 +301,11 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .cl-soc .ico:active{box-shadow:inset 5px 5px 10px rgba(0,0,0,.55),inset -3px -3px 8px rgba(255,236,214,.03);transform:translateY(1px)}
 .cl-soc .ico:focus-visible{outline:2px solid rgba(255,166,48,.7);outline-offset:4px}
 @media(min-width:900px){.cl-soc{grid-column:1/6;grid-row:1;align-self:end;justify-content:flex-start;margin:0;gap:16px}.cl-soc .ico{width:52px;height:52px}.cl-soc .ico svg{width:24px;height:24px}}
+/* English heading: two lines, "stay with" highlighted, second line flush left */
+html[lang="en"] .close h2{font-size:calc((100vw - 2*var(--gut))/7.15)}
+html[lang="en"] .close h2 .ln:nth-child(1){padding-left:1.1em}html[lang="en"] .close h2 .ln:nth-child(2){padding-left:0}
+html[lang="en"] .cl-side{margin-top:calc(102.5vw - 1.84*(100vw - 2*var(--gut))/7.15)}
+@media(min-width:900px){html[lang="en"] .close h2{font-size:min(8.4vw,116px)}html[lang="en"] .cl-side{margin-top:0}}
 @media(prefers-reduced-motion:reduce){.cl-fly .f{animation:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
@@ -456,7 +461,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
   </div>
   <section class="close" aria-labelledby="cl-t">
     <div class="cl-stage">
-      <h2 id="cl-t"><span class="ln">Some images</span><span class="ln"><i>stay</i></span><span class="ln">with us forever.</span></h2>
+      <h2 id="cl-t"><span class="ln">Some images</span><span class="ln"><i>stay with</i> us forever.</span></h2>
       <div class="cl-side">
         <p class="cl-s">Perhaps one<br> of them is <b>yours.</b></p>
         <p class="cl-b">Every work has its own story and meaning. If an image speaks to you, maybe it is time to make it part of your space.</p>
