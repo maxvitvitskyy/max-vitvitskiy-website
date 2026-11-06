@@ -181,7 +181,17 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .dv .rg img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#111}
 .dv .rg span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media(min-width:1280px){.dv .rg{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}}
+@media(min-width:900px){
+  .dv .stage{overflow:hidden;touch-action:pan-y;margin-inline:calc(var(--pad)*-1)}
+  .dv .stage .nb{position:absolute;top:var(--ty,50%);left:var(--tx,50%);width:var(--iw,60%);height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:0;opacity:.2;filter:saturate(.45) brightness(.8);cursor:pointer;transform:translate(-50%,-50%);transition:translate .55s var(--ease),opacity .55s var(--ease),filter .55s var(--ease);z-index:0}
+  .dv .stage .nb[hidden]{display:none}.dv .stage .peek{display:none}
+  .dv .stage .nb.l{translate:calc(var(--iw,60%)*-1) 0}.dv .stage .nb.r{translate:var(--iw,60%) 0}
+  .dv .art .main{width:min(86%,calc((100svh - 2*var(--pad) - var(--th) - 18px)*.8))}
+  .dv .art .main{position:relative;z-index:1;transition:transform .7s var(--ease),opacity .5s,translate .55s var(--ease),filter .55s var(--ease)}
+  .dv .art .main.drag,.dv .stage .nb.drag{transition:none}
+}
 @media(max-width:899px){
+  .dv .stage .nb{display:none}
   .dv{display:block;overflow-y:auto;-webkit-overflow-scrolling:touch}
   .dv:not(.open){display:block}
   .dv .art{display:block;padding:max(72px,calc(env(safe-area-inset-top) + 64px)) var(--gut) 18px}
@@ -191,14 +201,18 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .thumbs button:first-child{margin-left:auto}.dv .thumbs button:last-child{margin-right:auto}
   .dv .tx{border-left:0;border-top:1px solid var(--line);justify-content:flex-start;overflow:visible;padding:24px var(--gut) 40px}
   .dv .x{position:fixed}
-  /* arrows: thin chevrons in the margins beside the picture, no discs */
-  .dv .stage{padding-inline:26px;touch-action:pan-y}
-  .dv .art .main{width:min(100%,calc(58svh*.8))}
-  .dv .stage .nav{top:50%;width:44px;height:72px;border:0;border-radius:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;color:var(--cream)}
-  .dv .stage .nav:hover{color:var(--amber)}
-  .dv .stage .prev{left:-14px}.dv .stage .next{right:-14px}
-  .dv .stage .nav .ar{width:11px;height:20px;-webkit-mask:var(--chev) center/contain no-repeat;mask:var(--chev) center/contain no-repeat}
+  /* picture: full screen width at 4:5; arrows are discs over it (thin chevron glyph) */
+  .dv .art{padding-inline:0}
+  .dv .stage{overflow:hidden}
+  .dv .stage .peek{position:absolute;left:0;top:0;width:100%;aspect-ratio:4/5;object-fit:cover;z-index:1;pointer-events:none;will-change:translate}.dv .stage .peek[hidden]{display:none}
+  .dv .stage{padding-inline:0;touch-action:pan-y}
+  .dv .art .main{width:100%;border-radius:0;box-shadow:none}
+  .dv .stage .nav{top:50%;width:42px;height:42px;font-size:18px}
+  .dv .stage .prev{left:12px}.dv .stage .next{right:12px}
+  .dv .stage .nav .ar{width:10px;height:18px;-webkit-mask:var(--chev) center/contain no-repeat;mask:var(--chev) center/contain no-repeat}
   .dv .stage .prev:hover .ar{transform:scaleX(-1) translateX(2px)}.dv .stage .next:hover .ar{transform:translateX(2px)}
+  .dv .x{z-index:5}
+  .dv .thumbs{margin-inline:0}
   .dv .art .main.drag{transition:none}
   .dv .pr .pn{max-width:none}
   .dv .buy{align-items:stretch}.dv .buy .ask{justify-content:center}
@@ -338,7 +352,13 @@ tb.addEventListener('click',e=>{const b=e.target.closest('button');if(b)setMain(
 const SOLO=typeof window.SOLO==='number'?window.SOLO:null,CAT=new URL('en/works/',document.baseURI).href,T0=document.title;
 const urlOf=w=>w&&w.slug?new URL('en/works/'+w.slug+'/',document.baseURI).href:null;
 function vis(){return SOLO!==null?W.map((w,i)=>i).filter(i=>W[i].slug):cards.filter(c=>!c.hidden).map(c=>+c.dataset.i)}
-function setMain(src){if(im.getAttribute('src')!==src){im.classList.add('sw');im.src=src}const ws=W[cur].imgs;dv.querySelectorAll('.stage .nav').forEach(b=>b.hidden=ws.length<2);const w=W[cur],k=w.imgs.indexOf(src);im.alt=(w.alts&&w.alts[k])||w.title;tb.querySelectorAll('button').forEach(b=>{const on=b.dataset.src===src;b.setAttribute('aria-current',on);if(on&&tb.scrollWidth>tb.clientWidth)tb.scrollTo({left:b.offsetLeft-(tb.clientWidth-b.offsetWidth)/2,behavior:'smooth'})})}
+function setMain(src){if(im.getAttribute('src')!==src){im.classList.add('sw');im.src=src}const ws=W[cur].imgs;dv.querySelectorAll('.stage .nav').forEach(b=>b.hidden=ws.length<2);const w=W[cur],k=w.imgs.indexOf(src);mark(src)}
+var ak=0,nbReady=false;
+function nbSync(){const cs=getComputedStyle(im),iw=parseFloat(cs.width),ih=parseFloat(cs.height),sg=dv.querySelector('.stage');if(iw&&ih){sg.style.setProperty('--iw',iw+'px');sg.style.setProperty('--ty',(im.offsetTop+ih/2)+'px');sg.style.setProperty('--tx',(im.offsetLeft+iw/2)+'px')}}
+function mark(src){const w=W[cur],k=w.imgs.indexOf(src);im.alt=(w.alts&&w.alts[k])||w.title;tb.querySelectorAll('button').forEach(b=>{const on=b.dataset.src===src;b.setAttribute('aria-current',on);if(on&&tb.scrollWidth>tb.clientWidth)tb.scrollTo({left:b.offsetLeft-(tb.clientWidth-b.offsetWidth)/2,behavior:'smooth'})});
+  const n=w.imgs.length;if(n>1){[1,-1,2,-2].forEach(d=>warm(w.imgs[(k+d+n)%n]));const rest=()=>w.imgs.forEach(warm);if(!(navigator.connection&&navigator.connection.saveData)){window.requestIdleCallback?requestIdleCallback(rest,{timeout:2500}):setTimeout(rest,1200)}}
+  ak=k;nbSync();if(nbReady){buildNb();nbPlace(ak,0,0,0)}}
+const pre=new Map();function warm(src){if(pre.has(src))return;const i=new Image();i.src=src;if(i.decode)i.decode().catch(()=>{});pre.set(src,i)}
 function show(i){const w=W[i];cur=i;tb.innerHTML=w.imgs.map((s,k)=>'<button type="button" data-src="'+s+'" aria-label="Frame '+(k+1)+'"><img src="'+thumb(s)+'" alt="" loading="lazy"></button>').join('');tb.hidden=w.imgs.length<2;setMain(w.imgs[0]);dv.querySelector('#dv-t').textContent=w.title;if(SOLO===null)document.title=w.title+' — Max Vitvitskiy';
   fillText(w);fillCfg(w);fillInfo(w);fillTn(w);const sv=dv.querySelector('.st-v');sv.textContent=w.status;sv.classList.toggle('sold',w.status==='Sold');dv.querySelector('.ed-v').textContent=w.edition;
   const v=vis();dv.querySelector('.count').textContent=(v.indexOf(i)+1)+' / '+v.length;dv.querySelectorAll('.wb').forEach(b=>b.hidden=v.length<2);
@@ -376,7 +396,8 @@ function fillTn(w){const box=dv.querySelector('#tn');if(!box)return;
 function open(i,push){last=document.activeElement;show(i);if(push&&W[i].slug)history.pushState({w:i},'',urlOf(W[i]));dv.hidden=false;dv.scrollTop=0;dv.querySelector('.tx').scrollTop=0;requestAnimationFrame(()=>dv.classList.add('open'));document.body.classList.add('lock');dv.querySelector('.x').focus({preventScroll:true})}
 function close(){if(SOLO!==null){location.href=CAT;return}if(history.state&&history.state.w!=null){history.back();return}hide()}
 function hide(){document.title=T0;dv.classList.remove('open');document.body.classList.remove('lock');setTimeout(()=>{dv.hidden=true},450);last&&last.focus()}
-function slide(d){const ws=W[cur].imgs,k=ws.indexOf(im.getAttribute('src'));setMain(ws[(k+d+ws.length)%ws.length])}
+const touchView=matchMedia('(max-width:899px)');
+function slide(d){if(W[cur].imgs.length>1){if(touchView.matches){glide(d);return}if(nbs.length>=4){dGlide(d);return}}const ws=W[cur].imgs,k=ws.indexOf(im.getAttribute('src'));setMain(ws[(k+d+ws.length)%ws.length])}
 im.addEventListener('load',()=>im.classList.remove('sw'));
 function step(d){const v=vis(),k=v.indexOf(cur),n=v[(k+d+v.length)%v.length];
   if(SOLO!==null){location.href=urlOf(W[n]);return}
@@ -387,18 +408,62 @@ addEventListener('popstate',e=>{const st=e.state;if(st&&st.w!=null){if(dv.hidden
 if(SOLO!==null){show(SOLO);dv.hidden=false;dv.classList.add('open')}
 dv.querySelector('.x').onclick=close;dv.querySelector('.prev').onclick=()=>slide(-1);dv.querySelector('.next').onclick=()=>slide(1);dv.querySelector('.wp').onclick=()=>step(-1);dv.querySelector('.wx').onclick=()=>step(1);
 addEventListener('keydown',e=>{if(dv.hidden)return;if(e.key==='Escape')close();if(/^(SELECT|INPUT|TEXTAREA)$/.test(document.activeElement.tagName))return;if(e.key==='ArrowLeft')slide(-1);if(e.key==='ArrowRight')slide(1)});
-/* swipe the picture: it follows the finger, then the next frame eases in from the same side */
-{const st=dv.querySelector('.stage');let sx=null,sy=0,dx=0,lock=null,t0=0;
-st.addEventListener('touchstart',e=>{if(e.touches.length>1){sx=null;return}sx=e.touches[0].clientX;sy=e.touches[0].clientY;dx=0;lock=null;t0=Date.now()},{passive:true});
-st.addEventListener('touchmove',e=>{if(sx===null)return;const x=e.touches[0].clientX-sx,y=e.touches[0].clientY-sy;
-  if(lock===null&&(Math.abs(x)>8||Math.abs(y)>8))lock=Math.abs(x)>Math.abs(y)?'x':'y';
-  if(lock!=='x')return;dx=x;im.classList.add('drag');im.style.translate=(dx*.7)+'px 0';im.style.opacity=1-Math.min(.35,Math.abs(dx)/600)},{passive:true});
-st.addEventListener('touchend',()=>{if(sx===null)return;sx=null;im.classList.remove('drag');
-  const fast=Math.abs(dx)/(Date.now()-t0||1)>.4,go=lock==='x'&&(Math.abs(dx)>50||(fast&&Math.abs(dx)>20));
-  if(go){const d=dx<0?1:-1;slide(d);im.style.opacity='';im.style.transition='none';im.style.translate=(-d*36)+'px 0';im.getBoundingClientRect();im.style.transition='';im.style.translate='0 0'}
-  else{im.style.translate='0 0';im.style.opacity=''}
-  setTimeout(()=>{im.style.translate=''},600)});
-st.addEventListener('touchcancel',()=>{sx=null;im.classList.remove('drag');im.style.translate='';im.style.opacity=''})}
+/* swipe the picture: the neighbouring frame rides in next to it, both follow the finger, then settle (or spring back) */
+const pk=document.createElement('img');pk.className='peek';pk.alt='';pk.hidden=true;pk.decoding='sync';dv.querySelector('.stage').appendChild(pk);
+let busy=false,dir=0;
+const frames=()=>W[cur].imgs,at=()=>frames().indexOf(im.getAttribute('src')),nb=d=>{const ws=frames();return ws[(at()+d+ws.length)%ws.length]};
+function aim(d){if(d!==dir){dir=d;pk.src=nb(d);pk.hidden=false}}
+function settle(d,commit){const w=im.clientWidth,t=nb(d),tr='translate .5s cubic-bezier(.16,1,.3,1)';busy=true;
+  im.classList.remove('drag');im.style.transition=tr;pk.style.transition=tr;
+  im.style.translate=(commit?-d*w:0)+'px 0';pk.style.translate=(commit?0:d*w)+'px 0';
+  setTimeout(async()=>{
+    if(commit){im.src=t;try{await im.decode()}catch(e){}mark(t)}
+    im.style.transition='none';pk.style.transition='none';im.style.translate='';pk.style.translate='';pk.hidden=true;dir=0;
+    im.getBoundingClientRect();im.style.transition='';pk.style.transition='';busy=false},520)}
+function glide(d){if(busy)return;aim(d);const w=im.clientWidth;pk.style.transition='none';pk.style.translate=(d*w)+'px 0';pk.getBoundingClientRect();pk.style.transition='';requestAnimationFrame(()=>settle(d,true))}
+/* desktop: every frame of the work is a slide in one strip; the active one sits in the middle, its neighbours dimmed beside it.
+   Frames only move and change tone (never swap their picture), so nothing pops in while it settles. */
+var nbs=[],nbFor=null;
+const GAP=0,gstep=()=>parseFloat(getComputedStyle(im).width)+GAP,stg=dv.querySelector('.stage');
+const off=(i,k,n)=>{let o=((i-k)%n+n)%n;if(o>n/2)o-=n;return o},tone=t=>'saturate('+(.45+.55*t)+') brightness('+(.8+.2*t)+')';
+let dragged=false;
+function buildNb(){const w=W[cur];if(nbFor===w)return;nbFor=w;nbs.forEach(x=>x.remove());nbs=[];if(w.imgs.length<4)return;
+  w.imgs.forEach((src,i)=>{const x=document.createElement('img');x.className='nb';x.alt='';x.src=src;x.decoding='sync';x.draggable=false;stg.insertBefore(x,im);
+    x.addEventListener('click',()=>{if(dragged)return;const o=off(i,ak,nbs.length);if(Math.abs(o)===1)slide(o)});nbs.push(x)})}
+/* place the strip for active frame k, shifted dx px; when moving toward direction d, t (0..1) is how far it has gone */
+function nbPlace(k,dx,t,d){const n=nbs.length,st=gstep();if(!n)return;
+  nbs.forEach((x,i)=>{const o=off(i,k,n),oc=Math.max(-2,Math.min(2,o));let op=Math.abs(o)<=1?.2:0,fl=0;
+    if(d){if(o===d){op=.2+.8*t;fl=t}else if(o===-d){op=.2*(1-t)}else if(o===2*d){op=.2*t}}
+    x.style.translate=(oc*st+dx)+'px 0';x.style.opacity=op;x.style.filter=tone(fl)})}
+function still(on){[im,...nbs].forEach(x=>x.classList.toggle('drag',on))}
+function dPlace(dx){const st=gstep(),t=Math.min(1,Math.abs(dx)/st),d=dx<0?1:-1;still(true);
+  im.style.translate=dx+'px 0';im.style.opacity=1-t;im.style.filter=tone(1-t);nbPlace(ak,dx,t,d)}
+function dSettle(d,commit){const st=gstep(),t=nb(d),n=nbs.length;busy=true;still(false);
+  if(commit){im.style.translate=(-d*st)+'px 0';im.style.opacity=0;im.style.filter=tone(0);nbPlace(ak,-d*st,1,d)}
+  else{im.style.translate='0 0';im.style.opacity=1;im.style.filter='';nbPlace(ak,0,0,0)}
+  setTimeout(async()=>{
+    if(commit){im.src=t;try{await im.decode()}catch(e){}mark(t)}
+    still(true);im.style.translate='';im.style.opacity='';im.style.filter='';nbPlace(ak,0,0,0);
+    im.getBoundingClientRect();still(false);busy=false},580)}
+function dGlide(d){if(busy)return;dSettle(d,true)}
+{let px=null,dx=0,lock=false,t0=0,id=null;
+stg.addEventListener('pointerdown',e=>{if(touchView.matches||busy||e.button||nbs.length<4||e.target.closest('.nav'))return;px=e.clientX;dx=0;lock=false;t0=Date.now();id=e.pointerId;dragged=false});
+stg.addEventListener('pointermove',e=>{if(px===null||e.pointerId!==id)return;const x=e.clientX-px;
+  if(!lock&&Math.abs(x)>6){lock=true;dragged=true;try{stg.setPointerCapture(id)}catch(_){}}
+  if(!lock)return;dx=x;dPlace(dx)});
+const end=(e,cancel)=>{if(px===null||e.pointerId!==id)return;px=null;
+  if(!lock){return}
+  const v=Math.abs(dx)/(Date.now()-t0||1),d=dx<0?1:-1;setTimeout(()=>dragged=false,0);
+  dSettle(d,!cancel&&(Math.abs(dx)>im.offsetWidth*.18||(v>.4&&Math.abs(dx)>24)))};
+stg.addEventListener('pointerup',e=>end(e,false));stg.addEventListener('pointercancel',e=>end(e,true));
+/* trackpad / horizontal wheel: one swipe = one step (momentum after it is ignored until the gesture goes quiet) */
+{let acc=0,spent=false,quiet=null;
+stg.addEventListener('wheel',e=>{if(touchView.matches||dv.hidden)return;if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)*1.2)return;e.preventDefault();
+  clearTimeout(quiet);quiet=setTimeout(()=>{acc=0;spent=false},160);
+  if(spent||busy)return;acc+=e.deltaX;if(Math.abs(acc)>55){spent=true;const d=acc>0?1:-1;acc=0;slide(d)}},{passive:false})}
+const re=()=>{nbSync();if(!busy){still(true);nbPlace(ak,0,0,0);im.getBoundingClientRect();still(false)}};
+addEventListener('resize',re);im.addEventListener('load',nbSync);if(window.ResizeObserver)new ResizeObserver(re).observe(im)}
+nbReady=true;if(im.getAttribute('src'))mark(im.getAttribute('src'));
 </script>
 </body>
 </html>
