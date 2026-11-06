@@ -327,6 +327,16 @@ def home(W, WE):
         write('en/index.html' if en else 'index.html', src)
 
 
+def card_frame(W):
+    """index of the gallery frame that is the card picture itself (-1 if none), so card slides never repeat it"""
+    import hashlib
+    h = lambda p: hashlib.md5(open(os.path.join(ROOT, p), 'rb').read()).hexdigest()
+    for w in W:
+        if w.get('slug'):
+            c = h(w['img'])
+            w['ci'] = next((k for k, x in enumerate(w['imgs']) if h(x) == c), -1)
+
+
 def related(W, k=4):
     """for each work: the k closest by shared themes (Jaccard), then by catalog proximity"""
     real = [i for i, w in enumerate(W) if w.get('slug')]
@@ -397,10 +407,12 @@ def catalog(tpl, W, lang):
 def main():
     W = json.loads(read('data/works.json'))
     related(W)
+    card_frame(W)
     tpl = read(CAT)
     WE = i18n.localize(W)
     for a, b in zip(W, WE):
         b['rel'] = a['rel']
+        b['ci'] = a.get('ci', -1)
     real = [i for i, w in enumerate(W) if w.get('slug')]
     for lang, WL in (('uk', W), ('en', WE)):
         src = catalog(tpl, WL, lang)
