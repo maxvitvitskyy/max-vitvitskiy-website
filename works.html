@@ -301,11 +301,12 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .cl-soc .ico:active{box-shadow:inset 5px 5px 10px rgba(0,0,0,.55),inset -3px -3px 8px rgba(255,236,214,.03);transform:translateY(1px)}
 .cl-soc .ico:focus-visible{outline:2px solid rgba(255,166,48,.7);outline-offset:4px}
 @media(min-width:900px){.cl-soc{grid-column:1/6;grid-row:1;align-self:end;justify-content:flex-start;margin:0;gap:16px}.cl-soc .ico{width:52px;height:52px}.cl-soc .ico svg{width:24px;height:24px}}
-/* English heading: two lines, "stay with" highlighted, second line flush left */
-html[lang="en"] .close h2{font-size:calc((100vw - 2*var(--gut))/7.15)}
-html[lang="en"] .close h2 .ln:nth-child(1){padding-left:1.1em}html[lang="en"] .close h2 .ln:nth-child(2){padding-left:0}
-html[lang="en"] .cl-side{margin-top:calc(102.5vw - 1.84*(100vw - 2*var(--gut))/7.15)}
-@media(min-width:900px){html[lang="en"] .close h2{font-size:min(8.4vw,116px)}html[lang="en"] .cl-side{margin-top:0}}
+/* English heading: three lines stepping right ("Some images / stay with us / forever."), sized to the full width on phones */
+html[lang="en"] .close h2{font-size:calc((100vw - 2*var(--gut))/4.9)}
+html[lang="en"] .close h2 .ln:nth-child(1){padding-left:0}html[lang="en"] .close h2 .ln:nth-child(2){padding-left:.8em}html[lang="en"] .close h2 .ln:nth-child(3){padding-left:1.85em}
+html[lang="en"] .cl-side{margin-top:calc(126.5vw - 2.76*(100vw - 2*var(--gut))/4.9)}
+html[lang="en"] .cl-fly .vase{top:36vw}
+@media(min-width:900px){html[lang="en"] .close h2{font-size:min(11vw,150px)}html[lang="en"] .cl-side{margin-top:0}html[lang="en"] .cl-fly .vase{top:auto}}
 @media(prefers-reduced-motion:reduce){.cl-fly .f{animation:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
