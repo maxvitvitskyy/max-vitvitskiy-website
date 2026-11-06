@@ -66,12 +66,13 @@
     var words=splitTitle(document.querySelector('.hd h1'));
     var chips=[].slice.call(document.querySelectorAll('.filters button'));
     gsap.set(words,{yPercent:115});
-    gsap.set(['.top .logo','.top .back','.hd .k','.hd p'],{opacity:0});
+    gsap.set(['.top .logo','.top .lng','.top .back','.hd .k','.hd p'],{opacity:0});
     gsap.set(chips,{opacity:0,y:14});
     root.classList.add('hero-in');
 
     var tl=gsap.timeline({defaults:{ease:'power3.out'}});
     tl.to('.top .logo',{opacity:1,duration:.9},0)
+      .fromTo('.top .lng',{x:14},{opacity:1,x:0,duration:.9},.08)
       .fromTo('.top .back',{x:14},{opacity:1,x:0,duration:.9},.08)
       .fromTo('.hd .k',{y:14},{opacity:1,y:0,duration:.8},.2)
       .to(words,{yPercent:0,duration:1.25,ease:'expo.out',stagger:.13},.3)
@@ -79,7 +80,7 @@
       .to(chips,{opacity:1,y:0,duration:.8,stagger:.05,ease:'power2.out'},.9)
       .call(observe,null,.85)
       .add(function(){
-        gsap.set(['.top .logo','.top .back','.hd .k','.hd p'].concat(chips),{clearProps:'opacity,transform'});
+        gsap.set(['.top .logo','.top .lng','.top .back','.hd .k','.hd p'].concat(chips),{clearProps:'opacity,transform'});
         gsap.set(words,{clearProps:'transform'});
       });
   }
