@@ -1525,6 +1525,29 @@ function fitLede(){
     if(px<18){px=Math.max(20,Math.min(26,innerWidth*.06));l.style.whiteSpace='normal';l.style.textWrap='balance'}
     l.style.fontSize=px.toFixed(2)+'px';sh.style.setProperty('--ls',px.toFixed(2)+'px');
   });
+  /* phones: every sub-heading gets one common size, the largest at which the longest single-line one still fits the column */
+  const ex=[].slice.call(document.querySelectorAll('.exp .sec-head .sub .lede'));
+  ex.forEach(l=>{l.style.fontSize=''});
+  if(innerWidth<900){
+    const ls=[].slice.call(document.querySelectorAll('#create .sec-head>p.lede,#inspire .sec-head>p.lede'));
+    let px=30;
+    ls.forEach(l=>{
+      l.style.whiteSpace='nowrap';l.style.fontSize='20px';
+      const r=document.createRange();r.selectNodeContents(l);
+      const cs=getComputedStyle(l.parentElement),cw=l.parentElement.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      const w=r.getBoundingClientRect().width;
+      if(w)px=Math.min(px,20*cw/w*.985);
+    });
+    px=Math.max(24,px);
+    ls.concat(ex).forEach(l=>{l.style.fontSize=px.toFixed(2)+'px'});
+    ls.forEach(l=>{
+      l.style.whiteSpace='nowrap';
+      const cs=getComputedStyle(l.parentElement),cw=l.parentElement.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      const r=document.createRange();r.selectNodeContents(l);
+      if(r.getBoundingClientRect().width>cw){l.style.whiteSpace='normal';l.style.textWrap='balance'}
+    });
+    ls.forEach(l=>l.parentElement.style.setProperty('--ls',px.toFixed(2)+'px'));
+  }
 }
 window.fitLede=fitLede;
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitLede);
