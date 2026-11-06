@@ -209,7 +209,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .tx{border-left:0;border-top:1px solid var(--line);justify-content:flex-start;overflow:visible;padding:24px var(--gut) 40px}
   .dv .x{position:fixed}
   /* picture strip: native scroll-snap, slides stop a little short of the screen edges; arrows are discs with a thin chevron */
-  .dv .art{padding-inline:0;padding-bottom:0}
+  .dv .art{padding:max(88px,calc(env(safe-area-inset-top) + 80px)) 0 0}
   .dv .stage{position:relative;display:block;overflow:visible;padding:0}
   .dv .stage .strip{display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-inline:16px;overscroll-behavior-x:contain}
   .dv .stage .strip::-webkit-scrollbar{display:none}
