@@ -246,7 +246,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media(min-width:900px){.hero-copy{margin-block:auto -85px}.hero-stage{padding-top:calc(max(12px,env(safe-area-inset-top)) + 56px + clamp(20px,3svh,32px) + min(31svh,54vw)*.17)}}
 @media(min-width:900px){.hero-copy p{max-width:62ch;text-wrap:balance;font-size:clamp(24px,2.25vw,30px)}}
 .hero-copy p em{font-family:var(--text);font-weight:500;font-style:italic;color:var(--amber)}
-@media(max-width:599px){.band-in .cap h3 span{white-space:nowrap}.band-in .cap h3{white-space:nowrap}.band-in .cap h3 .pulse{width:.4em;margin-left:.1em}}
+@media(max-width:599px){.band-in .cap h3 span{white-space:nowrap}.band-in .cap h3{white-space:nowrap}.band-in .cap h3 .pulse{display:none!important}}
 .hero-copy p .mb{display:none}
 @media(max-width:899px){.hero-copy p .nb{white-space:nowrap}.hero-copy p .mb{display:inline}}
 .cta-row{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line);position:relative;z-index:4}
@@ -1141,7 +1141,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
   </div>
   <div class="wrap duo rv">
     <figure class="band">
-      <a class="band-in go-card" href="#cf-name" data-topic="commission"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" width="1591" height="988" loading="lazy"><div class="cap"><span class="kick" data-uk="Авторські роботи на замовлення">Original works to order</span><h3><span data-uk="Твоя ідея – моє втілення">Your idea, my craft</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
+      <a class="band-in go-card" href="#cf-name" data-topic="commission"><img src="img/studio1.jpg" alt="Max Vitvitskiy handling a fine art print" width="1591" height="988" loading="lazy"><div class="cap"><span class="kick" data-uk="Роботи на замовлення">Commissioned works</span><h3><span data-uk="Твоя ідея – моє втілення">Your idea, my craft</span><i class="pulse" aria-hidden="true"></i></h3></div></a>
       <div class="note"><p data-uk="Створюю оригінальні художні роботи на замовлення для приватних колекцій, інтер’єрів та особливих подій.">I create original artworks to commission for private collections, interiors and special occasions.</p><p data-uk="Поділися своєю ідеєю, історією чи натхненням — я перетворю їх на індивідуальну візуальну композицію.">Share your idea, story or inspiration — I will turn it into an individual visual composition.</p></div>
       <a class="btn-lite" href="#cf-name" data-topic="commission" data-uk="Обговорити створення роботи">Discuss creating a work</a>
     </figure>
