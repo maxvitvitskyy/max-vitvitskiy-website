@@ -237,37 +237,58 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .pr .pn{max-width:none}
   .dv .buy{align-items:stretch}.dv .buy .ask{justify-content:center}
 }
-/* closing block: specimen-style composition, giant two-tone words overlapping a picture */
-.close{max-width:1400px;margin:0 auto;padding:clamp(80px,10vw,160px) var(--gut) clamp(80px,9vw,140px)}
+/* closing block: stacked heading on the left, text block lower right, butterflies flying between and around */
+.close{max-width:1400px;margin:0 auto;padding:clamp(100px,11vw,170px) var(--gut) clamp(80px,9vw,140px);overflow-x:clip}
 .cl-stage{position:relative}
-.cl-pic{position:relative;display:block;width:76%;margin:26px 0 0 auto}
-.cl-pic img{display:block;width:100%;height:auto;aspect-ratio:5/7;object-fit:cover;border-radius:4px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
-.cl-cap{position:absolute;left:0;top:-24px;font-family:var(--text);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.close h2{position:relative;z-index:2;pointer-events:none;margin-top:-34vw;font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:12.4vw;color:var(--cream);text-shadow:0 2px 14px rgba(0,0,0,.55),0 0 38px rgba(0,0,0,.6)}
+.close h2{position:relative;z-index:2;font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:12.4vw;color:var(--cream)}
 .close h2 .ln{display:block;white-space:nowrap}
-.close h2 .ln:nth-child(2){padding-left:.55em}.close h2 .ln:nth-child(3){padding-left:1.1em}
+.close h2 .ln:nth-child(1){padding-left:.4em}.close h2 .ln:nth-child(2){padding-left:.95em}
 .close h2 i{font-family:var(--display);font-style:italic;color:var(--amber);padding-right:.06em}
-.close .cl-b{margin-top:30px;font-family:var(--text);font-style:italic;font-size:clamp(18px,5.2vw,22px);line-height:1.45;color:rgba(241,224,197,.72);max-width:26em;text-wrap:pretty}
-.close .cl-v{margin-top:28px;font-family:var(--text);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.close .cl-v b{font-weight:400;color:var(--amber)}
-.close .cl-act{margin-top:22px}
-.close .cl-c{font-family:var(--display);font-style:italic;font-size:clamp(22px,6vw,30px);line-height:1.2;color:var(--cream)}
-.close .cl-btn{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 14px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;white-space:nowrap;transition:transform .4s var(--ease),box-shadow .4s}
+.cl-side{position:relative;z-index:3;margin-top:34px}
+.close .cl-s{font-family:var(--head);text-transform:uppercase;line-height:1.08;letter-spacing:.01em;font-size:clamp(26px,7.4vw,40px);color:var(--cream)}
+.close .cl-s b{font-weight:400;color:var(--amber)}
+.close .cl-b{margin-top:18px;color:var(--muted);font-size:clamp(15px,4vw,16px);line-height:1.7;text-wrap:pretty;max-width:30em}
+.cl-act{margin-top:24px;padding-top:22px;position:relative}
+.cl-act::before{content:"";position:absolute;left:0;top:0;width:52px;height:1px;background:var(--amber)}
+.close .cl-c{font-family:var(--display);font-style:italic;font-size:clamp(22px,6vw,28px);line-height:1.2;color:var(--cream)}
+.close .cl-btn{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 14px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;white-space:nowrap;transition:transform .4s var(--ease),box-shadow .4s}
 .close .cl-btn .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .4s var(--ease)}
 .close .cl-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,150,40,.28)}.close .cl-btn:hover .ar{transform:translateX(4px)}
+.cl-fly{position:absolute;inset:0;pointer-events:none;z-index:1}
+.cl-fly .f{position:absolute;height:auto;filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));animation:clfloat 7s ease-in-out infinite alternate;rotate:var(--r,0deg)}
+@keyframes clfloat{from{translate:0 0}to{translate:var(--dx,6px) -12px}}
+/* depth: back butterflies sit under the text (z1, a little darker and softer), front ones over it (z4+, bigger shadow); one overlaps the button corner */
+.cl-fly .f{--sh:0 10px 18px rgba(0,0,0,.4)}
+.cl-fly .f4,.cl-fly .f7,.cl-fly .f1{z-index:1;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35)) brightness(.78) saturate(.9)}
+.cl-fly .f3,.cl-fly .f2,.cl-fly .f6{z-index:4;filter:drop-shadow(0 20px 26px rgba(0,0,0,.5))}
+.cl-fly .f5{z-index:5;filter:drop-shadow(0 22px 28px rgba(0,0,0,.55))}
+.cl-fly .f1{display:none}
+.cl-fly .f4{left:-7vw;top:-16vw;width:34vw;--r:14deg;animation-duration:8s}
+.cl-fly .f3{right:-9vw;top:-24vw;width:46vw;--r:-12deg;animation-duration:9s}
+.cl-fly .f6{right:0;top:27vw;width:19vw;--r:-8deg;animation-duration:7s}
+.cl-fly .f2{right:17vw;top:31vw;width:18vw;--r:22deg;animation-duration:10s}
+.cl-fly .f7{right:24vw;top:-9vw;width:13vw;--r:6deg;animation-duration:6.5s}
+.cl-fly .f5{right:3vw;bottom:34px;width:24vw;--r:-14deg;animation-duration:8.5s}
 @media(min-width:900px){
-  .close{padding-top:clamp(90px,10vw,150px)}
-  .cl-stage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;grid-template-rows:auto auto auto auto}
-  .cl-pic{grid-column:2/6;grid-row:1/4;width:auto;margin:0;align-self:start}
-  .cl-cap{left:14px;top:auto;bottom:14px;color:var(--cream);opacity:.85}
-  .close h2{grid-column:1/-1;grid-row:1/4;align-self:start;margin-top:.95em;font-size:min(10vw,138px)}
-  .close h2 .ln:nth-child(2){padding-left:2.1em}.close h2 .ln:nth-child(3){padding-left:2.9em}
-  .close .cl-b{grid-column:8/12;grid-row:1;align-self:start;margin-top:0;z-index:3;font-size:clamp(17px,1.55vw,22px);max-width:none}
-  .close .cl-v{position:absolute;right:0;top:0;margin:0;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;white-space:nowrap}
-  .close .cl-act{grid-column:6/-1;grid-row:4;justify-content:space-between;margin-top:48px;display:flex;align-items:center;gap:clamp(24px,3vw,48px)}
-  .close .cl-c{font-size:clamp(22px,2.3vw,32px);flex:0 1 13em}
-  .close .cl-btn{margin-top:0;display:inline-flex;gap:14px;padding:0 30px;font-size:13px;letter-spacing:.16em;flex:none}
+  .close{padding-top:clamp(90px,9vw,140px)}
+  .cl-stage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;align-items:end;min-height:clamp(380px,36vw,520px)}
+  .close h2{grid-column:1/9;grid-row:1;font-size:min(9vw,124px)}
+  .close h2 .ln:nth-child(1){padding-left:.35em}.close h2 .ln:nth-child(2){padding-left:.95em}
+  .cl-side{grid-column:9/13;grid-row:1;margin-top:0;align-self:end}
+  .close .cl-s{font-size:clamp(26px,2.9vw,40px)}
+  .close .cl-b{font-size:clamp(14px,1.15vw,16px)}
+  .close .cl-c{font-size:clamp(20px,1.9vw,26px)}
+  .close .cl-btn{display:inline-flex;gap:14px;padding:0 26px;font-size:12.5px;letter-spacing:.14em}
+  .cl-fly .f1{display:block}
+  .cl-fly .f4{left:-3%;top:-22%;width:12vw;--r:14deg}
+  .cl-fly .f3{left:44%;top:-26%;width:16vw;--r:-10deg}
+  .cl-fly .f7{left:34%;top:22%;width:6.5vw;--r:8deg;right:auto}
+  .cl-fly .f6{left:60%;top:2%;width:8vw;--r:4deg;right:auto}
+  .cl-fly .f2{left:53%;top:28%;width:11.5vw;--r:18deg;right:auto}
+  .cl-fly .f1{left:0;top:80%;width:14vw;--r:-16deg}
+  .cl-fly .f5{left:auto;right:0;top:auto;bottom:-4%;width:12vw;--r:-14deg}
 }
+@media(prefers-reduced-motion:reduce){.cl-fly .f{animation:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
 /* entrance: hidden until the motion script takes over (the script is the only thing that adds .js) */
