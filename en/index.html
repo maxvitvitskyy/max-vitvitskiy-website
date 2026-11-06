@@ -825,6 +825,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .sx-block .lead{font-size:clamp(22px,6vw,25px);line-height:1.28;margin-bottom:16px}
   .exp .sec-head .sub .lede{margin-bottom:12px}
 }
+/* phones: the SILENT sub-heading sits closer to the EXPERIENCE heading, the girl is larger and runs further right and down, behind the button */
+@media(max-width:599px){
+  .exp .sec-head{--gw:90vw;--bleed:29vw}
+  .exp .sec-head .sub{margin-top:calc(clamp(16px,4.3vw,24px) + var(--lift))}
+}
 
 /* CREATE / INSPIRE intro: subtitle under the heading, lead paragraph, second sentence on wide screens */
 :is(#create,#inspire) .sec-head p.lede{font-family:var(--head);text-transform:uppercase;font-weight:400;color:var(--amber);font-size:clamp(24px,7vw,32px);line-height:1;max-width:none;margin-bottom:12px;white-space:nowrap}
