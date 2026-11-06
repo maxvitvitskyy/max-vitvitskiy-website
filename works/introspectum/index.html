@@ -192,7 +192,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .art>.sd b.go{transition:transform .42s var(--ease)}
   /* each thumbnail sits right under its own segment; together they are exactly as wide as the active picture */
   .dv .art .thumbs{display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));gap:4px;width:var(--iw,60%);max-width:100%;margin:2px auto 0;padding:0;overflow:visible;justify-content:normal}
-  .dv .art .thumbs button{width:auto;height:var(--th);transform:none;border-radius:3px}
+  .dv .art .thumbs button{width:auto;height:auto;aspect-ratio:1;transform:none;border-radius:3px}
   .dv .art .thumbs button{opacity:1}
   .dv .art .thumbs button img{border-radius:3px;filter:grayscale(1) brightness(.45);transition:filter .45s var(--ease)}
   .dv .art .thumbs button:hover img{filter:grayscale(.5) brightness(.7)}
