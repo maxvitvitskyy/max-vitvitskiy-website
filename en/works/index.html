@@ -233,6 +233,21 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .pr .pn{max-width:none}
   .dv .buy{align-items:stretch}.dv .buy .ask{justify-content:center}
 }
+/* closing block: a quiet specimen-style page end */
+.close{max-width:1000px;margin:0 auto;padding:clamp(72px,11vw,170px) var(--gut) clamp(80px,11vw,160px);text-align:center;display:flex;flex-direction:column;align-items:center}
+.close h2{font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:clamp(50px,13vw,150px);color:var(--cream)}
+.close h2 .ln{display:block}
+.close h2 i{font-family:var(--display);font-style:italic;color:var(--amber);padding-right:.06em}
+.close .cl-s{margin-top:clamp(22px,2.6vw,36px);font-family:var(--head);text-transform:uppercase;letter-spacing:.16em;font-size:clamp(13px,1.9vw,22px);color:var(--cream);line-height:1.4}
+.close .cl-s b{font-weight:400;color:var(--amber)}
+.close .cl-rule{position:relative;width:min(100%,520px);height:1px;margin:clamp(34px,4.4vw,60px) 0;background:linear-gradient(90deg,transparent,var(--line) 18%,var(--line) 82%,transparent)}
+.close .cl-rule::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;background:var(--amber);transform:translate(-50%,-50%) rotate(45deg)}
+.close .cl-b{max-width:34em;color:var(--muted);font-size:clamp(15px,1.35vw,18px);line-height:1.75;text-wrap:balance}
+.close .cl-c{margin-top:clamp(22px,2.4vw,30px);font-family:var(--display);font-style:italic;font-size:clamp(22px,2.4vw,32px);color:var(--cream);line-height:1.2}
+.close .cl-btn{margin-top:clamp(30px,3.4vw,46px);display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 30px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;transition:transform .4s var(--ease),box-shadow .4s}
+.close .cl-btn .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .4s var(--ease)}
+.close .cl-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,150,40,.28)}.close .cl-btn:hover .ar{transform:translateX(4px)}
+@media(max-width:560px){.close h2{font-size:15vw}.close .cl-btn{width:100%;justify-content:center;padding:0 14px;gap:10px;font-size:11.5px;letter-spacing:.09em;white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
 /* entrance: hidden until the motion script takes over (the script is the only thing that adds .js) */
@@ -264,127 +279,135 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
     <div class="frow"><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="portraits" aria-pressed="false">Portraits</button><button type="button" data-f="animals" aria-pressed="false">Animals</button><button type="button" data-f="birds" aria-pressed="false">Birds</button><button type="button" data-f="butterflies" aria-pressed="false">Butterflies</button><button type="button" data-f="flowers" aria-pressed="false">Flowers</button><button type="button" data-f="ocean" aria-pressed="false">Ocean</button></div><div class="frow"><button type="button" data-f="faith" aria-pressed="false">Faith</button><button type="button" data-f="ukraine" aria-pressed="false">Ukraine</button><button type="button" data-f="love" aria-pressed="false">Love</button><button type="button" data-f="self" aria-pressed="false">Self-discovery</button><button type="button" data-f="transformation" aria-pressed="false">Transformation</button><button type="button" data-f="available" aria-pressed="false">Available</button></div>
   </div>
   <div class="wall">
-    <a class="w" href="en/works/introspectum/" data-i="0" data-cat="butterflies self transformation" data-sold="0" aria-label="Introspectum">
-      <span class="ph"><img src="img/works/introspectum/card.jpg?v=9bde7789" alt="Introspectum in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="eager"></span>
-      <span class="cap"><span class="row"><span class="ttl">Introspectum</span><span class="n">030</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/introspectum/" data-i="0" data-cat="butterflies self transformation" data-sold="0" aria-label="Introspectum">
+      <span class="ph"><img src="img/works/introspectum/card.jpg?v=9bde7789" alt="Introspectum в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="eager"></span>
+      <span class="cap"><span class="row"><span class="ttl">Introspectum</span><span class="n">030</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/a-thousand-moments-later/" data-i="1" data-cat="portraits flowers transformation" data-sold="0" aria-label="A Thousand Moments Later">
-      <span class="ph"><img src="img/works/a-thousand-moments-later/card.jpg?v=b2d248ae" alt="A Thousand Moments Later in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="eager"></span>
-      <span class="cap"><span class="row"><span class="ttl">A Thousand Moments Later</span><span class="n">029</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/a-thousand-moments-later/" data-i="1" data-cat="portraits flowers transformation" data-sold="0" aria-label="A Thousand Moments Later">
+      <span class="ph"><img src="img/works/a-thousand-moments-later/card.jpg?v=b2d248ae" alt="A Thousand Moments Later у розкішній вітальні з дерев’яними панелями — картина Max Vitvitskiy" width="840" height="1050" loading="eager"></span>
+      <span class="cap"><span class="row"><span class="ttl">A Thousand Moments Later</span><span class="n">029</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/creation/" data-i="2" data-cat="portraits animals flowers" data-sold="0" aria-label="Creation">
-      <span class="ph"><img src="img/works/creation/card.jpg?v=85df9e9b" alt="Creation in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="eager"></span>
-      <span class="cap"><span class="row"><span class="ttl">Creation</span><span class="n">028</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/creation/" data-i="2" data-cat="portraits animals flowers" data-sold="0" aria-label="Creation">
+      <span class="ph"><img src="img/works/creation/card.jpg?v=85df9e9b" alt="Creation в інтер’єрі з кам’яною стіною — картина Max Vitvitskiy" width="840" height="1050" loading="eager"></span>
+      <span class="cap"><span class="row"><span class="ttl">Creation</span><span class="n">028</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/natural-light/" data-i="3" data-cat="portraits butterflies self transformation" data-sold="0" aria-label="Natural Light">
-      <span class="ph"><img src="img/works/natural-light/card.jpg?v=b4332b5f" alt="Natural Light in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Natural Light</span><span class="n">027</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/natural-light/" data-i="3" data-cat="portraits butterflies self transformation" data-sold="0" aria-label="Natural Light">
+      <span class="ph"><img src="img/works/natural-light/card.jpg?v=b4332b5f" alt="Natural Light в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Natural Light</span><span class="n">027</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/open-my-eyes/" data-i="4" data-cat="portraits animals flowers self" data-sold="0" aria-label="Open My Eyes">
-      <span class="ph"><img src="img/works/open-my-eyes/card.jpg?v=83089ba3" alt="Open My Eyes in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Open My Eyes</span><span class="n">026</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/open-my-eyes/" data-i="4" data-cat="portraits animals flowers self" data-sold="0" aria-label="Open My Eyes">
+      <span class="ph"><img src="img/works/open-my-eyes/card.jpg?v=83089ba3" alt="Open My Eyes в інтер’єрі барної зони — картина Max Vitvitskiy на стіні з теплим світлом" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Open My Eyes</span><span class="n">026</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/becoming-the-swan/" data-i="5" data-cat="portraits animals birds self transformation" data-sold="0" aria-label="Becoming the Swan">
-      <span class="ph"><img src="img/works/becoming-the-swan/card.jpg?v=636b6c9b" alt="Becoming the Swan in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Becoming the Swan</span><span class="n">025</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/becoming-the-swan/" data-i="5" data-cat="portraits animals birds self transformation" data-sold="0" aria-label="Becoming the Swan">
+      <span class="ph"><img src="img/works/becoming-the-swan/card.jpg?v=636b6c9b" alt="Becoming the Swan в інтер’єрі з жінкою в білій блузі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Becoming the Swan</span><span class="n">025</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/rise-from-the-ashes/" data-i="6" data-cat="portraits birds butterflies flowers faith ukraine transformation" data-sold="0" aria-label="Rise from the Ashes">
-      <span class="ph"><img src="img/works/rise-from-the-ashes/card.jpg?v=260ca997" alt="Rise from the Ashes in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Rise from the Ashes</span><span class="n">024</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/rise-from-the-ashes/" data-i="6" data-cat="portraits birds butterflies flowers faith ukraine transformation" data-sold="0" aria-label="Rise from the Ashes">
+      <span class="ph"><img src="img/works/rise-from-the-ashes/card.jpg?v=260ca997" alt="Rise from the Ashes у теплій вітальні з терракотовим диваном — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Rise from the Ashes</span><span class="n">024</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/honor-him/" data-i="7" data-cat="portraits faith" data-sold="0" aria-label="Honor Him">
-      <span class="ph"><img src="img/works/honor-him/card.jpg?v=dc049b6f" alt="Honor Him in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Honor Him</span><span class="n">023</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/honor-him/" data-i="7" data-cat="portraits faith" data-sold="0" aria-label="Honor Him">
+      <span class="ph"><img src="img/works/honor-him/card.jpg?v=dc049b6f" alt="Honor Him в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Honor Him</span><span class="n">023</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/face-the-sun/" data-i="8" data-cat="portraits birds butterflies flowers faith" data-sold="0" aria-label="Face the Sun">
-      <span class="ph"><img src="img/works/face-the-sun/card.jpg?v=4e381e50" alt="Face the Sun in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Face the Sun</span><span class="n">022</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/face-the-sun/" data-i="8" data-cat="portraits birds butterflies flowers faith" data-sold="0" aria-label="Face the Sun">
+      <span class="ph"><img src="img/works/face-the-sun/card.jpg?v=4e381e50" alt="Face the Sun в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Face the Sun</span><span class="n">022</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/in-his-image/" data-i="9" data-cat="portraits birds butterflies faith" data-sold="0" aria-label="In His Image">
-      <span class="ph"><img src="img/works/in-his-image/card.jpg?v=ea7dd8ac" alt="In His Image in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">In His Image</span><span class="n">021</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/in-his-image/" data-i="9" data-cat="portraits birds butterflies faith" data-sold="0" aria-label="In His Image">
+      <span class="ph"><img src="img/works/in-his-image/card.jpg?v=ea7dd8ac" alt="In His Image у просторій вітальні з дерев’яними панелями — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">In His Image</span><span class="n">021</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/lion-and-lamb/" data-i="10" data-cat="animals birds butterflies faith" data-sold="0" aria-label="Lion and Lamb">
-      <span class="ph"><img src="img/works/lion-and-lamb/card.jpg?v=6ae84f21" alt="Lion and Lamb in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Lion and Lamb</span><span class="n">020</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/lion-and-lamb/" data-i="10" data-cat="animals birds butterflies faith" data-sold="0" aria-label="Lion and Lamb">
+      <span class="ph"><img src="img/works/lion-and-lamb/card.jpg?v=6ae84f21" alt="Lion and Lamb в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Lion and Lamb</span><span class="n">020</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/miracle/" data-i="11" data-cat="portraits animals birds butterflies" data-sold="0" aria-label="Miracle">
-      <span class="ph"><img src="img/works/miracle/card.jpg?v=0a5dc444" alt="Miracle in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Miracle</span><span class="n">019</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/miracle/" data-i="11" data-cat="portraits animals birds butterflies" data-sold="0" aria-label="Miracle">
+      <span class="ph"><img src="img/works/miracle/card.jpg?v=0a5dc444" alt="Miracle в інтер’єрі сходового холу — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Miracle</span><span class="n">019</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/while-im-waiting/" data-i="12" data-cat="animals flowers transformation" data-sold="0" aria-label="While I’m Waiting">
-      <span class="ph"><img src="img/works/while-im-waiting/card.jpg?v=c2b962a7" alt="While I’m Waiting in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">While I’m Waiting</span><span class="n">018</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/while-im-waiting/" data-i="12" data-cat="animals flowers transformation" data-sold="0" aria-label="While I’m Waiting">
+      <span class="ph"><img src="img/works/while-im-waiting/card.jpg?v=c2b962a7" alt="While I’m Waiting в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">While I’m Waiting</span><span class="n">018</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/look-inside/" data-i="13" data-cat="portraits butterflies flowers self" data-sold="0" aria-label="Look Inside">
-      <span class="ph"><img src="img/works/look-inside/card.jpg?v=ac0645a0" alt="Look Inside in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Look Inside</span><span class="n">017</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/look-inside/" data-i="13" data-cat="portraits butterflies flowers self" data-sold="0" aria-label="Look Inside">
+      <span class="ph"><img src="img/works/look-inside/card.jpg?v=ac0645a0" alt="Look Inside в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Look Inside</span><span class="n">017</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/friendship/" data-i="14" data-cat="animals butterflies flowers love" data-sold="0" aria-label="Friendship">
-      <span class="ph"><img src="img/works/friendship/card.jpg?v=c57906d2" alt="Friendship in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Friendship</span><span class="n">016</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/friendship/" data-i="14" data-cat="animals butterflies flowers love" data-sold="0" aria-label="Friendship">
+      <span class="ph"><img src="img/works/friendship/card.jpg?v=c57906d2" alt="Friendship в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Friendship</span><span class="n">016</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/who-you-are/" data-i="15" data-cat="animals birds self" data-sold="0" aria-label="Who You Are">
-      <span class="ph"><img src="img/works/who-you-are/card.jpg?v=f9a51812" alt="Who You Are in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Who You Are</span><span class="n">015</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/who-you-are/" data-i="15" data-cat="animals birds self" data-sold="0" aria-label="Who You Are">
+      <span class="ph"><img src="img/works/who-you-are/card.jpg?v=f9a51812" alt="Who You Are в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Who You Are</span><span class="n">015</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/depths/" data-i="16" data-cat="portraits animals ocean transformation" data-sold="0" aria-label="Depths">
-      <span class="ph"><img src="img/works/depths/card.jpg?v=0ebadb09" alt="Depths in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Depths</span><span class="n">014</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/depths/" data-i="16" data-cat="portraits animals ocean transformation" data-sold="0" aria-label="Depths">
+      <span class="ph"><img src="img/works/depths/card.jpg?v=0ebadb09" alt="Depths в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Depths</span><span class="n">014</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/beautiful-things/" data-i="17" data-cat="animals birds flowers" data-sold="0" aria-label="Beautiful Things">
-      <span class="ph"><img src="img/works/beautiful-things/card.jpg?v=faa8fd11" alt="Beautiful Things in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Beautiful Things</span><span class="n">013</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/beautiful-things/" data-i="17" data-cat="animals birds flowers" data-sold="0" aria-label="Beautiful Things">
+      <span class="ph"><img src="img/works/beautiful-things/card.jpg?v=faa8fd11" alt="Beautiful Things у темному інтер’єрі з жінкою в чорній сукні — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Beautiful Things</span><span class="n">013</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/introvert/" data-i="18" data-cat="animals birds flowers self" data-sold="0" aria-label="Introvert">
-      <span class="ph"><img src="img/works/introvert/card.jpg?v=ab88fe1f" alt="Introvert in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Introvert</span><span class="n">012</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/introvert/" data-i="18" data-cat="animals birds flowers self" data-sold="0" aria-label="Introvert">
+      <span class="ph"><img src="img/works/introvert/card.jpg?v=ab88fe1f" alt="Introvert у теплій вітальні з вечірнім світлом — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Introvert</span><span class="n">012</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/ataro/" data-i="19" data-cat="portraits animals birds butterflies flowers self" data-sold="0" aria-label="Ataro">
-      <span class="ph"><img src="img/works/ataro/card.jpg?v=c1ab8b62" alt="Ataro in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Ataro</span><span class="n">011</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/ataro/" data-i="19" data-cat="portraits animals birds butterflies flowers self" data-sold="0" aria-label="Ataro">
+      <span class="ph"><img src="img/works/ataro/card.jpg?v=c1ab8b62" alt="Ataro в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Ataro</span><span class="n">011</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/soul-awakening/" data-i="20" data-cat="portraits animals birds love transformation" data-sold="0" aria-label="Soul Awakening">
-      <span class="ph"><img src="img/works/soul-awakening/card.jpg?v=35186e04" alt="Soul Awakening in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Soul Awakening</span><span class="n">010</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/soul-awakening/" data-i="20" data-cat="portraits animals birds love transformation" data-sold="0" aria-label="Soul Awakening">
+      <span class="ph"><img src="img/works/soul-awakening/card.jpg?v=35186e04" alt="Soul Awakening в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Soul Awakening</span><span class="n">010</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/manifest-yourself/" data-i="21" data-cat="portraits animals transformation" data-sold="0" aria-label="Manifest Yourself">
-      <span class="ph"><img src="img/works/manifest-yourself/card.jpg?v=c9758086" alt="Manifest Yourself in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Manifest Yourself</span><span class="n">009</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/manifest-yourself/" data-i="21" data-cat="portraits animals transformation" data-sold="0" aria-label="Manifest Yourself">
+      <span class="ph"><img src="img/works/manifest-yourself/card.jpg?v=c9758086" alt="Manifest Yourself в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Manifest Yourself</span><span class="n">009</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/in-your-light/" data-i="22" data-cat="portraits flowers love" data-sold="0" aria-label="In Your Light">
-      <span class="ph"><img src="img/works/in-your-light/card.jpg?v=1ef95b39" alt="In Your Light in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">In Your Light</span><span class="n">008</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/in-your-light/" data-i="22" data-cat="portraits flowers love" data-sold="0" aria-label="In Your Light">
+      <span class="ph"><img src="img/works/in-your-light/card.jpg?v=1ef95b39" alt="In Your Light в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">In Your Light</span><span class="n">008</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/depths-of-becoming/" data-i="23" data-cat="portraits ocean transformation" data-sold="0" aria-label="Depths of Becoming">
-      <span class="ph"><img src="img/works/depths-of-becoming/card.jpg?v=8f01046f" alt="Depths of Becoming in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Depths of Becoming</span><span class="n">007</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/depths-of-becoming/" data-i="23" data-cat="portraits ocean transformation" data-sold="0" aria-label="Depths of Becoming">
+      <span class="ph"><img src="img/works/depths-of-becoming/card.jpg?v=8f01046f" alt="Depths of Becoming в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Depths of Becoming</span><span class="n">007</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/peace-of-mind/" data-i="24" data-cat="portraits flowers self" data-sold="0" aria-label="Peace of Mind">
-      <span class="ph"><img src="img/works/peace-of-mind/card.jpg?v=dcc1f468" alt="Peace of Mind in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Peace of Mind</span><span class="n">006</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/peace-of-mind/" data-i="24" data-cat="portraits flowers self" data-sold="0" aria-label="Peace of Mind">
+      <span class="ph"><img src="img/works/peace-of-mind/card.jpg?v=dcc1f468" alt="Peace of Mind в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Peace of Mind</span><span class="n">006</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/god-is-fighting-for-us/" data-i="25" data-cat="faith ukraine" data-sold="0" aria-label="God Is Fighting For Us">
-      <span class="ph"><img src="img/works/god-is-fighting-for-us/card.jpg?v=6ee6402f" alt="God Is Fighting For Us in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">God Is Fighting For Us</span><span class="n">005</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/god-is-fighting-for-us/" data-i="25" data-cat="faith ukraine" data-sold="0" aria-label="God Is Fighting For Us">
+      <span class="ph"><img src="img/works/god-is-fighting-for-us/card.jpg?v=6ee6402f" alt="God Is Fighting For Us в інтер’єрі — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">God Is Fighting For Us</span><span class="n">005</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/we-are-mosaics/" data-i="26" data-cat="portraits animals birds butterflies flowers transformation" data-sold="0" aria-label="We Are Mosaics">
-      <span class="ph"><img src="img/works/we-are-mosaics/card.jpg?v=8859809e" alt="We Are Mosaics in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">We Are Mosaics</span><span class="n">004</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/we-are-mosaics/" data-i="26" data-cat="portraits animals birds butterflies flowers transformation" data-sold="0" aria-label="We Are Mosaics">
+      <span class="ph"><img src="img/works/we-are-mosaics/card.jpg?v=8859809e" alt="We Are Mosaics у темній вітальні — велика картина-мозаїка з портретом жінки, чорним лебедем і тигром" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">We Are Mosaics</span><span class="n">004</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/bloom-with-grace/" data-i="27" data-cat="portraits animals ocean transformation" data-sold="0" aria-label="Bloom with Grace">
-      <span class="ph"><img src="img/works/bloom-with-grace/card.jpg?v=4135fc6c" alt="Bloom with Grace in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Bloom with Grace</span><span class="n">003</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/bloom-with-grace/" data-i="27" data-cat="portraits animals ocean transformation" data-sold="0" aria-label="Bloom with Grace">
+      <span class="ph"><img src="img/works/bloom-with-grace/card.jpg?v=4135fc6c" alt="Bloom with Grace в темній кімнаті з жінкою в червоній сукні — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Bloom with Grace</span><span class="n">003</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/prepare-the-way-for-the-king/" data-i="28" data-cat="animals faith" data-sold="0" aria-label="Prepare the Way for the King">
-      <span class="ph"><img src="img/works/prepare-the-way-for-the-king/card.jpg?v=765adea7" alt="Prepare the Way for the King in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Prepare the Way for the King</span><span class="n">002</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/prepare-the-way-for-the-king/" data-i="28" data-cat="animals faith" data-sold="0" aria-label="Prepare the Way for the King">
+      <span class="ph"><img src="img/works/prepare-the-way-for-the-king/card.jpg?v=765adea7" alt="Prepare the Way for the King у високій вітальні з бордовим диваном — картина Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Prepare the Way for the King</span><span class="n">002</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
-    <a class="w" href="en/works/waterline/" data-i="29" data-cat="portraits flowers self" data-sold="0" aria-label="Waterline">
-      <span class="ph"><img src="img/works/waterline/card.jpg?v=467b566f" alt="Waterline in an interior — wall art by Max Vitvitskiy" width="840" height="1050" loading="lazy"></span>
-      <span class="cap"><span class="row"><span class="ttl">Waterline</span><span class="n">001</span></span><span class="row"><span class="st">Available</span><span class="ed">Edition of 10</span></span></span>
+    <a class="w" href="works/waterline/" data-i="29" data-cat="portraits flowers self" data-sold="0" aria-label="Waterline">
+      <span class="ph"><img src="img/works/waterline/card.jpg?v=467b566f" alt="Waterline в інтер’єрі з бордовим диваном — велика картина з портретом, червоними квітами й водою" width="840" height="1050" loading="lazy"></span>
+      <span class="cap"><span class="row"><span class="ttl">Waterline</span><span class="n">001</span></span><span class="row"><span class="st">Доступна</span><span class="ed">Тираж 10</span></span></span>
     </a>
   </div>
+  <section class="close" aria-labelledby="cl-t">
+    <h2 id="cl-t"><span class="ln">Some images</span><span class="ln"><i>stay</i></span><span class="ln">with us.</span></h2>
+    <p class="cl-s">Perhaps one of them is <b>yours.</b></p>
+    <div class="cl-rule" aria-hidden="true"></div>
+    <p class="cl-b">Every work has its own story and meaning. If an image speaks to you, maybe it is time to make it part of your space.</p>
+    <p class="cl-c">Choose the work that feels close to you.</p>
+    <a class="cl-btn" href="mailto:maxim.vitvitskiy@gmail.com?subject=Artwork%20availability">Ask about availability<i class="ar" aria-hidden="true"></i></a>
+  </section>
 </main>
 <footer><span>© 2026 Max Vitvitskiy</span><span>Create · Inspire · Experience</span></footer>
 

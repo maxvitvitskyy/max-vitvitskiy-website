@@ -237,6 +237,21 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .pr .pn{max-width:none}
   .dv .buy{align-items:stretch}.dv .buy .ask{justify-content:center}
 }
+/* closing block: a quiet specimen-style page end */
+.close{max-width:1000px;margin:0 auto;padding:clamp(72px,11vw,170px) var(--gut) clamp(80px,11vw,160px);text-align:center;display:flex;flex-direction:column;align-items:center}
+.close h2{font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:clamp(50px,13vw,150px);color:var(--cream)}
+.close h2 .ln{display:block}
+.close h2 i{font-family:var(--display);font-style:italic;color:var(--amber);padding-right:.06em}
+.close .cl-s{margin-top:clamp(22px,2.6vw,36px);font-family:var(--head);text-transform:uppercase;letter-spacing:.16em;font-size:clamp(13px,1.9vw,22px);color:var(--cream);line-height:1.4}
+.close .cl-s b{font-weight:400;color:var(--amber)}
+.close .cl-rule{position:relative;width:min(100%,520px);height:1px;margin:clamp(34px,4.4vw,60px) 0;background:linear-gradient(90deg,transparent,var(--line) 18%,var(--line) 82%,transparent)}
+.close .cl-rule::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;background:var(--amber);transform:translate(-50%,-50%) rotate(45deg)}
+.close .cl-b{max-width:34em;color:var(--muted);font-size:clamp(15px,1.35vw,18px);line-height:1.75;text-wrap:balance}
+.close .cl-c{margin-top:clamp(22px,2.4vw,30px);font-family:var(--display);font-style:italic;font-size:clamp(22px,2.4vw,32px);color:var(--cream);line-height:1.2}
+.close .cl-btn{margin-top:clamp(30px,3.4vw,46px);display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 30px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;transition:transform .4s var(--ease),box-shadow .4s}
+.close .cl-btn .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .4s var(--ease)}
+.close .cl-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,150,40,.28)}.close .cl-btn:hover .ar{transform:translateX(4px)}
+@media(max-width:560px){.close h2{font-size:15vw}.close .cl-btn{width:100%;justify-content:center;padding:0 14px;gap:10px;font-size:11.5px;letter-spacing:.09em;white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
 /* entrance: hidden until the motion script takes over (the script is the only thing that adds .js) */
