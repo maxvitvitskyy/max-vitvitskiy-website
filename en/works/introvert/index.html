@@ -244,19 +244,23 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .close h2 .ln{display:block;white-space:nowrap}
 .close h2 .ln:nth-child(1){padding-left:.4em}.close h2 .ln:nth-child(2){padding-left:.95em}
 .close h2 i{font-family:var(--display);font-style:italic;color:var(--amber);padding-right:.06em}
-.cl-side{position:relative;z-index:3;margin-top:46vw}
+.cl-side{position:relative;z-index:3;margin-top:calc(124vw - 34.2vw)}
 .close .cl-s{font-family:var(--head);text-transform:uppercase;line-height:1.08;letter-spacing:.01em;font-size:clamp(26px,7.4vw,40px);color:var(--cream);text-shadow:0 2px 16px rgba(0,0,0,.6)}
 .close .cl-s b{font-weight:400;color:var(--amber)}
-.close .cl-b{margin-top:18px;color:var(--muted);font-size:clamp(15px,4vw,16px);line-height:1.7;text-wrap:pretty;max-width:30em}
+.close .cl-b{margin-top:18px;color:var(--muted);font-size:clamp(15px,4vw,16px);line-height:1.7;text-wrap:balance;max-width:19em}
 .cl-act{margin-top:24px;padding-top:22px;position:relative}
 .cl-act::before{content:"";position:absolute;left:0;top:0;width:52px;height:1px;background:var(--amber)}
 .close .cl-c{font-family:var(--display);font-style:italic;font-size:clamp(22px,6vw,28px);line-height:1.2;color:var(--cream)}
-.close .cl-btn{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 14px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;white-space:nowrap;transition:transform .4s var(--ease),box-shadow .4s}
+.close .cl-btn{margin-top:22px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:500;white-space:nowrap;transition:transform .4s var(--ease),box-shadow .4s}
 .close .cl-btn .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .4s var(--ease)}
 .close .cl-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,150,40,.28)}.close .cl-btn:hover .ar{transform:translateX(4px)}
 .cl-fly{position:absolute;inset:0;pointer-events:none}
 .cl-fly img{position:absolute;height:auto}
-.cl-fly .vase{z-index:2;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.cl-fly .vase{position:absolute;z-index:2;aspect-ratio:737/1000}
+.cl-fly .vase img{position:relative;z-index:2;display:block;width:100%;height:100%;filter:drop-shadow(0 4px 6px rgba(0,0,0,.55)) drop-shadow(0 22px 34px rgba(0,0,0,.45))}
+/* the vase stands on a lit surface: a soft warm oval of light under it and a cast shadow falling to the right */
+.cl-fly .vase::before{content:"";position:absolute;z-index:0;left:53%;bottom:-6.5%;width:140%;height:16%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,186,110,.55),rgba(255,150,60,.2) 50%,transparent);filter:blur(8px)}
+.cl-fly .vase::after{content:"";position:absolute;z-index:1;left:53%;bottom:-1.8%;width:96%;height:6%;transform:translateX(-12%) skewX(-42deg);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.92),rgba(0,0,0,.55) 50%,transparent);filter:blur(5px)}
 .cl-fly .f{animation:clfloat 7s ease-in-out infinite alternate;rotate:var(--r,0deg)}
 @keyframes clfloat{from{translate:0 0}to{translate:var(--dx,6px) -12px}}
 /* depth: far (under everything, small, dim, soft), middle (between vase and text), near (over the text, big shadow) */
@@ -265,14 +269,15 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .cl-fly .near{z-index:4;filter:drop-shadow(0 22px 26px rgba(0,0,0,.55))}
 .cl-fly .b8{z-index:1}
 .cl-fly .f{display:none}
-/* phones */
-.cl-fly .vase{right:-8vw;top:6vw;width:56vw}
-.cl-fly .b8,.cl-fly .b10,.cl-fly .b5,.cl-fly .b11,.cl-fly .b12,.cl-fly .b3{display:block}
+/* phones: heading, then the vase as the centrepiece (its flowers under the last heading line), butterflies around it, text below */
+.cl-fly .vase{left:16vw;top:22vw;width:68vw}
+.cl-fly .b8,.cl-fly .b10,.cl-fly .b5,.cl-fly .b11,.cl-fly .b12,.cl-fly .b3,.cl-fly .b9{display:block}
 .cl-fly .b8{left:-4vw;top:-20vw;width:20vw;--r:-14deg;animation-duration:8s}
-.cl-fly .b10{left:44vw;top:-17vw;width:16vw;--r:-8deg;animation-duration:9s}
-.cl-fly .b5{right:-2vw;top:-6vw;width:15vw;--r:16deg;animation-duration:7s}
-.cl-fly .b3{left:30vw;top:22vw;width:9vw;--r:10deg;animation-duration:6.5s}
-.cl-fly .b11{left:6vw;top:43vw;width:21vw;--r:-10deg;animation-duration:10s}
+.cl-fly .b10{left:46vw;top:-16vw;width:15vw;--r:-8deg;animation-duration:9s}
+.cl-fly .b5{right:-3vw;top:44vw;width:17vw;--r:16deg;animation-duration:7s}
+.cl-fly .b3{left:7vw;top:46vw;width:9vw;--r:10deg;animation-duration:6.5s}
+.cl-fly .b11{left:-2vw;top:66vw;width:22vw;--r:-10deg;animation-duration:10s}
+.cl-fly .b9{right:4vw;top:88vw;width:13vw;--r:-8deg;animation-duration:7.5s}
 .cl-fly .b12{right:1vw;bottom:30px;width:16vw;--r:14deg;animation-duration:8.5s;z-index:5}
 @media(min-width:900px){
   .cl-stage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;min-height:clamp(520px,50vw,700px)}
@@ -283,7 +288,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .close .cl-b{font-size:clamp(14px,1.15vw,16px)}
   .close .cl-c{font-size:clamp(20px,1.9vw,26px)}
   .close .cl-btn{display:inline-flex;gap:12px;padding:0 22px;font-size:12px;letter-spacing:.1em}
-  .cl-fly .vase{left:39%;right:auto;top:auto;bottom:-2%;width:auto;height:86%}
+  .cl-fly .vase{left:39%;right:auto;top:auto;bottom:0;width:auto;height:84%}
   .cl-fly .f{display:block}
   .cl-fly .b8{left:1%;top:-12%;width:7.5vw;--r:-14deg}
   .cl-fly .b10{left:46%;top:-8%;width:6.5vw;--r:-8deg}
