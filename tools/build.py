@@ -146,6 +146,7 @@ def dialog(w, n, total, lang='uk', W=None):
                + ''.join(f'<a href="{pre}works/{W[k]["slug"]}/"><img src="{e(thumb(W[k]["imgs"][0]))}" alt="{e(W[k]["alts"][0])}" width="320" height="400" loading="lazy"><span>{e(W[k]["title"])}</span></a>' for k in w['rel'])
               + '</div></nav>')
     out = f'''<div class="dv open solo" id="dv" aria-labelledby="dv-t">
+  <a class="dlogo" href="{'/en/' if en else '/'}" aria-label="Max Vitvitskiy"><img src="/img/logo-mark.png" alt="" width="600" height="255"></a>
   <button class="x" type="button" aria-label="До каталогу"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div class="art"><div class="stage"><button class="nav prev" type="button" aria-label="Попередній кадр"><i class="ar" aria-hidden="true"></i></button><img class="main" src="{e(w['imgs'][0])}" alt="{e(w['alts'][0])}" width="1280" height="1600"><button class="nav next" type="button" aria-label="Наступний кадр"><i class="ar" aria-hidden="true"></i></button></div><div class="thumbs" role="group" aria-label="Кадри роботи"{" hidden" if len(w['imgs']) < 2 else ""}>{thumbs}</div></div>
   <div class="tx">

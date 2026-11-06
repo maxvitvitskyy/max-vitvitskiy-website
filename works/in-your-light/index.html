@@ -121,6 +121,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .dv .ask{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 26px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;transition:background .3s}.dv .ask:hover{background:var(--sand)}
 .dv .x,.dv .nav{position:absolute;z-index:2;width:48px;height:48px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:rgba(13,13,12,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:border-color .3s,color .3s}
 .dv .x:hover,.dv .nav:hover{border-color:var(--amber);color:var(--amber)}
+.dv .dlogo{display:none}
 .dv .x{top:max(16px,env(safe-area-inset-top));right:16px;font-size:22px;line-height:1}
 .dv .ar{display:block;flex:none;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .4s var(--ease,cubic-bezier(.22,1,.36,1))}
 .dv .prev .ar{transform:scaleX(-1)}.dv .nav{font-size:18px}.dv .prev:hover .ar{transform:scaleX(-1) translateX(4px)}.dv .next:hover .ar,.dv .ask:hover .ar{transform:translateX(4px)}
@@ -226,8 +227,9 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .thumbs{display:none}
   .dv .sd{margin:16px 16px 0}.dv .sd[hidden]{display:none}
   .dv .x{z-index:5}
+  .dv .dlogo{position:fixed;z-index:5;top:max(16px,env(safe-area-inset-top));left:16px;height:48px;display:flex;align-items:center}.dv .dlogo img{height:24px;width:auto;display:block}
   /* work switch (1 / 30) up in the top band, left, level with the close button */
-  .dv .wn{position:fixed;z-index:5;top:max(16px,env(safe-area-inset-top));left:16px;height:48px;margin:0;padding:0 8px 0 6px;gap:2px;border:1px solid var(--line);border-radius:99px;background:rgba(13,13,12,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .dv .wn{position:fixed;z-index:5;top:max(16px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);height:48px;margin:0;padding:0 8px 0 6px;white-space:nowrap;gap:2px;border:1px solid var(--line);border-radius:99px;background:rgba(13,13,12,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
   .dv .wb{border:0;width:36px;height:36px}
   .dv .wn .count{min-width:3.6em}
   .dv .wn .lng{margin:0 0 0 6px;min-height:30px;padding:0 11px}
@@ -254,6 +256,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
 </head>
 <body>
 <div class="dv open solo" id="dv" aria-labelledby="dv-t">
+  <a class="dlogo" href="/" aria-label="Max Vitvitskiy"><img src="/img/logo-mark.png" alt="" width="600" height="255"></a>
   <button class="x" type="button" aria-label="До каталогу"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div class="art"><div class="stage"><button class="nav prev" type="button" aria-label="Попередній кадр"><i class="ar" aria-hidden="true"></i></button><img class="main" src="img/works/in-your-light/1.jpg" alt="In Your Light — силуети закоханої пари в теплому сяйві серед квітів, картина Max Vitvitskiy" width="1280" height="1600"><button class="nav next" type="button" aria-label="Наступний кадр"><i class="ar" aria-hidden="true"></i></button></div><div class="thumbs" role="group" aria-label="Кадри роботи"><button type="button" data-src="img/works/in-your-light/1.jpg" aria-label="Кадр 1" aria-current="true"><img src="img/works/in-your-light/t1.jpg" alt="" loading="lazy"></button><button type="button" data-src="img/works/in-your-light/6.jpg" aria-label="Кадр 2"><img src="img/works/in-your-light/t6.jpg" alt="" loading="lazy"></button><button type="button" data-src="img/works/in-your-light/2.jpg" aria-label="Кадр 3"><img src="img/works/in-your-light/t2.jpg" alt="" loading="lazy"></button><button type="button" data-src="img/works/in-your-light/3.jpg" aria-label="Кадр 4"><img src="img/works/in-your-light/t3.jpg" alt="" loading="lazy"></button><button type="button" data-src="img/works/in-your-light/4.jpg" aria-label="Кадр 5"><img src="img/works/in-your-light/t4.jpg" alt="" loading="lazy"></button><button type="button" data-src="img/works/in-your-light/5.jpg" aria-label="Кадр 6"><img src="img/works/in-your-light/t5.jpg" alt="" loading="lazy"></button></div></div>
   <div class="tx">

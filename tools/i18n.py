@@ -118,6 +118,7 @@ def localize(W):
 # UI strings in the catalog template (works.html): Ukrainian -> English. Every key must occur in the template.
 UI = [
     ('<html lang="uk">', '<html lang="en">'),
+    ('class="dlogo" href="/"', 'class="dlogo" href="/en/"'),
     ('aria-label="Закрити"', 'aria-label="Close"'),
     ('aria-label="Попередній кадр"', 'aria-label="Previous frame"'),
     ('aria-label="Наступний кадр"', 'aria-label="Next frame"'),
