@@ -233,24 +233,37 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .dv .pr .pn{max-width:none}
   .dv .buy{align-items:stretch}.dv .buy .ask{justify-content:center}
 }
-/* closing block: stepped specimen-style heading, rule with a diamond, two-column text */
-.close{max-width:1300px;margin:0 auto;padding:clamp(80px,11vw,170px) var(--gut) clamp(80px,10vw,150px);text-align:left}
-.close h2{font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:min(10.5vw,140px);color:var(--cream)}
+/* closing block: specimen-style composition, giant two-tone words overlapping a picture */
+.close{max-width:1400px;margin:0 auto;padding:clamp(80px,10vw,160px) var(--gut) clamp(80px,9vw,140px)}
+.cl-stage{position:relative}
+.cl-pic{position:relative;display:block;width:76%;margin:26px 0 0 auto}
+.cl-pic img{display:block;width:100%;height:auto;aspect-ratio:5/7;object-fit:cover;border-radius:4px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.cl-cap{position:absolute;left:0;top:-24px;font-family:var(--text);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.close h2{position:relative;z-index:2;pointer-events:none;margin-top:-34vw;font-family:var(--head);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:12.4vw;color:var(--cream);text-shadow:0 2px 14px rgba(0,0,0,.55),0 0 38px rgba(0,0,0,.6)}
 .close h2 .ln{display:block;white-space:nowrap}
-.close h2 .ln:nth-child(2){padding-left:.9em}.close h2 .ln:nth-child(3){padding-left:1.8em}
+.close h2 .ln:nth-child(2){padding-left:.55em}.close h2 .ln:nth-child(3){padding-left:1.1em}
 .close h2 i{font-family:var(--display);font-style:italic;color:var(--amber);padding-right:.06em}
-.close .cl-rule{position:relative;height:1px;margin:clamp(40px,5vw,76px) 0 clamp(30px,4vw,56px);background:linear-gradient(90deg,var(--amber),var(--line) 14%,var(--line))}
-.close .cl-rule::before{content:"";position:absolute;left:0;top:50%;width:8px;height:8px;background:var(--amber);transform:translate(-50%,-50%) rotate(45deg)}
-.close .cl-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,6vw,96px);align-items:start}
-.close .cl-s{font-family:var(--head);text-transform:uppercase;letter-spacing:.16em;font-size:clamp(14px,1.6vw,21px);line-height:1.55;color:var(--cream);max-width:15em}
-.close .cl-s b{font-weight:400;color:var(--amber)}
-.close .cl-b{max-width:32em;color:var(--muted);font-size:clamp(15px,1.3vw,18px);line-height:1.75;text-wrap:pretty}
-.close .cl-c{margin-top:clamp(20px,2.2vw,28px);font-family:var(--display);font-style:italic;font-size:clamp(22px,2.3vw,32px);color:var(--cream);line-height:1.2}
-.close .cl-btn{margin-top:clamp(28px,3.2vw,42px);display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 30px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;transition:transform .4s var(--ease),box-shadow .4s}
+.close .cl-b{margin-top:30px;font-family:var(--text);font-style:italic;font-size:clamp(18px,5.2vw,22px);line-height:1.45;color:rgba(241,224,197,.72);max-width:26em;text-wrap:pretty}
+.close .cl-v{margin-top:28px;font-family:var(--text);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.close .cl-v b{font-weight:400;color:var(--amber)}
+.close .cl-act{margin-top:22px}
+.close .cl-c{font-family:var(--display);font-style:italic;font-size:clamp(22px,6vw,30px);line-height:1.2;color:var(--cream)}
+.close .cl-btn{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 14px;border-radius:99px;background:var(--amber);color:var(--ink);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;white-space:nowrap;transition:transform .4s var(--ease),box-shadow .4s}
 .close .cl-btn .ar{display:block;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .4s var(--ease)}
 .close .cl-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,150,40,.28)}.close .cl-btn:hover .ar{transform:translateX(4px)}
-@media(max-width:760px){.close .cl-grid{grid-template-columns:1fr;gap:22px}.close .cl-s{max-width:none}}
-@media(max-width:560px){.close h2{font-size:12.4vw}.close h2 .ln:nth-child(2){padding-left:.55em}.close h2 .ln:nth-child(3){padding-left:1.1em}.close .cl-btn{width:100%;justify-content:center;padding:0 14px;gap:10px;font-size:11.5px;letter-spacing:.09em;white-space:nowrap}}
+@media(min-width:900px){
+  .close{padding-top:clamp(90px,10vw,150px)}
+  .cl-stage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;grid-template-rows:auto auto auto auto}
+  .cl-pic{grid-column:2/6;grid-row:1/4;width:auto;margin:0;align-self:start}
+  .cl-cap{left:14px;top:auto;bottom:14px;color:var(--cream);opacity:.85}
+  .close h2{grid-column:1/-1;grid-row:1/4;align-self:start;margin-top:.95em;font-size:min(10vw,138px)}
+  .close h2 .ln:nth-child(2){padding-left:2.1em}.close h2 .ln:nth-child(3){padding-left:2.9em}
+  .close .cl-b{grid-column:8/12;grid-row:1;align-self:start;margin-top:0;z-index:3;font-size:clamp(17px,1.55vw,22px);max-width:none}
+  .close .cl-v{position:absolute;right:0;top:0;margin:0;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;white-space:nowrap}
+  .close .cl-act{grid-column:6/-1;grid-row:4;justify-content:space-between;margin-top:48px;display:flex;align-items:center;gap:clamp(24px,3vw,48px)}
+  .close .cl-c{font-size:clamp(22px,2.3vw,32px);flex:0 1 13em}
+  .close .cl-btn{margin-top:0;display:inline-flex;gap:14px;padding:0 30px;font-size:13px;letter-spacing:.16em;flex:none}
+}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
 /* entrance: hidden until the motion script takes over (the script is the only thing that adds .js) */
@@ -404,12 +417,12 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
     </a>
   </div>
   <section class="close" aria-labelledby="cl-t">
-    <h2 id="cl-t"><span class="ln">Деякі образи</span><span class="ln"><i>залишаються</i></span><span class="ln">з нами назавжди.</span></h2>
-    <div class="cl-rule" aria-hidden="true"></div>
-    <div class="cl-grid">
-      <p class="cl-s">Можливо, один із них — <b>саме твій.</b></p>
-      <div class="cl-r">
-        <p class="cl-b">Кожна робота має власну історію та сенс. Якщо певний образ відгукнувся тобі, можливо, саме час зробити його частиною свого простору.</p>
+    <div class="cl-stage">
+      <a class="cl-pic" href="works/a-thousand-moments-later/"><img src="img/works/a-thousand-moments-later/art.jpg" alt="A Thousand Moments Later — картина Макса Вітвіцького" width="854" height="1198" loading="lazy"><span class="cl-cap">A Thousand Moments Later</span></a>
+      <h2 id="cl-t"><span class="ln">Деякі образи</span><span class="ln"><i>залишаються</i></span><span class="ln">з нами назавжди.</span></h2>
+      <p class="cl-b">Кожна робота має власну історію та сенс. Якщо певний образ відгукнувся тобі, можливо, саме час зробити його частиною свого простору.</p>
+      <p class="cl-v">Можливо, один із них — <b>саме твій.</b></p>
+      <div class="cl-act">
         <p class="cl-c">Обери роботу, яка тобі близька.</p>
         <a class="cl-btn" href="mailto:maxim.vitvitskiy@gmail.com?subject=%D0%94%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D1%96%D1%81%D1%82%D1%8C%20%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8">Запитати про доступність роботи<i class="ar" aria-hidden="true"></i></a>
       </div>
