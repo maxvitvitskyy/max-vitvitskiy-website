@@ -275,7 +275,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .cl-fly .b3{left:7vw;top:46vw;width:9vw;--r:10deg;animation-duration:6.5s}
 .cl-fly .b11{left:-2vw;top:66vw;width:22vw;--r:-10deg;animation-duration:10s}
 .cl-fly .b9{right:4vw;top:88vw;width:13vw;--r:-8deg;animation-duration:7.5s}
-.cl-fly .b12{left:55vw;bottom:24px;width:15vw;--r:14deg;animation-duration:8.5s;z-index:5}
+.cl-fly .b12{left:55vw;bottom:102px;width:15vw;--r:14deg;animation-duration:8.5s;z-index:5}
 @media(min-width:900px){
   .cl-stage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;min-height:clamp(520px,50vw,700px)}
   .close h2{grid-column:1/9;grid-row:1;align-self:start;font-size:min(9vw,124px)}
@@ -296,6 +296,14 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .cl-fly .b1{left:60%;top:30%;width:4.2vw;--r:12deg;animation-duration:6s}
   .cl-fly .b12{left:calc(75% - 3vw + 205px);right:auto;top:auto;bottom:24px;width:4.6vw;--r:14deg}
 }
+/* social icons, bottom left, level with the button (same neumorphic discs as on the home page) */
+.cl-soc{position:relative;z-index:3;display:flex;gap:12px;margin-top:30px}
+.cl-soc .ico{width:48px;height:48px;border:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#1b1511,#100c0a);color:rgba(241,224,197,.78);box-shadow:7px 8px 16px rgba(0,0,0,.5),-5px -5px 12px rgba(255,236,214,.034),inset 1px 1px 1px rgba(255,236,214,.06),inset -1px -1px 2px rgba(0,0,0,.28);transition:box-shadow .5s var(--ease),color .4s,transform .2s}
+.cl-soc .ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cl-soc .ico:hover{color:#ffc47a;box-shadow:7px 8px 16px rgba(0,0,0,.5),-5px -5px 12px rgba(255,236,214,.04),inset 1px 1px 1px rgba(255,236,214,.07),inset 0 0 18px rgba(255,150,40,.12),0 0 18px rgba(255,140,40,.14)}
+.cl-soc .ico:active{box-shadow:inset 5px 5px 10px rgba(0,0,0,.55),inset -3px -3px 8px rgba(255,236,214,.03);transform:translateY(1px)}
+.cl-soc .ico:focus-visible{outline:2px solid rgba(255,166,48,.7);outline-offset:4px}
+@media(min-width:900px){.cl-soc{grid-column:1/6;grid-row:1;align-self:end;margin:0;gap:16px}.cl-soc .ico{width:52px;height:52px}.cl-soc .ico svg{width:24px;height:24px}}
 @media(prefers-reduced-motion:reduce){.cl-fly .f{animation:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}

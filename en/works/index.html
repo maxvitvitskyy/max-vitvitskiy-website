@@ -271,7 +271,7 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
 .cl-fly .b3{left:7vw;top:46vw;width:9vw;--r:10deg;animation-duration:6.5s}
 .cl-fly .b11{left:-2vw;top:66vw;width:22vw;--r:-10deg;animation-duration:10s}
 .cl-fly .b9{right:4vw;top:88vw;width:13vw;--r:-8deg;animation-duration:7.5s}
-.cl-fly .b12{left:55vw;bottom:24px;width:15vw;--r:14deg;animation-duration:8.5s;z-index:5}
+.cl-fly .b12{left:55vw;bottom:102px;width:15vw;--r:14deg;animation-duration:8.5s;z-index:5}
 @media(min-width:900px){
   .cl-stage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;min-height:clamp(520px,50vw,700px)}
   .close h2{grid-column:1/9;grid-row:1;align-self:start;font-size:min(9vw,124px)}
@@ -292,6 +292,14 @@ footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;
   .cl-fly .b1{left:60%;top:30%;width:4.2vw;--r:12deg;animation-duration:6s}
   .cl-fly .b12{left:calc(75% - 3vw + 205px);right:auto;top:auto;bottom:24px;width:4.6vw;--r:14deg}
 }
+/* social icons, bottom left, level with the button (same neumorphic discs as on the home page) */
+.cl-soc{position:relative;z-index:3;display:flex;gap:12px;margin-top:30px}
+.cl-soc .ico{width:48px;height:48px;border:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#1b1511,#100c0a);color:rgba(241,224,197,.78);box-shadow:7px 8px 16px rgba(0,0,0,.5),-5px -5px 12px rgba(255,236,214,.034),inset 1px 1px 1px rgba(255,236,214,.06),inset -1px -1px 2px rgba(0,0,0,.28);transition:box-shadow .5s var(--ease),color .4s,transform .2s}
+.cl-soc .ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cl-soc .ico:hover{color:#ffc47a;box-shadow:7px 8px 16px rgba(0,0,0,.5),-5px -5px 12px rgba(255,236,214,.04),inset 1px 1px 1px rgba(255,236,214,.07),inset 0 0 18px rgba(255,150,40,.12),0 0 18px rgba(255,140,40,.14)}
+.cl-soc .ico:active{box-shadow:inset 5px 5px 10px rgba(0,0,0,.55),inset -3px -3px 8px rgba(255,236,214,.03);transform:translateY(1px)}
+.cl-soc .ico:focus-visible{outline:2px solid rgba(255,166,48,.7);outline-offset:4px}
+@media(min-width:900px){.cl-soc{grid-column:1/6;grid-row:1;align-self:end;margin:0;gap:16px}.cl-soc .ico{width:52px;height:52px}.cl-soc .ico svg{width:24px;height:24px}}
 @media(prefers-reduced-motion:reduce){.cl-fly .f{animation:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .gs-busy,.gs-busy .alt,.rv-busy,.rv-busy img{transition:none!important}
@@ -455,6 +463,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
           <a class="cl-btn" href="mailto:maxim.vitvitskiy@gmail.com?subject=Artwork%20availability">Ask about a work</a>
         </div>
       </div>
+      <div class="cl-soc" aria-label="Social media"><a class="ico" href="https://www.instagram.com/maxvitvitskiy/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a><a class="ico" href="https://www.youtube.com/@MaxVitvitskiy" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z"/></svg></a><a class="ico" href="https://www.tiktok.com/@maxvitvitskiy" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.7 3.7 0 1 1-3.7-3.7"/><path d="M14 3.5c.3 2.5 1.9 4.2 4.5 4.4"/></svg></a><a class="ico" href="https://t.me/maxvitvitskiy" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4.2 3.6 10.8l5.2 1.9 1.9 5.6 2.9-3.4 4.4 3.2z"/><path d="m8.8 12.7 7.9-5.3"/></svg></a></div>
       <div class="cl-fly" aria-hidden="true"><div class="vase"><img src="img/butterflies/vase.webp" alt="" width="737" height="1000" loading="lazy" decoding="async"></div><img class="f b8 far" src="img/butterflies/b8.webp" alt="" width="420" height="328" loading="lazy" decoding="async"><img class="f b10 near" src="img/butterflies/b10.webp" alt="" width="400" height="358" loading="lazy" decoding="async"><img class="f b5 near" src="img/butterflies/b5.webp" alt="" width="420" height="325" loading="lazy" decoding="async"><img class="f b4 mid" src="img/butterflies/b4.webp" alt="" width="420" height="357" loading="lazy" decoding="async"><img class="f b3 far" src="img/butterflies/b3.webp" alt="" width="405" height="382" loading="lazy" decoding="async"><img class="f b11 near" src="img/butterflies/b11.webp" alt="" width="420" height="303" loading="lazy" decoding="async"><img class="f b9 mid" src="img/butterflies/b9.webp" alt="" width="353" height="358" loading="lazy" decoding="async"><img class="f b1 far" src="img/butterflies/b1.webp" alt="" width="402" height="386" loading="lazy" decoding="async"><img class="f b12 near" src="img/butterflies/b12.webp" alt="" width="406" height="317" loading="lazy" decoding="async"></div>
     </div>
   </section>
