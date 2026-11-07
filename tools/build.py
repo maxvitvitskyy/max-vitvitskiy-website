@@ -50,7 +50,7 @@ def ver(p):
 
 
 def thumb(s):
-    return re.sub(r'/(\d)\.jpg$', r'/t\1.jpg', s)
+    return re.sub(r'/(\d)\.webp$', r'/t\1.webp', s)
 
 
 def clip(t, n=158):
@@ -298,7 +298,7 @@ def home(W, WE):
         src = src.replace('https://maxvitvitskiy.com/img/og.jpg', SITE + H['og'])
         src = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">\n' + alternates('', 'en/').rstrip('\n'), src, count=1)
         src = re.sub(r'<meta property="og:url" content="[^"]*">', lambda m: f'<meta property="og:url" content="{url}">\n<meta property="og:locale" content="{"en_US" if en else "uk_UA"}">\n<meta property="og:locale:alternate" content="{"uk_UA" if en else "en_US"}">', src, count=1)
-        person = {'@context': 'https://schema.org', '@type': 'Person', 'name': 'Max Vitvitskiy', 'url': SITE, 'image': SITE + 'img/about.jpg',
+        person = {'@context': 'https://schema.org', '@type': 'Person', 'name': 'Max Vitvitskiy', 'url': SITE, 'image': SITE + 'img/about.webp',
                   'jobTitle': ['Artist', 'Experience Designer', 'Creative Mentor'] if en else ['Художник', 'Дизайнер вражень', 'Ментор креативності'],
                   'sameAs': ['https://www.instagram.com/maxvitvitskiy/', 'https://www.youtube.com/@MaxVitvitskiy', 'https://www.tiktok.com/@maxvitvitskiy', 'https://t.me/maxvitvitskiy']}
         src = src.replace('<script>document.documentElement.classList.add("js")</script>', '<script type="application/ld+json">' + json.dumps(person, ensure_ascii=False) + '</script>\n<script>document.documentElement.classList.add("js")</script>', 1)

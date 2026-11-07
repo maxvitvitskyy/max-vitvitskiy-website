@@ -3,18 +3,18 @@
   "slug": "introspectum",
   "n": 30,
   "title": "Introspectum",
-  "img": "img/works/introspectum/card.jpg",
+  "img": "img/works/introspectum/card.webp",
   "cardAlt": "Introspectum в інтер’єрі — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Символічна робота про внутрішню подорож: око в центрі спіралі, фази місяця, метелики й глибокі червоні та смарагдові тони. Про самопізнання, усвідомленість і зміну, що відбувається, коли ми залишаємося в процесі.",
   "imgs": [
-   "img/works/introspectum/1.jpg",
-   "img/works/introspectum/2.jpg",
-   "img/works/introspectum/3.jpg",
-   "img/works/introspectum/4.jpg",
-   "img/works/introspectum/5.jpg"
+   "img/works/introspectum/1.webp",
+   "img/works/introspectum/2.webp",
+   "img/works/introspectum/3.webp",
+   "img/works/introspectum/4.webp",
+   "img/works/introspectum/5.webp"
   ],
   "alts": [
    "Introspectum — око в центрі спіральних сходів серед фаз місяця й метеликів, картина Max Vitvitskiy",
@@ -175,25 +175,25 @@
    "transformation"
   ],
   "meaning": "Деякі уроки повертаються, доки ми не зрозуміємо їх глибше. Робота про внутрішню подорож по спіралі, усвідомленість і зміну, що відбувається в процесі.",
-  "hover": "img/works/introspectum/1.jpg"
+  "hover": "img/works/introspectum/1.webp"
  },
  {
   "slug": "a-thousand-moments-later",
   "n": 29,
   "title": "A Thousand Moments Later",
-  "img": "img/works/a-thousand-moments-later/card.jpg",
+  "img": "img/works/a-thousand-moments-later/card.webp",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Найменші миттєвості можуть змінити день, найменші дні — змінити життя. Дівчина проходить крізь низку арок, і кожна з них — метафора такої миті: вони не повторюються й відкривають новий простір, новий стан. Це не втеча й не пошук, а спосіб прожити. Тисячу миттєвостей потому ти вже не той, ким був.",
   "imgs": [
-   "img/works/a-thousand-moments-later/1.jpg",
-   "img/works/a-thousand-moments-later/7.jpg",
-   "img/works/a-thousand-moments-later/2.jpg",
-   "img/works/a-thousand-moments-later/3.jpg",
-   "img/works/a-thousand-moments-later/4.jpg",
-   "img/works/a-thousand-moments-later/5.jpg",
-   "img/works/a-thousand-moments-later/6.jpg"
+   "img/works/a-thousand-moments-later/1.webp",
+   "img/works/a-thousand-moments-later/7.webp",
+   "img/works/a-thousand-moments-later/2.webp",
+   "img/works/a-thousand-moments-later/3.webp",
+   "img/works/a-thousand-moments-later/4.webp",
+   "img/works/a-thousand-moments-later/5.webp",
+   "img/works/a-thousand-moments-later/6.webp"
   ],
   "sizes": [
    {
@@ -360,26 +360,26 @@
    "flowers",
    "transformation"
   ],
-  "hover": "img/works/a-thousand-moments-later/1.jpg"
+  "hover": "img/works/a-thousand-moments-later/1.webp"
  },
  {
   "slug": "creation",
   "n": 28,
   "title": "Creation",
-  "img": "img/works/creation/card.jpg",
+  "img": "img/works/creation/card.webp",
   "cardAlt": "Creation в інтер’єрі з кам’яною стіною — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Візуальна медитація про красу й таємницю творіння. Жінка й вовк тут не протилежності, а частини одного задуму, а темні квіти, глибокі тіні й тепле бурштинове світло створюють кінематографічну атмосферу тиші й споглядання.",
   "imgs": [
-   "img/works/creation/1.jpg",
-   "img/works/creation/7.jpg",
-   "img/works/creation/2.jpg",
-   "img/works/creation/6.jpg",
-   "img/works/creation/3.jpg",
-   "img/works/creation/4.jpg",
-   "img/works/creation/5.jpg"
+   "img/works/creation/1.webp",
+   "img/works/creation/7.webp",
+   "img/works/creation/2.webp",
+   "img/works/creation/6.webp",
+   "img/works/creation/3.webp",
+   "img/works/creation/4.webp",
+   "img/works/creation/5.webp"
   ],
   "alts": [
    "Creation — жінка й вовк серед темних квітів, картина Max Vitvitskiy",
@@ -543,25 +543,25 @@
   ],
   "year": 2021,
   "meaning": "Жінка й вовк — не протилежності, а частини одного задуму: інтуїція та інстинкт, сила та витонченість. Робота про гармонію творіння й тиху внутрішню силу, що живе в кожному з нас.",
-  "hover": "img/works/creation/1.jpg"
+  "hover": "img/works/creation/1.webp"
  },
  {
   "slug": "natural-light",
   "n": 27,
   "title": "Natural Light",
-  "img": "img/works/natural-light/card.jpg",
+  "img": "img/works/natural-light/card.webp",
   "cardAlt": "Natural Light в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний портрет про те, що світло часто входить у наше життя саме там, де ми почуваємося найбільш захищеними, аж доки цей захист не дає тріщину. Розколотий шолом, метелики й тепле золоте світло складаються в споглядальну історію про зцілення й внутрішнє пробудження.",
   "imgs": [
-   "img/works/natural-light/1.jpg",
-   "img/works/natural-light/6.jpg",
-   "img/works/natural-light/2.jpg",
-   "img/works/natural-light/3.jpg",
-   "img/works/natural-light/4.jpg",
-   "img/works/natural-light/5.jpg"
+   "img/works/natural-light/1.webp",
+   "img/works/natural-light/6.webp",
+   "img/works/natural-light/2.webp",
+   "img/works/natural-light/3.webp",
+   "img/works/natural-light/4.webp",
+   "img/works/natural-light/5.webp"
   ],
   "alts": [
    "Natural Light — портрет у розколотому шоломі, крізь тріщини входить тепле світло й метелики, картина Max Vitvitskiy",
@@ -726,27 +726,27 @@
   ],
   "year": 2022,
   "meaning": "«У всьому є тріщина — саме так входить світло». Робота про те, що вразливість — не слабкість, а відкриття, крізь яке в життя приходять зцілення й зміна.",
-  "hover": "img/works/natural-light/1.jpg"
+  "hover": "img/works/natural-light/1.webp"
  },
  {
   "slug": "open-my-eyes",
   "n": 26,
   "title": "Open My Eyes",
-  "img": "img/works/open-my-eyes/card.jpg",
+  "img": "img/works/open-my-eyes/card.webp",
   "cardAlt": "Open My Eyes в інтер’єрі барної зони — картина Max Vitvitskiy на стіні з теплим світлом",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний портрет про сприйняття, що виходить за межі зору: рибки-півники й троянди частково приховують обличчя й запрошують зазирнути глибше. Смарагдові й мідні тони, багатошарові деталі та тиха напруга між видимим і справжнім.",
   "imgs": [
-   "img/works/open-my-eyes/1.jpg",
-   "img/works/open-my-eyes/7.jpg",
-   "img/works/open-my-eyes/8.jpg",
-   "img/works/open-my-eyes/2.jpg",
-   "img/works/open-my-eyes/6.jpg",
-   "img/works/open-my-eyes/3.jpg",
-   "img/works/open-my-eyes/4.jpg",
-   "img/works/open-my-eyes/5.jpg"
+   "img/works/open-my-eyes/1.webp",
+   "img/works/open-my-eyes/7.webp",
+   "img/works/open-my-eyes/8.webp",
+   "img/works/open-my-eyes/2.webp",
+   "img/works/open-my-eyes/6.webp",
+   "img/works/open-my-eyes/3.webp",
+   "img/works/open-my-eyes/4.webp",
+   "img/works/open-my-eyes/5.webp"
   ],
   "alts": [
    "Open My Eyes — жіночий портрет із рибками-півниками та трояндами, обличчя частково приховане, картина Max Vitvitskiy",
@@ -915,27 +915,27 @@
   ],
   "year": 2021,
   "meaning": "Справжнє бачення починається там, де закінчується зір. Робота про інтуїцію, невидимі шари реальності й сміливість подивитися на те, що ми досі відмовлялися бачити.",
-  "hover": "img/works/open-my-eyes/1.jpg"
+  "hover": "img/works/open-my-eyes/1.webp"
  },
  {
   "slug": "becoming-the-swan",
   "n": 25,
   "title": "Becoming the Swan",
-  "img": "img/works/becoming-the-swan/card.jpg",
+  "img": "img/works/becoming-the-swan/card.webp",
   "cardAlt": "Becoming the Swan в інтер’єрі з жінкою в білій блузі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Символічна сюрреалістична робота про самопізнання — мить, коли сприйняття змінюється і ми починаємо бачити себе не крізь сумнів, а крізь правду. Вишуканий і глибокий акцент, що додає інтер’єру емоції, елегантності й зосередженості.",
   "imgs": [
-   "img/works/becoming-the-swan/1.jpg",
-   "img/works/becoming-the-swan/6.jpg",
-   "img/works/becoming-the-swan/7.jpg",
-   "img/works/becoming-the-swan/8.jpg",
-   "img/works/becoming-the-swan/2.jpg",
-   "img/works/becoming-the-swan/3.jpg",
-   "img/works/becoming-the-swan/4.jpg",
-   "img/works/becoming-the-swan/5.jpg"
+   "img/works/becoming-the-swan/1.webp",
+   "img/works/becoming-the-swan/6.webp",
+   "img/works/becoming-the-swan/7.webp",
+   "img/works/becoming-the-swan/8.webp",
+   "img/works/becoming-the-swan/2.webp",
+   "img/works/becoming-the-swan/3.webp",
+   "img/works/becoming-the-swan/4.webp",
+   "img/works/becoming-the-swan/5.webp"
   ],
   "alts": [
    "Becoming the Swan — жіночий профіль і чорні лебеді в темних тонах, картина Max Vitvitskiy",
@@ -1104,26 +1104,26 @@
   ],
   "year": 2022,
   "meaning": "Гидке каченя перестало бути гидким, коли зрозуміло, що воно лебідь. Робота про мить упізнавання себе: зовні нічого не змінюється, а всередині — все.",
-  "hover": "img/works/becoming-the-swan/1.jpg"
+  "hover": "img/works/becoming-the-swan/1.webp"
  },
  {
   "slug": "rise-from-the-ashes",
   "n": 24,
   "title": "Rise from the Ashes",
-  "img": "img/works/rise-from-the-ashes/card.jpg",
+  "img": "img/works/rise-from-the-ashes/card.webp",
   "cardAlt": "Rise from the Ashes у теплій вітальні з терракотовим диваном — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Символічна робота, натхненна стійкістю України під час російсько-української війни. Жіноча постать серед вогню, соняшника, метеликів і білих голубів — образ відродження, надії, миру й незламності людського духу.",
   "imgs": [
-   "img/works/rise-from-the-ashes/1.jpg",
-   "img/works/rise-from-the-ashes/7.jpg",
-   "img/works/rise-from-the-ashes/2.jpg",
-   "img/works/rise-from-the-ashes/6.jpg",
-   "img/works/rise-from-the-ashes/3.jpg",
-   "img/works/rise-from-the-ashes/4.jpg",
-   "img/works/rise-from-the-ashes/5.jpg"
+   "img/works/rise-from-the-ashes/1.webp",
+   "img/works/rise-from-the-ashes/7.webp",
+   "img/works/rise-from-the-ashes/2.webp",
+   "img/works/rise-from-the-ashes/6.webp",
+   "img/works/rise-from-the-ashes/3.webp",
+   "img/works/rise-from-the-ashes/4.webp",
+   "img/works/rise-from-the-ashes/5.webp"
   ],
   "alts": [
    "Rise from the Ashes — жіноча постать у сяйві соняшника серед вогню, метеликів і білих голубів, картина Max Vitvitskiy",
@@ -1293,24 +1293,24 @@
   ],
   "year": 2022,
   "meaning": "Навіть коли все руйнується, усередині є сила, що знову творить життя. Робота, народжена під час війни, — про незламність України, надію й відродження.",
-  "hover": "img/works/rise-from-the-ashes/1.jpg"
+  "hover": "img/works/rise-from-the-ashes/1.webp"
  },
  {
   "slug": "honor-him",
   "n": 23,
   "title": "Honor Him",
-  "img": "img/works/honor-him/card.jpg",
+  "img": "img/works/honor-him/card.webp",
   "cardAlt": "Honor Him в інтер’єрі — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Християнська робота про жертву Ісуса: лик Христа в терновому вінці серед глибоких червоних і темно-бірюзових тонів. Духовний акцент для дому чи молитовного простору — про зцілення, примирення й любов, що вже збудувала міст.",
   "imgs": [
-   "img/works/honor-him/1.jpg",
-   "img/works/honor-him/2.jpg",
-   "img/works/honor-him/3.jpg",
-   "img/works/honor-him/4.jpg",
-   "img/works/honor-him/5.jpg"
+   "img/works/honor-him/1.webp",
+   "img/works/honor-him/2.webp",
+   "img/works/honor-him/3.webp",
+   "img/works/honor-him/4.webp",
+   "img/works/honor-him/5.webp"
   ],
   "alts": [
    "Honor Him — лик Христа в терновому вінці серед глибоких червоних і бірюзових тонів, картина Max Vitvitskiy",
@@ -1470,25 +1470,25 @@
    "faith"
   ],
   "meaning": "Хрест — це міст між людиною й Богом, збудований Його любов’ю. Робота про жертву Христа, зцілення й надію для кожного, хто почувається зламаним.",
-  "hover": "img/works/honor-him/1.jpg"
+  "hover": "img/works/honor-him/1.webp"
  },
  {
   "slug": "face-the-sun",
   "n": 22,
   "title": "Face the Sun",
-  "img": "img/works/face-the-sun/card.jpg",
+  "img": "img/works/face-the-sun/card.webp",
   "cardAlt": "Face the Sun в інтер’єрі — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Дівчинка серед соняшників, метеликів і птахів у теплому золотому світлі й глибоких синіх тонах — символ віри, внутрішнього напрямку й свідомого вибору йти до світла. Робота, що приносить у дім тепло, надію й духовну глибину.",
   "imgs": [
-   "img/works/face-the-sun/1.jpg",
-   "img/works/face-the-sun/6.jpg",
-   "img/works/face-the-sun/2.jpg",
-   "img/works/face-the-sun/3.jpg",
-   "img/works/face-the-sun/4.jpg",
-   "img/works/face-the-sun/5.jpg"
+   "img/works/face-the-sun/1.webp",
+   "img/works/face-the-sun/6.webp",
+   "img/works/face-the-sun/2.webp",
+   "img/works/face-the-sun/3.webp",
+   "img/works/face-the-sun/4.webp",
+   "img/works/face-the-sun/5.webp"
   ],
   "alts": [
    "Face the Sun — дівчинка серед соняшників, метеликів і птахів у теплому золотому світлі, картина Max Vitvitskiy",
@@ -1655,26 +1655,26 @@
   ],
   "year": 2022,
   "meaning": "Серце, будь соняшником — не лише відкритим для світла, а й постійно оберненим до Бога. Робота про віру, відданість і щоденний вибір іти до світла.",
-  "hover": "img/works/face-the-sun/1.jpg"
+  "hover": "img/works/face-the-sun/1.webp"
  },
  {
   "slug": "in-his-image",
   "n": 21,
   "title": "In His Image",
-  "img": "img/works/in-his-image/card.jpg",
+  "img": "img/works/in-his-image/card.webp",
   "cardAlt": "In His Image у просторій вітальні з дерев’яними панелями — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Максималістський сюрреалістичний колаж: жіночий портрет серед фрагментів класичних скульптур, архітектури, метеликів і птахів. Робота про людську ідентичність як відображення Творця й про пошук себе в образах, що нас надихають.",
   "imgs": [
-   "img/works/in-his-image/1.jpg",
-   "img/works/in-his-image/6.jpg",
-   "img/works/in-his-image/7.jpg",
-   "img/works/in-his-image/2.jpg",
-   "img/works/in-his-image/3.jpg",
-   "img/works/in-his-image/4.jpg",
-   "img/works/in-his-image/5.jpg"
+   "img/works/in-his-image/1.webp",
+   "img/works/in-his-image/6.webp",
+   "img/works/in-his-image/7.webp",
+   "img/works/in-his-image/2.webp",
+   "img/works/in-his-image/3.webp",
+   "img/works/in-his-image/4.webp",
+   "img/works/in-his-image/5.webp"
   ],
   "alts": [
    "In His Image — жіночий портрет у золотій рамі серед класичних скульптур, архітектури й метеликів, картина Max Vitvitskiy",
@@ -1840,25 +1840,25 @@
   ],
   "year": 2021,
   "meaning": "Ми створені на Його образ і шукаємо себе в красі, історіях і символах довкола. Робота про людську гідність, творчість і пам’ять про те, Хто нас створив.",
-  "hover": "img/works/in-his-image/1.jpg"
+  "hover": "img/works/in-his-image/1.webp"
  },
  {
   "slug": "lion-and-lamb",
   "n": 20,
   "title": "Lion and Lamb",
-  "img": "img/works/lion-and-lamb/card.jpg",
+  "img": "img/works/lion-and-lamb/card.webp",
   "cardAlt": "Lion and Lamb в інтер’єрі — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Християнська робота, натхненна біблійним образом Христа як Лева з племені Юди й Агнця Божого: сила й жертва, влада й невинність, явлені в історії спасіння. Змістовний духовний акцент для дому, молитовного простору чи церкви.",
   "imgs": [
-   "img/works/lion-and-lamb/1.jpg",
-   "img/works/lion-and-lamb/6.jpg",
-   "img/works/lion-and-lamb/2.jpg",
-   "img/works/lion-and-lamb/3.jpg",
-   "img/works/lion-and-lamb/4.jpg",
-   "img/works/lion-and-lamb/5.jpg"
+   "img/works/lion-and-lamb/1.webp",
+   "img/works/lion-and-lamb/6.webp",
+   "img/works/lion-and-lamb/2.webp",
+   "img/works/lion-and-lamb/3.webp",
+   "img/works/lion-and-lamb/4.webp",
+   "img/works/lion-and-lamb/5.webp"
   ],
   "alts": [
    "Lion and Lamb — лев у короні й ягня серед метеликів, світла й голуба, картина Max Vitvitskiy",
@@ -2024,26 +2024,26 @@
   ],
   "year": 2022,
   "meaning": "Христос — водночас Лев Юди й Агнець Божий: сила й жертва, влада й смирення. Робота про любов, яка обрала хрест, щоб принести світові спасіння.",
-  "hover": "img/works/lion-and-lamb/1.jpg"
+  "hover": "img/works/lion-and-lamb/1.webp"
  },
  {
   "slug": "miracle",
   "n": 19,
   "title": "Miracle",
-  "img": "img/works/miracle/card.jpg",
+  "img": "img/works/miracle/card.webp",
   "cardAlt": "Miracle в інтер’єрі сходового холу — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Чорно-білий символічний портрет про тихе диво, сховане в кожному людському житті. Спокійний погляд дитини, тропічне листя, пелікан-охоронець і тендітні метелики — споглядальна робота, що додає інтер’єру глибини, тиші й таємниці.",
   "imgs": [
-   "img/works/miracle/1.jpg",
-   "img/works/miracle/7.jpg",
-   "img/works/miracle/2.jpg",
-   "img/works/miracle/6.jpg",
-   "img/works/miracle/3.jpg",
-   "img/works/miracle/4.jpg",
-   "img/works/miracle/5.jpg"
+   "img/works/miracle/1.webp",
+   "img/works/miracle/7.webp",
+   "img/works/miracle/2.webp",
+   "img/works/miracle/6.webp",
+   "img/works/miracle/3.webp",
+   "img/works/miracle/4.webp",
+   "img/works/miracle/5.webp"
   ],
   "alts": [
    "Miracle — чорно-білий портрет дитини серед тропічного листя з пеліканом і метеликами, картина Max Vitvitskiy",
@@ -2211,25 +2211,25 @@
   ],
   "year": 2021,
   "meaning": "Диво, на яке ми чекаємо, часто вже дивиться нашими очима. Робота про невинність, опіку й тихе чудо, що живе в кожному людському житті.",
-  "hover": "img/works/miracle/1.jpg"
+  "hover": "img/works/miracle/1.webp"
  },
  {
   "slug": "while-im-waiting",
   "n": 18,
   "title": "While I’m Waiting",
-  "img": "img/works/while-im-waiting/card.jpg",
+  "img": "img/works/while-im-waiting/card.webp",
   "cardAlt": "While I’m Waiting в інтер’єрі — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Спокійний і сильний білий тигр у сяйливій арці серед квітів і теплого світла — візуальна рефлексія про терпіння, внутрішню силу й довіру до процесу становлення. Акцент, що приносить у спальню, студію чи кабінет спокій, глибину й тиху впевненість.",
   "imgs": [
-   "img/works/while-im-waiting/1.jpg",
-   "img/works/while-im-waiting/6.jpg",
-   "img/works/while-im-waiting/2.jpg",
-   "img/works/while-im-waiting/3.jpg",
-   "img/works/while-im-waiting/4.jpg",
-   "img/works/while-im-waiting/5.jpg"
+   "img/works/while-im-waiting/1.webp",
+   "img/works/while-im-waiting/6.webp",
+   "img/works/while-im-waiting/2.webp",
+   "img/works/while-im-waiting/3.webp",
+   "img/works/while-im-waiting/4.webp",
+   "img/works/while-im-waiting/5.webp"
   ],
   "alts": [
    "While I’m Waiting — білий тигр у сяйливій арці серед квітів і теплого світла, картина Max Vitvitskiy",
@@ -2395,24 +2395,24 @@
   ],
   "year": 2023,
   "meaning": "Важливо не те, на що ми чекаємо, а те, що відбувається з нами в очікуванні. Робота про терпіння, довіру до процесу й силу, якій не потрібно поспішати.",
-  "hover": "img/works/while-im-waiting/1.jpg"
+  "hover": "img/works/while-im-waiting/1.webp"
  },
  {
   "slug": "look-inside",
   "n": 17,
   "title": "Look Inside",
-  "img": "img/works/look-inside/card.jpg",
+  "img": "img/works/look-inside/card.webp",
   "cardAlt": "Look Inside в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний портрет жінки із зав’язаними очима серед квітів, метеликів і символічних образів — сильна візуальна рефлексія про внутрішній зір, самоусвідомлення й пробудження. Акцент, що додає інтер’єру глибини, таємниці й сенсу.",
   "imgs": [
-   "img/works/look-inside/1.jpg",
-   "img/works/look-inside/2.jpg",
-   "img/works/look-inside/3.jpg",
-   "img/works/look-inside/4.jpg",
-   "img/works/look-inside/5.jpg"
+   "img/works/look-inside/1.webp",
+   "img/works/look-inside/2.webp",
+   "img/works/look-inside/3.webp",
+   "img/works/look-inside/4.webp",
+   "img/works/look-inside/5.webp"
   ],
   "alts": [
    "Look Inside — жінка із зав’язаними очима серед квітів, метеликів і символів часу, картина Max Vitvitskiy",
@@ -2577,25 +2577,25 @@
   ],
   "year": 2023,
   "meaning": "Хто дивиться назовні — мріє, хто дивиться всередину — прокидається. Робота про внутрішній зір: усе, що ми шукаємо, ніколи не було поза нами.",
-  "hover": "img/works/look-inside/1.jpg"
+  "hover": "img/works/look-inside/1.webp"
  },
  {
   "slug": "friendship",
   "n": 16,
   "title": "Friendship",
-  "img": "img/works/friendship/card.jpg",
+  "img": "img/works/friendship/card.webp",
   "cardAlt": "Friendship в інтер’єрі — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістична анімалістична робота про несподівану мить гармонії й довіри: величний тигр і маленька смілива білка серед червоних троянд. Тепло, таємниця й відчуття дива для вітальні, кабінету чи спальні.",
   "imgs": [
-   "img/works/friendship/1.jpg",
-   "img/works/friendship/6.jpg",
-   "img/works/friendship/2.jpg",
-   "img/works/friendship/3.jpg",
-   "img/works/friendship/4.jpg",
-   "img/works/friendship/5.jpg"
+   "img/works/friendship/1.webp",
+   "img/works/friendship/6.webp",
+   "img/works/friendship/2.webp",
+   "img/works/friendship/3.webp",
+   "img/works/friendship/4.webp",
+   "img/works/friendship/5.webp"
   ],
   "alts": [
    "Friendship — тигр і маленька білка серед червоних троянд і метеликів, картина Max Vitvitskiy",
@@ -2761,25 +2761,25 @@
   ],
   "year": 2021,
   "meaning": "Те, що нас об’єднує, сильніше за те, що роз’єднує. Робота про довіру між найрізнішими створіннями: справжня сила — бути ніжним, справжня сміливість — довіритися.",
-  "hover": "img/works/friendship/1.jpg"
+  "hover": "img/works/friendship/1.webp"
  },
  {
   "slug": "who-you-are",
   "n": 15,
   "title": "Who You Are",
-  "img": "img/works/who-you-are/card.jpg",
+  "img": "img/works/who-you-are/card.webp",
   "cardAlt": "Who You Are в інтер’єрі — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Максималістська сюрреалістична робота про шлях до себе: величний олень у золотих прикрасах серед тропічної зелені й екзотичних птахів. Візуальна медитація про різницю між соціальними масками й нашою справжньою суттю.",
   "imgs": [
-   "img/works/who-you-are/1.jpg",
-   "img/works/who-you-are/6.jpg",
-   "img/works/who-you-are/2.jpg",
-   "img/works/who-you-are/3.jpg",
-   "img/works/who-you-are/4.jpg",
-   "img/works/who-you-are/5.jpg"
+   "img/works/who-you-are/1.webp",
+   "img/works/who-you-are/6.webp",
+   "img/works/who-you-are/2.webp",
+   "img/works/who-you-are/3.webp",
+   "img/works/who-you-are/4.webp",
+   "img/works/who-you-are/5.webp"
   ],
   "alts": [
    "Who You Are — олень у золотих прикрасах серед тропічного листя й екзотичних птахів, картина Max Vitvitskiy",
@@ -2944,24 +2944,24 @@
   ],
   "year": 2021,
   "meaning": "Мир приходить не від зміни обставин, а від усвідомлення, хто ти є. Робота про різницю між соціальними масками й справжньою суттю, яка лишається незмінною.",
-  "hover": "img/works/who-you-are/1.jpg"
+  "hover": "img/works/who-you-are/1.webp"
  },
  {
   "slug": "depths",
   "n": 14,
   "title": "Depths",
-  "img": "img/works/depths/card.jpg",
+  "img": "img/works/depths/card.webp",
   "cardAlt": "Depths в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Жінка піднімається крізь глибоку океанську темряву серед сяйливих медуз і теплого золотого світла — символ зцілення, внутрішньої зміни й краси, що народжується через боротьбу. Робота, що приносить у простір емоційну глибину, тепло й рефлексію.",
   "imgs": [
-   "img/works/depths/1.jpg",
-   "img/works/depths/2.jpg",
-   "img/works/depths/3.jpg",
-   "img/works/depths/4.jpg",
-   "img/works/depths/5.jpg"
+   "img/works/depths/1.webp",
+   "img/works/depths/2.webp",
+   "img/works/depths/3.webp",
+   "img/works/depths/4.webp",
+   "img/works/depths/5.webp"
   ],
   "alts": [
    "Depths — жінка піднімається з глибини океану серед сяйливих медуз і теплого світла, картина Max Vitvitskiy",
@@ -3126,25 +3126,25 @@
   ],
   "year": 2022,
   "meaning": "Найпрекрасніші люди — ті, хто пройшов крізь глибини й не втратив здатності любити. Робота про зцілення й красу, що народжується з боротьби.",
-  "hover": "img/works/depths/1.jpg"
+  "hover": "img/works/depths/1.webp"
  },
  {
   "slug": "beautiful-things",
   "n": 13,
   "title": "Beautiful Things",
-  "img": "img/works/beautiful-things/card.jpg",
+  "img": "img/works/beautiful-things/card.webp",
   "cardAlt": "Beautiful Things у темному інтер’єрі з жінкою в чорній сукні — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Символічна робота про тиху впевненість — ту, що не шукає уваги, але природно її притягує. Лебідь під повним місяцем, тепле світло в темряві й мить спокою: спокійний і вишуканий акцент, що наповнює інтер’єр атмосферою й глибиною.",
   "imgs": [
-   "img/works/beautiful-things/1.jpg",
-   "img/works/beautiful-things/6.jpg",
-   "img/works/beautiful-things/2.jpg",
-   "img/works/beautiful-things/3.jpg",
-   "img/works/beautiful-things/4.jpg",
-   "img/works/beautiful-things/5.jpg"
+   "img/works/beautiful-things/1.webp",
+   "img/works/beautiful-things/6.webp",
+   "img/works/beautiful-things/2.webp",
+   "img/works/beautiful-things/3.webp",
+   "img/works/beautiful-things/4.webp",
+   "img/works/beautiful-things/5.webp"
   ],
   "alts": [
    "Beautiful Things — білий лебідь під повним місяцем серед теплого світла й квітів, картина Max Vitvitskiy",
@@ -3309,25 +3309,25 @@
   ],
   "year": 2022,
   "meaning": "Як місяць, прекрасні речі ніколи не випрошують уваги. Робота про тиху впевненість і красу, якій не потрібно нічого доводити, — вона просто є.",
-  "hover": "img/works/beautiful-things/1.jpg"
+  "hover": "img/works/beautiful-things/1.webp"
  },
  {
   "slug": "introvert",
   "n": 12,
   "title": "Introvert",
-  "img": "img/works/introvert/card.jpg",
+  "img": "img/works/introvert/card.webp",
   "cardAlt": "Introvert у теплій вітальні з вечірнім світлом — картина Max Vitvitskiy",
   "cat": "nature",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сова в різьбленій рамі серед квітів і глибоких темних тонів — робота про тиху силу, мудрість і ясність, що приходить не від того, щоб робити більше, а від того, щоб бачити глибше.",
   "imgs": [
-   "img/works/introvert/1.jpg",
-   "img/works/introvert/6.jpg",
-   "img/works/introvert/2.jpg",
-   "img/works/introvert/3.jpg",
-   "img/works/introvert/4.jpg",
-   "img/works/introvert/5.jpg"
+   "img/works/introvert/1.webp",
+   "img/works/introvert/6.webp",
+   "img/works/introvert/2.webp",
+   "img/works/introvert/3.webp",
+   "img/works/introvert/4.webp",
+   "img/works/introvert/5.webp"
   ],
   "alts": [
    "Introvert — сова в різьбленій рамі серед квітів і темної зелені, картина Max Vitvitskiy",
@@ -3492,25 +3492,25 @@
   ],
   "year": 2024,
   "meaning": "Силу не потрібно доводити, а ясність приходить від того, щоб бачити глибше. Робота про тиху мудрість і цінність власного ритму.",
-  "hover": "img/works/introvert/1.jpg"
+  "hover": "img/works/introvert/1.webp"
  },
  {
   "slug": "ataro",
   "n": 11,
   "title": "Ataro",
-  "img": "img/works/ataro/card.jpg",
+  "img": "img/works/ataro/card.webp",
   "cardAlt": "Ataro в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний жіночий портрет: метелик прикриває око, довкола — яскраві червоні квіти, глибокий синій і екзотичні птахи. Сміливий емоційний акцент із драматичним колірним контрастом для вітальні, спальні чи творчої студії.",
   "imgs": [
-   "img/works/ataro/1.jpg",
-   "img/works/ataro/6.jpg",
-   "img/works/ataro/2.jpg",
-   "img/works/ataro/3.jpg",
-   "img/works/ataro/4.jpg",
-   "img/works/ataro/5.jpg"
+   "img/works/ataro/1.webp",
+   "img/works/ataro/6.webp",
+   "img/works/ataro/2.webp",
+   "img/works/ataro/3.webp",
+   "img/works/ataro/4.webp",
+   "img/works/ataro/5.webp"
   ],
   "alts": [
    "Ataro — жіночий портрет із метеликом на оці серед червоних квітів і синіх птахів, картина Max Vitvitskiy",
@@ -3679,25 +3679,25 @@
   ],
   "year": 2022,
   "meaning": "Якби це можна було сказати словами, не було б причини малювати. Робота про те, що живе поза мовою: емоцію, перетворення й невидимі шари ідентичності.",
-  "hover": "img/works/ataro/1.jpg"
+  "hover": "img/works/ataro/1.webp"
  },
  {
   "slug": "soul-awakening",
   "n": 10,
   "title": "Soul Awakening",
-  "img": "img/works/soul-awakening/card.jpg",
+  "img": "img/works/soul-awakening/card.webp",
   "cardAlt": "Soul Awakening в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Драматичний сюрреалістичний портрет про мить, коли людський дух пробуджується через любов і внутрішнє перетворення. Жіноча постать постає з хвиль кольору й світла серед червоних папуг і пелюсток — робота, що наповнює інтер’єр емоцією, енергією й рухом.",
   "imgs": [
-   "img/works/soul-awakening/1.jpg",
-   "img/works/soul-awakening/6.jpg",
-   "img/works/soul-awakening/2.jpg",
-   "img/works/soul-awakening/3.jpg",
-   "img/works/soul-awakening/4.jpg",
-   "img/works/soul-awakening/5.jpg"
+   "img/works/soul-awakening/1.webp",
+   "img/works/soul-awakening/6.webp",
+   "img/works/soul-awakening/2.webp",
+   "img/works/soul-awakening/3.webp",
+   "img/works/soul-awakening/4.webp",
+   "img/works/soul-awakening/5.webp"
   ],
   "alts": [
    "Soul Awakening — жіноча постать у вибуху червоного кольору з папугами й пелюстками, картина Max Vitvitskiy",
@@ -3864,25 +3864,25 @@
   ],
   "year": 2021,
   "meaning": "Серце розквітає лише тоді, коли його торкається любов. Робота про мить, коли внутрішня сила прокидається й людина наважується відкритися.",
-  "hover": "img/works/soul-awakening/1.jpg"
+  "hover": "img/works/soul-awakening/1.webp"
  },
  {
   "slug": "manifest-yourself",
   "n": 9,
   "title": "Manifest Yourself",
-  "img": "img/works/manifest-yourself/card.jpg",
+  "img": "img/works/manifest-yourself/card.webp",
   "cardAlt": "Manifest Yourself в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сильна жінка-музикантка у вихорі тканини, дикої енергії й кінематографічного руху — візуальний вираз сміливості, творення й втілення задуманого. Яскравий акцент, що наповнює інтер’єр, студію чи вітальню пристрастю й творчою енергією.",
   "imgs": [
-   "img/works/manifest-yourself/1.jpg",
-   "img/works/manifest-yourself/6.jpg",
-   "img/works/manifest-yourself/2.jpg",
-   "img/works/manifest-yourself/3.jpg",
-   "img/works/manifest-yourself/4.jpg",
-   "img/works/manifest-yourself/5.jpg"
+   "img/works/manifest-yourself/1.webp",
+   "img/works/manifest-yourself/6.webp",
+   "img/works/manifest-yourself/2.webp",
+   "img/works/manifest-yourself/3.webp",
+   "img/works/manifest-yourself/4.webp",
+   "img/works/manifest-yourself/5.webp"
   ],
   "alts": [
    "Manifest Yourself — жінка з віолончеллю у вихорі червоної тканини поруч із леопардами, картина Max Vitvitskiy",
@@ -4048,25 +4048,25 @@
   ],
   "year": 2023,
   "meaning": "У сміливості є геній, сила й магія — почни зараз. Робота про мить, коли ти вирішуєш не чекати ідеального моменту й перетворюєш задум на дію.",
-  "hover": "img/works/manifest-yourself/1.jpg"
+  "hover": "img/works/manifest-yourself/1.webp"
  },
  {
   "slug": "in-your-light",
   "n": 8,
   "title": "In Your Light",
-  "img": "img/works/in-your-light/card.jpg",
+  "img": "img/works/in-your-light/card.webp",
   "cardAlt": "In Your Light в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Пара в тихій, інтимній миті серед м’яких квітів, сяйва й теплих кінематографічних тонів — символ любові, зв’язку й внутрішнього світла, яке ми знаходимо через іншу людину. Робота, що приносить у спальню чи вітальню тепло й емоційну глибину.",
   "imgs": [
-   "img/works/in-your-light/1.jpg",
-   "img/works/in-your-light/6.jpg",
-   "img/works/in-your-light/2.jpg",
-   "img/works/in-your-light/3.jpg",
-   "img/works/in-your-light/4.jpg",
-   "img/works/in-your-light/5.jpg"
+   "img/works/in-your-light/1.webp",
+   "img/works/in-your-light/6.webp",
+   "img/works/in-your-light/2.webp",
+   "img/works/in-your-light/3.webp",
+   "img/works/in-your-light/4.webp",
+   "img/works/in-your-light/5.webp"
   ],
   "alts": [
    "In Your Light — силуети закоханої пари в теплому сяйві серед квітів, картина Max Vitvitskiy",
@@ -4231,24 +4231,24 @@
   ],
   "year": 2022,
   "meaning": "«У твоєму світлі я вчуся любити». Робота про любов, що стає світлом: тиху присутність іншої людини, яка змінює не лише те, що ми відчуваємо, а й те, як бачимо.",
-  "hover": "img/works/in-your-light/1.jpg"
+  "hover": "img/works/in-your-light/1.webp"
  },
  {
   "slug": "depths-of-becoming",
   "n": 7,
   "title": "Depths of Becoming",
-  "img": "img/works/depths-of-becoming/card.jpg",
+  "img": "img/works/depths-of-becoming/card.webp",
   "cardAlt": "Depths of Becoming в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний образ жінки в глибокій бірюзовій воді, осяяної золотим світлом, — робота про перетворення й про те, ким ми стаємо, коли наважуємося піти глибше.",
   "imgs": [
-   "img/works/depths-of-becoming/1.jpg",
-   "img/works/depths-of-becoming/2.jpg",
-   "img/works/depths-of-becoming/3.jpg",
-   "img/works/depths-of-becoming/4.jpg",
-   "img/works/depths-of-becoming/5.jpg"
+   "img/works/depths-of-becoming/1.webp",
+   "img/works/depths-of-becoming/2.webp",
+   "img/works/depths-of-becoming/3.webp",
+   "img/works/depths-of-becoming/4.webp",
+   "img/works/depths-of-becoming/5.webp"
   ],
   "alts": [
    "Depths of Becoming — жінка в глибокій бірюзовій воді в золотому світлі, картина Max Vitvitskiy",
@@ -4411,25 +4411,25 @@
   ],
   "year": 2022,
   "meaning": "Ми стаємо собою, коли наважуємося піти глибше й відпустити поверхню. Робота про перетворення, що відбувається в тиші й невідомому.",
-  "hover": "img/works/depths-of-becoming/1.jpg"
+  "hover": "img/works/depths-of-becoming/1.webp"
  },
  {
   "slug": "peace-of-mind",
   "n": 6,
   "title": "Peace of Mind",
-  "img": "img/works/peace-of-mind/card.jpg",
+  "img": "img/works/peace-of-mind/card.webp",
   "cardAlt": "Peace of Mind в інтер’єрі — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Спокійний жіночий образ серед глибокої зелені й теплого світла — робота про внутрішній мир, усвідомленість і людську глибину. Акцент, що приносить у дім тишу й рівновагу.",
   "imgs": [
-   "img/works/peace-of-mind/1.jpg",
-   "img/works/peace-of-mind/6.jpg",
-   "img/works/peace-of-mind/2.jpg",
-   "img/works/peace-of-mind/3.jpg",
-   "img/works/peace-of-mind/4.jpg",
-   "img/works/peace-of-mind/5.jpg"
+   "img/works/peace-of-mind/1.webp",
+   "img/works/peace-of-mind/6.webp",
+   "img/works/peace-of-mind/2.webp",
+   "img/works/peace-of-mind/3.webp",
+   "img/works/peace-of-mind/4.webp",
+   "img/works/peace-of-mind/5.webp"
   ],
   "alts": [
    "Peace of Mind — жінка в спокої серед глибокої зелені й теплого світла, картина Max Vitvitskiy",
@@ -4593,25 +4593,25 @@
   ],
   "year": 2023,
   "meaning": "Спокій — не втеча від світу, а тиха опора всередині. Робота про усвідомленість і внутрішній мир, що тримає навіть тоді, коли довкола неспокійно.",
-  "hover": "img/works/peace-of-mind/1.jpg"
+  "hover": "img/works/peace-of-mind/1.webp"
  },
  {
   "slug": "god-is-fighting-for-us",
   "n": 5,
   "title": "God Is Fighting For Us",
-  "img": "img/works/god-is-fighting-for-us/card.jpg",
+  "img": "img/works/god-is-fighting-for-us/card.webp",
   "cardAlt": "God Is Fighting For Us в інтер’єрі — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Християнська робота про духовну боротьбу й Божий захист: архангел у золотих обладунках із розгорнутими крилами серед світла, квітів і полум’я. Створена 2022 року як нагадування, що навіть у найтемніший час ми не самі.",
   "imgs": [
-   "img/works/god-is-fighting-for-us/1.jpg",
-   "img/works/god-is-fighting-for-us/6.jpg",
-   "img/works/god-is-fighting-for-us/2.jpg",
-   "img/works/god-is-fighting-for-us/3.jpg",
-   "img/works/god-is-fighting-for-us/4.jpg",
-   "img/works/god-is-fighting-for-us/5.jpg"
+   "img/works/god-is-fighting-for-us/1.webp",
+   "img/works/god-is-fighting-for-us/6.webp",
+   "img/works/god-is-fighting-for-us/2.webp",
+   "img/works/god-is-fighting-for-us/3.webp",
+   "img/works/god-is-fighting-for-us/4.webp",
+   "img/works/god-is-fighting-for-us/5.webp"
   ],
   "alts": [
    "God Is Fighting For Us — архангел у золотих обладунках із розгорнутими крилами серед квітів і вогню, картина Max Vitvitskiy",
@@ -4775,23 +4775,23 @@
   ],
   "year": 2022,
   "meaning": "«Господь воюватиме за вас, а ви будьте спокійні». Робота, створена у 2022 році, — про Божий захист і віру в те, що навіть у найтемніший час ми не самі.",
-  "hover": "img/works/god-is-fighting-for-us/1.jpg"
+  "hover": "img/works/god-is-fighting-for-us/1.webp"
  },
  {
   "slug": "we-are-mosaics",
   "n": 4,
   "title": "We Are Mosaics",
-  "img": "img/works/we-are-mosaics/card.jpg",
+  "img": "img/works/we-are-mosaics/card.webp",
   "cardAlt": "We Are Mosaics у темній вітальні — велика картина-мозаїка з портретом жінки, чорним лебедем і тигром",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний портрет про красу зцілення й єдності: фрагменти нашого життя складаються в дивовижну цілісність. Чорний лебідь і тигр, золоте сяйво крізь тріщини, вітражна арка. Робота для вітальні, кабінету чи спальні й змістовний подарунок.",
   "imgs": [
-   "img/works/we-are-mosaics/1.jpg",
-   "img/works/we-are-mosaics/2.jpg",
-   "img/works/we-are-mosaics/3.jpg",
-   "img/works/we-are-mosaics/4.jpg"
+   "img/works/we-are-mosaics/1.webp",
+   "img/works/we-are-mosaics/2.webp",
+   "img/works/we-are-mosaics/3.webp",
+   "img/works/we-are-mosaics/4.webp"
   ],
   "alts": [
    "We Are Mosaics — портрет жінки з червоною квіткою у волоссі, чорний лебідь і тигр у вітражній арці, картина Max Vitvitskiy",
@@ -4959,25 +4959,25 @@
   ],
   "year": 2024,
   "meaning": "Усі ми — мозаїки: кожна тріщина на шляху — місце, крізь яке пробивається світло.",
-  "hover": "img/works/we-are-mosaics/1.jpg"
+  "hover": "img/works/we-are-mosaics/1.webp"
  },
  {
   "slug": "bloom-with-grace",
   "n": 3,
   "title": "Bloom with Grace",
-  "img": "img/works/bloom-with-grace/card.jpg",
+  "img": "img/works/bloom-with-grace/card.webp",
   "cardAlt": "Bloom with Grace в темній кімнаті з жінкою в червоній сукні — картина Max Vitvitskiy",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістична підводна жіноча постать серед червоних риб, органічних форм і фактур океанської глибини — сильна історія про перетворення, стійкість і красу навіть у глибині. Робота з емоційною глибиною, таємницею й сміливою присутністю.",
   "imgs": [
-   "img/works/bloom-with-grace/1.jpg",
-   "img/works/bloom-with-grace/6.jpg",
-   "img/works/bloom-with-grace/2.jpg",
-   "img/works/bloom-with-grace/3.jpg",
-   "img/works/bloom-with-grace/4.jpg",
-   "img/works/bloom-with-grace/5.jpg"
+   "img/works/bloom-with-grace/1.webp",
+   "img/works/bloom-with-grace/6.webp",
+   "img/works/bloom-with-grace/2.webp",
+   "img/works/bloom-with-grace/3.webp",
+   "img/works/bloom-with-grace/4.webp",
+   "img/works/bloom-with-grace/5.webp"
   ],
   "alts": [
    "Bloom with Grace — жінка під водою серед червоних риб, восьминога й органічних форм, картина Max Vitvitskiy",
@@ -5144,25 +5144,25 @@
   ],
   "year": 2023,
   "meaning": "Де б тебе не посадило життя — розквітай із гідністю. Робота про силу ставати собою навіть у глибині, під тиском і в невідомому, не втрачаючи м’якості.",
-  "hover": "img/works/bloom-with-grace/1.jpg"
+  "hover": "img/works/bloom-with-grace/1.webp"
  },
  {
   "slug": "prepare-the-way-for-the-king",
   "n": 2,
   "title": "Prepare the Way for the King",
-  "img": "img/works/prepare-the-way-for-the-king/card.jpg",
+  "img": "img/works/prepare-the-way-for-the-king/card.webp",
   "cardAlt": "Prepare the Way for the King у високій вітальні з бордовим диваном — картина Max Vitvitskiy",
   "cat": "faith",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Християнська різдвяна робота про народження Ісуса: тепле світло, глибокий червоний і золото, тварини біля ясел. Створена, щоб надихати, поглиблювати віру й приносити духовний сенс у щоденний простір.",
   "imgs": [
-   "img/works/prepare-the-way-for-the-king/1.jpg",
-   "img/works/prepare-the-way-for-the-king/6.jpg",
-   "img/works/prepare-the-way-for-the-king/2.jpg",
-   "img/works/prepare-the-way-for-the-king/3.jpg",
-   "img/works/prepare-the-way-for-the-king/4.jpg",
-   "img/works/prepare-the-way-for-the-king/5.jpg"
+   "img/works/prepare-the-way-for-the-king/1.webp",
+   "img/works/prepare-the-way-for-the-king/6.webp",
+   "img/works/prepare-the-way-for-the-king/2.webp",
+   "img/works/prepare-the-way-for-the-king/3.webp",
+   "img/works/prepare-the-way-for-the-king/4.webp",
+   "img/works/prepare-the-way-for-the-king/5.webp"
   ],
   "alts": [
    "Prepare the Way for the King — різдвяна сцена в теплому світлі з червоними тканинами й тваринами біля ясел, картина Max Vitvitskiy",
@@ -5326,23 +5326,23 @@
   ],
   "year": 2023,
   "meaning": "«Приготуйте дорогу Господеві». Різдвяна робота про Бога, що приходить у світ тихо й просто, і про місце, яке ми готуємо для Нього в серці.",
-  "hover": "img/works/prepare-the-way-for-the-king/1.jpg"
+  "hover": "img/works/prepare-the-way-for-the-king/1.webp"
  },
  {
   "slug": "waterline",
   "n": 1,
   "title": "Waterline",
-  "img": "img/works/waterline/card.jpg",
+  "img": "img/works/waterline/card.webp",
   "cardAlt": "Waterline в інтер’єрі з бордовим диваном — велика картина з портретом, червоними квітами й водою",
   "cat": "portrait",
   "status": "Доступна",
   "edition": "Тираж 10",
   "desc": "Сюрреалістичний портрет про межу між внутрішнім «я» й зовнішнім світом: вода, застигла на рівні губ, багряні сліди на темній шкірі й заплющені очі. Робота для тих, хто шукає глибокий, філософський акцент для кабінету, вітальні чи спальні, і для колекціонерів, яким близька тема самопізнання.",
   "imgs": [
-   "img/works/waterline/1.jpg",
-   "img/works/waterline/2.jpg",
-   "img/works/waterline/3.jpg",
-   "img/works/waterline/4.jpg"
+   "img/works/waterline/1.webp",
+   "img/works/waterline/2.webp",
+   "img/works/waterline/3.webp",
+   "img/works/waterline/4.webp"
   ],
   "alts": [
    "Waterline — портрет із заплющеними очима, багряними слідами на темній шкірі й водою на рівні губ, картина Max Vitvitskiy",
@@ -5506,6 +5506,6 @@
   ],
   "year": 2025,
   "meaning": "Межа між собою і світом: потонути у власній правді чи лишитися на поверхні ціною власного голосу.",
-  "hover": "img/works/waterline/1.jpg"
+  "hover": "img/works/waterline/1.webp"
  }
 ]
