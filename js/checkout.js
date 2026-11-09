@@ -149,7 +149,7 @@ var css=`
 .co-hide:not(.on){display:none}
 .co-hide.on{animation:coRv .5s var(--ease) both}
 @keyframes coRv{from{opacity:0;transform:translateY(-6px)}}
-.co-fine{font-size:13px;line-height:1.55;color:rgba(241,224,197,.5);max-width:52ch}
+.co-fine{font-size:13px;line-height:1.55;color:rgba(241,224,197,.5);text-wrap:balance}
 /* bottom bar */
 .co-bar{display:flex;align-items:center;gap:12px;padding:16px clamp(24px,3.4vw,48px) calc(18px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,236,214,.06);background:linear-gradient(180deg,rgba(14,11,9,.6),#0e0b09)}
 .co-bk{min-height:52px;padding:0 22px;border-radius:99px;border:1px solid rgba(255,236,214,.12);background:none;color:var(--cream);font:500 13px var(--body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,opacity .3s}
