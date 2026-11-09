@@ -918,7 +918,11 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 /* the button shares the doorway's glow: both light up together */
 .c-send:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .c-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
-.c-legal{margin:18px auto 0;max-width:34ch;text-align:center;font-size:12px;line-height:1.55;color:var(--muted);text-wrap:balance}
+/* consent line: one line, centred in the band between the button and the arch's bottom edge */
+.c-door .c-send{margin-bottom:0}
+.c-legal{position:relative;z-index:1;height:11cqw;display:flex;align-items:center;justify-content:center;gap:.3em;margin:0;white-space:nowrap;font-size:clamp(10px,2.9cqw,12px);line-height:1;color:var(--muted)}
+.c-legal .lg-s{display:none}
+@media(max-width:360px){.c-legal .lg-l{display:none}.c-legal .lg-s{display:inline}}
 .c-legal a{color:var(--cream);text-decoration:underline;text-decoration-color:rgba(255,166,48,.5);text-underline-offset:3px}
 .c-status{position:absolute;left:0;right:0;top:100%;margin-top:10px;min-height:1.4em;text-align:center;font-size:13px;line-height:1.45;color:var(--cream)}
 /* ---- neumorphic format tiles: raised slabs of the same material, icons sit in small wells ---- */
@@ -1344,8 +1348,9 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
           <input class="c-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         </form>
         <button class="btn c-send" type="submit" form="contact-form" data-uk="Надіслати" data-en="Send">Надіслати</button>
+        <p class="c-legal"><span class="lg-l" data-uk="Надсилаючи, ви погоджуєтесь з" data-en="By sending, you agree to the">Надсилаючи, ви погоджуєтесь з</span><span class="lg-s" data-uk="Ви погоджуєтесь з" data-en="You agree to the">Ви погоджуєтесь з</span> <a href="privacy/" data-href-uk="privacy/" data-href-en="en/privacy/" data-uk="політикою конфіденційності" data-en="privacy policy">політикою конфіденційності</a></p>
       </div>
-        <div class="c-submit"><p class="c-legal"><span data-uk="Надсилаючи повідомлення, ви погоджуєтесь з" data-en="By sending a message you agree to the">Надсилаючи повідомлення, ви погоджуєтесь з</span> <a href="privacy/" data-href-uk="privacy/" data-href-en="en/privacy/" data-uk="політикою конфіденційності" data-en="privacy policy">політикою конфіденційності</a>.</p><p class="c-status" role="status" aria-live="polite"></p></div>
+        <div class="c-submit"><p class="c-status" role="status" aria-live="polite"></p></div>
       </div>
       <div class="c-copy">
         <h2 class="display c-title" data-uk="<span class='ln'>Маєш <em>ідею?</em></span><span class='ln'>Створімо щось</span><span class='ln'><em>особливе.</em><small class='cap cap-b' aria-hidden='true'>Створюй<br>Надихай<br>Проживай</small></span>" data-en="<span class=&quot;ln&quot;>Have an <em>idea?</em></span><span class=&quot;ln&quot;>Let’s create</span><span class=&quot;ln&quot;><em>something</em> special.<small class=&quot;cap cap-b&quot; aria-hidden=&quot;true&quot;>Create<br>Inspire<br>Experience</small></span>"><span class='ln'>Маєш <em>ідею?</em></span><span class='ln'>Створімо щось</span><span class='ln'><em>особливе.</em><small class='cap cap-b' aria-hidden='true'>Створюй<br>Надихай<br>Проживай</small></span></h2>
