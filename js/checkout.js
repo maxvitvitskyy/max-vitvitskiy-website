@@ -72,6 +72,7 @@ var css=`
 .co-art[data-f=rolled] img{border-radius:2px}
 .co-glow{position:absolute;inset:auto 10% -14% 10%;height:30%;background:radial-gradient(closest-side,rgba(255,160,50,.16),transparent);pointer-events:none;z-index:-1}
 .co-t{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(28px,2.6vw,40px);line-height:.95;color:var(--cream)}
+.co-t,.co-ed{text-align:center}
 .co-ed{margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .co-rows{display:grid;gap:10px;padding-top:16px;border-top:1px solid rgba(255,236,214,.08);font-size:14px}
 .co-rows div{display:flex;justify-content:space-between;gap:16px}
