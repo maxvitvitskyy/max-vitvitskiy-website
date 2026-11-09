@@ -1,19 +1,11 @@
 /**
- * Замовлення картин із сайту → Google Таблиця (+ лист-сповіщення).
- *
- * Як підключити (один раз):
- * 1. Створи нову Google Таблицю, наприклад «Замовлення картин».
- * 2. Розширення → Apps Script. Видали все в редакторі й встав цей файл повністю. Збережи.
- * 3. Розгорнути (Deploy) → Нове розгортання → тип «Вебзастосунок».
- *      Виконувати як: Я.   Хто має доступ: Усі.
- *    Натисни «Розгорнути», дозволь доступ своєму акаунту.
- * 4. Скопіюй URL вебзастосунку (закінчується на /exec) і передай його для сайту.
- *
- * Якщо пізніше зміниш цей код: Розгорнути → Керувати розгортаннями → олівець →
- * Версія: «Нова версія» → Розгорнути. Адреса /exec лишається та сама.
+ * Замовлення й звернення з сайту → Google Таблиця + лист + Telegram.
+ * Копія коду з Apps Script проєкту «Orders» (розгортання, версія 7).
+ * Редагується в браузері; цей файл — для історії. Опис: apps-script/README.md.
+ * Токен бота й chat_id — лише в Script Properties (TG_TOKEN, TG_CHAT_ID), не тут.
  */
 
-var NOTIFY = 'maxim.vitvitskiy@gmail.com';   // куди надсилати лист про нове замовлення; '' — не надсилати
+var NOTIFY = 'maxim.vitvitskiy@gmail.com';
 var SHEET = 'Замовлення';
 
 var COLS = [
@@ -25,7 +17,6 @@ var COLS = [
   ['payment', 'Оплата'], ['comment', 'Коментар'], ['lang', 'Мова'], ['url', 'Сторінка роботи']
 ];
 
-// Звернення з форми на головній сторінці — окремий аркуш тієї ж таблиці
 var MSG_SHEET = 'Звернення';
 var MSG_COLS = [
   ['received', 'Отримано'], ['status', 'Статус'], ['topic', 'Тема'],
@@ -48,17 +39,13 @@ function sheetOf_(name, cols, statuses, statusCol, index) {
 function sheet_() { return sheetOf_(SHEET, COLS, ['Новий', 'Підтверджено', 'Оплачено', 'Відправлено', 'Скасовано'], 3, 0); }
 function msgSheet_() { return sheetOf_(MSG_SHEET, MSG_COLS, ['Новий', 'В роботі', 'Відповів', 'Закрито'], 2, 1); }
 
-/* Telegram: токен і chat_id лише в Script Properties (TG_TOKEN, TG_CHAT_ID), не в коді.
-   Якщо Telegram не відповів — рядок у таблиці вже записаний, заявка не губиться. */
 function esc_(v) { return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-function telegram_(title, cols, d) {
+
+function tgSend_(text) {
   try {
     var pr = PropertiesService.getScriptProperties();
     var token = pr.getProperty('TG_TOKEN'), chat = pr.getProperty('TG_CHAT_ID');
     if (!token || !chat) return;
-    var lines = cols.filter(function (c) { return d[c[0]] !== '' && d[c[0]] != null && ['received', 'status', 'lang'].indexOf(c[0]) < 0; })
-      .map(function (c) { return '<b>' + esc_(c[1]) + ':</b> ' + esc_(c[0] === 'price_usd' ? '$' + d[c[0]] : d[c[0]]); });
-    var text = '<b>' + esc_(title) + '</b>\n\n' + lines.join('\n') + '\n\n<a href="' + SpreadsheetApp.getActiveSpreadsheet().getUrl() + '">Відкрити таблицю</a>';
     UrlFetchApp.fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
       method: 'post', contentType: 'application/json', muteHttpExceptions: true,
       payload: JSON.stringify({ chat_id: chat, text: text.slice(0, 4000), parse_mode: 'HTML', disable_web_page_preview: true })
@@ -66,10 +53,64 @@ function telegram_(title, cols, d) {
   } catch (err) { console.error('telegram', err); }
 }
 
+function tgq_(s) { return '<blockquote>' + esc_(String(s).slice(0, 1500)) + '</blockquote>'; }
+
+function telegram_(kind, d) {
+  var g = function (k) { return d[k] == null ? '' : String(d[k]).trim(); };
+  var flag = d.lang === 'en' ? ' 🇬🇧' : d.lang === 'uk' ? ' 🇺🇦' : '';
+  var SEP = '\n\n──────────\n\n';
+  var blocks = [];
+
+  if (kind === 'order') {
+    blocks.push('🧾 <b>НОВЕ ЗАМОВЛЕННЯ</b>' + flag + '\n<code>' + esc_(g('order')) + '</code>');
+
+    var w = ['🖼 <b>РОБОТА</b>'];
+    if (g('work')) w.push('<b>' + esc_(g('work')) + '</b>');
+    if (g('size')) w.push('Розмір: ' + esc_(g('size')));
+    if (g('finish')) w.push('Виконання: ' + esc_(g('finish')));
+    if (g('frame')) w.push('Рама: ' + esc_(g('frame')));
+    if (g('price_usd')) w.push('Ціна: <b>$' + esc_(g('price_usd')) + '</b>');
+    blocks.push(w.join('\n'));
+
+    var c = ['👤 <b>КЛІЄНТ</b>'];
+    if (g('name')) c.push('<b>' + esc_(g('name')) + '</b>');
+    if (g('email')) c.push('✉︎ ' + esc_(g('email')));
+    if (g('phone')) c.push('✆ ' + esc_(g('phone')));
+    if (c.length > 1) blocks.push(c.join('\n'));
+
+    var dl = ['📦 <b>ДОСТАВКА</b>'];
+    var place = [g('city'), g('country')].filter(function (s) { return s; }).join(', ');
+    if (place) dl.push(esc_(place));
+    if (g('delivery')) dl.push(esc_(g('delivery')));
+    var gift = g('gift');
+    if ((gift && !/^(ні|no|false|0)$/i.test(gift)) || g('gift_message')) {
+      dl.push('\n🎁 <b>Подарунок</b>');
+      if (g('gift_message')) dl.push(tgq_(g('gift_message')));
+    }
+    if (dl.length > 1) blocks.push(dl.join('\n'));
+
+    if (g('payment')) blocks.push('💳 <b>ОПЛАТА</b>\n' + esc_(g('payment')));
+    if (g('comment')) blocks.push('💬 <b>КОМЕНТАР</b>\n' + tgq_(g('comment')));
+  } else {
+    blocks.push('✉️ <b>НОВЕ ЗВЕРНЕННЯ</b>' + flag + (g('topic') ? '\n<i>' + esc_(g('topic')) + '</i>' : ''));
+    var f = ['👤 <b>ВІД КОГО</b>'];
+    if (g('name')) f.push('<b>' + esc_(g('name')) + '</b>');
+    if (g('contact')) f.push(esc_(g('contact')));
+    if (f.length > 1) blocks.push(f.join('\n'));
+    if (g('message')) blocks.push('💬 <b>ПОВІДОМЛЕННЯ</b>\n' + tgq_(g('message')));
+  }
+
+  var links = [];
+  if (/^https?:\/\//.test(g('url'))) links.push('🔗 <a href="' + esc_(g('url')).replace(/"/g, '&quot;') + '">Сторінка</a>');
+  links.push('📊 <a href="' + SpreadsheetApp.getActiveSpreadsheet().getUrl() + '">Таблиця</a>');
+
+  tgSend_(blocks.join(SEP) + SEP + links.join('   ·   '));
+}
+
 function row_(cols, d) {
   return cols.map(function (c) {
     var v = d[c[0]]; v = v == null ? '' : v;
-    return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v;   // без формул із форми
+    return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v;
   });
 }
 
@@ -78,7 +119,7 @@ function contact_(d) {
   d.received = new Date();
   d.status = 'Новий';
   msgSheet_().appendRow(row_(MSG_COLS, d));
-  telegram_('✉️ Нове звернення — ' + (d.topic || 'без теми'), MSG_COLS, d);
+  telegram_('msg', d);
   if (NOTIFY) {
     var mail = { to: NOTIFY, subject: 'Нове звернення — ' + (d.topic || 'без теми') + ' — ' + d.name,
       body: MSG_COLS.filter(function (c) { return d[c[0]] && c[0] !== 'received'; })
@@ -94,13 +135,13 @@ function doPost(e) {
   lock.waitLock(20000);
   try {
     var d = JSON.parse((e && e.postData && e.postData.contents) || '{}');
-    if (d.website) return out_({ ok: true });                 // бот заповнив приховане поле
+    if (d.website) return out_({ ok: true });
     if (d.type === 'contact') return contact_(d);
     if (!d.order || !d.email || !d.work) return out_({ ok: false, error: 'missing fields' });
     d.received = new Date();
     d.status = 'Новий';
     sheet_().appendRow(row_(COLS, d));
-    telegram_('🖼 Нове замовлення ' + d.order + ' — ' + d.work, COLS, d);
+    telegram_('order', d);
     if (NOTIFY) {
       var lines = COLS.filter(function (c) { return d[c[0]] !== '' && d[c[0]] != null && c[0] !== 'received'; })
         .map(function (c) { return c[1] + ': ' + d[c[0]]; });
@@ -120,13 +161,9 @@ function doPost(e) {
   }
 }
 
-function setup() { sheet_(); msgSheet_(); }   // один раз: створити аркуші й надати дозволи
-
-// запустити з редактора після того, як TG_TOKEN і TG_CHAT_ID додано у Script Properties
-function testTelegram() { telegram_('✅ Бот підключено', [['note', 'Перевірка']], { note: 'сповіщення про замовлення й звернення приходитимуть сюди' }); }
-
+function setup() { sheet_(); msgSheet_(); }
+function testTelegram() { tgSend_('✅ <b>Бот підключено</b>\n\nСповіщення про замовлення й звернення приходитимуть сюди'); }
 function doGet() { return out_({ ok: true, service: 'orders' }); }
-
 function out_(o) {
   return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
 }
