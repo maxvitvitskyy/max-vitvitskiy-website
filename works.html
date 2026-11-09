@@ -330,6 +330,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
 <script defer src="js/gsap.min.js"></script>
 <script defer src="js/Flip.min.js"></script>
 <script defer src="js/works-motion.js?v=7c3165e0"></script>
+<script defer src="js/checkout.js?v=66f9ecea"></script>
 <script defer src="js/hd-fit.js?v=cdd07240"></script>
 <script>try{localStorage.setItem('lang','uk')}catch(e){}</script>
 </head>
@@ -492,7 +493,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
       <label>Виконання<select id="cf-fin"></select></label>
       <label class="fr" hidden>Колір рами<select id="cf-frame"></select></label>
     </form>
-    <div class="buy"><div class="pr" hidden><span class="pv"></span><small class="pn"></small></div><a class="ask" href="#">Запитати про роботу<i class="ar" aria-hidden="true"></i></a></div>
+    <div class="buy"><div class="pr" hidden><span class="pv"></span><small class="pn"></small></div><a class="ask" href="#">Придбати картину<i class="ar" aria-hidden="true"></i></a></div>
     <dl><dt>Техніка</dt><dd>Фотографія, цифрова композиція</dd><dt>Документи</dt><dd>Сертифікат автентичності</dd></dl>
     <div class="inf"></div>
     <div id="tn"></div>
@@ -632,7 +633,12 @@ function upd(){const w=W[cur];if(!w.sizes)return;frL.hidden=ff.value!=='framed';
 [fs,ff,fr].forEach(e=>e.addEventListener('change',upd));
 function askLink(w){const a=dv.querySelector('.ask');let body='Робота: '+w.title;
   if(w.sizes){body+='\nРозмір: '+fs.selectedOptions[0].text+'\nВиконання: '+ff.selectedOptions[0].text+(ff.value==='framed'?'\nКолір рами: '+fr.selectedOptions[0].text:'')+'\nЦіна: $'+priceOf(w)}
-  a.href='mailto:maxim.vitvitskiy@gmail.com?subject='+encodeURIComponent('Artwork: '+w.title)+'&body='+encodeURIComponent(body+'\n\n')}
+  a.href='mailto:maxim.vitvitskiy@gmail.com?subject='+encodeURIComponent('Artwork: '+w.title)+'&body='+encodeURIComponent(body+'\n\n')
+  const sold=w.status==='Продана';a.firstChild.textContent=sold?'Запитати про роботу':'Придбати картину'}
+/* the buy button opens the checkout with exactly what is chosen; without the checkout script it stays a ready e-mail */
+dv.querySelector('.ask').addEventListener('click',e=>{const w=W[cur];if(!window.Checkout||!w||!w.sizes||w.status==='Продана')return;e.preventDefault();
+  Checkout.open({title:w.title,url:new URL((LB.pre||'')+'works/'+w.slug+'/',document.baseURI).href,img:w.imgs[0],thumb:thumb(w.imgs[0]),
+    size:fs.selectedOptions[0].text,fin:ff.selectedOptions[0].text,finId:ff.value,frame:fr.selectedOptions[0]?fr.selectedOptions[0].text:'',frameId:fr.value,price:priceOf(w)})});
 function fillInfo(w){const box=dv.querySelector('.inf');
   box.innerHTML=(w.info||[]).map(b=>'<details><summary>'+esc(b.t)+'</summary>'+(b.tags?'<ul class="tags">'+b.tags.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>':'')+(b.l?'<ul>'+b.l.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>':'')+'</details>').join('')}
 function fillTn(w){const box=dv.querySelector('#tn');if(!box)return;

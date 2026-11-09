@@ -29,6 +29,8 @@ def read(p):
 
 
 def write(p, s):
+    if p.endswith('.html'):   # checkout script always carries its current content hash
+        s = re.sub(r'js/checkout\.js(\?v=\w+)?', lambda m: ver('js/checkout.js'), s)
     p = os.path.join(ROOT, p)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     with open(p, 'w', encoding='utf-8') as f:
@@ -158,7 +160,7 @@ def dialog(w, n, total, lang='uk', W=None):
       <label>Виконання<select id="cf-fin">{opts(w['fins'])}</select></label>
       <label class="fr">Колір рами<select id="cf-frame">{opts(w['frames'])}</select></label>
     </form>
-    <div class="buy"><div class="pr"><span class="pv">${p0:,}</span><small class="pn">{e(fin['note'])} Ціна в USD, без доставки.</small></div><a class="ask" href="mailto:maxim.vitvitskiy@gmail.com?subject={e('Artwork: ' + w['title'])}">Запитати про роботу<i class="ar" aria-hidden="true"></i></a></div>
+    <div class="buy"><div class="pr"><span class="pv">${p0:,}</span><small class="pn">{e(fin['note'])} Ціна в USD, без доставки.</small></div><a class="ask" href="mailto:maxim.vitvitskiy@gmail.com?subject={e('Artwork: ' + w['title'])}">Придбати картину<i class="ar" aria-hidden="true"></i></a></div>
     <dl><dt>Техніка</dt><dd>Фотографія, цифрова композиція</dd><dt>Документи</dt><dd>Сертифікат автентичності</dd></dl>
     <div class="inf">{info}</div>
     <div id="tn">{themes}{rel}</div>
@@ -211,7 +213,7 @@ def page(src, w, i, n, total, lang='uk', W=None):
             f'<meta property="og:image:alt" content="{e(ogalt)}">\n<meta property="og:url" content="{url}">\n<meta name="twitter:card" content="summary_large_image">\n'
             '<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">\n<link rel="apple-touch-icon" href="img/icon-180.png">\n'
             f'<script type="application/ld+json">{json.dumps(graph, ensure_ascii=False)}</script>\n{lang_script(lang)}{style}\n</head>\n<body>\n')
-    return head + dialog(w, n, total, lang, W) + f'\n<script>window.SOLO={i};</script>' + script + '\n</body>\n</html>\n'
+    return head + dialog(w, n, total, lang, W) + f'\n<script>window.SOLO={i};</script>' + script + '\n<script defer src="js/checkout.js"></script>\n</body>\n</html>\n'
 
 
 from html.parser import HTMLParser
