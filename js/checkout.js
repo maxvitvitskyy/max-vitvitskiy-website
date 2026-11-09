@@ -101,9 +101,9 @@ var css=`
 .co h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(30px,3vw,44px);line-height:.95;color:var(--cream);text-wrap:balance}
 .co h3:focus,.co-ok:focus{outline:0}
 .co-sub{margin-top:-6px;color:var(--muted);font-size:15px;line-height:1.6;max-width:46ch}
-.co-g{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px}
+.co-g{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px;align-items:start}
 .co-g>.w{grid-column:1/-1}
-.co-fl{position:relative;display:grid;gap:7px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.co-fl{position:relative;display:grid;align-content:start;gap:7px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .co-fl input,.co-fl select,.co-fl textarea{width:100%;min-height:52px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,236,214,.07);background:rgba(0,0,0,.28);color:var(--cream);font:400 16px/1.4 var(--body);letter-spacing:0;text-transform:none;
   box-shadow:inset 3px 3px 7px rgba(0,0,0,.45),inset -2px -2px 5px rgba(255,236,214,.025);caret-color:var(--amber);transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;appearance:none}
 .co-fl textarea{min-height:92px;resize:vertical}
