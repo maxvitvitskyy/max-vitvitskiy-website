@@ -111,8 +111,8 @@ var css=`
 .co-fl .lr{display:flex;justify-content:space-between;align-items:baseline;gap:10px;white-space:nowrap;min-width:0}
 .co-fl .lr>span:first-child{overflow:hidden;text-overflow:ellipsis}
 .co-fl .op{font-size:12px;letter-spacing:.02em;text-transform:none;color:rgba(241,224,197,.42)}
-.co-fl input,.co-fl select,.co-fl textarea{width:100%;min-height:52px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,236,214,.07);background:rgba(0,0,0,.28);color:var(--cream);font:400 16px/1.4 var(--body);letter-spacing:0;text-transform:none;
-  box-shadow:inset 3px 3px 7px rgba(0,0,0,.45),inset -2px -2px 5px rgba(255,236,214,.025);caret-color:var(--amber);transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;appearance:none}
+.co-fl input,.co-fl select,.co-fl textarea{width:100%;min-height:52px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,236,214,.12);background:rgba(0,0,0,.34);color:var(--cream);font:400 16px/1.4 var(--body);letter-spacing:0;text-transform:none;
+  box-shadow:inset 3px 3px 7px rgba(0,0,0,.5),inset -1px -1px 0 rgba(255,236,214,.05);caret-color:var(--amber);transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;appearance:none}
 .co-fl textarea{min-height:96px;height:96px;resize:vertical}
 .co-fl select{padding-right:44px;background-image:var(--chev);background-repeat:no-repeat;background-position:right 18px center;background-size:8px 13px;cursor:pointer}
 .co-fl select option{background:#16110d;color:var(--cream)}
@@ -122,6 +122,7 @@ var css=`
 .co-fl .er{min-height:0;font-size:13px;letter-spacing:0;text-transform:none;color:#ff9b7d;line-height:1.4}
 .co-fl .er:empty{display:none}
 .co-fl .hn{font-size:12px;letter-spacing:0;text-transform:none;color:rgba(241,224,197,.5)}
+.co-fl input:hover,.co-fl select:hover,.co-fl textarea:hover{border-color:rgba(255,236,214,.2)}
 .co-fl input:-webkit-autofill{-webkit-text-fill-color:var(--cream);-webkit-box-shadow:inset 0 0 0 60px #1a140f;caret-color:var(--amber)}
 /* segmented choice + payment cards */
 .co-seg{display:grid;grid-template-columns:repeat(var(--n,2),1fr);gap:6px;padding:5px;border-radius:16px;background:rgba(0,0,0,.28);box-shadow:inset 3px 3px 7px rgba(0,0,0,.45)}
