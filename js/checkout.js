@@ -11,10 +11,10 @@ var T=EN?{
   sub:['We will confirm availability and the delivery cost before you pay anything.','We pack every work in a rigid box with corner guards and full insurance.','You will get a secure payment link only after I confirm your order personally.'],
   name:'Full name',email:'E-mail',phone:'Phone',phoneHint:'With country code, for the courier',
   country:'Country',city:'City',np:'Nova Poshta',npBranch:'Branch',npCourier:'Courier to the door',branch:'Branch number',branchPh:'e.g. 12',
-  addr:'Street, house, apartment',addr2:'Address line 2 (optional)',region:'Region / state (optional)',zip:'Postal code',
-  gift:'This is a gift',giftNote:'No prices in the parcel; I add a hand-signed card.',giftMsg:'Text for the card (optional)',
+  addr:'Street, house, apartment',addr2:'Address line 2',region:'Region / state',opt:'optional',zip:'Postal code',
+  gift:'This is a gift',giftNote:'No prices in the parcel; I add a hand-signed card.',giftMsg:'Text for the card',
   pay:[['card','Card online','Visa, Mastercard, Apple Pay, Google Pay'],['paypal','PayPal','Convenient for buyers outside Ukraine'],['iban','Bank transfer','Invoice for companies and sole proprietors']],
-  note:'Comment (optional)',notePh:'Room, wall size, delivery wishes…',
+  note:'Comment',notePh:'Room, wall size, delivery wishes…',
   next:'Continue',back:'Back',send:'Send the order',sending:'Sending…',
   fine:'By sending the order you agree that your data is used only to process this order. You pay nothing now.',
   size:'Size',fin:'Finish',frame:'Frame',price:'Work',ship:'Delivery',shipV:'after confirmation',total:'Total',plus:' + delivery',
@@ -31,10 +31,10 @@ var T=EN?{
   sub:['Спершу я підтверджу наявність і вартість доставки — платити зараз нічого не потрібно.','Кожну роботу пакуємо в жорстку коробку з кутниками й повною страховкою.','Безпечне посилання на оплату ви отримаєте після того, як я особисто підтверджу замовлення.'],
   name:'Ім’я та прізвище',email:'Email',phone:'Телефон',phoneHint:'Для кур’єра чи відділення',
   country:'Країна',city:'Місто',np:'Нова пошта',npBranch:'Відділення',npCourier:'Кур’єр до дверей',branch:'Номер відділення',branchPh:'Наприклад, 12',
-  addr:'Вулиця, будинок, квартира',addr2:'Адреса, рядок 2 (необов’язково)',region:'Область / штат (необов’язково)',zip:'Поштовий індекс',
-  gift:'Це подарунок',giftNote:'Без цін у посилці, додам підписану від руки листівку.',giftMsg:'Текст для листівки (необов’язково)',
+  addr:'Вулиця, будинок, квартира',addr2:'Адреса, рядок 2',region:'Область / штат',opt:'необов’язково',zip:'Поштовий індекс',
+  gift:'Це подарунок',giftNote:'Без цін у посилці, додам підписану від руки листівку.',giftMsg:'Текст для листівки',
   pay:[['card','Карткою онлайн','Visa, Mastercard, Apple Pay, Google Pay'],['paypal','PayPal','Зручно для покупців з-за кордону'],['iban','Переказ на рахунок','Рахунок для компаній і ФОП']],
-  note:'Коментар (необов’язково)',notePh:'Кімната, розмір стіни, побажання до доставки…',
+  note:'Коментар',notePh:'Кімната, розмір стіни, побажання до доставки…',
   next:'Далі',back:'Назад',send:'Надіслати замовлення',sending:'Надсилаю…',
   fine:'Надсилаючи замовлення, ви погоджуєтесь, що дані використовуються лише для його оформлення. Зараз ви нічого не платите.',
   size:'Розмір',fin:'Виконання',frame:'Рама',price:'Робота',ship:'Доставка',shipV:'після підтвердження',total:'Разом',plus:' + доставка',
@@ -80,10 +80,10 @@ var css=`
 .co-rows .tot{padding-top:12px;margin-top:4px;border-top:1px solid rgba(255,236,214,.08);align-items:baseline}
 .co-rows .tot dd{font-family:var(--head);font-size:30px;color:var(--amber);font-variant-numeric:tabular-nums}
 .co-rows .tot small{font-family:var(--body);font-size:13px;color:var(--muted);margin-left:4px}
-.co-edit{align-self:flex-start;background:none;border:0;padding:4px 0;color:var(--amber);font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(255,166,48,.4);cursor:pointer;transition:color .3s,border-color .3s}
+.co-edit{align-self:flex-start;background:none;border:0;padding:12px 0 4px;margin-top:-8px;color:var(--amber);font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(255,166,48,.4);cursor:pointer;transition:color .3s,border-color .3s}
 .co-edit:hover{color:var(--sand);border-color:var(--sand)}
 /* right: steps */
-.co-f{position:relative;display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:0}
+.co-f{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;min-height:0;min-width:0}
 .co-top{display:flex;align-items:center;gap:18px;padding:26px clamp(24px,3.4vw,48px) 0}
 .co-pr{flex:1;display:flex;gap:6px;list-style:none;margin:0;padding:0;counter-reset:s}
 .co-pr li{flex:1;display:grid;gap:9px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,224,197,.42);transition:color .4s}
@@ -93,23 +93,30 @@ var css=`
 .co-x:hover,.co-x:focus-visible{border-color:var(--amber);color:var(--amber);outline:0}
 .co-x svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
 .co-body{position:relative;overflow:auto;overscroll-behavior:contain;padding:30px clamp(24px,3.4vw,48px) 24px;scrollbar-width:thin;scrollbar-color:rgba(255,166,48,.35) transparent}
-.co-step{display:none;flex-direction:column;gap:18px}
+.co-step{display:none;flex-direction:column;gap:0}
+.co-step>h3+.co-sub{margin-top:12px}
+.co-step>.co-sub{margin-bottom:28px}
+.co-step>.co-pay+.co-fl{margin-top:22px}
+.co-step>.co-fine{margin-top:18px}
 .co-step.on{display:flex;animation:coIn .55s var(--ease) both}
 .co-step.back{animation-name:coInB}
 @keyframes coIn{from{opacity:0;transform:translateX(26px);filter:blur(4px)}}
 @keyframes coInB{from{opacity:0;transform:translateX(-26px);filter:blur(4px)}}
 .co h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(30px,3vw,44px);line-height:.95;color:var(--cream);text-wrap:balance}
 .co h3:focus,.co-ok:focus{outline:0}
-.co-sub{margin-top:-6px;color:var(--muted);font-size:15px;line-height:1.6;max-width:46ch}
+.co-sub{color:var(--muted);font-size:15px;line-height:1.6;max-width:46ch}
 .co-g{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px;align-items:start}
 .co-g>.w{grid-column:1/-1}
 .co-fl{position:relative;display:grid;align-content:start;gap:7px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.co-fl .lr{display:flex;justify-content:space-between;align-items:baseline;gap:10px;white-space:nowrap;min-width:0}
+.co-fl .lr>span:first-child{overflow:hidden;text-overflow:ellipsis}
+.co-fl .op{font-size:12px;letter-spacing:.02em;text-transform:none;color:rgba(241,224,197,.42)}
 .co-fl input,.co-fl select,.co-fl textarea{width:100%;min-height:52px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,236,214,.07);background:rgba(0,0,0,.28);color:var(--cream);font:400 16px/1.4 var(--body);letter-spacing:0;text-transform:none;
   box-shadow:inset 3px 3px 7px rgba(0,0,0,.45),inset -2px -2px 5px rgba(255,236,214,.025);caret-color:var(--amber);transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;appearance:none}
-.co-fl textarea{min-height:92px;resize:vertical}
+.co-fl textarea{min-height:96px;height:96px;resize:vertical}
 .co-fl select{padding-right:44px;background-image:var(--chev);background-repeat:no-repeat;background-position:right 18px center;background-size:8px 13px;cursor:pointer}
 .co-fl select option{background:#16110d;color:var(--cream)}
-.co-fl input::placeholder,.co-fl textarea::placeholder{color:rgba(241,224,197,.38)}
+.co-fl input::placeholder,.co-fl textarea::placeholder{color:rgba(241,224,197,.5)}
 .co-fl input:focus,.co-fl select:focus,.co-fl textarea:focus{outline:0;border-color:rgba(255,166,48,.6);box-shadow:inset 3px 3px 7px rgba(0,0,0,.45),0 0 0 4px rgba(255,166,48,.12)}
 .co-fl.bad input,.co-fl.bad select{border-color:rgba(255,120,90,.7)}
 .co-fl .er{min-height:0;font-size:13px;letter-spacing:0;text-transform:none;color:#ff9b7d;line-height:1.4}
@@ -118,12 +125,12 @@ var css=`
 .co-fl input:-webkit-autofill{-webkit-text-fill-color:var(--cream);-webkit-box-shadow:inset 0 0 0 60px #1a140f;caret-color:var(--amber)}
 /* segmented choice + payment cards */
 .co-seg{display:grid;grid-template-columns:repeat(var(--n,2),1fr);gap:6px;padding:5px;border-radius:16px;background:rgba(0,0,0,.28);box-shadow:inset 3px 3px 7px rgba(0,0,0,.45)}
-.co-seg label{position:relative;display:grid;place-items:center;min-height:44px;padding:8px 10px;border-radius:12px;font-size:14px;color:var(--muted);text-align:center;cursor:pointer;transition:color .3s,background .35s,box-shadow .35s}
-.co-seg input,.co-pay input,.co-chk input{position:absolute;opacity:0;pointer-events:none}
+.co-seg label{position:relative;display:grid;place-items:center;min-height:44px;padding:8px 10px;border-radius:12px;font-size:14px;letter-spacing:0;text-transform:none;white-space:nowrap;color:var(--muted);text-align:center;cursor:pointer;transition:color .3s,background .35s,box-shadow .35s}
+.co .co-seg input,.co-pay input,.co-chk input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;min-height:0;padding:0;border:0;box-shadow:none}
 .co-seg label:has(input:checked){color:var(--cream);background:linear-gradient(145deg,#2a2018,#1a140f);box-shadow:4px 5px 12px rgba(0,0,0,.45),inset 1px 1px 1px rgba(255,236,214,.07)}
 .co-seg label:has(input:focus-visible),.co-pay label:has(input:focus-visible),.co-chk:has(input:focus-visible){outline:2px solid rgba(255,166,48,.7);outline-offset:2px}
 .co-pay{display:grid;gap:10px}
-.co-pay label{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:16px 18px;border-radius:18px;border:1px solid rgba(255,236,214,.07);background:linear-gradient(145deg,rgba(255,236,214,.035),rgba(255,236,214,.008));cursor:pointer;transition:border-color .35s,background .35s,transform .2s}
+.co-pay label{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,236,214,.07);background:linear-gradient(145deg,rgba(255,236,214,.035),rgba(255,236,214,.008));cursor:pointer;transition:border-color .35s,background .35s,transform .2s}
 .co-pay label:hover{border-color:rgba(255,166,48,.3)}
 .co-pay label:has(input:checked){border-color:rgba(255,166,48,.65);background:linear-gradient(145deg,rgba(255,166,48,.09),rgba(255,166,48,.02))}
 .co-pay b{display:block;font-weight:500;font-size:16px;color:var(--cream)}
@@ -132,21 +139,25 @@ var css=`
 .co-pay i svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .co-pay .rd{width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(255,236,214,.25);transition:border-color .3s,box-shadow .3s}
 .co-pay label:has(input:checked) .rd{border-color:var(--amber);box-shadow:inset 0 0 0 4px #1a130c,inset 0 0 0 10px var(--amber)}
-.co-chk{position:relative;display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:16px;background:rgba(0,0,0,.2);cursor:pointer}
+.co-chk{position:relative;display:flex;align-items:flex-start;gap:14px;padding:16px;border-radius:16px;border:1px solid rgba(255,236,214,.07);background:linear-gradient(145deg,rgba(255,236,214,.035),rgba(255,236,214,.008));cursor:pointer;transition:border-color .35s}
+.co-chk:hover{border-color:rgba(255,166,48,.3)}
 .co-chk .bx{flex:none;width:22px;height:22px;margin-top:1px;border-radius:7px;border:1.5px solid rgba(255,236,214,.25);display:grid;place-items:center;transition:background .3s,border-color .3s}
 .co-chk .bx svg{width:13px;height:13px;fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .35s var(--ease)}
 .co-chk:has(input:checked) .bx{background:var(--amber);border-color:var(--amber)}.co-chk:has(input:checked) .bx svg{stroke-dashoffset:0}
 .co-chk b{display:block;font-weight:500;color:var(--cream);font-size:15px}.co-chk small{display:block;margin-top:2px;color:var(--muted);font-size:13px;line-height:1.45}
-.co-hide{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease),opacity .4s;opacity:0}
-.co-hide>div{min-height:0;overflow:hidden}
-.co-hide.on{grid-template-rows:1fr;opacity:1}
-.co-hide.on>div{overflow:visible}
+.co-hide{display:block}
+.co-hide:not(.on){display:none}
+.co-hide.on{animation:coRv .5s var(--ease) both}
+@keyframes coRv{from{opacity:0;transform:translateY(-6px)}}
 .co-fine{font-size:13px;line-height:1.55;color:rgba(241,224,197,.5);max-width:52ch}
 /* bottom bar */
 .co-bar{display:flex;align-items:center;gap:12px;padding:16px clamp(24px,3.4vw,48px) calc(18px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,236,214,.06);background:linear-gradient(180deg,rgba(14,11,9,.6),#0e0b09)}
 .co-bk{min-height:52px;padding:0 22px;border-radius:99px;border:1px solid rgba(255,236,214,.12);background:none;color:var(--cream);font:500 13px var(--body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,opacity .3s}
 .co-bk:hover,.co-bk:focus-visible{border-color:var(--amber);color:var(--amber);outline:0}
 .co-bk[hidden]{display:none}
+.co-bk{display:inline-flex;align-items:center;justify-content:center}
+.co-bk .ar{display:none;width:1.25em;height:.7em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transform:scaleX(-1)}
+@media(max-width:599px){.co-bk{width:56px;min-height:56px;padding:0}.co-bk span{display:none}.co-bk .ar{display:block}}
 .co-go{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 26px;border:0;border-radius:99px;background:linear-gradient(145deg,#ffb24a,#f29a2b);color:var(--ink);font:500 13px var(--body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
   box-shadow:0 12px 28px rgba(242,154,43,.22),inset 1px 1px 1px rgba(255,255,255,.35);transition:box-shadow .4s,transform .2s,filter .3s}
 .co-go:hover{box-shadow:0 16px 36px rgba(242,154,43,.34),inset 1px 1px 1px rgba(255,255,255,.4)}
@@ -177,7 +188,7 @@ var css=`
 .co-mini{display:none}
 @media(max-width:899px){
   .co{padding:0;place-items:end stretch}
-  .co-p{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);width:100%;height:100%;height:100dvh;border-radius:0;transform:translateY(40px)}
+  .co-p{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);width:100%;height:100%;height:100dvh;border-radius:0;transform:translateY(40px)}
   .co-s{display:none}
   .co-f{grid-row:1/3}
   .co-top{padding:max(14px,env(safe-area-inset-top)) 18px 0}
@@ -188,11 +199,13 @@ var css=`
   .co-mini .pv{font-family:var(--head);font-size:24px;color:var(--amber);font-variant-numeric:tabular-nums}
   .co-body{padding:24px 18px 20px}
   .co-bar{padding:12px 18px calc(12px + env(safe-area-inset-bottom))}
-  .co-g{grid-template-columns:1fr}
+  .co-body,.co-top,.co-bar{padding-inline:max(18px,calc((100% - 620px)/2))}
+  .co-mini{margin-inline:max(18px,calc((100% - 620px)/2));width:auto}
   .co-pr li{font-size:10px;letter-spacing:.12em}
-  .co-go,.co-bk{letter-spacing:.1em;white-space:nowrap}.co-go{padding:0 18px}.co-bk{padding:0 18px}
+  .co-go{letter-spacing:.1em;white-space:nowrap;padding:0 18px;min-width:0}
 }
 @media(max-width:899px){.co-f{grid-template-rows:auto auto minmax(0,1fr) auto}}
+@media(max-width:599px){.co-g{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.co *,.co *::before{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 `;
 
@@ -204,7 +217,8 @@ var TICK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L1
 
 var root,st=0,ord=null,lastFocus=null,built=false;
 function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function fld(id,lab,attrs,w,hint){return '<label class="co-fl'+(w?' w':'')+'" data-f="'+id+'">'+lab+'<input id="co-'+id+'" name="'+id+'" '+attrs+'>'+(hint?'<span class="hn">'+hint+'</span>':'')+'<span class="er" aria-live="polite"></span></label>'}
+function lbl(t,opt){return '<span class="lr"><span>'+t+'</span>'+(opt?'<span class="op">'+T.opt+'</span>':'')+'</span>'}
+function fld(id,lab,attrs,w,hint,opt){return '<label class="co-fl'+(w?' w':'')+'" data-f="'+id+'">'+lbl(lab,opt)+'<input id="co-'+id+'" name="'+id+'" '+attrs+'>'+(hint?'<span class="hn">'+hint+'</span>':'')+'<span class="er" aria-live="polite"></span></label>'}
 function countryOpts(){var dn=null;try{dn=new Intl.DisplayNames([EN?'en':'uk'],{type:'region'})}catch(e){}
   var n=function(c){return dn?dn.of(c):c};var rest=COUNTRIES.slice(1).sort(function(a,b){return n(a).localeCompare(n(b),EN?'en':'uk')});
   return ['UA'].concat(rest).map(function(c){return '<option value="'+c+'">'+esc(n(c))+'</option>'}).join('')+'<option value="OTHER">'+(EN?'Other country':'Інша країна')+'</option>'}
@@ -226,30 +240,30 @@ function build(){
    +'</div></section>'
    // step 2
    +'<section class="co-step" data-s="1"><h3>'+T.h[1]+'</h3><p class="co-sub">'+T.sub[1]+'</p><div class="co-g">'
-   +'<label class="co-fl w" data-f="country">'+T.country+'<select id="co-country" name="country" autocomplete="country">'+countryOpts()+'</select><span class="er"></span></label>'
+   +'<label class="co-fl w" data-f="country">'+lbl(T.country)+'<select id="co-country" name="country" autocomplete="country">'+countryOpts()+'</select><span class="er"></span></label>'
    +'<div class="co-hide w" data-when="other"><div>'+fld('countryOther',EN?'Which country?':'Яка країна?','autocomplete="country-name"',1)+'</div></div>'
    +fld('city',T.city,'autocomplete="address-level2" required',1)
-   +'<div class="co-hide w on" data-when="ua"><div class="co-g" style="padding-top:2px">'
-   +'<div class="co-seg w" role="radiogroup" aria-label="'+T.np+'"><label><input type="radio" name="npType" value="branch" checked>'+T.np+' · '+T.npBranch.toLowerCase()+'</label><label><input type="radio" name="npType" value="courier">'+T.npCourier+'</label></div>'
+   +'<div class="co-hide w on" data-when="ua"><div class="co-g">'
+   +'<div class="co-fl w"><span class="lr" id="co-npl"><span>'+T.np+'</span></span><div class="co-seg" role="radiogroup" aria-labelledby="co-npl"><label><input type="radio" name="npType" value="branch" checked>'+T.npBranch+'</label><label><input type="radio" name="npType" value="courier">'+T.npCourier+'</label></div></div>'
    +'<div class="co-hide w on" data-when="branch"><div>'+fld('branch',T.branch,'inputmode="numeric" placeholder="'+T.branchPh+'"',1)+'</div></div>'
    +'</div></div>'
-   +'<div class="co-hide w" data-when="addr"><div class="co-g" style="padding-top:2px">'
+   +'<div class="co-hide w" data-when="addr"><div class="co-g">'
    +fld('addr',T.addr,'autocomplete="address-line1"',1)
-   +'<div class="co-hide w" data-when="intl"><div class="co-g">'+fld('addr2',T.addr2,'autocomplete="address-line2"',1)+fld('region',T.region,'autocomplete="address-level1"')+fld('zip',T.zip,'autocomplete="postal-code"')+'</div></div>'
+   +'<div class="co-hide w" data-when="intl"><div class="co-g">'+fld('addr2',T.addr2,'autocomplete="address-line2"',1,0,1)+fld('region',T.region,'autocomplete="address-level1"',0,0,1)+fld('zip',T.zip,'autocomplete="postal-code"')+'</div></div>'
    +'</div></div>'
    +'<label class="co-chk w"><input type="checkbox" name="gift"><span class="bx">'+TICK+'</span><span><b>'+T.gift+'</b><small>'+T.giftNote+'</small></span></label>'
-   +'<div class="co-hide w" data-when="gift"><div><label class="co-fl w">'+T.giftMsg+'<textarea name="giftMsg" rows="2"></textarea></label></div></div>'
+   +'<div class="co-hide w" data-when="gift"><div><label class="co-fl w">'+lbl(T.giftMsg,1)+'<textarea name="giftMsg" rows="2"></textarea></label></div></div>'
    +'</div></section>'
    // step 3
    +'<section class="co-step" data-s="2"><h3>'+T.h[2]+'</h3><p class="co-sub">'+T.sub[2]+'</p>'
    +'<div class="co-pay" role="radiogroup" aria-label="'+T.steps[2]+'">'+T.pay.map(function(p,k){return '<label><input type="radio" name="pay" value="'+p[0]+'"'+(k?'':' checked')+'><i>'+ICON[p[0]]+'</i><span><b>'+p[1]+'</b><small>'+p[2]+'</small></span><span class="rd"></span></label>'}).join('')+'</div>'
-   +'<label class="co-fl w">'+T.note+'<textarea name="note" rows="3" placeholder="'+T.notePh+'"></textarea></label>'
+   +'<label class="co-fl w">'+lbl(T.note,1)+'<textarea name="note" rows="3" placeholder="'+T.notePh+'"></textarea></label>'
    +'<p class="co-fine">'+T.fine+'</p></section>'
    // done
    +'<section class="co-ok" tabindex="-1"><div class="co-okh"><span class="co-seal">'+TICK+'</span><h3>'+T.okH+'</h3></div><p class="co-sub co-okp"></p><p class="co-no">'+T.okNo+' <b></b></p><ol class="co-tl">'+T.okSteps.map(function(x){return '<li><span>'+x+'</span></li>'}).join('')+'</ol></section>'
    +'<p class="co-msg" role="alert"></p>'
    +'</form>'
-   +'<div class="co-bar"><button class="co-bk" type="button" hidden>'+T.back+'</button><button class="co-go" type="button"><span class="lb">'+T.next+'</span><i class="ar" aria-hidden="true"></i></button></div>'
+   +'<div class="co-bar"><button class="co-bk" type="button" aria-label="'+T.back+'" hidden><i class="ar" aria-hidden="true"></i><span>'+T.back+'</span></button><button class="co-go" type="button"><span class="lb">'+T.next+'</span><i class="ar" aria-hidden="true"></i></button></div>'
    +'</div></div>';
   document.body.appendChild(root);
   var f=root.querySelector('form');
