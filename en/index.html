@@ -1718,5 +1718,13 @@ if(!window.CSSViewTransitionRule&&!matchMedia('(prefers-reduced-motion: reduce)'
   st.addEventListener('click',e=>{if(held||sw){e.stopPropagation();sw=false}},true);
 })();
 </script>
+<script>
+/* SILENT strip: the logo square grows with the text beside it, from the heading's top to the note's last line */
+(function(){var st=document.querySelector('.sx-strip');if(!st)return;var h=st.querySelector('h3'),sm=st.querySelector('small'),mq=matchMedia('(min-width:600px)');
+function fit(){st.style.removeProperty('--logo');st.style.removeProperty('--logo-w');if(!mq.matches)return;
+  for(var i=0;i<3;i++){var H=Math.round(sm.getBoundingClientRect().bottom-h.getBoundingClientRect().top);st.style.setProperty('--logo',H+'px');st.style.setProperty('--logo-w',H+'px')}}
+if(window.ResizeObserver)new ResizeObserver(function(){requestAnimationFrame(fit)}).observe(st.querySelector('.txt')?st:st);
+mq.addEventListener&&mq.addEventListener('change',fit);document.fonts&&document.fonts.ready.then(fit);fit()})();
+</script>
 </body>
 </html>
