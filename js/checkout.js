@@ -54,16 +54,16 @@ var css=`
 .co.on{visibility:visible;pointer-events:auto}
 .co-bg{position:absolute;inset:0;background:rgba(5,4,3,.84);-webkit-backdrop-filter:blur(14px) saturate(.8);backdrop-filter:blur(14px) saturate(.8);opacity:0;transition:opacity .5s var(--ease)}
 .co.on .co-bg{opacity:1}
-.co-p{position:relative;display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);width:min(1120px,100%);height:min(760px,100%);border-radius:30px;overflow:hidden;
+.co-p{position:relative;display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);width:min(1160px,100%);height:min(840px,100%);border-radius:30px;overflow:hidden;
   background:linear-gradient(150deg,#1a1410,#0e0b09 55%,#120d09);box-shadow:0 40px 120px rgba(0,0,0,.7),inset 1px 1px 1px rgba(255,236,214,.06),inset -1px -1px 2px rgba(0,0,0,.4);
   opacity:0;transform:translateY(28px) scale(.985);transition:opacity .5s var(--ease),transform .7s var(--ease)}
 .co.on .co-p{opacity:1;transform:none}
 .co ::selection{background:rgba(255,166,48,.35);color:#fff}
 /* left: the work itself */
-.co-s{position:relative;display:flex;flex-direction:column;gap:22px;padding:clamp(28px,3.4vw,48px);background:radial-gradient(120% 80% at 50% 30%,rgba(255,150,40,.10),transparent 60%),#0b0907;border-right:1px solid rgba(255,236,214,.06);overflow:auto;scrollbar-width:none}
+.co-s{position:relative;display:flex;flex-direction:column;gap:16px;padding:clamp(24px,2.6vw,40px) clamp(28px,3.4vw,48px) clamp(20px,2.2vw,32px);background:radial-gradient(120% 80% at 50% 30%,rgba(255,150,40,.10),transparent 60%),#0b0907;border-right:1px solid rgba(255,236,214,.06);overflow:auto;scrollbar-width:none}
 .co-s::-webkit-scrollbar{display:none}
-.co-wall{flex:1 1 0;min-height:240px;display:grid;place-items:center;container-type:size;margin:6px 0 4px}
-.co-art{position:relative;box-sizing:border-box;height:min(100cqh,440px);width:auto;max-width:100cqw;aspect-ratio:var(--ar,2/3);transition:padding .6s var(--ease),box-shadow .6s var(--ease),background .6s}
+.co-wall{flex:1 1 0;min-height:240px;display:grid;place-items:center;container-type:size;margin:0}
+.co-art{position:relative;box-sizing:border-box;height:min(100cqh,600px);width:auto;max-width:100cqw;aspect-ratio:var(--ar,2/3);transition:padding .6s var(--ease),box-shadow .6s var(--ease),background .6s}
 .co-art img{display:block;width:100%;height:100%;object-fit:cover;border-radius:1px}
 .co-art[data-f=framed]{padding:8px;background:linear-gradient(135deg,var(--f1),var(--f2) 45%,var(--f3));box-shadow:0 30px 60px rgba(0,0,0,.6),0 10px 18px rgba(0,0,0,.45),inset 1px 1px 0 rgba(255,255,255,.16),inset -1px -1px 0 rgba(0,0,0,.5),0 0 0 1px rgba(255,236,214,.07)}
 .co-art[data-f=framed] img{box-shadow:inset 0 0 0 1px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.35)}
@@ -74,11 +74,11 @@ var css=`
 .co-t{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(28px,2.6vw,40px);line-height:.95;color:var(--cream)}
 .co-t,.co-ed{text-align:center}
 .co-ed{margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.co-rows{display:grid;gap:10px;padding-top:16px;border-top:1px solid rgba(255,236,214,.08);font-size:14px}
+.co-rows{display:grid;gap:7px;padding-top:14px;border-top:1px solid rgba(255,236,214,.08);font-size:14px}
 .co-rows div{display:flex;justify-content:space-between;gap:16px}
 .co-rows dt{color:var(--muted)}.co-rows dd{color:var(--cream);text-align:right}
-.co-rows .tot{padding-top:12px;margin-top:4px;border-top:1px solid rgba(255,236,214,.08);align-items:baseline}
-.co-rows .tot dd{font-family:var(--head);font-size:30px;color:var(--amber);font-variant-numeric:tabular-nums}
+.co-rows .tot{padding-top:10px;margin-top:3px;border-top:1px solid rgba(255,236,214,.08);align-items:baseline}
+.co-rows .tot dd{font-family:var(--head);font-size:28px;line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
 .co-rows .tot small{font-family:var(--body);font-size:13px;color:var(--muted);margin-left:4px}
 .co-edit{align-self:flex-start;background:none;border:0;padding:12px 0 4px;margin-top:-8px;color:var(--amber);font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(255,166,48,.4);cursor:pointer;transition:color .3s,border-color .3s}
 .co-edit:hover{color:var(--sand);border-color:var(--sand)}
