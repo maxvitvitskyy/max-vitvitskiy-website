@@ -107,7 +107,7 @@ var css=`
 .co h3:focus,.co-ok:focus{outline:0}
 .co-sub{color:var(--muted);font-size:15px;line-height:1.6;max-width:46ch}
 .co-g{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px;align-items:start}
-.co-g>.w{grid-column:1/-1}
+.co-g>.co-w{grid-column:1/-1}
 .co-fl{position:relative;display:grid;align-content:start;gap:7px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .co-fl .lr{display:flex;justify-content:space-between;align-items:baseline;gap:10px;white-space:nowrap;min-width:0}
 .co-fl .lr>span:first-child{overflow:hidden;text-overflow:ellipsis}
@@ -221,7 +221,7 @@ var TICK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L1
 var root,st=0,ord=null,lastFocus=null,built=false;
 function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function lbl(t,opt){return '<span class="lr"><span>'+t+'</span>'+(opt?'<span class="op">'+T.opt+'</span>':'')+'</span>'}
-function fld(id,lab,attrs,w,hint,opt){return '<label class="co-fl'+(w?' w':'')+'" data-f="'+id+'">'+lbl(lab,opt)+'<input id="co-'+id+'" name="'+id+'" '+attrs+'>'+(hint?'<span class="hn">'+hint+'</span>':'')+'<span class="er" aria-live="polite"></span></label>'}
+function fld(id,lab,attrs,w,hint,opt){return '<label class="co-fl'+(w?' co-w':'')+'" data-f="'+id+'">'+lbl(lab,opt)+'<input id="co-'+id+'" name="'+id+'" '+attrs+'>'+(hint?'<span class="hn">'+hint+'</span>':'')+'<span class="er" aria-live="polite"></span></label>'}
 function countryOpts(){var dn=null;try{dn=new Intl.DisplayNames([EN?'en':'uk'],{type:'region'})}catch(e){}
   var n=function(c){return dn?dn.of(c):c};var rest=COUNTRIES.slice(1).sort(function(a,b){return n(a).localeCompare(n(b),EN?'en':'uk')});
   return ['UA'].concat(rest).map(function(c){return '<option value="'+c+'">'+esc(n(c))+'</option>'}).join('')+'<option value="OTHER">'+(EN?'Other country':'Інша країна')+'</option>'}
@@ -243,24 +243,24 @@ function build(){
    +'</div></section>'
    // step 2
    +'<section class="co-step" data-s="1"><h3>'+T.h[1]+'</h3><p class="co-sub">'+T.sub[1]+'</p><div class="co-g">'
-   +'<label class="co-fl w" data-f="country">'+lbl(T.country)+'<select id="co-country" name="country" autocomplete="country">'+countryOpts()+'</select><span class="er"></span></label>'
-   +'<div class="co-hide w" data-when="other"><div>'+fld('countryOther',EN?'Which country?':'Яка країна?','autocomplete="country-name"',1)+'</div></div>'
+   +'<label class="co-fl co-w" data-f="country">'+lbl(T.country)+'<select id="co-country" name="country" autocomplete="country">'+countryOpts()+'</select><span class="er"></span></label>'
+   +'<div class="co-hide co-w" data-when="other"><div>'+fld('countryOther',EN?'Which country?':'Яка країна?','autocomplete="country-name"',1)+'</div></div>'
    +fld('city',T.city,'autocomplete="address-level2" required',1)
-   +'<div class="co-hide w on" data-when="ua"><div class="co-g">'
-   +'<div class="co-fl w"><span class="lr" id="co-npl"><span>'+T.np+'</span></span><div class="co-seg" role="radiogroup" aria-labelledby="co-npl"><label><input type="radio" name="npType" value="branch" checked>'+T.npBranch+'</label><label><input type="radio" name="npType" value="courier">'+T.npCourier+'</label></div></div>'
-   +'<div class="co-hide w on" data-when="branch"><div>'+fld('branch',T.branch,'inputmode="numeric" placeholder="'+T.branchPh+'"',1)+'</div></div>'
+   +'<div class="co-hide co-w on" data-when="ua"><div class="co-g">'
+   +'<div class="co-fl co-w"><span class="lr" id="co-npl"><span>'+T.np+'</span></span><div class="co-seg" role="radiogroup" aria-labelledby="co-npl"><label><input type="radio" name="npType" value="branch" checked>'+T.npBranch+'</label><label><input type="radio" name="npType" value="courier">'+T.npCourier+'</label></div></div>'
+   +'<div class="co-hide co-w on" data-when="branch"><div>'+fld('branch',T.branch,'inputmode="numeric" placeholder="'+T.branchPh+'"',1)+'</div></div>'
    +'</div></div>'
-   +'<div class="co-hide w" data-when="addr"><div class="co-g">'
+   +'<div class="co-hide co-w" data-when="addr"><div class="co-g">'
    +fld('addr',T.addr,'autocomplete="address-line1"',1)
-   +'<div class="co-hide w" data-when="intl"><div class="co-g">'+fld('addr2',T.addr2,'autocomplete="address-line2"',1,0,1)+fld('region',T.region,'autocomplete="address-level1"',0,0,1)+fld('zip',T.zip,'autocomplete="postal-code"')+'</div></div>'
+   +'<div class="co-hide co-w" data-when="intl"><div class="co-g">'+fld('addr2',T.addr2,'autocomplete="address-line2"',1,0,1)+fld('region',T.region,'autocomplete="address-level1"',0,0,1)+fld('zip',T.zip,'autocomplete="postal-code"')+'</div></div>'
    +'</div></div>'
-   +'<label class="co-chk w"><input type="checkbox" name="gift"><span class="bx">'+TICK+'</span><span><b>'+T.gift+'</b><small>'+T.giftNote+'</small></span></label>'
-   +'<div class="co-hide w" data-when="gift"><div><label class="co-fl w">'+lbl(T.giftMsg,1)+'<textarea name="giftMsg" rows="2"></textarea></label></div></div>'
+   +'<label class="co-chk co-w"><input type="checkbox" name="gift"><span class="bx">'+TICK+'</span><span><b>'+T.gift+'</b><small>'+T.giftNote+'</small></span></label>'
+   +'<div class="co-hide co-w" data-when="gift"><div><label class="co-fl co-w">'+lbl(T.giftMsg,1)+'<textarea name="giftMsg" rows="2"></textarea></label></div></div>'
    +'</div></section>'
    // step 3
    +'<section class="co-step" data-s="2"><h3>'+T.h[2]+'</h3><p class="co-sub">'+T.sub[2]+'</p>'
    +'<div class="co-pay" role="radiogroup" aria-label="'+T.steps[2]+'">'+T.pay.map(function(p,k){return '<label><input type="radio" name="pay" value="'+p[0]+'"'+(k?'':' checked')+'><i>'+ICON[p[0]]+'</i><span><b>'+p[1]+'</b><small>'+p[2]+'</small></span><span class="rd"></span></label>'}).join('')+'</div>'
-   +'<label class="co-fl w">'+lbl(T.note,1)+'<textarea name="note" rows="3" placeholder="'+T.notePh+'"></textarea></label>'
+   +'<label class="co-fl co-w">'+lbl(T.note,1)+'<textarea name="note" rows="3" placeholder="'+T.notePh+'"></textarea></label>'
    +'<input class="co-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'+'<p class="co-fine">'+T.fine+'</p></section>'
    // done
    +'<section class="co-ok" tabindex="-1"><div class="co-okh"><span class="co-seal">'+TICK+'</span><h3>'+T.okH+'</h3></div><p class="co-sub co-okp"></p><p class="co-no">'+T.okNo+' <b></b></p><ol class="co-tl">'+T.okSteps.map(function(x){return '<li><span>'+x+'</span></li>'}).join('')+'</ol></section>'
