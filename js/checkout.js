@@ -161,8 +161,9 @@ var css=`
 /* done */
 .co-ok{display:none;flex-direction:column;gap:20px}
 .co-ok.on{display:flex;animation:coIn .6s var(--ease) both}
-.co-seal{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#ffc46b,#f29a2b 60%,#c97412);box-shadow:0 18px 40px rgba(242,154,43,.3),inset 2px 2px 3px rgba(255,255,255,.35),inset -3px -3px 6px rgba(0,0,0,.25)}
-.co-seal svg{width:36px;height:36px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:coTick .7s .25s var(--ease) forwards}
+.co-okh{display:flex;align-items:center;gap:16px}
+.co-seal{flex:none;width:.95em;height:.95em;font-size:clamp(30px,3vw,44px);border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,166,48,.55);background:rgba(255,166,48,.06);box-shadow:inset 0 0 14px rgba(255,166,48,.12)}
+.co-seal svg{width:52%;height:52%;fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:coTick .7s .25s var(--ease) forwards}
 @keyframes coTick{to{stroke-dashoffset:0}}
 .co-no{display:inline-flex;gap:14px;align-items:baseline;padding:12px 18px;border-radius:14px;background:rgba(0,0,0,.28);box-shadow:inset 3px 3px 7px rgba(0,0,0,.45);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);align-self:flex-start}
 .co-no{flex-wrap:wrap;row-gap:4px}.co-no b{white-space:nowrap;font:500 16px var(--body);letter-spacing:.08em;color:var(--amber);font-variant-numeric:tabular-nums}
@@ -244,7 +245,7 @@ function build(){
    +'<label class="co-fl w">'+T.note+'<textarea name="note" rows="3" placeholder="'+T.notePh+'"></textarea></label>'
    +'<p class="co-fine">'+T.fine+'</p></section>'
    // done
-   +'<section class="co-ok" tabindex="-1"><span class="co-seal">'+TICK+'</span><h3>'+T.okH+'</h3><p class="co-sub co-okp"></p><p class="co-no">'+T.okNo+' <b></b></p><ol class="co-tl">'+T.okSteps.map(function(x){return '<li><span>'+x+'</span></li>'}).join('')+'</ol></section>'
+   +'<section class="co-ok" tabindex="-1"><div class="co-okh"><span class="co-seal">'+TICK+'</span><h3>'+T.okH+'</h3></div><p class="co-sub co-okp"></p><p class="co-no">'+T.okNo+' <b></b></p><ol class="co-tl">'+T.okSteps.map(function(x){return '<li><span>'+x+'</span></li>'}).join('')+'</ol></section>'
    +'<p class="co-msg" role="alert"></p>'
    +'</form>'
    +'<div class="co-bar"><button class="co-bk" type="button" hidden>'+T.back+'</button><button class="co-go" type="button"><span class="lb">'+T.next+'</span><i class="ar" aria-hidden="true"></i></button></div>'
@@ -299,7 +300,7 @@ function next(){if(root.classList.contains('done')){close();return}
 function money(n){return '$'+Number(n).toLocaleString('en-US')}
 function summary(){var o=ord,a=root.querySelector('.co-art'),fr=FRAME[o.frameId]||FRAME.oak;
   a.dataset.f=o.finId;a.style.setProperty('--f1',fr[0]);a.style.setProperty('--f2',fr[1]);a.style.setProperty('--f3',fr[2]);
-  var m=/(\d+)\s*[×x]\s*(\d+)/.exec(o.size||'');a.style.setProperty('--ar',m?(m[1]+'/'+m[2]):'4/5');
+  var m=/(\d+)\s*[×x]\s*(\d+)/.exec(o.size||'');a.style.setProperty('--ar','4/5');
   a.querySelector('img').src=o.img;a.querySelector('img').alt=o.title;
   root.querySelector('.co-t').textContent=o.title;
   var rows=[[T.size,o.size],[T.fin,o.fin]];if(o.finId==='framed'&&o.frame)rows.push([T.frame,o.frame]);
