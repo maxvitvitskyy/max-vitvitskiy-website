@@ -25,18 +25,49 @@ var COLS = [
   ['payment', 'Оплата'], ['comment', 'Коментар'], ['lang', 'Мова'], ['url', 'Сторінка роботи']
 ];
 
-function sheet_() {
+// Звернення з форми на головній сторінці — окремий аркуш тієї ж таблиці
+var MSG_SHEET = 'Звернення';
+var MSG_COLS = [
+  ['received', 'Отримано'], ['status', 'Статус'], ['topic', 'Тема'],
+  ['name', 'Ім’я'], ['contact', 'Email / Telegram'], ['message', 'Повідомлення'],
+  ['lang', 'Мова'], ['url', 'Сторінка']
+];
+
+function sheetOf_(name, cols, statuses, statusCol, index) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sh = ss.getSheetByName(SHEET) || ss.insertSheet(SHEET, 0);
+  var sh = ss.getSheetByName(name) || ss.insertSheet(name, index);
   if (sh.getLastRow() === 0) {
-    sh.appendRow(COLS.map(function (c) { return c[1]; }));
+    sh.appendRow(cols.map(function (c) { return c[1]; }));
     sh.setFrozenRows(1);
-    sh.getRange(1, 1, 1, COLS.length).setFontWeight('bold').setBackground('#1a140f').setFontColor('#FFA630');
-    var st = sh.getRange(2, 3, 999, 1);
-    st.setDataValidation(SpreadsheetApp.newDataValidation()
-      .requireValueInList(['Новий', 'Підтверджено', 'Оплачено', 'Відправлено', 'Скасовано'], true).build());
+    sh.getRange(1, 1, 1, cols.length).setFontWeight('bold').setBackground('#1a140f').setFontColor('#FFA630');
+    sh.getRange(2, statusCol, 999, 1).setDataValidation(SpreadsheetApp.newDataValidation()
+      .requireValueInList(statuses, true).build());
   }
   return sh;
+}
+function sheet_() { return sheetOf_(SHEET, COLS, ['Новий', 'Підтверджено', 'Оплачено', 'Відправлено', 'Скасовано'], 3, 0); }
+function msgSheet_() { return sheetOf_(MSG_SHEET, MSG_COLS, ['Новий', 'В роботі', 'Відповів', 'Закрито'], 2, 1); }
+
+function row_(cols, d) {
+  return cols.map(function (c) {
+    var v = d[c[0]]; v = v == null ? '' : v;
+    return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v;   // без формул із форми
+  });
+}
+
+function contact_(d) {
+  if (!d.name || !d.contact || !d.message) return out_({ ok: false, error: 'missing fields' });
+  d.received = new Date();
+  d.status = 'Новий';
+  msgSheet_().appendRow(row_(MSG_COLS, d));
+  if (NOTIFY) {
+    var mail = { to: NOTIFY, subject: 'Нове звернення — ' + (d.topic || 'без теми') + ' — ' + d.name,
+      body: MSG_COLS.filter(function (c) { return d[c[0]] && c[0] !== 'received'; })
+        .map(function (c) { return c[1] + ': ' + d[c[0]]; }).join('\n') + '\n\nТаблиця: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl() };
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.contact)) mail.replyTo = d.contact;
+    MailApp.sendEmail(mail);
+  }
+  return out_({ ok: true });
 }
 
 function doPost(e) {
@@ -45,15 +76,11 @@ function doPost(e) {
   try {
     var d = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (d.website) return out_({ ok: true });                 // бот заповнив приховане поле
+    if (d.type === 'contact') return contact_(d);
     if (!d.order || !d.email || !d.work) return out_({ ok: false, error: 'missing fields' });
     d.received = new Date();
     d.status = 'Новий';
-    var row = COLS.map(function (c) {
-      var v = d[c[0]];
-      v = v == null ? '' : v;
-      return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v;   // без формул із форми
-    });
-    sheet_().appendRow(row);
+    sheet_().appendRow(row_(COLS, d));
     if (NOTIFY) {
       var lines = COLS.filter(function (c) { return d[c[0]] !== '' && d[c[0]] != null && c[0] !== 'received'; })
         .map(function (c) { return c[1] + ': ' + d[c[0]]; });
@@ -71,7 +98,7 @@ function doPost(e) {
   }
 }
 
-function setup() { sheet_(); }   // run once from the editor to create the sheet and grant permissions
+function setup() { sheet_(); msgSheet_(); }   // run once from the editor to create the sheet and grant permissions
 
 function doGet() { return out_({ ok: true, service: 'orders' }); }
 

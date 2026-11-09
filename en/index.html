@@ -917,6 +917,7 @@ h1,h2,h3,.display,.ttl,.menu a.big,.nav .logo+ul a{font-variant-ligatures:common
 .c-send{position:relative;z-index:1;width:78%;margin:0 0 11cqw;border-radius:calc(var(--btn-h)/2);min-height:var(--btn-h);flex:none;background:rgba(5,4,3,.9);border:1px solid rgba(255,170,56,.62);box-shadow:inset 0 0 22px rgba(255,150,40,.16);color:var(--cream);transition:border-color .5s var(--ease),box-shadow .8s var(--ease),color .4s,background .4s}
 /* the button shares the doorway's glow: both light up together */
 .c-send:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.c-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 .c-status{position:absolute;left:0;right:0;top:100%;margin-top:10px;min-height:1.4em;text-align:center;font-size:13px;line-height:1.45;color:var(--cream)}
 /* ---- neumorphic format tiles: raised slabs of the same material, icons sit in small wells ---- */
 .sx-block .sx-uses li{border-radius:20px;background:linear-gradient(145deg,rgba(255,236,214,.058),rgba(255,236,214,.016));box-shadow:8px 10px 22px rgba(0,0,0,.5),-6px -6px 16px rgba(255,236,214,.03),inset 1px 1px 1px rgba(255,236,214,.06),inset -1px -1px 2px rgba(0,0,0,.25);transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
@@ -1337,6 +1338,7 @@ html.leaving body{opacity:0;transform:translateY(-10px);transition:opacity .34s 
           </select><label for="cf-topic" data-uk="Що хочеш обговорити?">What shall we discuss?</label></div>
           <div class="fld"><textarea id="cf-msg" name="message" rows="1" placeholder=" " required></textarea><label for="cf-msg" data-uk="Повідомлення">Message</label></div>
           <a class="c-mailto" href="mailto:maxim.vitvitskiy@gmail.com" hidden tabindex="-1" aria-hidden="true"></a>
+          <input class="c-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         </form>
         <button class="btn c-send" type="submit" form="contact-form" data-uk="Надіслати">Send</button>
       </div>
@@ -1573,6 +1575,7 @@ fitLede();
 /* contact form: no backend, so the message is prepared in the visitor's own mail app */
 (function(){
   const f=document.getElementById('contact-form');if(!f)return;
+  const ENDPOINT='https://script.google.com/macros/s/AKfycbwgas3sSCdg5JE1-jCxaIyVmgAIy_qiVGggrydrz3rhjcOCyxb4HgcsRCmqhVCwcEoV/exec';
   const st=document.querySelector('.c-status'),ml=f.querySelector('.c-mailto');
   const uk=()=>document.documentElement.lang==='uk';
   f.addEventListener('submit',e=>{
@@ -1583,9 +1586,17 @@ fitLede();
     const t=f.topic.options[f.topic.selectedIndex].textContent.trim();
     const subj=(uk()?'Сайт: ':'Site: ')+t+' — '+n;
     const body=(uk()?'Тема: ':'Topic: ')+t+'\n'+(uk()?'Ім’я: ':'Name: ')+n+'\n'+(uk()?'Контакт: ':'Contact: ')+c+'\n\n'+m;
-    ml.href='mailto:maxim.vitvitskiy@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
-    ml.click();
-    st.textContent=uk()?'Лист підготовлено у твоєму поштовому застосунку — залишилось натиснути «Надіслати».':'The message is ready in your mail app — just hit Send.';
+    const mail=()=>{ml.href='mailto:maxim.vitvitskiy@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);ml.click();
+      st.textContent=uk()?'Лист підготовлено у твоєму поштовому застосунку — залишилось натиснути «Надіслати».':'The message is ready in your mail app — just hit Send.'};
+    /* messages go to the same Google Sheet as orders (sheet «Звернення»); the mail app is only the fallback */
+    const btn=document.querySelector('.c-send');btn.disabled=true;btn.setAttribute('aria-busy','true');st.textContent=uk()?'Надсилаю…':'Sending…';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({type:'contact',topic:t,topic_id:f.topic.value,name:n,contact:c,message:m,lang:uk()?'uk':'en',url:location.href,website:f.website.value})})
+     .then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{if(!j||!j.ok)throw 0;
+        st.textContent=uk()?'Дякую! Повідомлення надіслано — я відповім особисто.':'Thank you! Your message is sent — I will reply personally.';
+        f.reset();f.querySelectorAll('.invalid').forEach(x=>x.classList.remove('invalid'));grow()})
+     .catch(mail)
+     .then(()=>{btn.disabled=false;btn.removeAttribute('aria-busy')});
   });
   f.addEventListener('input',e=>{if(e.target.classList)e.target.classList.remove('invalid')});f.addEventListener('change',e=>{if(e.target.classList)e.target.classList.remove('invalid')});
   const fs=f.querySelector('.fld-sel'),sl=f.topic;
@@ -1594,6 +1605,7 @@ fitLede();
     sl.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'||(e.altKey&&e.key==='ArrowDown'))fs.classList.add('open');if(e.key==='Escape')fs.classList.remove('open')});
     ['change','blur'].forEach(ev=>sl.addEventListener(ev,()=>fs.classList.remove('open')));
   }
+  try{const tp=new URLSearchParams(location.search).get('topic');if(tp&&f.topic.querySelector('option[value="'+tp+'"]')){f.topic.value=tp;f.topic.dispatchEvent(new Event('change',{bubbles:true}))}}catch(e){}
   const ta=f.querySelector('textarea');const grow=()=>{ta.style.height='58px';ta.style.height=Math.min(150,Math.max(58,ta.scrollHeight))+'px'};ta.addEventListener('input',grow);
   /* every "discuss / write" button on the page leads to this form, with the matching topic preselected */
   document.querySelectorAll('a[data-topic]').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();if(f.topic){f.topic.value=l.dataset.topic;f.topic.dispatchEvent(new Event('change',{bubbles:true}))}
