@@ -303,7 +303,7 @@ def home(W, WE):
         src = re.sub(r'<meta property="og:url" content="[^"]*">', lambda m: f'<meta property="og:url" content="{url}">\n<meta property="og:locale" content="{"en_US" if en else "uk_UA"}">\n<meta property="og:locale:alternate" content="{"uk_UA" if en else "en_US"}">', src, count=1)
         person = {'@context': 'https://schema.org', '@type': 'Person', 'name': 'Max Vitvitskiy', 'url': SITE, 'image': SITE + 'img/about.webp',
                   'jobTitle': ['Artist', 'Experience Designer', 'Creative Mentor'] if en else ['Художник', 'Дизайнер вражень', 'Ментор креативності'],
-                  'sameAs': ['https://www.instagram.com/maxvitvitskiy/', 'https://www.youtube.com/@MaxVitvitskiy', 'https://www.tiktok.com/@maxvitvitskiy', 'https://t.me/maxvitvitskiy']}
+                  'sameAs': ['https://www.instagram.com/maxvitvitskiy/', 'https://www.youtube.com/@MaxVitvitskiy', 'https://www.tiktok.com/@maxvitvitskiy', 'https://t.me/maxvitvitskiy', 'https://www.linkedin.com/in/maxvitvitskiy/']}
         src = src.replace('<script>document.documentElement.classList.add("js")</script>', '<script type="application/ld+json">' + json.dumps(person, ensure_ascii=False) + '</script>\n<script>document.documentElement.classList.add("js")</script>', 1)
         # language handling in the page script: the language is the page's own; the toggle moves between the two URLs
         old = 'L.forEach(e=>e.dataset.en=e.innerHTML)'
