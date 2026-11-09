@@ -2,7 +2,7 @@
    Orders go to ENDPOINT as JSON when it is set (Formspree / FormSubmit / own worker); without it the order opens as a ready e-mail. */
 (function(){
 'use strict';
-var ENDPOINT='';                       // Google Apps Script web app (…/exec) that writes orders to the sheet — see tools/orders-apps-script.gs; empty = order opens as an e-mail
+var ENDPOINT='https://script.google.com/macros/s/AKfycbwgas3sSCdg5JE1-jCxaIyVmgAIy_qiVGggrydrz3rhjcOCyxb4HgcsRCmqhVCwcEoV/exec';                       // Google Apps Script web app (…/exec) that writes orders to the sheet — see apps-script/; empty = order opens as an e-mail
 var MAIL='maxim.vitvitskiy@gmail.com';
 var EN=(document.documentElement.lang||'uk').slice(0,2)==='en';
 var T=EN?{

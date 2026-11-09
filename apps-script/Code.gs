@@ -71,6 +71,8 @@ function doPost(e) {
   }
 }
 
+function setup() { sheet_(); }   // run once from the editor to create the sheet and grant permissions
+
 function doGet() { return out_({ ok: true, service: 'orders' }); }
 
 function out_(o) {
