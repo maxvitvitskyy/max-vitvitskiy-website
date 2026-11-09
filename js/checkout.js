@@ -86,7 +86,7 @@ var css=`
 .co-f{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;min-height:0;min-width:0}
 .co-top{display:flex;align-items:center;gap:18px;padding:26px clamp(24px,3.4vw,48px) 0}
 .co-pr{flex:1;display:flex;gap:6px;list-style:none;margin:0;padding:0;counter-reset:s}
-.co-pr li{flex:1;display:grid;gap:9px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,224,197,.42);transition:color .4s}
+.co-pr li{flex:1;display:grid;gap:9px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,224,197,.6);transition:color .4s}
 .co-pr li::before{content:"";height:3px;border-radius:3px;background:rgba(255,236,214,.09);background-image:linear-gradient(90deg,var(--amber),#ffc46b);background-size:0 100%;background-repeat:no-repeat;transition:background-size .7s var(--ease)}
 .co-pr li.on,.co-pr li.done{color:var(--cream)}.co-pr li.on::before,.co-pr li.done::before{background-size:100% 100%}
 .co-x{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,236,214,.12);background:rgba(0,0,0,.2);color:var(--cream);display:grid;place-items:center;cursor:pointer;transition:border-color .3s,color .3s}
@@ -112,18 +112,18 @@ var css=`
 .co-fl{position:relative;display:grid;align-content:start;gap:7px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .co-fl .lr{display:flex;justify-content:space-between;align-items:baseline;gap:10px;white-space:nowrap;min-width:0}
 .co-fl .lr>span:first-child{overflow:hidden;text-overflow:ellipsis}
-.co-fl .op{font-size:12px;letter-spacing:.02em;text-transform:none;color:rgba(241,224,197,.42)}
+.co-fl .op{font-size:12px;letter-spacing:.02em;text-transform:none;color:rgba(241,224,197,.62)}
 .co-fl input,.co-fl select,.co-fl textarea{width:100%;min-height:52px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,236,214,.12);background:rgba(0,0,0,.34);color:var(--cream);font:400 16px/1.4 var(--body);letter-spacing:0;text-transform:none;
   box-shadow:inset 3px 3px 7px rgba(0,0,0,.5),inset -1px -1px 0 rgba(255,236,214,.05);caret-color:var(--amber);transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;appearance:none}
 .co-fl textarea{min-height:96px;height:96px;resize:vertical}
 .co-fl select{padding-right:44px;background-image:var(--chev);background-repeat:no-repeat;background-position:right 18px center;background-size:8px 13px;cursor:pointer}
 .co-fl select option{background:#16110d;color:var(--cream)}
-.co-fl input::placeholder,.co-fl textarea::placeholder{color:rgba(241,224,197,.5)}
+.co-fl input::placeholder,.co-fl textarea::placeholder{color:rgba(241,224,197,.56)}
 .co-fl input:focus,.co-fl select:focus,.co-fl textarea:focus{outline:0;border-color:rgba(255,166,48,.6);box-shadow:inset 3px 3px 7px rgba(0,0,0,.45),0 0 0 4px rgba(255,166,48,.12)}
 .co-fl.bad input,.co-fl.bad select{border-color:rgba(255,120,90,.7)}
 .co-fl .er{min-height:0;font-size:13px;letter-spacing:0;text-transform:none;color:#ff9b7d;line-height:1.4}
 .co-fl .er:empty{display:none}
-.co-fl .hn{font-size:12px;letter-spacing:0;text-transform:none;color:rgba(241,224,197,.5)}
+.co-fl .hn{font-size:12px;letter-spacing:0;text-transform:none;color:rgba(241,224,197,.62)}
 .co-fl input:hover,.co-fl select:hover,.co-fl textarea:hover{border-color:rgba(255,236,214,.2)}
 .co-fl input:-webkit-autofill{-webkit-text-fill-color:var(--cream);-webkit-box-shadow:inset 0 0 0 60px #1a140f;caret-color:var(--amber)}
 /* segmented choice + payment cards */
@@ -153,7 +153,7 @@ var css=`
 .co-hide.on{animation:coRv .5s var(--ease) both}
 @keyframes coRv{from{opacity:0;transform:translateY(-6px)}}
 .co-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
-.co-fine{font-size:13px;line-height:1.55;color:rgba(241,224,197,.5);text-wrap:balance}
+.co-fine{font-size:13px;line-height:1.55;color:rgba(241,224,197,.62);text-wrap:balance}
 /* bottom bar */
 .co-bar{display:flex;align-items:center;gap:12px;padding:16px clamp(24px,3.4vw,48px) calc(18px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,236,214,.06);background:linear-gradient(180deg,rgba(14,11,9,.6),#0e0b09)}
 .co-bk{min-height:52px;padding:0 22px;border-radius:99px;border:1px solid rgba(255,236,214,.12);background:none;color:var(--cream);font:500 13px var(--body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,color .3s,opacity .3s}

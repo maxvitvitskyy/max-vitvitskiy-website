@@ -327,6 +327,7 @@ def home(W, WE):
             src = re.sub(r'(?<=["\'(,\s])(img|fonts|video|reels|js)/', r'/\1/', src)
         else:
             src = to_uk(src)
+            src = re.sub(r'aria-label="[^"]*"( data-aria-uk="([^"]*)")', r'aria-label="\2"\1', src)   # attributes have no data-uk: swap the Ukrainian label in
         write('en/index.html' if en else 'index.html', src)
 
 
