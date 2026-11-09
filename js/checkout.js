@@ -99,7 +99,7 @@ var css=`
 .co-step>.co-pay+.co-fl{margin-top:22px}
 .co-step>.co-fine{margin-top:18px}
 .co-step.on{display:flex;animation:coIn .55s var(--ease) both}
-.co-step.back{animation-name:coInB}
+.co-step.co-rev{animation-name:coInB}
 @keyframes coIn{from{opacity:0;transform:translateX(26px);filter:blur(4px)}}
 @keyframes coInB{from{opacity:0;transform:translateX(-26px);filter:blur(4px)}}
 .co h3{font-family:var(--head);font-weight:400;text-transform:uppercase;font-size:clamp(30px,3vw,44px);line-height:.95;color:var(--cream);text-wrap:balance}
@@ -301,7 +301,7 @@ function valid(s){var sec=root.querySelector('.co-step[data-s="'+s+'"]'),ok=true
   sec.querySelectorAll('.co-fl[data-f] input').forEach(function(i){if(i.closest('.co-hide:not(.on)'))return;if(!check(i)){ok=false;first=first||i}});
   if(first)first.focus();return ok}
 function go(s,dir){var prev=st;st=Math.max(0,Math.min(2,s));var back=st<prev;
-  root.querySelectorAll('.co-step').forEach(function(x,k){x.classList.toggle('on',k===st);x.classList.toggle('back',k===st&&back)});
+  root.querySelectorAll('.co-step').forEach(function(x,k){x.classList.toggle('on',k===st);x.classList.toggle('co-rev',k===st&&back)});
   root.querySelector('.co-ok').classList.remove('on');
   root.querySelectorAll('.co-pr li').forEach(function(x,k){x.classList.toggle('on',k===st);x.classList.toggle('done',k<st);if(k===st)x.setAttribute('aria-current','step');else x.removeAttribute('aria-current')});
   root.querySelector('.co-bk').hidden=st===0;
