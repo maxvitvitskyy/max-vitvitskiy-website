@@ -310,11 +310,11 @@ def home(W, WE):
         assert old in src
         src = src.replace(old, 'L.forEach(e=>{if(e.dataset.en===undefined)e.dataset.en=e.innerHTML})', 1)
         src, k = re.subn(r"document\.querySelectorAll\('\.lang button'\)\.forEach\(b=>b\.onclick=\(\)=>\{.*?\n\s*setTimeout\(\(\)=>\{setLang\(l\);.*?\},210\)\}\);\n",
-                         lambda m: "document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{const l=b.dataset.l;if(l===document.documentElement.lang)return;try{localStorage.setItem('lang',l)}catch(e){}location.href=(l==='en'?'/en/':'/')+location.hash});\n", src, count=1, flags=re.S)
+                         lambda m: "document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{const l=b.dataset.l;if(l===document.documentElement.lang)return;try{localStorage.setItem('lang',l)}catch(e){}location.href=(l==='en'?'/en/':'/')+location.search+location.hash});\n", src, count=1, flags=re.S)
         assert k == 1, 'language toggle handler not found'
         src, k = re.subn(r"let sl=null;try\{sl=localStorage\.getItem\('lang'\)\}catch\(e\)\{\}\nsetLang\(sl\|\|.*?\);\n",
                          lambda m: ("let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}\n"
-                                    + ("setLang('en');\n" if en else "if(sl==='en')location.replace('/en/'+location.hash);else setLang('uk');\n")), src, count=1, flags=re.S)
+                                    + ("setLang('en');\n" if en else "if(sl==='en')location.replace('/en/'+location.search+location.hash);else setLang('uk');\n")), src, count=1, flags=re.S)
         assert k == 1, 'language init not found'
         if en:
             # English raw links and root-absolute assets (the page lives one level down)

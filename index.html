@@ -1385,9 +1385,9 @@ function setLang(l){buildRings(l);L.forEach(e=>e.innerHTML=l==='uk'?e.dataset.uk
 document.addEventListener('click',e=>{const a=e.target.closest('a[href="#"]');if(a)e.preventDefault()});
 /* the area Safari reveals when you pull past the page edge: hero colour on top, the black page end at the bottom */
 {const de=document.documentElement,chk=()=>de.classList.toggle('at-end',scrollY>0&&innerHeight+scrollY>=de.scrollHeight-2);addEventListener('scroll',chk,{passive:true});chk()}
-document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{const l=b.dataset.l;if(l===document.documentElement.lang)return;try{localStorage.setItem('lang',l)}catch(e){}location.href=(l==='en'?'/en/':'/')+location.hash});
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{const l=b.dataset.l;if(l===document.documentElement.lang)return;try{localStorage.setItem('lang',l)}catch(e){}location.href=(l==='en'?'/en/':'/')+location.search+location.hash});
 let sl=null;try{sl=localStorage.getItem('lang')}catch(e){}
-if(sl==='en')location.replace('/en/'+location.hash);else setLang('uk');
+if(sl==='en')location.replace('/en/'+location.search+location.hash);else setLang('uk');
 /* motion: mark targets, reveal them as they enter the viewport, then drop the classes so hover and layout are untouched */
 (function(){
   document.querySelectorAll('.rv').forEach(e=>e.classList.remove('rv'));
@@ -1580,7 +1580,7 @@ fitLede();
   const uk=()=>document.documentElement.lang==='uk';
   f.addEventListener('submit',e=>{
     e.preventDefault();
-    let ok=true;f.querySelectorAll('input,textarea,select').forEach(el=>{const bad=!el.value.trim();el.classList.toggle('invalid',bad);if(bad&&ok){el.focus();ok=false}});
+    let ok=true;f.querySelectorAll('input:not(.c-hp),textarea,select').forEach(el=>{const bad=!el.value.trim();el.classList.toggle('invalid',bad);if(bad&&ok){el.focus();ok=false}});
     if(!ok){st.textContent=uk()?'Заповни всі поля, будь ласка.':'Please fill in all fields.';return}
     const n=f.name.value.trim(),c=f.contact.value.trim(),m=f.message.value.trim();
     const t=f.topic.options[f.topic.selectedIndex].textContent.trim();

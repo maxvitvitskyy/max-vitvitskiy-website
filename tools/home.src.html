@@ -1580,7 +1580,7 @@ fitLede();
   const uk=()=>document.documentElement.lang==='uk';
   f.addEventListener('submit',e=>{
     e.preventDefault();
-    let ok=true;f.querySelectorAll('input,textarea,select').forEach(el=>{const bad=!el.value.trim();el.classList.toggle('invalid',bad);if(bad&&ok){el.focus();ok=false}});
+    let ok=true;f.querySelectorAll('input:not(.c-hp),textarea,select').forEach(el=>{const bad=!el.value.trim();el.classList.toggle('invalid',bad);if(bad&&ok){el.focus();ok=false}});
     if(!ok){st.textContent=uk()?'Заповни всі поля, будь ласка.':'Please fill in all fields.';return}
     const n=f.name.value.trim(),c=f.contact.value.trim(),m=f.message.value.trim();
     const t=f.topic.options[f.topic.selectedIndex].textContent.trim();
