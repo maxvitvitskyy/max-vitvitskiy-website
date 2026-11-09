@@ -330,7 +330,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
 <script defer src="js/gsap.min.js"></script>
 <script defer src="js/Flip.min.js"></script>
 <script defer src="js/works-motion.js?v=7c3165e0"></script>
-<script defer src="js/checkout.js?v=90a90c52"></script>
+<script defer src="js/checkout.js?v=fdd9e01f"></script>
 <script defer src="js/hd-fit.js?v=cdd07240"></script>
 <script>try{localStorage.setItem('lang','uk')}catch(e){}</script>
 </head>
@@ -625,7 +625,7 @@ function fillCfg(w){const pr=dv.querySelector('.pr');
   fs.innerHTML=w.sizes.map(z=>'<option value="'+z.id+'">'+esc(z.label)+'</option>').join('');
   ff.innerHTML=w.fins.map(z=>'<option value="'+z.id+'">'+esc(z.label)+'</option>').join('');
   fr.innerHTML=w.frames.map(z=>'<option value="'+z.id+'">'+esc(z.label)+'</option>').join('');
-  ff.value='framed';upd()}
+  ff.value='framed';if(w.frames.some(z=>z.id==='coal'))fr.value='coal';upd()}
 function upd(){const w=W[cur];if(!w.sizes)return;frL.hidden=ff.value!=='framed';
   dv.querySelector('.pv').textContent='$'+priceOf(w).toLocaleString('en-US');
   dv.querySelector('.pn').textContent=(w.fins.find(x=>x.id===ff.value)||{}).note+' Ціна в USD, без доставки.';

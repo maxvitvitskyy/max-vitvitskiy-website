@@ -129,7 +129,8 @@ def dialog(w, n, total, lang='uk', W=None):
     desc = ('<p>' + e(w['lead']) + '</p>' if w.get('lead') else '') + ''.join('<p>' + p + '</p>' for p in w['story'])
     opts = lambda xs: ''.join(f'<option value="{e(x["id"])}">{e(x["label"])}</option>' for x in xs)
     fin = next(f for f in w['fins'] if f['id'] == 'framed')
-    p0 = w['sizes'][0]['p']['framed'][w['frames'][0]['id']]
+    f0 = 'coal' if any(f['id'] == 'coal' for f in w['frames']) else w['frames'][0]['id']   # black frame is the default
+    p0 = w['sizes'][0]['p']['framed'][f0]
     info = ''.join('<details><summary>' + e(b['t']) + '</summary>'
                    + ('<ul class="tags">' + ''.join('<li>' + e(t) + '</li>' for t in b['tags']) + '</ul>' if b.get('tags') else '')
                    + ('<ul>' + ''.join('<li>' + e(t) + '</li>' for t in b['l']) + '</ul>' if b.get('l') else '')
@@ -158,7 +159,7 @@ def dialog(w, n, total, lang='uk', W=None):
     <form class="cf" onsubmit="return false">
       <label>Розмір<select id="cf-size">{opts(w['sizes'])}</select></label>
       <label>Виконання<select id="cf-fin">{opts(w['fins'])}</select></label>
-      <label class="fr">Колір рами<select id="cf-frame">{opts(w['frames'])}</select></label>
+      <label class="fr">Колір рами<select id="cf-frame">{opts(w['frames']).replace(f'value="{f0}"', f'value="{f0}" selected')}</select></label>
     </form>
     <div class="buy"><div class="pr"><span class="pv">${p0:,}</span><small class="pn">{e(fin['note'])} Ціна в USD, без доставки.</small></div><a class="ask" href="mailto:maxim.vitvitskiy@gmail.com?subject={e('Artwork: ' + w['title'])}">Придбати картину<i class="ar" aria-hidden="true"></i></a></div>
     <dl><dt>Техніка</dt><dd>Фотографія, цифрова композиція</dd><dt>Документи</dt><dd>Сертифікат автентичності</dd></dl>

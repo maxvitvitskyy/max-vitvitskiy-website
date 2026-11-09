@@ -46,7 +46,7 @@ var T=EN?{
   okBack:'Повернутися до галереї',err:'Не вдалося надіслати замовлення. Перевірте з’єднання й спробуйте ще раз — або напишіть на '+MAIL,
   mailSubj:'Замовлення',summary:'Ваше замовлення'
 };
-var FRAME={natural:['#d9b58a','#b98d5e','#8a6340'],oak:['#6b4628','#4a2f1a','#2e1c0f'],ebony:['#2a211b','#17110d','#0b0806'],coal:['#3a3a38','#232322','#121211']};
+var FRAME={natural:['#d9b58a','#b98d5e','#8a6340'],oak:['#6b4628','#4a2f1a','#2e1c0f'],ebony:['#2a211b','#17110d','#0b0806'],coal:['#4b4a47','#2b2a28','#171615']};
 var COUNTRIES='UA PL DE GB US CA FR IT ES NL BE AT CH CZ SK HU RO MD LT LV EE FI SE NO DK IE PT GR BG HR SI IL AE TR GE AU NZ JP KR SG'.split(' ');
 
 var css=`
@@ -65,7 +65,7 @@ var css=`
 .co-wall{flex:1 1 0;min-height:240px;display:grid;place-items:center;container-type:size;margin:6px 0 4px}
 .co-art{position:relative;box-sizing:border-box;height:min(100cqh,440px);width:auto;max-width:100cqw;aspect-ratio:var(--ar,2/3);transition:padding .6s var(--ease),box-shadow .6s var(--ease),background .6s}
 .co-art img{display:block;width:100%;height:100%;object-fit:cover;border-radius:1px}
-.co-art[data-f=framed]{padding:13px;background:linear-gradient(135deg,var(--f1),var(--f2) 45%,var(--f3));box-shadow:0 30px 60px rgba(0,0,0,.6),0 10px 18px rgba(0,0,0,.45),inset 1px 1px 0 rgba(255,255,255,.12),inset -1px -1px 0 rgba(0,0,0,.5)}
+.co-art[data-f=framed]{padding:8px;background:linear-gradient(135deg,var(--f1),var(--f2) 45%,var(--f3));box-shadow:0 30px 60px rgba(0,0,0,.6),0 10px 18px rgba(0,0,0,.45),inset 1px 1px 0 rgba(255,255,255,.16),inset -1px -1px 0 rgba(0,0,0,.5),0 0 0 1px rgba(255,236,214,.07)}
 .co-art[data-f=framed] img{box-shadow:inset 0 0 0 1px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.35)}
 .co-art[data-f=stretched]{box-shadow:0 26px 50px rgba(0,0,0,.6),6px 8px 0 -2px rgba(0,0,0,.35)}
 .co-art[data-f=rolled]{box-shadow:0 18px 40px rgba(0,0,0,.5)}
