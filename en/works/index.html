@@ -95,6 +95,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:359px){.st{gap:5px;letter-spacing:0}.ed{display:none}}
 /* every card keeps its natural height: a long title is cut with an ellipsis instead of pushing the card down, and tracks never stretch */
 .w{align-content:start;grid-template-columns:minmax(0,1fr);min-width:0}.w .ph{min-width:0;width:100%}.w .cap{min-width:0;overflow:hidden}.row{flex-wrap:nowrap;min-width:0}.row .n,.row .st{flex:none}.row .ed{min-width:0;overflow:hidden;text-overflow:ellipsis}.ttl{white-space:nowrap}
+footer a{text-decoration:none;transition:color .3s}footer a:hover{color:var(--cream)}
 footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
 /* detail view: the work fills the screen, its story beside it */
 .dv{position:fixed;inset:0;z-index:50;background:#070605;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;overscroll-behavior:contain}
@@ -330,7 +331,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
 <script defer src="js/gsap.min.js"></script>
 <script defer src="js/Flip.min.js"></script>
 <script defer src="js/works-motion.js?v=7c3165e0"></script>
-<script defer src="js/checkout.js?v=6d7a7fa2"></script>
+<script defer src="js/checkout.js?v=6993ce6b"></script>
 <script defer src="js/hd-fit.js?v=cdd07240"></script>
 <script>try{localStorage.setItem('lang','en')}catch(e){}</script>
 </head>
@@ -478,7 +479,7 @@ h1,h2,h3,.ttl,.dv h2{font-variant-ligatures:common-ligatures discretionary-ligat
     </div>
   </section>
 </main>
-<footer><span>© 2026 Max Vitvitskiy</span><span>Create · Inspire · Experience</span></footer>
+<footer><span>© 2026 Max Vitvitskiy</span><a href="/en/privacy/">Privacy policy</a><span>Create · Inspire · Experience</span></footer>
 
 <div class="dv" id="dv" role="dialog" aria-modal="true" aria-labelledby="dv-t" hidden>
   <button class="x" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>

@@ -99,6 +99,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:359px){.st{gap:5px;letter-spacing:0}.ed{display:none}}
 /* every card keeps its natural height: a long title is cut with an ellipsis instead of pushing the card down, and tracks never stretch */
 .w{align-content:start;grid-template-columns:minmax(0,1fr);min-width:0}.w .ph{min-width:0;width:100%}.w .cap{min-width:0;overflow:hidden}.row{flex-wrap:nowrap;min-width:0}.row .n,.row .st{flex:none}.row .ed{min-width:0;overflow:hidden;text-overflow:ellipsis}.ttl{white-space:nowrap}
+footer a{text-decoration:none;transition:color .3s}footer a:hover{color:var(--cream)}
 footer{border-top:1px solid var(--line);margin:0 var(--gut);padding:26px 0 40px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
 /* detail view: the work fills the screen, its story beside it */
 .dv{position:fixed;inset:0;z-index:50;background:#070605;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;overscroll-behavior:contain}
@@ -573,6 +574,6 @@ const re=()=>{nbSync();if(!busy){still(true);nbPlace(ak,0,0,0);im.getBoundingCli
 addEventListener('resize',re);im.addEventListener('load',nbSync);if(window.ResizeObserver)new ResizeObserver(re).observe(im)}
 nbReady=true;if(im.getAttribute('src'))mark(im.getAttribute('src'));
 </script>
-<script defer src="js/checkout.js?v=6d7a7fa2"></script>
+<script defer src="js/checkout.js?v=6993ce6b"></script>
 </body>
 </html>

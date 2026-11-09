@@ -435,6 +435,7 @@ def main():
 
     entry('', 'en/', [])
     entry('works.html', 'en/works/', [])
+    entry('privacy/', 'en/privacy/', [])
     for i in real:
         entry('works/' + W[i]['slug'] + '/', 'en/works/' + W[i]['slug'] + '/', W[i]['imgs'])
     sm.append('</urlset>\n')
@@ -443,5 +444,12 @@ def main():
     print(f'catalog: {len(W)} cards x2 languages, pages: {len(real)}x2, sitemap urls: {4 + 2 * len(real)}')
 
 
+def legal():
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import legal as L
+    L.main()
+
+
 if __name__ == '__main__':
+    legal()
     main()

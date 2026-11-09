@@ -132,6 +132,7 @@ UI = [
     ('<span class="k">Галерея · 2021–2026</span><h1>Нові <i>роботи</i></h1>', '<span class="k">Gallery · 2021–2026</span><h1>New <i>works</i></h1>'),
     ('<p><span>Я створюю образи, що поєднують реальність, уяву та символізм. У кожній роботі закладена історія, думка або відчуття — про те, що ми переживаємо, у що віримо та що відкриваємо в собі.</span> <span>Це мистецтво про внутрішній світ людини, красу життя та сенси, які не завжди можна передати словами.</span></p>',
      '<p><span>I create images that combine reality, imagination and symbolism. Every work holds a story, a thought or a feeling — about what we live through, what we believe in and what we discover within ourselves.</span> <span>This is art about the inner world of a person, the beauty of life and meanings that cannot always be put into words.</span></p>'),
+    ('<a href="/privacy/">Політика конфіденційності</a>', '<a href="/en/privacy/">Privacy policy</a>'),
     ('Створюй · Надихай · Проживай', 'Create · Inspire · Experience'),
     ('Читати повністю</button>', 'Read more</button>'),
     ('<label>Розмір<select', '<label>Size<select'),

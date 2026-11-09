@@ -16,7 +16,7 @@ var T=EN?{
   pay:[['card','Card online','Visa, Mastercard, Apple Pay, Google Pay'],['paypal','PayPal','Convenient for buyers outside Ukraine'],['iban','Bank transfer','Invoice for companies and sole proprietors']],
   note:'Comment',notePh:'Room, wall size, delivery wishes…',
   next:'Continue',back:'Back',send:'Send the order',sending:'Sending…',
-  fine:'By sending the order you agree that your data is used only to process this order. You pay nothing now.',
+  fine:'By sending the order you agree to the <a href="/en/privacy/" target="_blank" rel="noopener">privacy policy</a>: your data is used only for this order. You pay nothing now.',
   size:'Size',fin:'Finish',frame:'Frame',price:'Work',ship:'Delivery',shipV:'after confirmation',total:'Total',plus:' + delivery',
   ed:'Edition of 10 · signed · certificate of authenticity',edit:'Change',
   req:'Please fill this in',bad:{email:'This doesn’t look like an e-mail — check for a missing @ or dot.',phone:'Add the full number with the country code, e.g. +44…'},
@@ -36,7 +36,7 @@ var T=EN?{
   pay:[['card','Карткою онлайн','Visa, Mastercard, Apple Pay, Google Pay'],['paypal','PayPal','Зручно для покупців з-за кордону'],['iban','Переказ на рахунок','Рахунок для компаній і ФОП']],
   note:'Коментар',notePh:'Кімната, розмір стіни, побажання до доставки…',
   next:'Далі',back:'Назад',send:'Надіслати замовлення',sending:'Надсилаю…',
-  fine:'Надсилаючи замовлення, ви погоджуєтесь, що дані використовуються лише для його оформлення. Зараз ви нічого не платите.',
+  fine:'Надсилаючи замовлення, ви погоджуєтесь з <a href="/privacy/" target="_blank" rel="noopener">політикою конфіденційності</a>: дані використовуються лише для цього замовлення. Зараз ви нічого не платите.',
   size:'Розмір',fin:'Виконання',frame:'Рама',price:'Робота',ship:'Доставка',shipV:'після підтвердження',total:'Разом',plus:' + доставка',
   ed:'Тираж 10 · підпис · сертифікат автентичності',edit:'Змінити',
   req:'Заповніть це поле',bad:{email:'Схоже, в адресі бракує @ або крапки — перевірте, будь ласка.',phone:'Вкажіть повний номер, наприклад +380 67 123 45 67'},
@@ -97,7 +97,8 @@ var css=`
 .co-step>h3+.co-sub{margin-top:12px}
 .co-step>.co-sub{margin-bottom:28px}
 .co-step>.co-pay+.co-fl{margin-top:22px}
-.co-step>.co-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.co-step>.co-fine a{color:var(--cream);text-decoration:underline;text-decoration-color:rgba(255,166,48,.5);text-underline-offset:3px}.co-fine a:hover{color:var(--amber)}
+.co-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 .co-fine{margin-top:18px}
 .co-step.on{display:flex;animation:coIn .55s var(--ease) both}
 .co-step.co-rev{animation-name:coInB}
