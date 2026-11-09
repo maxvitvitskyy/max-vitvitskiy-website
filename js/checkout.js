@@ -2,7 +2,7 @@
    Orders go to ENDPOINT as JSON when it is set (Formspree / FormSubmit / own worker); without it the order opens as a ready e-mail. */
 (function(){
 'use strict';
-var ENDPOINT='';                       // e.g. 'https://formspree.io/f/xxxx' — leave empty to send the order by e-mail
+var ENDPOINT='';                       // Google Apps Script web app (…/exec) that writes orders to the sheet — see tools/orders-apps-script.gs; empty = order opens as an e-mail
 var MAIL='maxim.vitvitskiy@gmail.com';
 var EN=(document.documentElement.lang||'uk').slice(0,2)==='en';
 var T=EN?{
@@ -97,7 +97,8 @@ var css=`
 .co-step>h3+.co-sub{margin-top:12px}
 .co-step>.co-sub{margin-bottom:28px}
 .co-step>.co-pay+.co-fl{margin-top:22px}
-.co-step>.co-fine{margin-top:18px}
+.co-step>.co-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.co-fine{margin-top:18px}
 .co-step.on{display:flex;animation:coIn .55s var(--ease) both}
 .co-step.co-rev{animation-name:coInB}
 @keyframes coIn{from{opacity:0;transform:translateX(26px);filter:blur(4px)}}
@@ -150,6 +151,7 @@ var css=`
 .co-hide:not(.on){display:none}
 .co-hide.on{animation:coRv .5s var(--ease) both}
 @keyframes coRv{from{opacity:0;transform:translateY(-6px)}}
+.co-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 .co-fine{font-size:13px;line-height:1.55;color:rgba(241,224,197,.5);text-wrap:balance}
 /* bottom bar */
 .co-bar{display:flex;align-items:center;gap:12px;padding:16px clamp(24px,3.4vw,48px) calc(18px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,236,214,.06);background:linear-gradient(180deg,rgba(14,11,9,.6),#0e0b09)}
@@ -259,7 +261,7 @@ function build(){
    +'<section class="co-step" data-s="2"><h3>'+T.h[2]+'</h3><p class="co-sub">'+T.sub[2]+'</p>'
    +'<div class="co-pay" role="radiogroup" aria-label="'+T.steps[2]+'">'+T.pay.map(function(p,k){return '<label><input type="radio" name="pay" value="'+p[0]+'"'+(k?'':' checked')+'><i>'+ICON[p[0]]+'</i><span><b>'+p[1]+'</b><small>'+p[2]+'</small></span><span class="rd"></span></label>'}).join('')+'</div>'
    +'<label class="co-fl w">'+lbl(T.note,1)+'<textarea name="note" rows="3" placeholder="'+T.notePh+'"></textarea></label>'
-   +'<p class="co-fine">'+T.fine+'</p></section>'
+   +'<input class="co-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'+'<p class="co-fine">'+T.fine+'</p></section>'
    // done
    +'<section class="co-ok" tabindex="-1"><div class="co-okh"><span class="co-seal">'+TICK+'</span><h3>'+T.okH+'</h3></div><p class="co-sub co-okp"></p><p class="co-no">'+T.okNo+' <b></b></p><ol class="co-tl">'+T.okSteps.map(function(x){return '<li><span>'+x+'</span></li>'}).join('')+'</ol></section>'
    +'<p class="co-msg" role="alert"></p>'
@@ -338,7 +340,7 @@ function payload(no){var c=val('country'),cn=c==='OTHER'?val('countryOther'):(ro
   var addr=ua?(cour?(T.npCourier+': '+val('addr')):(T.np+', '+T.npBranch.toLowerCase()+' №'+val('branch'))):[val('addr'),val('addr2'),val('region'),val('zip')].filter(Boolean).join(', ');
   return {order:no,work:ord.title,url:ord.url,size:ord.size,finish:ord.fin,frame:ord.finId==='framed'?ord.frame:'',price_usd:ord.price,
     name:val('name'),email:val('email'),phone:val('phone'),country:cn,city:val('city'),delivery:addr,
-    gift:val('gift')?(EN?'yes':'так'):'',gift_message:val('giftMsg'),payment:pay?pay[1]:'',comment:val('note'),lang:EN?'en':'uk'}}
+    gift:val('gift')?(EN?'yes':'так'):'',gift_message:val('giftMsg'),payment:pay?pay[1]:'',comment:val('note'),lang:EN?'en':'uk',website:val('website')}}
 function asText(p){var L=EN?{order:'Order',work:'Work',url:'Link',size:'Size',finish:'Finish',frame:'Frame',price_usd:'Price, USD',name:'Name',email:'E-mail',phone:'Phone',country:'Country',city:'City',delivery:'Delivery',gift:'Gift',gift_message:'Card text',payment:'Payment',comment:'Comment'}
   :{order:'Замовлення',work:'Робота',url:'Посилання',size:'Розмір',finish:'Виконання',frame:'Рама',price_usd:'Ціна, USD',name:'Ім’я',email:'Email',phone:'Телефон',country:'Країна',city:'Місто',delivery:'Доставка',gift:'Подарунок',gift_message:'Текст листівки',payment:'Оплата',comment:'Коментар'};
   return Object.keys(L).filter(function(k){return p[k]}).map(function(k){return L[k]+': '+p[k]}).join('\n')}
@@ -346,8 +348,9 @@ function send(){var b=root.querySelector('.co-go'),no=orderNo(),p=payload(no),ms
   save();
   if(!ENDPOINT){location.href='mailto:'+MAIL+'?subject='+encodeURIComponent(T.mailSubj+' '+no+' — '+p.work)+'&body='+encodeURIComponent(asText(p)+'\n');done(no,true);return}
   b.disabled=true;b.querySelector('.lb').textContent=T.sending;var ar=b.querySelector('.ar');ar.className='sp';
-  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.assign({_subject:T.mailSubj+' '+no+' — '+p.work,_replyto:p.email,message:asText(p)},p))})
-   .then(function(r){if(!r.ok)throw 0;done(no,false)})
+  /* text/plain keeps it a simple request (no CORS preflight, which Apps Script does not answer) */
+  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)})
+   .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j||!j.ok)throw 0;done(no,false)})
    .catch(function(){msg.textContent=T.err})
    .then(function(){b.disabled=false;ar.className='ar';if(!root.classList.contains('done'))b.querySelector('.lb').textContent=T.send})}
 function done(no,mail){root.classList.add('done');
